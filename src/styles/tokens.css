@@ -1,0 +1,133 @@
+/**
+ * Quick Aarogya - Centralized Design Tokens
+ * Master source of truth for semantic colors, elevation, typography, and spacing.
+ */
+
+:root {
+  /* Brand / Primary Palette (Healing Teal) */
+  --primary-50: #f0fdfa;
+  --primary-100: #ccfbf1;
+  --primary-200: #99f6e4;
+  --primary-300: #5eead4;
+  --primary-400: #2dd4bf;
+  --primary-500: #0d9488; /* Core Brand Healing Teal */
+  --primary-600: #0f766e;
+  --primary-700: #115e59;
+  --primary-800: #134e4a;
+  --primary-900: #042f2e;
+
+  /* Secondary Palette (Clinical Sapphire) */
+  --secondary-50: #f0f9ff;
+  --secondary-100: #e0f2fe;
+  --secondary-200: #bae6fd;
+  --secondary-300: #7dd3fc;
+  --secondary-400: #38bdf8;
+  --secondary-500: #0284c7; /* Clinical Sapphire */
+  --secondary-600: #0369a1;
+  --secondary-700: #075985;
+  --secondary-800: #0c4a6e;
+
+  /* Emergency / Destructive Palette (Emergency Crimson) */
+  --destructive-50: #fef2f2;
+  --destructive-100: #fee2e2;
+  --destructive-200: #fecaca;
+  --destructive-300: #fca5a5;
+  --destructive-400: #f87171;
+  --destructive-500: #ef4444;
+  --destructive-600: #dc2626; /* Emergency Crimson */
+  --destructive-700: #b91c1c;
+
+  /* Semantic Status Tokens */
+  --success-bg: #ecfdf5;
+  --success-text: #047857;
+  --success-border: #a7f3d0;
+
+  --warning-bg: #fffbeb;
+  --warning-text: #b45309;
+  --warning-border: #fde68a;
+
+  --danger-bg: #fef2f2;
+  --danger-text: #b91c1c;
+  --danger-border: #fecaca;
+
+  --info-bg: #f0f9ff;
+  --info-text: #0369a1;
+  --info-border: #bae6fd;
+
+  /* Surface & Background (Light Mode) */
+  --bg-page: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #ffffff;
+  --bg-surface-subtle: #f1f5f9;
+  --bg-surface-active: #e2e8f0;
+  --bg-glass: rgba(255, 255, 255, 0.92);
+
+  /* Typography Colors (Light Mode) */
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-inverse: #ffffff;
+
+  /* Border Tokens */
+  --border-color: #e2e8f0;
+  --border-subtle: #f1f5f9;
+  --border-focus: #0d9488;
+
+  /* Standardized Elevation / Shadows */
+  --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 2px 4px -1px rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 10px 24px -4px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
+  --shadow-xl: 0 20px 30px -6px rgba(15, 23, 42, 0.12), 0 8px 16px -4px rgba(15, 23, 42, 0.06);
+
+  /* Standardized Radii */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Typography Fonts */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Outfit', var(--font-sans);
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+[data-theme='dark'] {
+  /* Layered Surfaces (Dark Mode - No Pure Black) */
+  --bg-page: #0b1120;
+  --bg-surface: #111c30;
+  --bg-surface-elevated: #1a263f;
+  --bg-surface-subtle: #1e293b;
+  --bg-surface-active: #334155;
+  --bg-glass: rgba(17, 28, 48, 0.92);
+
+  /* Typography Colors (Dark Mode) */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-inverse: #0f172a;
+
+  /* Borders (Dark Mode) */
+  --border-color: #1e293b;
+  --border-subtle: #19243a;
+  --border-focus: #14b8a6;
+
+  /* Status Colors in Dark Mode */
+  --success-bg: rgba(6, 78, 59, 0.35);
+  --success-text: #6ee7b7;
+  --success-border: #065f46;
+
+  --warning-bg: rgba(120, 53, 15, 0.35);
+  --warning-text: #fde68a;
+  --warning-border: #92400e;
+
+  --danger-bg: rgba(127, 29, 29, 0.35);
+  --danger-text: #fca5a5;
+  --danger-border: #991b1b;
+
+  --info-bg: rgba(12, 74, 110, 0.35);
+  --info-text: #7dd3fc;
+  --info-border: #075985;
+}

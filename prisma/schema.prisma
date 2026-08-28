@@ -1,0 +1,750 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  PATIENT
+  DOCTOR
+  HOSPITAL_ADMIN
+  PHARMACY_ADMIN
+  LAB_ADMIN
+  PLATFORM_ADMIN
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+  PREFER_NOT_TO_SAY
+}
+
+enum BloodGroup {
+  A_POSITIVE
+  A_NEGATIVE
+  B_POSITIVE
+  B_NEGATIVE
+  AB_POSITIVE
+  AB_NEGATIVE
+  O_POSITIVE
+  O_NEGATIVE
+  UNKNOWN
+}
+
+enum RelationshipType {
+  SPOUSE
+  CHILD
+  PARENT
+  SIBLING
+  GRANDPARENT
+  OTHER
+}
+
+enum CaregiverPermission {
+  VIEW_ONLY
+  MEDICATION_MANAGER
+  APPOINTMENT_MANAGER
+  FULL_PROXY
+  EMERGENCY_ONLY
+}
+
+enum AppointmentStatus {
+  BOOKED
+  CONFIRMED
+  CHECKED_IN
+  IN_CONSULTATION
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}
+
+enum AppointmentType {
+  IN_PERSON
+  VIDEO_TELECONSULT
+  FOLLOW_UP
+}
+
+enum DoseLogStatus {
+  PENDING
+  TAKEN
+  SKIPPED
+  SNOOZED
+  MISSED
+}
+
+enum DocumentCategory {
+  PRESCRIPTION
+  LAB_REPORT
+  DISCHARGE_SUMMARY
+  RADIOLOGY_SCAN
+  VACCINATION_RECORD
+  INSURANCE_POLICY
+  INVOICE
+  OTHER
+}
+
+enum OrderStatus {
+  PLACED
+  PRESCRIPTION_VERIFIED
+  PREPARING
+  DISPATCHED
+  OUT_FOR_DELIVERY
+  DELIVERED
+  CANCELLED
+  REFUNDED
+}
+
+// 1. Users
+model User {
+  id                String    @id @default(uuid())
+  email             String    @unique
+  phoneNumber       String    @unique
+  passwordHash      String?
+  role              Role      @default(PATIENT)
+  isPhoneVerified   Boolean   @default(false)
+  isEmailVerified   Boolean   @default(false)
+  mfaEnabled        Boolean   @default(false)
+  mfaSecret         String?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  profile           UserProfile?
+  doctorProfile     Doctor?
+  auditLogs         AuditLog[]
+  notifications     Notification[]
+  linkedFamily      FamilyMember[] @relation("LinkedUserAccount")
+  staffMemberships  StaffMember[]
+
+  @@index([email])
+  @@index([phoneNumber])
+}
+
+// 1.1 Organization & Multi-Vendor Tenants
+enum OrganizationType {
+  HOSPITAL
+  CLINIC
+  INDEPENDENT_DOCTOR
+  PHARMACY
+  LAB
+}
+
+enum VerificationStatus {
+  PENDING
+  VERIFIED
+  REJECTED
+}
+
+enum StaffRole {
+  DOCTOR
+  PHARMACIST
+  RECEPTIONIST
+  ORG_ADMIN
+  LAB_TECH
+}
+
+model Organization {
+  id                  String             @id @default(uuid())
+  name                String
+  type                OrganizationType
+  verificationStatus  VerificationStatus @default(PENDING)
+  licenseNumber       String?
+  licenseDocumentUrl  String?
+  contactEmail        String?
+  contactPhone        String?
+  rejectionReason     String?
+  createdAt           DateTime           @default(now())
+  updatedAt           DateTime           @updatedAt
+
+  staffMembers        StaffMember[]
+  doctors             Doctor[]
+  pharmacies          Pharmacy[]
+
+  @@index([type])
+  @@index([verificationStatus])
+}
+
+model StaffMember {
+  id                  String             @id @default(uuid())
+  userId              String
+  user                User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  organizationId      String
+  organization        Organization       @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  role                StaffRole
+  isActive            Boolean            @default(true)
+  createdAt           DateTime           @default(now())
+  updatedAt           DateTime           @updatedAt
+
+  @@unique([userId, organizationId])
+  @@index([userId])
+  @@index([organizationId])
+}
+
+// 2. User Profiles
+model UserProfile {
+  id              String      @id @default(uuid())
+  userId          String      @unique
+  user            User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  firstName       String
+  lastName        String
+  dateOfBirth     DateTime
+  gender          Gender
+  bloodGroup      BloodGroup  @default(UNKNOWN)
+  abhaId          String?     @unique
+  avatarUrl       String?
+  heightCm        Decimal?    @db.Decimal(5, 2)
+  weightKg        Decimal?    @db.Decimal(5, 2)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  familyMembers   FamilyMember[] @relation("PrimaryUser")
+  caregiverGrants CaregiverRelationship[] @relation("CaregiverGrantor")
+  caregiverProxies CaregiverRelationship[] @relation("CaregiverProxy")
+  emergencyInfo   EmergencyInformation?
+  appointments    Appointment[]
+  prescriptions   Prescription[]
+  schedules       MedicationSchedule[]
+  documents       MedicalDocument[]
+  labBookings     LabBooking[]
+  expenses        HealthcareExpense[]
+  orders          Order[]
+  addresses       Address[]
+
+  @@index([userId])
+  @@index([abhaId])
+}
+
+// 3. Family Members
+model FamilyMember {
+  id                     String           @id @default(uuid())
+  primaryUserProfileId   String
+  primaryUser            UserProfile      @relation("PrimaryUser", fields: [primaryUserProfileId], references: [id], onDelete: Cascade)
+  linkedUserId           String?
+  linkedUser             User?            @relation("LinkedUserAccount", fields: [linkedUserId], references: [id], onDelete: SetNull)
+  fullName               String
+  relationship           RelationshipType
+  dateOfBirth            DateTime
+  gender                 Gender
+  bloodGroup             BloodGroup       @default(UNKNOWN)
+  abhaId                 String?
+  avatarUrl              String?
+  notes                  String?
+  createdAt              DateTime         @default(now())
+  updatedAt              DateTime         @updatedAt
+
+  caregiverRelations     CaregiverRelationship[]
+  appointments           Appointment[]
+  prescriptions          Prescription[]
+  schedules              MedicationSchedule[]
+  documents              MedicalDocument[]
+  labBookings            LabBooking[]
+  expenses               HealthcareExpense[]
+
+  @@index([primaryUserProfileId])
+}
+
+// 4. Caregiver Relationships
+model CaregiverRelationship {
+  id                    String              @id @default(uuid())
+  caregiverProfileId    String
+  caregiverProfile      UserProfile         @relation("CaregiverProxy", fields: [caregiverProfileId], references: [id], onDelete: Cascade)
+  patientProfileId      String
+  patientProfile        UserProfile         @relation("CaregiverGrantor", fields: [patientProfileId], references: [id], onDelete: Cascade)
+  familyMemberId        String?
+  familyMember          FamilyMember?       @relation(fields: [familyMemberId], references: [id], onDelete: Cascade)
+  permissionLevel       CaregiverPermission @default(FULL_PROXY)
+  isActive              Boolean             @default(true)
+  consentGrantedAt      DateTime            @default(now())
+  expiresAt             DateTime?
+
+  @@index([caregiverProfileId, patientProfileId])
+}
+
+// 5. Doctors
+model Doctor {
+  id                    String        @id @default(uuid())
+  userId                String        @unique
+  user                  User          @relation(fields: [userId], references: [id], onDelete: Restrict)
+  organizationId        String?
+  organization          Organization? @relation(fields: [organizationId], references: [id], onDelete: SetNull)
+  medicalLicenseNumber  String        @unique
+  specialization        String
+  subSpecialties        String[]
+  qualification         String
+  experienceYears       Int
+  consultationFee       Decimal       @db.Decimal(10, 2)
+  ratingAverage         Decimal       @default(5.0) @db.Decimal(3, 2)
+  ratingCount           Int           @default(0)
+  isVerified            Boolean       @default(false)
+  about                 String?
+  createdAt             DateTime      @default(now())
+  updatedAt             DateTime      @updatedAt
+
+  appointments          Appointment[]
+  prescriptions         Prescription[]
+
+  @@index([specialization])
+  @@index([organizationId])
+}
+
+// 6. Hospitals
+model Hospital {
+  id                    String        @id @default(uuid())
+  name                  String
+  registrationNumber    String        @unique
+  type                  String
+  addressLine1          String
+  city                  String
+  state                 String
+  postalCode            String
+  latitude              Decimal?      @db.Decimal(10, 8)
+  longitude             Decimal?      @db.Decimal(11, 8)
+  emergencyHelpline     String
+  hasEmergencyService   Boolean       @default(true)
+  facilities            Json?
+  isVerified            Boolean       @default(false)
+  createdAt             DateTime      @default(now())
+  updatedAt             DateTime      @updatedAt
+
+  clinics               Clinic[]
+  appointments          Appointment[]
+
+  @@index([city])
+}
+
+// 7. Clinics
+model Clinic {
+  id                    String        @id @default(uuid())
+  hospitalId            String?
+  hospital              Hospital?     @relation(fields: [hospitalId], references: [id], onDelete: SetNull)
+  name                  String
+  phone                 String
+  addressLine1          String
+  city                  String
+  operatingHours        Json?
+  createdAt             DateTime      @default(now())
+
+  appointments          Appointment[]
+}
+
+// 8. Pharmacies
+model Pharmacy {
+  id                    String              @id @default(uuid())
+  organizationId        String?
+  organization          Organization?       @relation(fields: [organizationId], references: [id], onDelete: SetNull)
+  name                  String
+  drugLicenseNumber     String              @unique
+  phone                 String
+  email                 String?
+  addressLine1          String
+  city                  String
+  postalCode            String
+  latitude              Decimal?            @db.Decimal(10, 8)
+  longitude             Decimal?            @db.Decimal(11, 8)
+  deliveryRadiusKm      Decimal             @default(10.0) @db.Decimal(5, 2)
+  isOpen24x7            Boolean             @default(false)
+  isVerified            Boolean             @default(false)
+  createdAt             DateTime            @default(now())
+
+  inventory             MedicineInventory[]
+  orders                Order[]
+
+  @@index([organizationId])
+}
+
+// 9. Medicines
+model Medicine {
+  id                    String                  @id @default(uuid())
+  brandName             String
+  genericName           String
+  dosageForm            String
+  strength              String
+  manufacturer          String
+  prescriptionRequired  Boolean                 @default(true)
+  sideEffects           String[]
+  contraindications     String[]
+  createdAt             DateTime                @default(now())
+
+  inventory             MedicineInventory[]
+  prescriptionMedicines PrescriptionMedicine[]
+  orderItems            OrderItem[]
+
+  @@index([brandName])
+  @@index([genericName])
+}
+
+// 10. Medicine Inventory
+model MedicineInventory {
+  id                    String        @id @default(uuid())
+  pharmacyId            String
+  pharmacy              Pharmacy      @relation(fields: [pharmacyId], references: [id], onDelete: Cascade)
+  medicineId            String
+  medicine              Medicine      @relation(fields: [medicineId], references: [id], onDelete: Cascade)
+  batchNumber           String
+  expiryDate            DateTime
+  stockQuantity         Int           @default(0)
+  mrp                   Decimal       @db.Decimal(10, 2)
+  sellingPrice          Decimal       @db.Decimal(10, 2)
+  isAvailable           Boolean       @default(true)
+  updatedAt             DateTime      @updatedAt
+
+  @@index([pharmacyId, medicineId])
+}
+
+// 11. Prescriptions
+model Prescription {
+  id                    String                 @id @default(uuid())
+  prescriptionNumber    String                 @unique
+  patientProfileId      String
+  patientProfile        UserProfile            @relation(fields: [patientProfileId], references: [id], onDelete: Cascade)
+  familyMemberId        String?
+  familyMember          FamilyMember?          @relation(fields: [familyMemberId], references: [id], onDelete: SetNull)
+  doctorId              String?
+  doctor                Doctor?                @relation(fields: [doctorId], references: [id], onDelete: SetNull)
+  externalDoctorName    String?
+  issueDate             DateTime
+  validUntil            DateTime?
+  diagnosis             String?
+  fileUrl               String?
+  digitalSignatureHash  String?
+  createdAt             DateTime               @default(now())
+
+  medicines             PrescriptionMedicine[]
+  orders                Order[]
+
+  @@index([patientProfileId])
+}
+
+// 12. Prescription Medicines
+model PrescriptionMedicine {
+  id                    String        @id @default(uuid())
+  prescriptionId        String
+  prescription          Prescription  @relation(fields: [prescriptionId], references: [id], onDelete: Cascade)
+  medicineId            String?
+  medicine              Medicine?     @relation(fields: [medicineId], references: [id], onDelete: SetNull)
+  customMedicineName    String?
+  dosage                String
+  frequency             String
+  timing                String
+  durationDays          Int
+  totalQuantity         Int
+  instructions          String?
+
+  @@index([prescriptionId])
+}
+
+// 13. Medication Schedules
+model MedicationSchedule {
+  id                    String          @id @default(uuid())
+  userProfileId         String
+  userProfile           UserProfile     @relation(fields: [userProfileId], references: [id], onDelete: Cascade)
+  familyMemberId        String?
+  familyMember          FamilyMember?   @relation(fields: [familyMemberId], references: [id], onDelete: SetNull)
+  customMedicineName    String
+  dosageAmount          String
+  doseUnit              String
+  scheduleTimes         String[]
+  startDate             DateTime
+  endDate               DateTime?
+  isChronic             Boolean         @default(true)
+  initialQuantity       Int
+  remainingQuantity     Int
+  refillThreshold       Int             @default(5)
+  instructions          String?
+  colorTag              String?         @default("#0d9488")
+  isActive              Boolean         @default(true)
+  createdAt             DateTime        @default(now())
+  updatedAt             DateTime        @updatedAt
+
+  logs                  MedicationLog[]
+
+  @@index([userProfileId])
+}
+
+// 14. Medication Logs
+model MedicationLog {
+  id                    String             @id @default(uuid())
+  scheduleId            String
+  schedule              MedicationSchedule @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
+  scheduledTime         DateTime
+  actionTakenTime       DateTime?
+  status                DoseLogStatus      @default(PENDING)
+  notes                 String?
+  createdAt             DateTime           @default(now())
+
+  @@index([scheduleId])
+}
+
+// 15. Appointments
+model Appointment {
+  id                    String            @id @default(uuid())
+  appointmentNumber     String            @unique
+  doctorId              String
+  doctor                Doctor            @relation(fields: [doctorId], references: [id], onDelete: Restrict)
+  patientProfileId      String
+  patientProfile        UserProfile       @relation(fields: [patientProfileId], references: [id], onDelete: Cascade)
+  familyMemberId        String?
+  familyMember          FamilyMember?     @relation(fields: [familyMemberId], references: [id], onDelete: SetNull)
+  hospitalId            String?
+  hospital              Hospital?         @relation(fields: [hospitalId], references: [id], onDelete: SetNull)
+  clinicId              String?
+  clinic                Clinic?           @relation(fields: [clinicId], references: [id], onDelete: SetNull)
+  appointmentDatetime   DateTime
+  type                  AppointmentType   @default(IN_PERSON)
+  status                AppointmentStatus @default(BOOKED)
+  tokenNumber           Int?
+  currentQueueToken     Int?
+  symptoms              String?
+  consultationFee       Decimal           @db.Decimal(10, 2)
+  meetingRoomId         String?
+  createdAt             DateTime          @default(now())
+  updatedAt             DateTime          @updatedAt
+
+  payments              Payment[]
+
+  @@index([doctorId, appointmentDatetime])
+  @@index([patientProfileId])
+}
+
+// 16. Medical Documents
+model MedicalDocument {
+  id                    String            @id @default(uuid())
+  userProfileId         String
+  userProfile           UserProfile       @relation(fields: [userProfileId], references: [id], onDelete: Cascade)
+  familyMemberId        String?
+  familyMember          FamilyMember?     @relation(fields: [familyMemberId], references: [id], onDelete: SetNull)
+  category              DocumentCategory  @default(PRESCRIPTION)
+  title                 String
+  documentDate          DateTime
+  fileUrl               String
+  fileSizeBytes         BigInt
+  mimeType              String?
+  fileHashSha256        String?
+  tags                  String[]
+  extractedSummary      String?
+  isAiExtracted         Boolean           @default(false)
+  createdAt             DateTime          @default(now())
+  updatedAt             DateTime          @updatedAt
+
+  reports               MedicalReport[]
+  expenses              HealthcareExpense[]
+  labBookings           LabBooking[]
+
+  @@index([userProfileId, category])
+}
+
+// 17. Medical Reports
+model MedicalReport {
+  id                    String          @id @default(uuid())
+  medicalDocumentId     String
+  medicalDocument       MedicalDocument @relation(fields: [medicalDocumentId], references: [id], onDelete: Cascade)
+  biomarker             String
+  measuredValue         String
+  numericValue          Decimal?        @db.Decimal(10, 4)
+  unit                  String
+  referenceRangeMin     Decimal?        @db.Decimal(10, 4)
+  referenceRangeMax     Decimal?        @db.Decimal(10, 4)
+  isAbnormal            Boolean         @default(false)
+  explanation           String?
+  createdAt             DateTime        @default(now())
+
+  @@index([medicalDocumentId])
+}
+
+// 18. Lab Tests
+model LabTest {
+  id                    String        @id @default(uuid())
+  name                  String
+  code                  String        @unique
+  category              String
+  sampleType            String
+  fastingRequiredHours  Int           @default(0)
+  turnaroundTimeHours   Int
+  basePrice             Decimal       @db.Decimal(10, 2)
+  mrp                   Decimal       @db.Decimal(10, 2)
+  description           String?
+  parametersCount       Int           @default(1)
+  createdAt             DateTime      @default(now())
+
+  bookings              LabBooking[]
+
+  @@index([name])
+}
+
+// 19. Lab Bookings
+model LabBooking {
+  id                    String           @id @default(uuid())
+  bookingNumber         String           @unique
+  userProfileId         String
+  userProfile           UserProfile      @relation(fields: [userProfileId], references: [id], onDelete: Cascade)
+  familyMemberId        String?
+  familyMember          FamilyMember?    @relation(fields: [familyMemberId], references: [id], onDelete: SetNull)
+  labTestId             String
+  labTest               LabTest          @relation(fields: [labTestId], references: [id], onDelete: Restrict)
+  collectionType        String           @default("home_collection")
+  scheduledDatetime     DateTime
+  status                String           @default("booked")
+  phlebotomistName      String?
+  phlebotomistPhone     String?
+  reportDocumentId      String?
+  reportDocument        MedicalDocument? @relation(fields: [reportDocumentId], references: [id], onDelete: SetNull)
+  totalPrice            Decimal          @db.Decimal(10, 2)
+  createdAt             DateTime         @default(now())
+  updatedAt             DateTime         @updatedAt
+
+  payments              Payment[]
+
+  @@index([userProfileId])
+}
+
+// 20. Notifications
+model Notification {
+  id                    String        @id @default(uuid())
+  userId                String
+  user                  User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type                  String
+  title                 String
+  message               String
+  actionUrl             String?
+  urgency               String        @default("low")
+  isRead                Boolean       @default(false)
+  sentAt                DateTime      @default(now())
+
+  @@index([userId, isRead])
+}
+
+// 21. Emergency Information
+model EmergencyInformation {
+  id                    String        @id @default(uuid())
+  userProfileId         String        @unique
+  userProfile           UserProfile   @relation(fields: [userProfileId], references: [id], onDelete: Cascade)
+  bloodGroup            String
+  allergies             String[]
+  chronicConditions     String[]
+  currentMedicationsSummary String[]
+  implantedDevices      String[]
+  organDonor            Boolean       @default(false)
+  emergencyContacts     Json
+  publicEmergencyToken  String        @unique
+  requiresPin           Boolean       @default(false)
+  updatedAt             DateTime      @updatedAt
+
+  @@index([publicEmergencyToken])
+}
+
+// 22. Healthcare Expenses
+model HealthcareExpense {
+  id                    String           @id @default(uuid())
+  userProfileId         String
+  userProfile           UserProfile      @relation(fields: [userProfileId], references: [id], onDelete: Cascade)
+  familyMemberId        String?
+  familyMember          FamilyMember?    @relation(fields: [familyMemberId], references: [id], onDelete: SetNull)
+  category              String
+  title                 String
+  amount                Decimal          @db.Decimal(10, 2)
+  expenseDate           DateTime
+  paymentMethod         String
+  receiptDocumentId     String?
+  receiptDocument       MedicalDocument? @relation(fields: [receiptDocumentId], references: [id], onDelete: SetNull)
+  isInsuranceClaimed    Boolean          @default(false)
+  claimStatus           String?          @default("not_claimed")
+  createdAt             DateTime         @default(now())
+
+  @@index([userProfileId, expenseDate])
+}
+
+// 23. Orders
+model Order {
+  id                    String        @id @default(uuid())
+  orderNumber           String        @unique
+  userProfileId         String
+  userProfile           UserProfile   @relation(fields: [userProfileId], references: [id], onDelete: Cascade)
+  pharmacyId            String?
+  pharmacy              Pharmacy?     @relation(fields: [pharmacyId], references: [id], onDelete: SetNull)
+  deliveryAddressId     String?
+  deliveryAddress       Address?      @relation(fields: [deliveryAddressId], references: [id], onDelete: SetNull)
+  prescriptionId        String?
+  prescription          Prescription? @relation(fields: [prescriptionId], references: [id], onDelete: SetNull)
+  subtotalAmount        Decimal       @db.Decimal(10, 2)
+  deliveryFee           Decimal       @default(0) @db.Decimal(10, 2)
+  totalAmount           Decimal       @db.Decimal(10, 2)
+  status                OrderStatus   @default(PLACED)
+  createdAt             DateTime      @default(now())
+  updatedAt             DateTime      @updatedAt
+
+  items                 OrderItem[]
+  payments              Payment[]
+
+  @@index([userProfileId])
+}
+
+// 24. Order Items
+model OrderItem {
+  id                    String        @id @default(uuid())
+  orderId               String
+  order                 Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  medicineId            String
+  medicine              Medicine      @relation(fields: [medicineId], references: [id], onDelete: Restrict)
+  quantity              Int
+  unitPrice             Decimal       @db.Decimal(10, 2)
+  totalPrice            Decimal       @db.Decimal(10, 2)
+
+  @@index([orderId])
+}
+
+// 25. Payments
+model Payment {
+  id                    String        @id @default(uuid())
+  paymentReference      String        @unique
+  orderId               String?
+  order                 Order?        @relation(fields: [orderId], references: [id], onDelete: SetNull)
+  appointmentId         String?
+  appointment           Appointment?  @relation(fields: [appointmentId], references: [id], onDelete: SetNull)
+  labBookingId          String?
+  labBooking            LabBooking?   @relation(fields: [labBookingId], references: [id], onDelete: SetNull)
+  gateway               String
+  amount                Decimal       @db.Decimal(10, 2)
+  currency              String        @default("INR")
+  status                String        @default("captured")
+  paidAt                DateTime?     @default(now())
+
+  @@index([paymentReference])
+}
+
+// 26. Addresses
+model Address {
+  id                    String        @id @default(uuid())
+  userProfileId         String
+  userProfile           UserProfile   @relation(fields: [userProfileId], references: [id], onDelete: Cascade)
+  label                 String
+  recipientName         String
+  phoneNumber           String
+  addressLine1          String
+  city                  String
+  state                 String
+  postalCode            String
+  isDefault             Boolean       @default(false)
+
+  orders                Order[]
+
+  @@index([userProfileId])
+}
+
+// 27. Audit Logs
+model AuditLog {
+  id                    String        @id @default(uuid())
+  actorUserId           String?
+  actorUser             User?         @relation(fields: [actorUserId], references: [id], onDelete: SetNull)
+  actorRole             String
+  action                String
+  resourceType          String
+  resourceId            String
+  ipAddress             String
+  userAgent             String?
+  timestamp             DateTime      @default(now())
+
+  @@index([actorUserId, timestamp])
+}

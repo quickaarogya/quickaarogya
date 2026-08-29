@@ -3669,6 +3669,7 @@ export const initialInboxItems: HealthInboxItem[] = [
     isRead: false,
     timestamp: '20 mins ago',
     createdAt: '2026-08-27T05:00:00Z',
+    imageUrl: 'https://images.unsplash.com/photo-1594824813629-9e8a8bcf447f?w=600&auto=format&fit=crop&q=80',
     relatedEntity: {
       type: 'appointment',
       id: 'apt-1',
@@ -3698,6 +3699,7 @@ export const initialInboxItems: HealthInboxItem[] = [
     isRead: false,
     timestamp: '45 mins ago',
     createdAt: '2026-08-27T04:30:00Z',
+    imageUrl: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80',
     relatedEntity: {
       type: 'medication',
       id: 'sched-2',
@@ -3725,6 +3727,7 @@ export const initialInboxItems: HealthInboxItem[] = [
     isRead: false,
     timestamp: '1 hour ago',
     createdAt: '2026-08-27T04:15:00Z',
+    imageUrl: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&auto=format&fit=crop&q=80',
     relatedEntity: {
       type: 'family_member',
       id: 'fam-1',
@@ -3753,6 +3756,7 @@ export const initialInboxItems: HealthInboxItem[] = [
     isRead: false,
     timestamp: '2 hours ago',
     createdAt: '2026-08-27T03:30:00Z',
+    imageUrl: 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=600&auto=format&fit=crop&q=80',
     relatedEntity: {
       type: 'medication',
       id: 'sched-3',
@@ -3780,6 +3784,7 @@ export const initialInboxItems: HealthInboxItem[] = [
     isRead: false,
     timestamp: '3 hours ago',
     createdAt: '2026-08-27T02:00:00Z',
+    imageUrl: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=600&auto=format&fit=crop&q=80',
     relatedEntity: {
       type: 'appointment',
       id: 'apt-cancelled-1',
@@ -3806,6 +3811,7 @@ export const initialInboxItems: HealthInboxItem[] = [
     isRead: true,
     timestamp: 'Yesterday',
     createdAt: '2026-08-26T14:00:00Z',
+    imageUrl: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=600&auto=format&fit=crop&q=80',
     relatedEntity: {
       type: 'lab_booking',
       id: 'lb-101',
@@ -3833,6 +3839,7 @@ export const initialInboxItems: HealthInboxItem[] = [
     isRead: true,
     timestamp: '2 days ago',
     createdAt: '2026-08-25T11:00:00Z',
+    imageUrl: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?w=600&auto=format&fit=crop&q=80',
     relatedEntity: {
       type: 'document',
       id: 'doc-rec-1',
@@ -3858,6 +3865,7 @@ export const initialInboxItems: HealthInboxItem[] = [
     isRead: false,
     timestamp: '3 days ago',
     createdAt: '2026-08-24T09:00:00Z',
+    imageUrl: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=600&auto=format&fit=crop&q=80',
     relatedEntity: {
       type: 'appointment',
       id: 'apt-2',
@@ -3885,6 +3893,7 @@ export const initialInboxItems: HealthInboxItem[] = [
     isRead: true,
     timestamp: '4 days ago',
     createdAt: '2026-08-23T16:20:00Z',
+    imageUrl: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&auto=format&fit=crop&q=80',
     relatedEntity: {
       type: 'order',
       id: 'ord-101',
@@ -3910,6 +3919,7 @@ export const initialInboxItems: HealthInboxItem[] = [
     isRead: true,
     timestamp: '5 days ago',
     createdAt: '2026-08-22T10:15:00Z',
+    imageUrl: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&auto=format&fit=crop&q=80',
     relatedEntity: {
       type: 'payment',
       id: 'pay-101',

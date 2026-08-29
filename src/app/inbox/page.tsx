@@ -152,6 +152,27 @@ export default function HealthInboxPage() {
     }
   };
 
+  const getCategoryFallbackImage = (category: InboxCategory) => {
+    switch (category) {
+      case 'appointments':
+        return 'https://images.unsplash.com/photo-1594824813629-9e8a8bcf447f?w=600&auto=format&fit=crop&q=80';
+      case 'medicines':
+        return 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80';
+      case 'family':
+        return 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&auto=format&fit=crop&q=80';
+      case 'records':
+        return 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?w=600&auto=format&fit=crop&q=80';
+      case 'orders':
+        return 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&auto=format&fit=crop&q=80';
+      case 'tests':
+        return 'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=600&auto=format&fit=crop&q=80';
+      case 'payments':
+        return 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&auto=format&fit=crop&q=80';
+      default:
+        return 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=600&auto=format&fit=crop&q=80';
+    }
+  };
+
   const getPriorityBadge = (priority: InboxPriority) => {
     switch (priority) {
       case 'urgent':
@@ -394,67 +415,75 @@ export default function HealthInboxPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {items.map((item) => {
             const isUnread = !item.isRead;
+            const cardImg = item.imageUrl || getCategoryFallbackImage(item.category);
 
             return (
               <div
                 key={item.id}
-                className={`bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl rounded-3xl p-4 sm:p-5 border transition-all duration-300 flex flex-col justify-between group relative shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_14px_34px_rgba(0,0,0,0.08)] ${
+                className={`bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl rounded-3xl p-4 sm:p-5 border transition-all duration-300 flex flex-col justify-between group relative shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_36px_rgba(0,0,0,0.09)] ${
                   isUnread
                     ? isDoctors
-                      ? 'border-[#026dd9]/40 dark:border-blue-500/40 bg-gradient-to-b from-blue-50/40 to-white dark:from-blue-950/20 dark:to-slate-900'
+                      ? 'border-[#026dd9]/40 dark:border-blue-500/40 ring-1 ring-[#026dd9]/20'
                       : isCare
-                      ? 'border-[#ff645e]/40 dark:border-rose-500/40 bg-gradient-to-b from-rose-50/40 to-white dark:from-rose-950/20 dark:to-slate-900'
-                      : 'border-[#0F766E]/40 dark:border-teal-500/40 bg-gradient-to-b from-teal-50/40 to-white dark:from-teal-950/20 dark:to-slate-900'
+                      ? 'border-[#ff645e]/40 dark:border-rose-500/40 ring-1 ring-[#ff645e]/20'
+                      : 'border-[#0F766E]/40 dark:border-teal-500/40 ring-1 ring-[#0F766E]/20'
                     : 'border-slate-200/80 dark:border-slate-800'
                 }`}
               >
-                {/* Top Box Bar: Category icon, Badges, Timestamp & Action Menu */}
                 <div>
-                  <div className="flex items-start justify-between gap-2">
-                    <div className="flex items-center gap-2.5 min-w-0">
-                      {/* Icon Squircle Box */}
-                      <div
-                        className={`w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 shadow-2xs ${getCategoryBadgeColor(
-                          item.category
-                        )}`}
-                      >
-                        {getCategoryIcon(item.category)}
-                      </div>
+                  {/* Image Container with Badges Overlay */}
+                  <div className="relative w-full h-36 sm:h-40 rounded-2xl overflow-hidden mb-3.5 bg-slate-100 dark:bg-slate-800 border border-slate-100 dark:border-slate-800/80">
+                    <img
+                      src={cardImg}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-black/35 pointer-events-none" />
 
-                      <div className="min-w-0">
-                        <div className="flex items-center gap-1.5 flex-wrap">
-                          <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                            {item.category}
-                          </span>
-                          {getPriorityBadge(item.priority)}
-                        </div>
-                        <span className="text-[10px] text-slate-400 font-medium block mt-0.5">
-                          {item.timestamp}
-                        </span>
-                      </div>
+                    {/* Top Left: Category badge */}
+                    <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5 bg-black/65 backdrop-blur-md px-2.5 py-1 rounded-xl text-white text-[10px] font-black shadow-xs border border-white/10">
+                      <span className="shrink-0">{getCategoryIcon(item.category)}</span>
+                      <span className="uppercase tracking-wider">{item.category}</span>
                     </div>
 
-                    {/* Top Right Quick Controls: Read toggle + Delete */}
-                    <div className="flex items-center gap-0.5 shrink-0 bg-slate-50 dark:bg-slate-800/80 p-1 rounded-xl border border-slate-100 dark:border-slate-800">
+                    {/* Top Right: Priority badge */}
+                    <div className="absolute top-2.5 right-2.5">
+                      {getPriorityBadge(item.priority)}
+                    </div>
+
+                    {/* Bottom Left: Family Member tag or Timestamp */}
+                    {item.familyMemberName ? (
+                      <div className="absolute bottom-2.5 left-2.5 bg-black/75 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-0.5 rounded-lg flex items-center gap-1 border border-white/20">
+                        <Users size={10} className="text-sky-300" />
+                        <span>{item.familyMemberName}</span>
+                      </div>
+                    ) : (
+                      <span className="absolute bottom-2.5 left-2.5 bg-black/60 backdrop-blur-md text-white/90 text-[10px] font-bold px-2 py-0.5 rounded-md">
+                        {item.timestamp}
+                      </span>
+                    )}
+
+                    {/* Bottom Right: Quick controls */}
+                    <div className="absolute bottom-2.5 right-2.5 flex items-center gap-0.5 bg-black/75 backdrop-blur-md p-0.5 rounded-xl border border-white/20">
                       <button
                         onClick={() => handleToggleRead(item.id, item.isRead)}
-                        className="h-7 w-7 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-white dark:hover:bg-slate-700 transition-all cursor-pointer"
+                        className="h-6 w-6 rounded-lg flex items-center justify-center text-white/80 hover:text-white hover:bg-white/20 transition-all cursor-pointer"
                         title={item.isRead ? "Mark as unread" : "Mark as read"}
                       >
-                        {item.isRead ? <EyeOff size={13} /> : <Eye size={13} />}
+                        {item.isRead ? <EyeOff size={12} /> : <Eye size={12} />}
                       </button>
                       <button
                         onClick={() => handleDeleteItem(item.id)}
-                        className="h-7 w-7 rounded-lg flex items-center justify-center text-slate-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/50 transition-all cursor-pointer"
+                        className="h-6 w-6 rounded-lg flex items-center justify-center text-white/80 hover:text-red-400 hover:bg-red-500/20 transition-all cursor-pointer"
                         title="Delete alert"
                       >
-                        <Trash2 size={13} />
+                        <Trash2 size={12} />
                       </button>
                     </div>
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-black text-sm text-slate-900 dark:text-slate-100 leading-snug mt-3 flex items-center gap-1.5 group-hover:text-[#026dd9] dark:group-hover:text-blue-400 transition-colors">
+                  <h3 className="font-black text-sm text-slate-900 dark:text-slate-100 leading-snug flex items-center gap-1.5 group-hover:text-[#026dd9] dark:group-hover:text-blue-400 transition-colors">
                     {isUnread && (
                       <span className={`w-2 h-2 rounded-full inline-block shrink-0 ${
                         isDoctors ? 'bg-[#026dd9]' : isCare ? 'bg-[#ff645e]' : 'bg-[#0F766E]'
@@ -464,28 +493,22 @@ export default function HealthInboxPage() {
                   </h3>
 
                   {/* Message Body */}
-                  <p className="text-xs text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed line-clamp-3">
+                  <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed line-clamp-3">
                     {item.message}
                   </p>
 
-                  {/* Meta Chips: Family member & Linked entity */}
-                  <div className="flex items-center gap-1.5 flex-wrap mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800/80">
-                    {item.familyMemberName && (
-                      <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2.5 py-0.5 rounded-lg bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 border border-sky-200/60">
-                        <Users size={10} /> {item.familyMemberName}
-                      </span>
-                    )}
-
-                    {item.relatedEntity && (
-                      <span className="text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2.5 py-0.5 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center gap-1 truncate max-w-[200px]">
+                  {/* Meta Chips */}
+                  {item.relatedEntity && (
+                    <div className="mt-2.5 pt-2 border-t border-slate-100 dark:border-slate-800/80 flex items-center gap-1.5 flex-wrap">
+                      <span className="text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2.5 py-0.5 rounded-lg border border-slate-200 dark:border-slate-700 inline-flex items-center gap-1 truncate max-w-full">
                         <span className="text-slate-400">Linked:</span> {item.relatedEntity.name || item.relatedEntity.id}
                       </span>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Bottom Box Bar: Channel indicator & Primary Action Button */}
-                <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
+                <div className="mt-3.5 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
                   {item.deliveryChannels && item.deliveryChannels.length > 0 ? (
                     <button
                       onClick={() => setSelectedDeliveryItem(item)}

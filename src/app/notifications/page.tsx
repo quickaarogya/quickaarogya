@@ -82,6 +82,27 @@ export default function NotificationsPage() {
     }
   };
 
+  const getCategoryFallbackImage = (category: InboxCategory) => {
+    switch (category) {
+      case 'appointments':
+        return 'https://images.unsplash.com/photo-1594824813629-9e8a8bcf447f?w=600&auto=format&fit=crop&q=80';
+      case 'medicines':
+        return 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80';
+      case 'family':
+        return 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&auto=format&fit=crop&q=80';
+      case 'records':
+        return 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?w=600&auto=format&fit=crop&q=80';
+      case 'orders':
+        return 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&auto=format&fit=crop&q=80';
+      case 'tests':
+        return 'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=600&auto=format&fit=crop&q=80';
+      case 'payments':
+        return 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&auto=format&fit=crop&q=80';
+      default:
+        return 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=600&auto=format&fit=crop&q=80';
+    }
+  };
+
   return (
     <div className="page-wrapper animate-fade-in space-y-6">
       {/* Top Action Toolbar */}
@@ -150,59 +171,61 @@ export default function NotificationsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {items.map((n) => {
             const isUnread = !n.isRead;
+            const cardImg = n.imageUrl || getCategoryFallbackImage(n.category);
 
             return (
               <div
                 key={n.id}
-                className={`bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl rounded-3xl p-5 border transition-all duration-300 flex flex-col justify-between group relative shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_14px_34px_rgba(0,0,0,0.08)] ${
+                className={`bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl rounded-3xl p-4 sm:p-5 border transition-all duration-300 flex flex-col justify-between group relative shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_36px_rgba(0,0,0,0.09)] ${
                   isUnread
-                    ? 'border-teal-500/40 dark:border-teal-500/40 bg-gradient-to-b from-teal-50/40 to-white dark:from-teal-950/20 dark:to-slate-900'
+                    ? 'border-teal-500/40 dark:border-teal-500/40 ring-1 ring-teal-500/20'
                     : 'border-slate-200/80 dark:border-slate-800'
                 }`}
               >
                 <div>
-                  <div className="flex items-start justify-between gap-2">
-                    <div className="flex items-center gap-2.5 min-w-0">
-                      <div className={`w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 shadow-2xs ${
-                        n.category === 'medicines'
-                          ? 'bg-amber-50 text-amber-600 dark:bg-amber-950/60 dark:text-amber-400'
-                          : n.category === 'appointments'
-                          ? 'bg-teal-50 text-teal-600 dark:bg-teal-950/60 dark:text-teal-400'
-                          : n.category === 'family'
-                          ? 'bg-rose-50 text-rose-600 dark:bg-rose-950/60 dark:text-rose-400'
-                          : 'bg-sky-50 text-sky-600 dark:bg-sky-950/60 dark:text-sky-400'
-                      }`}>
-                        {getCategoryIcon(n.category)}
-                      </div>
+                  {/* Image Container with Badges Overlay */}
+                  <div className="relative w-full h-36 sm:h-40 rounded-2xl overflow-hidden mb-3.5 bg-slate-100 dark:bg-slate-800 border border-slate-100 dark:border-slate-800/80">
+                    <img
+                      src={cardImg}
+                      alt={n.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-black/35 pointer-events-none" />
 
-                      <div className="min-w-0">
-                        <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 block">
-                          {n.category}
-                        </span>
-                        <span className="text-[10px] text-slate-400 font-medium block mt-0.5">
-                          {n.timestamp}
-                        </span>
-                      </div>
+                    {/* Top Left: Category badge */}
+                    <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5 bg-black/65 backdrop-blur-md px-2.5 py-1 rounded-xl text-white text-[10px] font-black shadow-xs border border-white/10">
+                      <span className="shrink-0">{getCategoryIcon(n.category)}</span>
+                      <span className="uppercase tracking-wider">{n.category}</span>
                     </div>
 
-                    {isUnread && (
-                      <span className="px-2 py-0.5 rounded-md text-[10px] font-black bg-teal-50 text-teal-700 border border-teal-200/60">
-                        NEW
-                      </span>
-                    )}
+                    {/* Top Right: Status / NEW */}
+                    <div className="absolute top-2.5 right-2.5">
+                      {isUnread && (
+                        <span className="px-2 py-0.5 rounded-md text-[10px] font-black bg-teal-500 text-white shadow-xs">
+                          NEW
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Bottom Left: Relative time */}
+                    <span className="absolute bottom-2.5 left-2.5 bg-black/60 backdrop-blur-md text-white/90 text-[10px] font-bold px-2 py-0.5 rounded-md">
+                      {n.timestamp}
+                    </span>
                   </div>
 
-                  <h3 className="font-black text-sm text-slate-900 dark:text-slate-100 leading-snug mt-3 flex items-center gap-1.5 group-hover:text-teal-600 transition-colors">
+                  {/* Title */}
+                  <h3 className="font-black text-sm text-slate-900 dark:text-slate-100 leading-snug flex items-center gap-1.5 group-hover:text-teal-600 transition-colors">
                     {isUnread && <span className="w-2 h-2 rounded-full bg-teal-600 inline-block shrink-0" />}
                     <span className="line-clamp-2">{n.title}</span>
                   </h3>
 
-                  <p className="text-xs text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed line-clamp-3">
+                  {/* Message Body */}
+                  <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed line-clamp-3">
                     {n.message}
                   </p>
                 </div>
 
-                <div className="flex items-center justify-between gap-2 mt-4 pt-3 border-t border-slate-100 dark:border-slate-800">
+                <div className="flex items-center justify-between gap-2 mt-3.5 pt-3 border-t border-slate-100 dark:border-slate-800">
                   {isUnread ? (
                     <button
                       onClick={() => NotificationService.markAsRead(n.id)}

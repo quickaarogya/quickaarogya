@@ -539,6 +539,7 @@ export interface HealthInboxItem {
   isRead: boolean;
   timestamp: string; // e.g. "10 mins ago" or "Today at 08:30 AM"
   createdAt: string; // ISO 8601 string
+  imageUrl?: string;
   relatedEntity?: RelatedEntity;
   action?: {
     label: string;
@@ -556,6 +557,7 @@ export interface HealthNotification {
   message: string;
   time: string;
   isRead: boolean;
+  imageUrl?: string;
   actionUrl?: string;
   urgency: 'low' | 'medium' | 'high' | 'emergency';
   category?: InboxCategory;

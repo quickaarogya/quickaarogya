@@ -66,9 +66,9 @@ export default function AppModeFloatingSwitch() {
     <div
       role="region"
       aria-label="App Mode Switcher"
-      className="fixed bottom-[72px] left-1/2 -translate-x-1/2 z-40 lg:hidden pointer-events-auto select-none"
+      className="fixed bottom-[calc(76px+env(safe-area-inset-bottom,0px))] left-1/2 -translate-x-1/2 z-50 lg:hidden pointer-events-auto select-none transition-all duration-200"
     >
-      <div className="flex items-center gap-1 p-1 bg-white/70 backdrop-blur-2xl border border-white/80 rounded-full shadow-[0_10px_35px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.9)] transition-all">
+      <div className="flex items-center gap-1 p-1 bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-white/90 dark:border-slate-700/80 rounded-full shadow-[0_12px_36px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.9)] transition-all">
         {/* 1. DOCTORS */}
         <button
           onClick={() => handleSwitchMode('doctors')}

@@ -58,7 +58,7 @@ export default function RootLayout({
           {/* Main Layout Container (Full Width Consumer Storefront) */}
           <div className="flex flex-col min-h-screen relative z-10">
             {/* Scrollable Page Content with Safe Area Bottom Padding on Mobile */}
-            <main className="flex-1 w-full pb-[calc(7.5rem+env(safe-area-inset-bottom))] lg:pb-12">
+            <main className="flex-1 w-full pb-[calc(9rem+env(safe-area-inset-bottom))] lg:pb-12">
               {children}
             </main>
           </div>
@@ -66,11 +66,11 @@ export default function RootLayout({
           {/* Global Dismissible Top Cart Alert Toast */}
           <CartTopAlert />
 
-          {/* Dual-App Mode Floating Pill Switcher (Appointments <-> Pharma) */}
-          <AppModeFloatingSwitch />
-
           {/* Mobile Fixed Core Navigation Bar (hidden on lg) */}
           <MobileNav />
+
+          {/* Tri-Cockpit App Mode Floating Pill Switcher (Doctors <-> Pharma <-> Care) */}
+          <AppModeFloatingSwitch />
         </QueryProvider>
       </body>
     </html>

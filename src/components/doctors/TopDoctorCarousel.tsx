@@ -14,6 +14,8 @@ import {
   Clock,
   Sparkles,
   PhoneCall,
+  Phone,
+  ArrowUpRight,
   Bed,
   CheckCircle2,
   Calendar
@@ -490,22 +492,29 @@ export default function TopDoctorCarousel({
                         </p>
                       </div>
 
-                      {/* Bottom Fee & Action Buttons */}
-                      <div className="mt-2 pt-2 border-t border-slate-200/70 flex items-center justify-between gap-1.5">
-                        <span className="text-xs font-black text-slate-900">₹{doc.consultationFee}</span>
-                        <div className="flex items-center gap-1 shrink-0">
+                      {/* Bottom Fee & Action Row */}
+                      <div className="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between gap-1">
+                        <div>
+                          <span className="text-xs font-black text-slate-900 block leading-none">₹{doc.consultationFee}</span>
+                          <span className="text-[9px] text-slate-400 font-medium block mt-0.5">OPD Fee</span>
+                        </div>
+
+                        <div className="flex items-center gap-1.5 shrink-0">
                           <a
                             href={`tel:${doc.phone || '07582-472000'}`}
-                            className="w-7 h-7 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 flex items-center justify-center shadow-2xs active:scale-95 transition-all cursor-pointer"
-                            title={`Call directly: ${doc.phone || '07582-472000'}`}
+                            onClick={(e) => e.stopPropagation()}
+                            className="w-8 h-8 rounded-full bg-[#059669] hover:bg-[#047857] text-white flex items-center justify-center shadow-md active:scale-90 transition-all cursor-pointer shrink-0 border border-emerald-400/40"
+                            title={`Call Doctor directly: ${doc.phone || '07582-472000'}`}
                           >
-                            <PhoneCall size={11} className="text-emerald-600" />
+                            <Phone size={13} className="fill-white text-white" />
                           </a>
+
                           <Link
                             href={`/doctors?book=${doc.id}`}
-                            className="px-2.5 py-1.5 bg-[#026dd9] hover:bg-[#0256ab] text-white text-[11px] font-black rounded-xl shadow-xs hover:shadow-md transition-all active:scale-95 text-center cursor-pointer"
+                            className="w-8 h-8 rounded-full bg-[#026dd9] hover:bg-[#0256ab] text-white flex items-center justify-center shadow-md active:scale-90 transition-all cursor-pointer shrink-0 border border-blue-400/40"
+                            title="Book Appointment"
                           >
-                            Book Now
+                            <ArrowUpRight size={15} className="text-white stroke-[2.5]" />
                           </Link>
                         </div>
                       </div>
@@ -582,10 +591,10 @@ export default function TopDoctorCarousel({
                         <div className="flex items-center gap-1.5">
                           <a
                             href={`tel:${doc.phone || '07582-472000'}`}
-                            className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center justify-center shadow-2xs active:scale-95"
+                            className="w-8 h-8 rounded-full bg-[#059669] hover:bg-[#047857] text-white flex items-center justify-center shadow-md active:scale-90 transition-all cursor-pointer shrink-0 border border-emerald-400/40"
                             title={`Call directly: ${doc.phone || '07582-472000'}`}
                           >
-                            <PhoneCall size={13} className="text-emerald-600" />
+                            <Phone size={13} className="fill-white text-white" />
                           </a>
                           <Link
                             href={`/doctors?book=${doc.id}`}

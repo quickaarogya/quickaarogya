@@ -134,24 +134,24 @@ export function DoctorPortraitCard({ doctor, onSelect }: DoctorPortraitCardProps
             </span>
           </div>
 
-          {/* Action CTA Buttons: Call Directly & Book Slot */}
-          <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
+          {/* Action CTA Buttons: Call Directly & Book Slot (Solid Circular Icons) */}
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             <a
               href={`tel:${doctorPhone}`}
               onClick={(e) => e.stopPropagation()}
-              className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white flex items-center justify-center shadow-xs active:scale-95 transition-all cursor-pointer shrink-0"
+              className="w-8 h-8 rounded-full bg-[#059669] hover:bg-[#047857] text-white flex items-center justify-center shadow-md active:scale-90 transition-all cursor-pointer shrink-0 border border-emerald-400/40"
               title={`Call clinic directly: ${doctorPhone}`}
             >
-              <Phone size={11} className="fill-current sm:w-3.5 sm:h-3.5" />
+              <Phone size={13} className="fill-white text-white" />
             </a>
 
             <Link
               href={`/doctors?book=${doctor.id}`}
               onClick={(e) => e.stopPropagation()}
-              className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#026dd9] hover:bg-[#0256ab] text-white flex items-center justify-center shadow-xs active:scale-95 transition-all cursor-pointer shrink-0"
+              className="w-8 h-8 rounded-full bg-[#026dd9] hover:bg-[#0256ab] text-white flex items-center justify-center shadow-md active:scale-90 transition-all cursor-pointer shrink-0 border border-blue-400/40"
               title="Book Appointment Token"
             >
-              <ArrowUpRight size={13} className="sm:w-4 sm:h-4" />
+              <ArrowUpRight size={15} className="text-white stroke-[2.5]" />
             </Link>
           </div>
         </div>

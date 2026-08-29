@@ -216,12 +216,14 @@ export default function DesktopHeader() {
         <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 h-20 min-h-[80px] flex items-center justify-between gap-5">
           {/* 1. BRAND LOGO + LOCATION SELECTOR */}
           <div className="flex items-center gap-6 shrink-0">
-            <Link href="/" className="flex items-center gap-3.5 group">
-              <img
-                src="/logo.png"
-                alt="Quick Aarogya Logo"
-                className="h-[38px] w-auto max-w-[62px] object-contain shrink-0 transition-transform duration-200 group-hover:scale-105 drop-shadow-sm brightness-105"
-              />
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="w-10 h-10 rounded-2xl bg-white/95 backdrop-blur-md p-1 flex items-center justify-center shadow-md shrink-0 border border-white/80 transition-transform duration-200 group-hover:scale-105">
+                <img
+                  src="/logo.png"
+                  alt="Quick Aarogya Logo"
+                  className="w-full h-full object-contain"
+                />
+              </div>
               <div className="flex flex-col">
                 <span className="font-display font-black text-2xl tracking-tight text-white leading-none drop-shadow-xs">
                   Quick <span suppressHydrationWarning className={cn("transition-colors", themeConfig.logoAccent)}>Aarogya</span>
@@ -344,7 +346,7 @@ export default function DesktopHeader() {
             </div>
           </form>
 
-          {/* 4. RIGHT ACTION BUTTONS: WISHLIST, INBOX, CART, USER PROFILE */}
+          {/* 4. RIGHT ACTION BUTTONS: WISHLIST, INBOX, CART, USER PROFILE (HARMONIOUS FROSTED GLASS) */}
           <div className="flex items-center gap-3 shrink-0">
             {/* Wishlist Link */}
             <Link
@@ -377,19 +379,21 @@ export default function DesktopHeader() {
               )}
             </Link>
 
-            {/* E-Commerce Cart Pill */}
+            {/* E-Commerce Cart Pill (Harmonized Frosted Glass Styling) */}
             <Link
               href="/cart"
+              aria-label="Shopping Cart"
               className={cn(
-                "flex items-center gap-2.5 px-4.5 py-2.5 rounded-2xl font-black text-xs transition-all shadow-sm active:scale-95 cursor-pointer backdrop-blur-md",
-                themeConfig.cartBtn
+                "relative p-3 px-3.5 rounded-2xl border transition-all shadow-xs active:scale-95 flex items-center gap-1.5 backdrop-blur-md text-white font-extrabold text-xs cursor-pointer",
+                themeConfig.actionBtn
               )}
+              title="Shopping Cart"
             >
-              <ShoppingCart size={17} />
-              <span>Cart</span>
+              <ShoppingCart size={17} className="text-white" />
+              <span className="text-xs font-extrabold hidden xl:inline text-white">Cart</span>
               {cartCount > 0 && (
-                <span className="px-1.5 py-0.5 rounded-md bg-black/10 text-current text-[11px] font-extrabold">
-                  ₹{cartTotal} ({cartCount})
+                <span className="min-w-[18px] h-[18px] px-1 rounded-full bg-emerald-400 text-slate-950 text-[10px] font-black flex items-center justify-center shadow-xs">
+                  {cartCount}
                 </span>
               )}
             </Link>

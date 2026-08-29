@@ -79,6 +79,7 @@ import { TopPathologySection } from '../components/diagnostics/TopPathologySecti
 import { TopXRaysSection } from '../components/diagnostics/TopXRaysSection';
 import { ComparePricesSection } from '../components/diagnostics/ComparePricesSection';
 import {
+  PromoCarouselBanner,
   OPDExpressPromoBanner,
   FullBodyCheckupPromoBanner,
   DiagnosticFilmPromoBanner
@@ -1069,20 +1070,20 @@ export default function HomeCockpit() {
             </div>
           </div>
 
-          {/* PROMOTIONAL BANNER 1: OPD EXPRESS & LIVE QUEUE TRACKING */}
-          <OPDExpressPromoBanner />
+          {/* PROMOTIONAL CAROUSEL BANNER 1: PATHOLOGY HOME COLLECTION & DIGITAL REPORTS */}
+          <PromoCarouselBanner initialSlide={0} />
 
           {/* DIAGNOSTIC VIEW 1: TOP CT SCANS */}
           <TopCTScansSection />
 
-          {/* PROMOTIONAL BANNER 2: 84-PARAMETER FULL BODY MASTER HEALTH CHECKUP */}
-          <FullBodyCheckupPromoBanner />
+          {/* PROMOTIONAL CAROUSEL BANNER 2: OPD TOKENS & LIVE QUEUE TRACKING */}
+          <PromoCarouselBanner initialSlide={1} />
 
           {/* DIAGNOSTIC VIEW 2: TOP PATHOLOGIES & LAB TESTS */}
           <TopPathologySection />
 
-          {/* PROMOTIONAL BANNER 3: DIGITAL X-RAY & SCAN FAST-TRACK WITH 20-MIN REPORTS */}
-          <DiagnosticFilmPromoBanner />
+          {/* PROMOTIONAL CAROUSEL BANNER 3: 128-SLICE CT & DIGITAL X-RAY FAST-TRACK */}
+          <PromoCarouselBanner initialSlide={2} />
 
           {/* DIAGNOSTIC VIEW 3: TOP DIGITAL X-RAYS */}
           <TopXRaysSection />

@@ -157,15 +157,21 @@ export const initialDoctors: Doctor[] = [
   {
     "id": "SAG-D-0001",
     "name": "Dr. Himanshu Samaiya",
-    "title": "Consultant - Internal Medicine",
+    "title": "Consultant - Internal Medicine & Diabetology",
     "specialization": "Internal Medicine / Diabetology",
-    "qualification": "MBBS, MD (Internal Medicine), Fellowship in Diabetology",
+    "qualification": "MBBS, MD (Internal Medicine), Fellowship Diabetology",
     "experienceYears": 16,
     "consultationFee": 500,
     "ratingAverage": 4.95,
     "ratingCount": 680,
-    "patientCount": "4.0k+",
-    "reviewsCount": "1.5k",
+    "patientCount": "7.2k+",
+    "reviewsCount": "3.5k",
+    "hospitalName": "Bansal Hospital Sagar",
+    "hospitalId": "SAG-F-0001",
+    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
+    "phone": "07582-472000",
+    "about": "Senior consultant in internal medicine, chronic disease management, diabetes reversal counseling, and infectious disease therapies at Bansal Hospital Sagar.",
+    "avatarUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=500&auto=format&fit=crop&q=80",
     "languages": [
       "Hindi",
       "English"
@@ -174,11 +180,6 @@ export const initialDoctors: Doctor[] = [
       "in_person",
       "video_teleconsult"
     ],
-    "hospitalName": "Bansal Hospital Sagar",
-    "hospitalId": "SAG-F-0001",
-    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
-    "phone": "07582-472000",
-    "avatarUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=500&auto=format&fit=crop&q=80",
     "availableDays": [
       "Monday",
       "Tuesday",
@@ -195,8 +196,7 @@ export const initialDoctors: Doctor[] = [
       "04:30 PM",
       "06:00 PM"
     ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Internal Medicine / Diabetology with 16+ years of clinical expertise, practicing at Bansal Hospital Sagar in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
+    "isVerified": true
   },
   {
     "id": "SAG-D-0002",
@@ -208,8 +208,14 @@ export const initialDoctors: Doctor[] = [
     "consultationFee": 500,
     "ratingAverage": 4.96,
     "ratingCount": 790,
-    "patientCount": "5.1k+",
-    "reviewsCount": "2.4k",
+    "patientCount": "8.1k+",
+    "reviewsCount": "4.2k",
+    "hospitalName": "Bansal Hospital Sagar",
+    "hospitalId": "SAG-F-0001",
+    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
+    "phone": "07582-472000",
+    "about": "Specialized in high-risk obstetric deliveries, minimally invasive laparoscopic gynecological procedures, infertility counseling, and women wellness at Bansal Hospital Sagar.",
+    "avatarUrl": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&auto=format&fit=crop&q=80",
     "languages": [
       "Hindi",
       "English"
@@ -218,11 +224,6 @@ export const initialDoctors: Doctor[] = [
       "in_person",
       "video_teleconsult"
     ],
-    "hospitalName": "Bansal Hospital Sagar",
-    "hospitalId": "SAG-F-0001",
-    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
-    "phone": "07582-472000",
-    "avatarUrl": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&auto=format&fit=crop&q=80",
     "availableDays": [
       "Monday",
       "Wednesday",
@@ -237,21 +238,26 @@ export const initialDoctors: Doctor[] = [
       "04:30 PM",
       "06:00 PM"
     ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Obstetrics & Gynaecology with 14+ years of clinical expertise, practicing at Bansal Hospital Sagar in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
+    "isVerified": true
   },
   {
     "id": "SAG-D-0003",
     "name": "Dr. Rohit Namdev",
-    "title": "Consultant Urologist & Andrologist",
+    "title": "Consultant Urologist & Renal Transplant Surgeon",
     "specialization": "Urology & Andrology",
     "qualification": "MBBS, MS (Surgery), MCh (Urology)",
     "experienceYears": 15,
     "consultationFee": 600,
     "ratingAverage": 4.97,
     "ratingCount": 520,
-    "patientCount": "6.2k+",
-    "reviewsCount": "3.3k",
+    "patientCount": "6.4k+",
+    "reviewsCount": "2.8k",
+    "hospitalName": "Bansal Hospital Sagar",
+    "hospitalId": "SAG-F-0001",
+    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
+    "phone": "07582-472000",
+    "about": "Expert in laser kidney stone surgery, prostate management, andrology, and reconstructive urology at Bansal Hospital Sagar.",
+    "avatarUrl": "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&auto=format&fit=crop&q=80",
     "languages": [
       "Hindi",
       "English"
@@ -260,11 +266,6 @@ export const initialDoctors: Doctor[] = [
       "in_person",
       "video_teleconsult"
     ],
-    "hospitalName": "Bansal Hospital Sagar",
-    "hospitalId": "SAG-F-0001",
-    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
-    "phone": "07582-472000",
-    "avatarUrl": "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&auto=format&fit=crop&q=80",
     "availableDays": [
       "Monday",
       "Tuesday",
@@ -279,8 +280,7 @@ export const initialDoctors: Doctor[] = [
       "04:30 PM",
       "06:00 PM"
     ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Urology & Andrology with 15+ years of clinical expertise, practicing at Bansal Hospital Sagar in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
+    "isVerified": true
   },
   {
     "id": "SAG-D-0004",
@@ -292,8 +292,14 @@ export const initialDoctors: Doctor[] = [
     "consultationFee": 600,
     "ratingAverage": 4.93,
     "ratingCount": 440,
-    "patientCount": "7.3k+",
-    "reviewsCount": "4.2k",
+    "patientCount": "5.1k+",
+    "reviewsCount": "2.2k",
+    "hospitalName": "Bansal Hospital Sagar",
+    "hospitalId": "SAG-F-0001",
+    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
+    "phone": "07582-472000",
+    "about": "Renowned nephrologist managing chronic kidney disease, hemodialysis, hypertension, and glomerular diseases at Bansal Hospital Sagar.",
+    "avatarUrl": "https://images.unsplash.com/photo-1594824813620-21f45610a26d?w=500&auto=format&fit=crop&q=80",
     "languages": [
       "Hindi",
       "English"
@@ -302,11 +308,6 @@ export const initialDoctors: Doctor[] = [
       "in_person",
       "video_teleconsult"
     ],
-    "hospitalName": "Bansal Hospital Sagar",
-    "hospitalId": "SAG-F-0001",
-    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
-    "phone": "07582-472000",
-    "avatarUrl": "https://images.unsplash.com/photo-1594824813620-21f45610a26d?w=500&auto=format&fit=crop&q=80",
     "availableDays": [
       "Monday",
       "Tuesday",
@@ -323,63 +324,26 @@ export const initialDoctors: Doctor[] = [
       "04:30 PM",
       "06:00 PM"
     ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Nephrology with 13+ years of clinical expertise, practicing at Bansal Hospital Sagar in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
-  },
-  {
-    "id": "SAG-D-0005",
-    "name": "Dr. Abhishek Jain",
-    "title": "Senior Consultant Eye Surgeon",
-    "specialization": "Ophthalmology",
-    "qualification": "MBBS, MS (Ophthalmology), FICO",
-    "experienceYears": 16,
-    "consultationFee": 450,
-    "ratingAverage": 4.94,
-    "ratingCount": 610,
-    "patientCount": "8.4k+",
-    "reviewsCount": "1.5k",
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "consultationTypes": [
-      "in_person",
-      "video_teleconsult"
-    ],
-    "hospitalName": "Bansal Hospital Sagar",
-    "hospitalId": "SAG-F-0001",
-    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
-    "phone": "07582-472000",
-    "avatarUrl": "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=500&auto=format&fit=crop&q=80",
-    "availableDays": [
-      "Monday",
-      "Wednesday",
-      "Friday",
-      "Saturday"
-    ],
-    "availableSlots": [
-      "09:30 AM",
-      "10:30 AM",
-      "11:30 AM",
-      "03:00 PM",
-      "04:30 PM",
-      "06:00 PM"
-    ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Ophthalmology with 16+ years of clinical expertise, practicing at Bansal Hospital Sagar in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
+    "isVerified": true
   },
   {
     "id": "SAG-D-0006",
     "name": "Dr. Chetan V. Shende",
     "title": "Head Consultant Joint Replacement Surgeon",
     "specialization": "Orthopaedics & Joint Replacement",
-    "qualification": "MBBS, MS (Orthopaedics), MCh",
+    "qualification": "MBBS, MS (Orthopaedics), MCh (Joint Replacements)",
     "experienceYears": 17,
     "consultationFee": 550,
     "ratingAverage": 4.96,
     "ratingCount": 730,
-    "patientCount": "9.5k+",
-    "reviewsCount": "2.4k",
+    "patientCount": "8.5k+",
+    "reviewsCount": "4.1k",
+    "hospitalName": "Bansal Hospital Sagar",
+    "hospitalId": "SAG-F-0001",
+    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
+    "phone": "07582-472000",
+    "about": "Primary and revision total knee and hip replacement specialist, arthroscopic ligament reconstructions, and trauma surgeon at Bansal Hospital Sagar.",
+    "avatarUrl": "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=500&auto=format&fit=crop&q=80",
     "languages": [
       "Hindi",
       "English"
@@ -388,97 +352,6 @@ export const initialDoctors: Doctor[] = [
       "in_person",
       "video_teleconsult"
     ],
-    "hospitalName": "Bansal Hospital Sagar",
-    "hospitalId": "SAG-F-0001",
-    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
-    "phone": "07582-472000",
-    "avatarUrl": "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=500&auto=format&fit=crop&q=80",
-    "availableDays": [
-      "Monday",
-      "Tuesday",
-      "Thursday",
-      "Friday"
-    ],
-    "availableSlots": [
-      "09:30 AM",
-      "10:30 AM",
-      "11:30 AM",
-      "03:00 PM",
-      "04:30 PM",
-      "06:00 PM"
-    ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Orthopaedics & Joint Replacement with 17+ years of clinical expertise, practicing at Bansal Hospital Sagar in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
-  },
-  {
-    "id": "SAG-D-0007",
-    "name": "Dr. Apurva Dubey",
-    "title": "Consultant Microbiologist",
-    "specialization": "Microbiology",
-    "qualification": "MBBS, MD (Microbiology)",
-    "experienceYears": 11,
-    "consultationFee": 400,
-    "ratingAverage": 4.91,
-    "ratingCount": 310,
-    "patientCount": "4.0k+",
-    "reviewsCount": "3.3k",
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "consultationTypes": [
-      "in_person",
-      "video_teleconsult"
-    ],
-    "hospitalName": "Bansal Hospital Sagar",
-    "hospitalId": "SAG-F-0001",
-    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
-    "phone": "07582-472000",
-    "avatarUrl": "https://images.unsplash.com/photo-1622902046580-2b47f47f5471?w=500&auto=format&fit=crop&q=80",
-    "availableDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ],
-    "availableSlots": [
-      "09:30 AM",
-      "10:30 AM",
-      "11:30 AM",
-      "03:00 PM",
-      "04:30 PM",
-      "06:00 PM"
-    ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Microbiology with 11+ years of clinical expertise, practicing at Bansal Hospital Sagar in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
-  },
-  {
-    "id": "SAG-D-0008",
-    "name": "Dr. Deepali Gupta",
-    "title": "Consultant Dental Surgeon",
-    "specialization": "Dentistry",
-    "qualification": "BDS, MDS (Prosthodontics)",
-    "experienceYears": 12,
-    "consultationFee": 350,
-    "ratingAverage": 4.92,
-    "ratingCount": 480,
-    "patientCount": "5.1k+",
-    "reviewsCount": "4.2k",
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "consultationTypes": [
-      "in_person",
-      "video_teleconsult"
-    ],
-    "hospitalName": "Bansal Hospital Sagar",
-    "hospitalId": "SAG-F-0001",
-    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
-    "phone": "07582-472000",
-    "avatarUrl": "https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=500&auto=format&fit=crop&q=80",
     "availableDays": [
       "Monday",
       "Wednesday",
@@ -493,306 +366,7 @@ export const initialDoctors: Doctor[] = [
       "04:30 PM",
       "06:00 PM"
     ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Dentistry with 12+ years of clinical expertise, practicing at Bansal Hospital Sagar in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
-  },
-  {
-    "id": "SAG-D-0009",
-    "name": "Dr. Snigdha Supriya Rao",
-    "title": "Consultant Aesthetic Dermatologist",
-    "specialization": "Aesthetics & Cosmetology",
-    "qualification": "MBBS, MD (DVL), Fellowship Aesthetic Medicine",
-    "experienceYears": 13,
-    "consultationFee": 500,
-    "ratingAverage": 4.95,
-    "ratingCount": 590,
-    "patientCount": "6.2k+",
-    "reviewsCount": "1.5k",
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "consultationTypes": [
-      "in_person",
-      "video_teleconsult"
-    ],
-    "hospitalName": "Bansal Hospital Sagar",
-    "hospitalId": "SAG-F-0001",
-    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
-    "phone": "07582-472000",
-    "avatarUrl": "https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=500&auto=format&fit=crop&q=80",
-    "availableDays": [
-      "Monday",
-      "Tuesday",
-      "Thursday",
-      "Friday"
-    ],
-    "availableSlots": [
-      "09:30 AM",
-      "10:30 AM",
-      "11:30 AM",
-      "03:00 PM",
-      "04:30 PM",
-      "06:00 PM"
-    ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Aesthetics & Cosmetology with 13+ years of clinical expertise, practicing at Bansal Hospital Sagar in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
-  },
-  {
-    "id": "SAG-D-0010",
-    "name": "Dr. Akanksha Jaiswal",
-    "title": "Consultant Child & Newborn Specialist",
-    "specialization": "Paediatrics & Neonatology",
-    "qualification": "MBBS, DNB (Paediatrics), FIAP",
-    "experienceYears": 12,
-    "consultationFee": 450,
-    "ratingAverage": 4.98,
-    "ratingCount": 820,
-    "patientCount": "7.3k+",
-    "reviewsCount": "2.4k",
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "consultationTypes": [
-      "in_person",
-      "video_teleconsult"
-    ],
-    "hospitalName": "Bansal Hospital Sagar",
-    "hospitalId": "SAG-F-0001",
-    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
-    "phone": "07582-472000",
-    "avatarUrl": "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=500&auto=format&fit=crop&q=80",
-    "availableDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ],
-    "availableSlots": [
-      "09:30 AM",
-      "10:30 AM",
-      "11:30 AM",
-      "03:00 PM",
-      "04:30 PM",
-      "06:00 PM"
-    ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Paediatrics & Neonatology with 12+ years of clinical expertise, practicing at Bansal Hospital Sagar in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
-  },
-  {
-    "id": "SAG-D-0011",
-    "name": "Dr. Vijay Bhaskar Rao",
-    "title": "Senior Consultant General & Laparoscopic Surgeon",
-    "specialization": "General / GI / Laparoscopic Surgery",
-    "qualification": "MBBS, MS (General Surgery), FMAS",
-    "experienceYears": 19,
-    "consultationFee": 550,
-    "ratingAverage": 4.96,
-    "ratingCount": 710,
-    "patientCount": "8.4k+",
-    "reviewsCount": "3.3k",
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "consultationTypes": [
-      "in_person",
-      "video_teleconsult"
-    ],
-    "hospitalName": "Bansal Hospital Sagar",
-    "hospitalId": "SAG-F-0001",
-    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
-    "phone": "07582-472000",
-    "avatarUrl": "https://images.unsplash.com/photo-1614608682850-e0d6ed316d47?w=500&auto=format&fit=crop&q=80",
-    "availableDays": [
-      "Monday",
-      "Wednesday",
-      "Friday",
-      "Saturday"
-    ],
-    "availableSlots": [
-      "09:30 AM",
-      "10:30 AM",
-      "11:30 AM",
-      "03:00 PM",
-      "04:30 PM",
-      "06:00 PM"
-    ],
-    "isVerified": true,
-    "about": "Distinguished specialist in General / GI / Laparoscopic Surgery with 19+ years of clinical expertise, practicing at Bansal Hospital Sagar in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
-  },
-  {
-    "id": "SAG-D-0012",
-    "name": "Dr. Ajay Jain",
-    "title": "Consultant Physician",
-    "specialization": "Internal Medicine / Diabetology",
-    "qualification": "MBBS, MD (Medicine)",
-    "experienceYears": 16,
-    "consultationFee": 450,
-    "ratingAverage": 4.93,
-    "ratingCount": 640,
-    "patientCount": "9.5k+",
-    "reviewsCount": "4.2k",
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "consultationTypes": [
-      "in_person",
-      "video_teleconsult"
-    ],
-    "hospitalName": "Bansal Hospital Sagar",
-    "hospitalId": "SAG-F-0001",
-    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
-    "phone": "07582-472000",
-    "avatarUrl": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=500&auto=format&fit=crop&q=80",
-    "availableDays": [
-      "Monday",
-      "Tuesday",
-      "Thursday",
-      "Friday"
-    ],
-    "availableSlots": [
-      "09:30 AM",
-      "10:30 AM",
-      "11:30 AM",
-      "03:00 PM",
-      "04:30 PM",
-      "06:00 PM"
-    ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Internal Medicine / Diabetology with 16+ years of clinical expertise, practicing at Bansal Hospital Sagar in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
-  },
-  {
-    "id": "SAG-D-0015",
-    "name": "Dr. Rohit Kushwaha",
-    "title": "Consultant Neurologist",
-    "specialization": "Neurology",
-    "qualification": "MBBS, MD (Medicine), DM (Neurology)",
-    "experienceYears": 15,
-    "consultationFee": 650,
-    "ratingAverage": 4.97,
-    "ratingCount": 890,
-    "patientCount": "4.0k+",
-    "reviewsCount": "1.5k",
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "consultationTypes": [
-      "in_person",
-      "video_teleconsult"
-    ],
-    "hospitalName": "Bansal Hospital Sagar",
-    "hospitalId": "SAG-F-0001",
-    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
-    "phone": "07582-472000",
-    "avatarUrl": "https://images.unsplash.com/photo-1584467735815-f778f274e296?w=500&auto=format&fit=crop&q=80",
-    "availableDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ],
-    "availableSlots": [
-      "09:30 AM",
-      "10:30 AM",
-      "11:30 AM",
-      "03:00 PM",
-      "04:30 PM",
-      "06:00 PM"
-    ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Neurology with 15+ years of clinical expertise, practicing at Bansal Hospital Sagar in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
-  },
-  {
-    "id": "SAG-D-0016",
-    "name": "Dr. Shashank Singh Baghel",
-    "title": "Consultant Neurosurgeon",
-    "specialization": "Neurosurgery / Brain & Spine",
-    "qualification": "MBBS, MS (Surgery), MCh (Neurosurgery)",
-    "experienceYears": 16,
-    "consultationFee": 650,
-    "ratingAverage": 4.98,
-    "ratingCount": 920,
-    "patientCount": "5.1k+",
-    "reviewsCount": "2.4k",
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "consultationTypes": [
-      "in_person",
-      "video_teleconsult"
-    ],
-    "hospitalName": "Bansal Hospital Sagar",
-    "hospitalId": "SAG-F-0001",
-    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
-    "phone": "07582-472000",
-    "avatarUrl": "https://images.unsplash.com/photo-1605684954998-685c79d6a018?w=500&auto=format&fit=crop&q=80",
-    "availableDays": [
-      "Monday",
-      "Wednesday",
-      "Friday",
-      "Saturday"
-    ],
-    "availableSlots": [
-      "09:30 AM",
-      "10:30 AM",
-      "11:30 AM",
-      "03:00 PM",
-      "04:30 PM",
-      "06:00 PM"
-    ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Neurosurgery / Brain & Spine with 16+ years of clinical expertise, practicing at Bansal Hospital Sagar in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
-  },
-  {
-    "id": "SAG-D-0017",
-    "name": "Dr. Akash Geda",
-    "title": "Consultant ENT Surgeon",
-    "specialization": "ENT",
-    "qualification": "MBBS, MS (ENT)",
-    "experienceYears": 13,
-    "consultationFee": 450,
-    "ratingAverage": 4.92,
-    "ratingCount": 560,
-    "patientCount": "6.2k+",
-    "reviewsCount": "3.3k",
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "consultationTypes": [
-      "in_person",
-      "video_teleconsult"
-    ],
-    "hospitalName": "Bansal Hospital Sagar",
-    "hospitalId": "SAG-F-0001",
-    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
-    "phone": "07582-472000",
-    "avatarUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=500&auto=format&fit=crop&q=80",
-    "availableDays": [
-      "Monday",
-      "Tuesday",
-      "Thursday",
-      "Friday"
-    ],
-    "availableSlots": [
-      "09:30 AM",
-      "10:30 AM",
-      "11:30 AM",
-      "03:00 PM",
-      "04:30 PM",
-      "06:00 PM"
-    ],
-    "isVerified": true,
-    "about": "Distinguished specialist in ENT with 13+ years of clinical expertise, practicing at Bansal Hospital Sagar in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
+    "isVerified": true
   },
   {
     "id": "SAG-D-0018",
@@ -804,8 +378,14 @@ export const initialDoctors: Doctor[] = [
     "consultationFee": 650,
     "ratingAverage": 4.99,
     "ratingCount": 1140,
-    "patientCount": "7.3k+",
-    "reviewsCount": "4.2k",
+    "patientCount": "11.2k+",
+    "reviewsCount": "6.4k",
+    "hospitalName": "Bansal Hospital Sagar",
+    "hospitalId": "SAG-F-0001",
+    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
+    "phone": "07582-472000",
+    "about": "Senior interventional cardiologist with 18+ years of expertise in primary coronary angioplasty, complex stenting, pacemaker implantation, and heart failure management at Bansal Hospital Sagar.",
+    "avatarUrl": "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=500&auto=format&fit=crop&q=80",
     "languages": [
       "Hindi",
       "English"
@@ -814,97 +394,6 @@ export const initialDoctors: Doctor[] = [
       "in_person",
       "video_teleconsult"
     ],
-    "hospitalName": "Bansal Hospital Sagar",
-    "hospitalId": "SAG-F-0001",
-    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
-    "phone": "07582-472000",
-    "avatarUrl": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&auto=format&fit=crop&q=80",
-    "availableDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ],
-    "availableSlots": [
-      "09:30 AM",
-      "10:30 AM",
-      "11:30 AM",
-      "03:00 PM",
-      "04:30 PM",
-      "06:00 PM"
-    ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Interventional Cardiology with 18+ years of clinical expertise, practicing at Bansal Hospital Sagar in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
-  },
-  {
-    "id": "SAG-D-0019",
-    "name": "Dr. Prakhar Jain",
-    "title": "Consultant Radiologist",
-    "specialization": "Radiology",
-    "qualification": "MBBS, MD (Radiodiagnosis)",
-    "experienceYears": 12,
-    "consultationFee": 400,
-    "ratingAverage": 4.91,
-    "ratingCount": 380,
-    "patientCount": "8.4k+",
-    "reviewsCount": "1.5k",
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "consultationTypes": [
-      "in_person",
-      "video_teleconsult"
-    ],
-    "hospitalName": "Bansal Hospital Sagar",
-    "hospitalId": "SAG-F-0001",
-    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
-    "phone": "07582-472000",
-    "avatarUrl": "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&auto=format&fit=crop&q=80",
-    "availableDays": [
-      "Monday",
-      "Wednesday",
-      "Friday",
-      "Saturday"
-    ],
-    "availableSlots": [
-      "09:30 AM",
-      "10:30 AM",
-      "11:30 AM",
-      "03:00 PM",
-      "04:30 PM",
-      "06:00 PM"
-    ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Radiology with 12+ years of clinical expertise, practicing at Bansal Hospital Sagar in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
-  },
-  {
-    "id": "SAG-D-0020",
-    "name": "Dr. Shahina Kadiwala",
-    "title": "Consultant Critical Care Specialist",
-    "specialization": "Critical Care Medicine",
-    "qualification": "MBBS, MD (Anaesthesia), IDCCM",
-    "experienceYears": 14,
-    "consultationFee": 500,
-    "ratingAverage": 4.94,
-    "ratingCount": 490,
-    "patientCount": "9.5k+",
-    "reviewsCount": "2.4k",
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "consultationTypes": [
-      "in_person",
-      "video_teleconsult"
-    ],
-    "hospitalName": "Bansal Hospital Sagar",
-    "hospitalId": "SAG-F-0001",
-    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
-    "phone": "07582-472000",
-    "avatarUrl": "https://images.unsplash.com/photo-1594824813620-21f45610a26d?w=500&auto=format&fit=crop&q=80",
     "availableDays": [
       "Monday",
       "Tuesday",
@@ -919,8 +408,989 @@ export const initialDoctors: Doctor[] = [
       "04:30 PM",
       "06:00 PM"
     ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Critical Care Medicine with 14+ years of clinical expertise, practicing at Bansal Hospital Sagar in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0016",
+    "name": "Dr. Shashank Singh Baghel",
+    "title": "Consultant Neurosurgeon",
+    "specialization": "Neurosurgery / Brain & Spine",
+    "qualification": "MBBS, MS (Surgery), MCh (Neurosurgery)",
+    "experienceYears": 16,
+    "consultationFee": 650,
+    "ratingAverage": 4.98,
+    "ratingCount": 920,
+    "patientCount": "9.4k+",
+    "reviewsCount": "4.9k",
+    "hospitalName": "Bansal Hospital Sagar",
+    "hospitalId": "SAG-F-0001",
+    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
+    "phone": "07582-472000",
+    "about": "Specialized in micro-neurosurgery, brain tumor excision, endoscopic spine surgery, and neurotrauma care at Bansal Hospital Sagar.",
+    "avatarUrl": "https://images.unsplash.com/photo-1622902046580-2b47f47f5471?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0015",
+    "name": "Dr. Rohit Kushwaha",
+    "title": "Consultant Neurologist",
+    "specialization": "Neurology",
+    "qualification": "MBBS, MD (Medicine), DM (Neurology)",
+    "experienceYears": 15,
+    "consultationFee": 650,
+    "ratingAverage": 4.97,
+    "ratingCount": 890,
+    "patientCount": "8.6k+",
+    "reviewsCount": "4.3k",
+    "hospitalName": "Bansal Hospital Sagar",
+    "hospitalId": "SAG-F-0001",
+    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
+    "phone": "07582-472000",
+    "about": "Expert in acute stroke management, epilepsy, Parkinson's disease, neuromuscular disorders, and intractable headaches at Bansal Hospital Sagar.",
+    "avatarUrl": "https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Wednesday",
+      "Friday",
+      "Saturday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0010",
+    "name": "Dr. Akanksha Jaiswal",
+    "title": "Consultant Child & Newborn Specialist",
+    "specialization": "Paediatrics & Neonatology",
+    "qualification": "MBBS, DNB (Paediatrics), FIAP",
+    "experienceYears": 12,
+    "consultationFee": 450,
+    "ratingAverage": 4.98,
+    "ratingCount": 820,
+    "patientCount": "7.9k+",
+    "reviewsCount": "4.1k",
+    "hospitalName": "Bansal Hospital Sagar",
+    "hospitalId": "SAG-F-0001",
+    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
+    "phone": "07582-472000",
+    "about": "Compassionate paediatrician specializing in newborn intensive care, childhood developmental assessments, and immunization regimens at Bansal Hospital Sagar.",
+    "avatarUrl": "https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0011",
+    "name": "Dr. Vijay Bhaskar Rao",
+    "title": "Senior Consultant General & Laparoscopic Surgeon",
+    "specialization": "General / GI / Laparoscopic Surgery",
+    "qualification": "MBBS, MS (General Surgery), FMAS",
+    "experienceYears": 19,
+    "consultationFee": 550,
+    "ratingAverage": 4.96,
+    "ratingCount": 710,
+    "patientCount": "9.1k+",
+    "reviewsCount": "4.8k",
+    "hospitalName": "Bansal Hospital Sagar",
+    "hospitalId": "SAG-F-0001",
+    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
+    "phone": "07582-472000",
+    "about": "Leading laparoscopic surgeon performing advanced hernia repairs, gallbladder removals, appendix surgeries, and gastrointestinal procedures at Bansal Hospital Sagar.",
+    "avatarUrl": "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0025",
+    "name": "Dr. Prince Agrawal",
+    "title": "Senior Consultant - Obstetrics & High-Risk Pregnancy",
+    "specialization": "Obstetrics & Gynaecology",
+    "qualification": "MBBS, MS (OB-GYN), Fellowship Maternal Fetal Medicine",
+    "experienceYears": 15,
+    "consultationFee": 400,
+    "ratingAverage": 4.95,
+    "ratingCount": 740,
+    "patientCount": "8.2k+",
+    "reviewsCount": "3.9k",
+    "hospitalName": "Government Maternity Hospital",
+    "hospitalId": "SAG-F-0037",
+    "clinicAddress": "Vaishali Nagar, Sagar, MP 470001",
+    "phone": "07582-236200",
+    "about": "Senior obstetrician specializing in high-risk pregnancy management, normal deliveries, and antenatal health at Government Maternity Hospital Sagar.",
+    "avatarUrl": "https://images.unsplash.com/photo-1614608682850-e0d6ed316d47?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Wednesday",
+      "Friday",
+      "Saturday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0026",
+    "name": "Dr. Durga Agrawal",
+    "title": "Consultant Obstetrician & Women Health Specialist",
+    "specialization": "Obstetrics & Gynaecology",
+    "qualification": "MBBS, DGO, DNB (OB-GYN)",
+    "experienceYears": 14,
+    "consultationFee": 400,
+    "ratingAverage": 4.94,
+    "ratingCount": 690,
+    "patientCount": "7.8k+",
+    "reviewsCount": "3.6k",
+    "hospitalName": "Government Maternity Hospital",
+    "hospitalId": "SAG-F-0037",
+    "clinicAddress": "Vaishali Nagar, Sagar, MP 470001",
+    "phone": "07582-236200",
+    "about": "Expert in prenatal care, painless delivery management, post-partum recovery, and maternal nutrition at Government Maternity Hospital Sagar.",
+    "avatarUrl": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0152",
+    "name": "Dr. Sanjay Kumar Sharma",
+    "title": "Senior Paediatrician & Neonatal Care Specialist",
+    "specialization": "Paediatrics & Neonatology",
+    "qualification": "MBBS, MD (Paediatrics), DCH",
+    "experienceYears": 16,
+    "consultationFee": 350,
+    "ratingAverage": 4.93,
+    "ratingCount": 610,
+    "patientCount": "6.9k+",
+    "reviewsCount": "3.2k",
+    "hospitalName": "Government Maternity Hospital",
+    "hospitalId": "SAG-F-0037",
+    "clinicAddress": "Vaishali Nagar, Sagar, MP 470001",
+    "phone": "07582-236200",
+    "about": "Dedicated paediatrician managing newborn resuscitation, neonatal jaundice, infant immunizations, and growth milestones at Government Maternity Hospital.",
+    "avatarUrl": "https://images.unsplash.com/photo-1584467735815-f778f274e296?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0153",
+    "name": "Dr. Tarendra Singh Thakur",
+    "title": "Consultant Paediatrician",
+    "specialization": "Paediatrics",
+    "qualification": "MBBS, DNB (Paediatrics)",
+    "experienceYears": 13,
+    "consultationFee": 350,
+    "ratingAverage": 4.92,
+    "ratingCount": 540,
+    "patientCount": "5.8k+",
+    "reviewsCount": "2.7k",
+    "hospitalName": "Government Maternity Hospital",
+    "hospitalId": "SAG-F-0037",
+    "clinicAddress": "Vaishali Nagar, Sagar, MP 470001",
+    "phone": "07582-236200",
+    "about": "Child specialist providing gentle care for newborn infections, pediatric asthma, seasonal fevers, and developmental assessments.",
+    "avatarUrl": "https://images.unsplash.com/photo-1605684954998-685c79d6a018?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Wednesday",
+      "Friday",
+      "Saturday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0154",
+    "name": "Dr. Verma Sailendra",
+    "title": "Consultant Child Wellness Specialist",
+    "specialization": "Paediatrics",
+    "qualification": "MBBS, DCH",
+    "experienceYears": 12,
+    "consultationFee": 300,
+    "ratingAverage": 4.9,
+    "ratingCount": 480,
+    "patientCount": "5.1k+",
+    "reviewsCount": "2.3k",
+    "hospitalName": "Government Maternity Hospital",
+    "hospitalId": "SAG-F-0037",
+    "clinicAddress": "Vaishali Nagar, Sagar, MP 470001",
+    "phone": "07582-236200",
+    "about": "Primary paediatrician focused on preventative child care, nutrition guidance, and childhood illness prevention at Government Maternity Hospital.",
+    "avatarUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0081",
+    "name": "Dr. Khan M Ajmal Nafis",
+    "title": "Professor & Senior Consultant Physician",
+    "specialization": "General Medicine / Internal Medicine",
+    "qualification": "MBBS, MD (Medicine)",
+    "experienceYears": 20,
+    "consultationFee": 300,
+    "ratingAverage": 4.96,
+    "ratingCount": 880,
+    "patientCount": "12.4k+",
+    "reviewsCount": "5.8k",
+    "hospitalName": "Bundelkhand Medical College & Hospital",
+    "hospitalId": "SAG-F-0002",
+    "clinicAddress": "Tilli Road, Sagar, MP 470002",
+    "phone": "07582-236370",
+    "about": "Senior faculty and clinical physician with 20+ years expertise in complex multi-organ disorders, tropical fevers, metabolic syndromes, and ICU care at BMC Hospital.",
+    "avatarUrl": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0146",
+    "name": "Dr. T.N. Dubey",
+    "title": "Senior Consultant Neurologist & Physician",
+    "specialization": "Neurology / Medicine",
+    "qualification": "MBBS, MD (Medicine), DM (Neurology)",
+    "experienceYears": 22,
+    "consultationFee": 400,
+    "ratingAverage": 4.98,
+    "ratingCount": 1040,
+    "patientCount": "14.2k+",
+    "reviewsCount": "6.9k",
+    "hospitalName": "Bundelkhand Medical College & Hospital",
+    "hospitalId": "SAG-F-0002",
+    "clinicAddress": "Tilli Road, Sagar, MP 470002",
+    "phone": "07582-236370",
+    "about": "Distinguished neurologist managing stroke prevention, neuro-degenerative diseases, peripheral neuropathies, and migraine management at BMC Hospital Sagar.",
+    "avatarUrl": "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Wednesday",
+      "Friday",
+      "Saturday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0042",
+    "name": "Dr. Satyendra Mishra",
+    "title": "Chief Chest Physician & Pulmonologist",
+    "specialization": "Pulmonology / Chest Medicine",
+    "qualification": "MBBS, MD (Respiratory Medicine), DTCD",
+    "experienceYears": 17,
+    "consultationFee": 400,
+    "ratingAverage": 4.95,
+    "ratingCount": 780,
+    "patientCount": "8.9k+",
+    "reviewsCount": "4.1k",
+    "hospitalName": "Bundelkhand Medical College & Hospital",
+    "hospitalId": "SAG-F-0002",
+    "clinicAddress": "Medical College Road, Tilli, Sagar",
+    "phone": "09755112432",
+    "about": "Senior pulmonologist treating asthma, chronic obstructive pulmonary disease (COPD), post-viral fibrosis, interstitial lung disease, and sleep apnea.",
+    "avatarUrl": "https://images.unsplash.com/photo-1594824813620-21f45610a26d?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0151",
+    "name": "Dr. Pawan Ghanghoria",
+    "title": "Consultant Paediatric Neurologist",
+    "specialization": "Paediatric Neurology",
+    "qualification": "MBBS, MD (Paediatrics), Fellowship Paediatric Neurology",
+    "experienceYears": 14,
+    "consultationFee": 450,
+    "ratingAverage": 4.97,
+    "ratingCount": 650,
+    "patientCount": "6.7k+",
+    "reviewsCount": "3.4k",
+    "hospitalName": "Bundelkhand Medical College & Hospital",
+    "hospitalId": "SAG-F-0002",
+    "clinicAddress": "Tilli Road, Sagar, MP 470002",
+    "phone": "07582-236370",
+    "about": "Specialized in childhood epilepsy, cerebral palsy rehabilitation, developmental delay assessments, and neuromuscular disorders in children.",
+    "avatarUrl": "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0137",
+    "name": "Dr. Deepak Raghuvanshi",
+    "title": "Consultant General & Laparoscopic Surgeon",
+    "specialization": "General / Laparoscopic Surgery",
+    "qualification": "MBBS, MS (Surgery), FMAS",
+    "experienceYears": 15,
+    "consultationFee": 350,
+    "ratingAverage": 4.93,
+    "ratingCount": 590,
+    "patientCount": "6.2k+",
+    "reviewsCount": "3.1k",
+    "hospitalName": "Bundelkhand Medical College & Hospital",
+    "hospitalId": "SAG-F-0002",
+    "clinicAddress": "Tilli Road, Sagar, MP 470002",
+    "phone": "07582-236370",
+    "about": "General and trauma surgeon with extensive experience in open and minimally invasive abdominal surgeries, trauma casualty, and surgical oncology.",
+    "avatarUrl": "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Wednesday",
+      "Friday",
+      "Saturday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0027",
+    "name": "Dr. Brijesh Yadav",
+    "title": "Senior Child & Newborn Specialist",
+    "specialization": "Paediatrics / Neonatology",
+    "qualification": "MBBS, MD (Paediatrics), DCH",
+    "experienceYears": 15,
+    "consultationFee": 200,
+    "ratingAverage": 4.94,
+    "ratingCount": 780,
+    "patientCount": "9.6k+",
+    "reviewsCount": "4.8k",
+    "hospitalName": "Government District Hospital Sagar",
+    "hospitalId": "SAG-F-0003",
+    "clinicAddress": "Tilli Road, Sagar, MP 470001",
+    "phone": "07582-236200",
+    "about": "Dedicated paediatrician managing primary child OPD, seasonal pediatric infections, newborn triage, and vaccination drives at Government District Hospital Sagar.",
+    "avatarUrl": "https://images.unsplash.com/photo-1622902046580-2b47f47f5471?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0028",
+    "name": "Dr. Shantiswaroop Parashar",
+    "title": "Senior General Physician",
+    "specialization": "General Medicine",
+    "qualification": "MBBS, MD (Medicine)",
+    "experienceYears": 18,
+    "consultationFee": 200,
+    "ratingAverage": 4.92,
+    "ratingCount": 710,
+    "patientCount": "10.1k+",
+    "reviewsCount": "5.2k",
+    "hospitalName": "Government District Hospital Sagar",
+    "hospitalId": "SAG-F-0003",
+    "clinicAddress": "Tilli Road, Sagar, MP 470001",
+    "phone": "09826071736",
+    "about": "Experienced physician diagnosing acute fevers, hypertension, seasonal ailments, and adult wellness at Government District Hospital Sagar.",
+    "avatarUrl": "https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0093",
+    "name": "Dr. Satish Mishra",
+    "title": "Senior Allopathic Physician",
+    "specialization": "General Medicine",
+    "qualification": "MBBS, MD (Med)",
+    "experienceYears": 16,
+    "consultationFee": 200,
+    "ratingAverage": 4.91,
+    "ratingCount": 620,
+    "patientCount": "8.4k+",
+    "reviewsCount": "3.9k",
+    "hospitalName": "Government District Hospital Sagar",
+    "hospitalId": "SAG-F-0003",
+    "clinicAddress": "Tilli Road, Sagar, MP 470001",
+    "phone": "07582-236200",
+    "about": "General physician providing daily OPD consultations, lifestyle medicine guidance, and preventative primary care.",
+    "avatarUrl": "https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Wednesday",
+      "Friday",
+      "Saturday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0142",
+    "name": "Dr. R.D. Nanhoriya",
+    "title": "Consultant ENT Specialist",
+    "specialization": "ENT",
+    "qualification": "MBBS, MS (ENT), DLO",
+    "experienceYears": 17,
+    "consultationFee": 250,
+    "ratingAverage": 4.93,
+    "ratingCount": 670,
+    "patientCount": "7.9k+",
+    "reviewsCount": "3.7k",
+    "hospitalName": "Government District Hospital Sagar",
+    "hospitalId": "SAG-F-0003",
+    "clinicAddress": "Tilli Road, Sagar, MP 470001",
+    "phone": "07582-236200",
+    "about": "ENT surgeon treating chronic sinusitis, tonsillitis, hearing disorders, allergic rhinitis, and ear microsurgery.",
+    "avatarUrl": "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0036",
+    "name": "Dr. Ankur Jain",
+    "title": "Head Consultant General & Laparoscopic Surgeon",
+    "specialization": "General & Laparoscopic Surgery",
+    "qualification": "MBBS, MS (Surgery), FMAS",
+    "experienceYears": 18,
+    "consultationFee": 450,
+    "ratingAverage": 4.97,
+    "ratingCount": 960,
+    "patientCount": "11.2k+",
+    "reviewsCount": "5.8k",
+    "hospitalName": "Bhagyoday Tirth Chikitsalay",
+    "hospitalId": "SAG-F-0014",
+    "clinicAddress": "Shastri Nagar, Kareela, Khurai Road, Sagar, MP 470002",
+    "phone": "07582266671",
+    "about": "Senior surgeon leading minimal access laparoscopic surgery, hernia management, gallbladder procedures, and trauma surgeries at Bhagyodaya Tirth Chikitsalay.",
+    "avatarUrl": "https://images.unsplash.com/photo-1614608682850-e0d6ed316d47?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0031",
+    "name": "Dr. Kanchi Jain",
+    "title": "Head MDS Endodontist & Implantologist",
+    "specialization": "Dentistry / Endodontics",
+    "qualification": "BDS, MDS (Conservative Dentistry & Endodontics)",
+    "experienceYears": 13,
+    "consultationFee": 350,
+    "ratingAverage": 4.96,
+    "ratingCount": 840,
+    "patientCount": "8.1k+",
+    "reviewsCount": "4.4k",
+    "hospitalName": "Bhagyoday Tirth Chikitsalay",
+    "hospitalId": "SAG-F-0014",
+    "clinicAddress": "Shastri Nagar, Kareela, Khurai Road, Sagar, MP 470002",
+    "phone": "07582266671",
+    "about": "Specialized in painless single-sitting root canal treatments, aesthetic composite restorations, crown & bridge prosthetics, and dental implants at Bhagyoday Tirth Hospital.",
+    "avatarUrl": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Wednesday",
+      "Friday",
+      "Saturday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0155",
+    "name": "Dr. Saurabh Vinod Jain",
+    "title": "Consultant Dental Surgeon",
+    "specialization": "Dentistry",
+    "qualification": "BDS, MDS",
+    "experienceYears": 12,
+    "consultationFee": 300,
+    "ratingAverage": 4.94,
+    "ratingCount": 680,
+    "patientCount": "6.5k+",
+    "reviewsCount": "3.2k",
+    "hospitalName": "Bhagyoday Tirth Chikitsalay",
+    "hospitalId": "SAG-F-0014",
+    "clinicAddress": "Shastri Nagar, Kareela, Khurai Road, Sagar, MP 470002",
+    "phone": "07582266671",
+    "about": "Expert in restorative dentistry, scaling, tooth whitening, extractions, and preventative dental hygiene.",
+    "avatarUrl": "https://images.unsplash.com/photo-1584467735815-f778f274e296?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0129",
+    "name": "Dr. Shailendra Kumar Jain",
+    "title": "Consultant Gastroenterologist",
+    "specialization": "Gastroenterology",
+    "qualification": "MBBS, MD (Medicine), DM (Gastroenterology)",
+    "experienceYears": 15,
+    "consultationFee": 500,
+    "ratingAverage": 4.95,
+    "ratingCount": 720,
+    "patientCount": "7.4k+",
+    "reviewsCount": "3.8k",
+    "hospitalName": "Bhagyoday Tirth Chikitsalay",
+    "hospitalId": "SAG-F-0014",
+    "clinicAddress": "Shastri Nagar, Kareela, Khurai Road, Sagar, MP 470002",
+    "phone": "07582266671",
+    "about": "Specialized in diagnostic and therapeutic upper GI endoscopy, colonoscopy, liver cirrhosis management, and acute pancreatitis care.",
+    "avatarUrl": "https://images.unsplash.com/photo-1605684954998-685c79d6a018?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0072",
+    "name": "Dr. N.S. Mourya",
+    "title": "Consultant Physician & Cardiologist",
+    "specialization": "General Medicine / Cardiology",
+    "qualification": "MBBS, MD (Medicine), PGDCC (Cardiology)",
+    "experienceYears": 19,
+    "consultationFee": 500,
+    "ratingAverage": 4.96,
+    "ratingCount": 890,
+    "patientCount": "10.4k+",
+    "reviewsCount": "5.1k",
+    "hospitalName": "Sagar Heart Care Hospital",
+    "hospitalId": "SAG-F-0016",
+    "clinicAddress": "Sagar Cantt / Tilli Road, Sagar",
+    "phone": "07582-220515",
+    "about": "Chief consultant managing hypertension, ischemic heart diseases, heart failure, 2D Echocardiography, and comprehensive cardiac rehabilitation at Sagar Heart Care Hospital.",
+    "avatarUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Wednesday",
+      "Friday",
+      "Saturday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
   },
   {
     "id": "SAG-D-0023",
@@ -932,8 +1402,14 @@ export const initialDoctors: Doctor[] = [
     "consultationFee": 600,
     "ratingAverage": 4.95,
     "ratingCount": 820,
-    "patientCount": "4.0k+",
-    "reviewsCount": "3.3k",
+    "patientCount": "9.1k+",
+    "reviewsCount": "4.6k",
+    "hospitalName": "Sagar Heart Care Hospital",
+    "hospitalId": "SAG-F-0016",
+    "clinicAddress": "Sagar Cantt / Tilli Road, Sagar",
+    "phone": "07582-220515",
+    "about": "Interventional cardiologist performing coronary angiography, angioplasty stenting, and heart disease management.",
+    "avatarUrl": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&auto=format&fit=crop&q=80",
     "languages": [
       "Hindi",
       "English"
@@ -942,10 +1418,48 @@ export const initialDoctors: Doctor[] = [
       "in_person",
       "video_teleconsult"
     ],
-    "hospitalName": "Tilli / Dwarika Garden clinic",
-    "clinicAddress": "Tilli / Dwarika Garden clinic, Sagar, Madhya Pradesh",
-    "phone": "07582-236200",
-    "avatarUrl": "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=500&auto=format&fit=crop&q=80",
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0091",
+    "name": "Dr. Puneet Rastogi",
+    "title": "Consultant Cardiologist",
+    "specialization": "Cardiology",
+    "qualification": "MBBS, MD, DM (Cardiology)",
+    "experienceYears": 16,
+    "consultationFee": 550,
+    "ratingAverage": 4.94,
+    "ratingCount": 750,
+    "patientCount": "8.2k+",
+    "reviewsCount": "3.9k",
+    "hospitalName": "Sagar Heart Care Hospital",
+    "hospitalId": "SAG-F-0016",
+    "clinicAddress": "Sagar Cantt / Tilli Road, Sagar",
+    "phone": "07582-220515",
+    "about": "Specialized in clinical cardiology, arrhythmias, preventive heart health, and cardiac ICU monitoring.",
+    "avatarUrl": "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
     "availableDays": [
       "Monday",
       "Tuesday",
@@ -962,21 +1476,68 @@ export const initialDoctors: Doctor[] = [
       "04:30 PM",
       "06:00 PM"
     ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Interventional Cardiology with 17+ years of clinical expertise, practicing at Tilli / Dwarika Garden clinic in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0136",
+    "name": "Dr. Sandeep",
+    "title": "Consultant Physician - Diabetes & Heart Health",
+    "specialization": "Diabetes / Cardiology",
+    "qualification": "MBBS, MD (Internal Medicine)",
+    "experienceYears": 14,
+    "consultationFee": 450,
+    "ratingAverage": 4.92,
+    "ratingCount": 610,
+    "patientCount": "6.8k+",
+    "reviewsCount": "3.2k",
+    "hospitalName": "Sagar Heart Care Hospital",
+    "hospitalId": "SAG-F-0016",
+    "clinicAddress": "Sagar Cantt / Tilli Road, Sagar",
+    "phone": "07582-220515",
+    "about": "Diabetologist and physician managing metabolic syndrome, diabetic nephropathy, and cardiovascular risk reduction.",
+    "avatarUrl": "https://images.unsplash.com/photo-1594824813620-21f45610a26d?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Wednesday",
+      "Friday",
+      "Saturday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
   },
   {
     "id": "SAG-D-0024",
     "name": "Dr. Vinaydeep Bidoliya",
     "title": "Head Orthopaedic Surgeon",
     "specialization": "Orthopaedics",
-    "qualification": "MBBS, MS (Orthopaedics)",
+    "qualification": "MBBS, MS (Orthopaedics), Fellowship Arthroscopy",
     "experienceYears": 17,
     "consultationFee": 500,
     "ratingAverage": 4.92,
     "ratingCount": 670,
-    "patientCount": "5.1k+",
-    "reviewsCount": "4.2k",
+    "patientCount": "7.8k+",
+    "reviewsCount": "3.9k",
+    "hospitalName": "Shri Siddhi Vinayak Hospital",
+    "hospitalId": "SAG-F-0033",
+    "clinicAddress": "Poddar Colony, Tilli Road, Sagar, MP 470002",
+    "phone": "07582-236200",
+    "about": "Senior orthopaedic surgeon managing complex bone fractures, joint dislocations, arthroscopic ligament repairs, and degenerative arthritis.",
+    "avatarUrl": "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=500&auto=format&fit=crop&q=80",
     "languages": [
       "Hindi",
       "English"
@@ -985,51 +1546,6 @@ export const initialDoctors: Doctor[] = [
       "in_person",
       "video_teleconsult"
     ],
-    "hospitalName": "Shri Siddhivinayak Hospital",
-    "clinicAddress": "Shri Siddhivinayak Hospital, Sagar, Madhya Pradesh",
-    "phone": "07582-236200",
-    "avatarUrl": "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=500&auto=format&fit=crop&q=80",
-    "availableDays": [
-      "Monday",
-      "Wednesday",
-      "Friday",
-      "Saturday"
-    ],
-    "availableSlots": [
-      "09:30 AM",
-      "10:30 AM",
-      "11:30 AM",
-      "03:00 PM",
-      "04:30 PM",
-      "06:00 PM"
-    ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Orthopaedics with 17+ years of clinical expertise, practicing at Shri Siddhivinayak Hospital in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
-  },
-  {
-    "id": "SAG-D-0025",
-    "name": "Dr. Prince Agrawal",
-    "title": "Consultant Gynaecologist",
-    "specialization": "Obstetrics & Gynaecology",
-    "qualification": "MBBS, MS (OB-GYN)",
-    "experienceYears": 15,
-    "consultationFee": 500,
-    "ratingAverage": 4.95,
-    "ratingCount": 740,
-    "patientCount": "6.2k+",
-    "reviewsCount": "1.5k",
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "consultationTypes": [
-      "in_person",
-      "video_teleconsult"
-    ],
-    "hospitalName": "Manas Mukta Mother & Child Clinic",
-    "clinicAddress": "Manas Mukta Mother & Child Clinic, Sagar, Madhya Pradesh",
-    "phone": "07582-236200",
-    "avatarUrl": "https://images.unsplash.com/photo-1622902046580-2b47f47f5471?w=500&auto=format&fit=crop&q=80",
     "availableDays": [
       "Monday",
       "Tuesday",
@@ -1044,21 +1560,26 @@ export const initialDoctors: Doctor[] = [
       "04:30 PM",
       "06:00 PM"
     ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Obstetrics & Gynaecology with 15+ years of clinical expertise, practicing at Manas Mukta Mother & Child Clinic in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
+    "isVerified": true
   },
   {
-    "id": "SAG-D-0026",
-    "name": "Dr. Durga Agrawal",
-    "title": "Consultant Gynaecologist",
-    "specialization": "Obstetrics & Gynaecology",
-    "qualification": "MBBS, DGO, DNB (OB-GYN)",
-    "experienceYears": 14,
+    "id": "SAG-D-0108",
+    "name": "Dr. Ayush Chouhan",
+    "title": "Consultant Orthopaedic Doctor",
+    "specialization": "Orthopaedics",
+    "qualification": "MBBS, MS (Orthopaedics)",
+    "experienceYears": 13,
     "consultationFee": 450,
-    "ratingAverage": 4.94,
-    "ratingCount": 690,
-    "patientCount": "7.3k+",
-    "reviewsCount": "2.4k",
+    "ratingAverage": 4.91,
+    "ratingCount": 520,
+    "patientCount": "5.9k+",
+    "reviewsCount": "2.8k",
+    "hospitalName": "Shri Siddhi Vinayak Hospital",
+    "hospitalId": "SAG-F-0033",
+    "clinicAddress": "Poddar Colony, Tilli Road, Sagar, MP 470002",
+    "phone": "07582-236200",
+    "about": "Specialized in sports injuries, knee pain management, musculoskeletal trauma, and conservative orthopaedic therapies.",
+    "avatarUrl": "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=500&auto=format&fit=crop&q=80",
     "languages": [
       "Hindi",
       "English"
@@ -1067,10 +1588,6 @@ export const initialDoctors: Doctor[] = [
       "in_person",
       "video_teleconsult"
     ],
-    "hospitalName": "Manas Mukta Mother & Child Clinic",
-    "clinicAddress": "Manas Mukta Mother & Child Clinic, Sagar, Madhya Pradesh",
-    "phone": "07582-236200",
-    "avatarUrl": "https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=500&auto=format&fit=crop&q=80",
     "availableDays": [
       "Monday",
       "Tuesday",
@@ -1087,21 +1604,26 @@ export const initialDoctors: Doctor[] = [
       "04:30 PM",
       "06:00 PM"
     ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Obstetrics & Gynaecology with 14+ years of clinical expertise, practicing at Manas Mukta Mother & Child Clinic in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
+    "isVerified": true
   },
   {
-    "id": "SAG-D-0027",
-    "name": "Dr. Brijesh Yadav",
-    "title": "Senior Consultant Pediatrician",
-    "specialization": "Paediatrics / Neonatology",
-    "qualification": "MBBS, MD (Pediatrics), DCH",
-    "experienceYears": 15,
-    "consultationFee": 400,
-    "ratingAverage": 4.94,
+    "id": "SAG-D-0114",
+    "name": "Dr. Nachiket Kailash Panse",
+    "title": "Consultant Orthopaedic & Spine Surgeon",
+    "specialization": "Orthopaedics / Spine",
+    "qualification": "MBBS, MS (Ortho), Fellowship Spine Surgery",
+    "experienceYears": 16,
+    "consultationFee": 550,
+    "ratingAverage": 4.96,
     "ratingCount": 780,
     "patientCount": "8.4k+",
-    "reviewsCount": "3.3k",
+    "reviewsCount": "4.1k",
+    "hospitalName": "Sri Paras Fracture & General Hospital",
+    "hospitalId": "SAG-F-0034",
+    "clinicAddress": "Tilli Road, State Bank Colony, Poddar Colony, Sagar, MP 470001",
+    "phone": "07582-236200",
+    "about": "Spine and orthopaedic surgeon treating slip disc, cervical spondylosis, sciatica, spinal deformities, and trauma reconstruction.",
+    "avatarUrl": "https://images.unsplash.com/photo-1622902046580-2b47f47f5471?w=500&auto=format&fit=crop&q=80",
     "languages": [
       "Hindi",
       "English"
@@ -1110,11 +1632,6 @@ export const initialDoctors: Doctor[] = [
       "in_person",
       "video_teleconsult"
     ],
-    "hospitalName": "Government District Hospital Sagar",
-    "hospitalId": "SAG-F-0003",
-    "clinicAddress": "Tilli Road, Sagar, MP 470001",
-    "phone": "07582-236200",
-    "avatarUrl": "https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=500&auto=format&fit=crop&q=80",
     "availableDays": [
       "Monday",
       "Wednesday",
@@ -1129,121 +1646,209 @@ export const initialDoctors: Doctor[] = [
       "04:30 PM",
       "06:00 PM"
     ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Paediatrics / Neonatology with 15+ years of clinical expertise, practicing at Government District Hospital Sagar in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0116",
+    "name": "Dr. Amit Richariya",
+    "title": "Consultant Orthopaedic Doctor",
+    "specialization": "Orthopaedics",
+    "qualification": "MBBS, D.Ortho, MS (Orthopaedics)",
+    "experienceYears": 14,
+    "consultationFee": 450,
+    "ratingAverage": 4.93,
+    "ratingCount": 610,
+    "patientCount": "6.8k+",
+    "reviewsCount": "3.3k",
+    "hospitalName": "Sri Paras Fracture & General Hospital",
+    "hospitalId": "SAG-F-0034",
+    "clinicAddress": "Tilli Road, State Bank Colony, Poddar Colony, Sagar, MP 470001",
+    "phone": "07582-236200",
+    "about": "Specialized in joint preservation, fracture stabilization, osteoporosis management, and post-fracture physical rehabilitation.",
+    "avatarUrl": "https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0012-NEO",
+    "name": "Dr. Akanksha Jaiswal",
+    "title": "Consultant Pediatrician & Neonatologist",
+    "specialization": "Paediatrics & Neonatology",
+    "qualification": "MBBS, DNB (Paediatrics), FIAP",
+    "experienceYears": 12,
+    "consultationFee": 400,
+    "ratingAverage": 4.98,
+    "ratingCount": 820,
+    "patientCount": "7.9k+",
+    "reviewsCount": "4.1k",
+    "hospitalName": "Neo Children Hospital",
+    "hospitalId": "SAG-F-0012",
+    "clinicAddress": "Opposite Medical College, Ashok Vihar, Sagar, MP 470001",
+    "phone": "09407096372",
+    "about": "Dedicated neonatal intensive care specialist, child growth tracking, childhood allergic diseases, and pediatric urgent care.",
+    "avatarUrl": "https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0138",
+    "name": "Dr. Umesh G.S.",
+    "title": "Head Consultant Eye Surgeon",
+    "specialization": "Ophthalmology",
+    "qualification": "MBBS, MS (Ophthalmology), Fellowship Cornea",
+    "experienceYears": 18,
+    "consultationFee": 400,
+    "ratingAverage": 4.95,
+    "ratingCount": 860,
+    "patientCount": "10.2k+",
+    "reviewsCount": "4.9k",
+    "hospitalName": "Gandhi Eye Hospital",
+    "hospitalId": "SAG-F-0062",
+    "clinicAddress": "Behind HDFC Bank, Goughat Parkota, Sagar, MP 470002",
+    "phone": "09302483960",
+    "about": "Senior eye surgeon specializing in micro-incision cataract surgery (MICS), laser vision correction, glaucoma management, and corneal transplants at Gandhi Eye Hospital.",
+    "avatarUrl": "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Wednesday",
+      "Friday",
+      "Saturday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0141",
+    "name": "Dr. Jayant Rao",
+    "title": "Consultant Ophthalmologist",
+    "specialization": "Ophthalmology",
+    "qualification": "MBBS, MS (Ophthalmology)",
+    "experienceYears": 14,
+    "consultationFee": 350,
+    "ratingAverage": 4.92,
+    "ratingCount": 620,
+    "patientCount": "6.9k+",
+    "reviewsCount": "3.2k",
+    "hospitalName": "Gandhi Eye Hospital",
+    "hospitalId": "SAG-F-0062",
+    "clinicAddress": "Behind HDFC Bank, Goughat Parkota, Sagar, MP 470002",
+    "phone": "09302483960",
+    "about": "Expert in diabetic retinopathy screening, pediatric vision disorders, dry eye therapies, and computer vision syndrome management.",
+    "avatarUrl": "https://images.unsplash.com/photo-1614608682850-e0d6ed316d47?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
   },
   {
     "id": "SAG-D-0029",
     "name": "Dr. Pawan Gupta",
-    "title": "Consultant Dermatologist & Laser Specialist",
+    "title": "Chief Dermatologist & Laser Specialist",
     "specialization": "Dermatology",
-    "qualification": "MBBS, MD (DVL)",
+    "qualification": "MBBS, MD (DVL), Fellow in Dermatosurgery",
     "experienceYears": 14,
     "consultationFee": 450,
     "ratingAverage": 4.95,
     "ratingCount": 810,
-    "patientCount": "9.5k+",
-    "reviewsCount": "4.2k",
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "consultationTypes": [
-      "in_person",
-      "video_teleconsult"
-    ],
+    "patientCount": "8.6k+",
+    "reviewsCount": "4.3k",
     "hospitalName": "Yuva Skin Clinic",
     "hospitalId": "SAG-F-0127",
     "clinicAddress": "Dwarika Vihar Chowk near BMC, Tilli, Sagar, MP 470001",
     "phone": "07772820400",
-    "avatarUrl": "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=500&auto=format&fit=crop&q=80",
-    "availableDays": [
-      "Monday",
-      "Tuesday",
-      "Thursday",
-      "Friday"
-    ],
-    "availableSlots": [
-      "09:30 AM",
-      "10:30 AM",
-      "11:30 AM",
-      "03:00 PM",
-      "04:30 PM",
-      "06:00 PM"
-    ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Dermatology with 14+ years of clinical expertise, practicing at Yuva Skin Clinic in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
-  },
-  {
-    "id": "SAG-D-0030",
-    "name": "Dr. Piyush Arjariya",
-    "title": "ENT Specialist",
-    "specialization": "ENT",
-    "qualification": "MBBS, MS (ENT)",
-    "experienceYears": 13,
-    "consultationFee": 400,
-    "ratingAverage": 4.91,
-    "ratingCount": 530,
-    "patientCount": "4.0k+",
-    "reviewsCount": "1.5k",
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "consultationTypes": [
-      "in_person",
-      "video_teleconsult"
-    ],
-    "hospitalName": "Tilli / Pavitra Medical",
-    "clinicAddress": "Tilli / Pavitra Medical, Sagar, Madhya Pradesh",
-    "phone": "07582-236200",
-    "avatarUrl": "https://images.unsplash.com/photo-1614608682850-e0d6ed316d47?w=500&auto=format&fit=crop&q=80",
-    "availableDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ],
-    "availableSlots": [
-      "09:30 AM",
-      "10:30 AM",
-      "11:30 AM",
-      "03:00 PM",
-      "04:30 PM",
-      "06:00 PM"
-    ],
-    "isVerified": true,
-    "about": "Distinguished specialist in ENT with 13+ years of clinical expertise, practicing at Tilli / Pavitra Medical in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
-  },
-  {
-    "id": "SAG-D-0031",
-    "name": "Dr. Kanchi Jain",
-    "title": "Head MDS Endodontist & Implantologist",
-    "specialization": "Dentistry / Endodontics",
-    "qualification": "BDS, MDS (Conservative Dentistry & Endodontics)",
-    "experienceYears": 13,
-    "consultationFee": 400,
-    "ratingAverage": 4.96,
-    "ratingCount": 840,
-    "patientCount": "5.1k+",
-    "reviewsCount": "2.4k",
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "consultationTypes": [
-      "in_person",
-      "video_teleconsult"
-    ],
-    "hospitalName": "Bhagyoday Tirth Hospital",
-    "clinicAddress": "Bhagyoday Tirth Hospital, Sagar, Madhya Pradesh",
-    "phone": "07582266671",
+    "about": "Chief dermatologist at Yuva Skin Clinic providing advanced acne scar laser resurfacing, hair loss therapies (PRP), psoriasis treatment, and allergy patch testing.",
     "avatarUrl": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
     "availableDays": [
       "Monday",
+      "Tuesday",
       "Wednesday",
+      "Thursday",
       "Friday",
       "Saturday"
     ],
@@ -1255,21 +1860,26 @@ export const initialDoctors: Doctor[] = [
       "04:30 PM",
       "06:00 PM"
     ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Dentistry / Endodontics with 13+ years of clinical expertise, practicing at Bhagyoday Tirth Hospital in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
+    "isVerified": true
   },
   {
     "id": "SAG-D-0032",
     "name": "Dr. Rajesh Patel",
-    "title": "Consultant Gastroenterologist",
+    "title": "Consultant Gastroenterologist & Hepatologist",
     "specialization": "Gastroenterology",
     "qualification": "MBBS, MD (Medicine), DM (Gastroenterology)",
     "experienceYears": 16,
     "consultationFee": 600,
     "ratingAverage": 4.95,
     "ratingCount": 910,
-    "patientCount": "6.2k+",
-    "reviewsCount": "3.3k",
+    "patientCount": "9.8k+",
+    "reviewsCount": "4.9k",
+    "hospitalName": "Dr Patel's Gastro Digestive Care",
+    "hospitalId": "SAG-F-0140",
+    "clinicAddress": "Beside Paras Fracture Hospital, Medical College Road, Tilli, Sagar",
+    "phone": "07240969347",
+    "about": "Specialized in fatty liver reversal, acidity & GERD management, IBS treatment, video endoscopy, and colonoscopy at Dr Patel's Gastro Digestive Care.",
+    "avatarUrl": "https://images.unsplash.com/photo-1584467735815-f778f274e296?w=500&auto=format&fit=crop&q=80",
     "languages": [
       "Hindi",
       "English"
@@ -1278,11 +1888,48 @@ export const initialDoctors: Doctor[] = [
       "in_person",
       "video_teleconsult"
     ],
-    "hospitalName": "Dr Patel's Gastro Digestive Care",
-    "hospitalId": "SAG-F-0140",
-    "clinicAddress": "Beside Paras Fracture Hospital, Medical College Road, Tilli, Sagar",
-    "phone": "07240969347",
-    "avatarUrl": "https://images.unsplash.com/photo-1584467735815-f778f274e296?w=500&auto=format&fit=crop&q=80",
+    "availableDays": [
+      "Monday",
+      "Wednesday",
+      "Friday",
+      "Saturday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0037",
+    "name": "Dr. Anurag Jain",
+    "title": "Consultant Diabetologist & Metabolic Physician",
+    "specialization": "Diabetology & Endocrinology",
+    "qualification": "MBBS, MD (Medicine), PG Diabetology (Boston)",
+    "experienceYears": 15,
+    "consultationFee": 500,
+    "ratingAverage": 4.95,
+    "ratingCount": 830,
+    "patientCount": "8.9k+",
+    "reviewsCount": "4.4k",
+    "hospitalName": "Deepshree Health & Eye Clinic",
+    "hospitalId": "SAG-F-0064",
+    "clinicAddress": "Near Chaitanya Hospital, Gopal Ganj, Sagar, MP 470001",
+    "phone": "07987044304",
+    "about": "Leading diabetologist offering personalized diabetes reversal protocols, continuous glucose monitoring (CGM), and thyroid disorder therapies.",
+    "avatarUrl": "https://images.unsplash.com/photo-1605684954998-685c79d6a018?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
     "availableDays": [
       "Monday",
       "Tuesday",
@@ -1297,21 +1944,26 @@ export const initialDoctors: Doctor[] = [
       "04:30 PM",
       "06:00 PM"
     ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Gastroenterology with 16+ years of clinical expertise, practicing at Dr Patel's Gastro Digestive Care in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
+    "isVerified": true
   },
   {
-    "id": "SAG-D-0033",
-    "name": "Dr. Amit Kumar Jha",
-    "title": "Consultant Urologist",
-    "specialization": "Urology / Kidney Transplant",
-    "qualification": "MBBS, MS, MCh (Urology)",
-    "experienceYears": 15,
-    "consultationFee": 600,
-    "ratingAverage": 4.96,
-    "ratingCount": 750,
-    "patientCount": "7.3k+",
-    "reviewsCount": "4.2k",
+    "id": "SAG-D-0038",
+    "name": "Dr. Supriya Jain",
+    "title": "Consultant Eye Surgeon & Retina Specialist",
+    "specialization": "Ophthalmology",
+    "qualification": "MBBS, MS (Ophthalmology)",
+    "experienceYears": 14,
+    "consultationFee": 450,
+    "ratingAverage": 4.94,
+    "ratingCount": 610,
+    "patientCount": "7.1k+",
+    "reviewsCount": "3.4k",
+    "hospitalName": "Deepshree Health & Eye Clinic",
+    "hospitalId": "SAG-F-0064",
+    "clinicAddress": "Near Chaitanya Hospital, Gopal Ganj, Sagar, MP 470001",
+    "phone": "07987044304",
+    "about": "Ophthalmologist specializing in cataract surgery, refractive errors, pediatric ophthalmology, and dry eye syndromes.",
+    "avatarUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=500&auto=format&fit=crop&q=80",
     "languages": [
       "Hindi",
       "English"
@@ -1320,11 +1972,6 @@ export const initialDoctors: Doctor[] = [
       "in_person",
       "video_teleconsult"
     ],
-    "hospitalName": "Bansal Hospital Sagar",
-    "hospitalId": "SAG-F-0001",
-    "clinicAddress": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
-    "phone": "07582-472000",
-    "avatarUrl": "https://images.unsplash.com/photo-1605684954998-685c79d6a018?w=500&auto=format&fit=crop&q=80",
     "availableDays": [
       "Monday",
       "Tuesday",
@@ -1341,8 +1988,7 @@ export const initialDoctors: Doctor[] = [
       "04:30 PM",
       "06:00 PM"
     ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Urology / Kidney Transplant with 15+ years of clinical expertise, practicing at Bansal Hospital Sagar in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
+    "isVerified": true
   },
   {
     "id": "SAG-D-0034",
@@ -1354,91 +2000,14 @@ export const initialDoctors: Doctor[] = [
     "consultationFee": 500,
     "ratingAverage": 4.93,
     "ratingCount": 690,
-    "patientCount": "8.4k+",
-    "reviewsCount": "1.5k",
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "consultationTypes": [
-      "in_person",
-      "video_teleconsult"
-    ],
+    "patientCount": "7.6k+",
+    "reviewsCount": "3.8k",
     "hospitalName": "Aakriti Medico / Dr Priyanshu Jain Clinic",
-    "clinicAddress": "Aakriti Medico / Dr Priyanshu Jain Clinic, Sagar, Madhya Pradesh",
+    "hospitalId": "SAG-F-0147",
+    "clinicAddress": "Opposite Nao Mandir, Jheel Boat Club, Sagar, MP 470002",
     "phone": "07582-236200",
-    "avatarUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=500&auto=format&fit=crop&q=80",
-    "availableDays": [
-      "Monday",
-      "Wednesday",
-      "Friday",
-      "Saturday"
-    ],
-    "availableSlots": [
-      "09:30 AM",
-      "10:30 AM",
-      "11:30 AM",
-      "03:00 PM",
-      "04:30 PM",
-      "06:00 PM"
-    ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Pulmonology / Chest Medicine with 14+ years of clinical expertise, practicing at Aakriti Medico / Dr Priyanshu Jain Clinic in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
-  },
-  {
-    "id": "SAG-D-0036",
-    "name": "Dr. Ankur Jain",
-    "title": "Head Consultant General Surgeon",
-    "specialization": "General & Laparoscopic Surgery",
-    "qualification": "MBBS, MS (Surgery), FMAS",
-    "experienceYears": 18,
-    "consultationFee": 500,
-    "ratingAverage": 4.97,
-    "ratingCount": 960,
-    "patientCount": "9.5k+",
-    "reviewsCount": "2.4k",
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "consultationTypes": [
-      "in_person",
-      "video_teleconsult"
-    ],
-    "hospitalName": "Bhagyoday Tirth Chikitsalay",
-    "hospitalId": "SAG-F-0014",
-    "clinicAddress": "Shastri Nagar, Kareela, Khurai Road, Sagar, MP 470002",
-    "phone": "07582266671",
+    "about": "Chest physician treating tuberculosis, chronic cough, smoking cessation, pulmonary function testing (PFT), and sleep apnea.",
     "avatarUrl": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&auto=format&fit=crop&q=80",
-    "availableDays": [
-      "Monday",
-      "Tuesday",
-      "Thursday",
-      "Friday"
-    ],
-    "availableSlots": [
-      "09:30 AM",
-      "10:30 AM",
-      "11:30 AM",
-      "03:00 PM",
-      "04:30 PM",
-      "06:00 PM"
-    ],
-    "isVerified": true,
-    "about": "Distinguished specialist in General & Laparoscopic Surgery with 18+ years of clinical expertise, practicing at Bhagyoday Tirth Chikitsalay in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
-  },
-  {
-    "id": "SAG-D-0037",
-    "name": "Dr. Anurag Jain",
-    "title": "Consultant Diabetologist",
-    "specialization": "Diabetology & Endocrinology",
-    "qualification": "MBBS, MD (Med), Post-Grad Diabetology (Boston)",
-    "experienceYears": 15,
-    "consultationFee": 500,
-    "ratingAverage": 4.95,
-    "ratingCount": 830,
-    "patientCount": "4.0k+",
-    "reviewsCount": "3.3k",
     "languages": [
       "Hindi",
       "English"
@@ -1447,55 +2016,6 @@ export const initialDoctors: Doctor[] = [
       "in_person",
       "video_teleconsult"
     ],
-    "hospitalName": "Deepshree Health & Eye Clinic",
-    "hospitalId": "SAG-F-0064",
-    "clinicAddress": "Near Chaitanya Hospital, Gopal Ganj, Sagar, MP 470001",
-    "phone": "07987044304",
-    "avatarUrl": "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&auto=format&fit=crop&q=80",
-    "availableDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ],
-    "availableSlots": [
-      "09:30 AM",
-      "10:30 AM",
-      "11:30 AM",
-      "03:00 PM",
-      "04:30 PM",
-      "06:00 PM"
-    ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Diabetology & Endocrinology with 15+ years of clinical expertise, practicing at Deepshree Health & Eye Clinic in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
-  },
-  {
-    "id": "SAG-D-0038",
-    "name": "Dr. Supriya Jain",
-    "title": "Consultant Eye Surgeon",
-    "specialization": "Ophthalmology",
-    "qualification": "MBBS, MS (Ophthalmology)",
-    "experienceYears": 14,
-    "consultationFee": 450,
-    "ratingAverage": 4.94,
-    "ratingCount": 610,
-    "patientCount": "5.1k+",
-    "reviewsCount": "4.2k",
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "consultationTypes": [
-      "in_person",
-      "video_teleconsult"
-    ],
-    "hospitalName": "Deepshree Health & Eye Clinic",
-    "hospitalId": "SAG-F-0064",
-    "clinicAddress": "Near Chaitanya Hospital, Gopal Ganj, Sagar, MP 470001",
-    "phone": "07987044304",
-    "avatarUrl": "https://images.unsplash.com/photo-1594824813620-21f45610a26d?w=500&auto=format&fit=crop&q=80",
     "availableDays": [
       "Monday",
       "Wednesday",
@@ -1510,50 +2030,7 @@ export const initialDoctors: Doctor[] = [
       "04:30 PM",
       "06:00 PM"
     ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Ophthalmology with 14+ years of clinical expertise, practicing at Deepshree Health & Eye Clinic in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
-  },
-  {
-    "id": "SAG-D-0039",
-    "name": "Dr. Aditi Dubey",
-    "title": "Consultant Ophthalmologist",
-    "specialization": "Ophthalmology",
-    "qualification": "MBBS, MS (Ophthalmology)",
-    "experienceYears": 12,
-    "consultationFee": 400,
-    "ratingAverage": 4.93,
-    "ratingCount": 540,
-    "patientCount": "6.2k+",
-    "reviewsCount": "1.5k",
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "consultationTypes": [
-      "in_person",
-      "video_teleconsult"
-    ],
-    "hospitalName": "Care for Eye Clinic",
-    "hospitalId": "SAG-F-0063",
-    "clinicAddress": "Near Sunrise Plaza, Ashok Vihar Colony, Dwarika Garden, Sagar, MP 470002",
-    "phone": "07021811875",
-    "avatarUrl": "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=500&auto=format&fit=crop&q=80",
-    "availableDays": [
-      "Monday",
-      "Tuesday",
-      "Thursday",
-      "Friday"
-    ],
-    "availableSlots": [
-      "09:30 AM",
-      "10:30 AM",
-      "11:30 AM",
-      "03:00 PM",
-      "04:30 PM",
-      "06:00 PM"
-    ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Ophthalmology with 12+ years of clinical expertise, practicing at Care for Eye Clinic in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
+    "isVerified": true
   },
   {
     "id": "SAG-D-0040",
@@ -1565,51 +2042,14 @@ export const initialDoctors: Doctor[] = [
     "consultationFee": 500,
     "ratingAverage": 4.94,
     "ratingCount": 780,
-    "patientCount": "7.3k+",
-    "reviewsCount": "2.4k",
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "consultationTypes": [
-      "in_person",
-      "video_teleconsult"
-    ],
+    "patientCount": "8.2k+",
+    "reviewsCount": "4.1k",
     "hospitalName": "SkinGlow Clinic",
-    "clinicAddress": "SkinGlow Clinic, Sagar, Madhya Pradesh",
+    "hospitalId": "SAG-F-0126",
+    "clinicAddress": "In front of Hotel Devyog, Teen Batti, Katra Bazaar, Sagar, MP 470002",
     "phone": "07582-244134",
-    "avatarUrl": "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=500&auto=format&fit=crop&q=80",
-    "availableDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ],
-    "availableSlots": [
-      "09:30 AM",
-      "10:30 AM",
-      "11:30 AM",
-      "03:00 PM",
-      "04:30 PM",
-      "06:00 PM"
-    ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Dermatology & Cosmetology with 13+ years of clinical expertise, practicing at SkinGlow Clinic in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
-  },
-  {
-    "id": "SAG-D-0060",
-    "name": "Dr. Vikas Patel",
-    "title": "Consultant Homoeopath",
-    "specialization": "Homeopathy",
-    "qualification": "BHMS, MD (Homeopathy)",
-    "experienceYears": 14,
-    "consultationFee": 300,
-    "ratingAverage": 4.91,
-    "ratingCount": 480,
-    "patientCount": "8.4k+",
-    "reviewsCount": "3.3k",
+    "about": "Dermatologist and cosmetologist providing laser hair reduction, pigmentation peeling, scar removal, and hair restoration therapies.",
+    "avatarUrl": "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&auto=format&fit=crop&q=80",
     "languages": [
       "Hindi",
       "English"
@@ -1618,52 +2058,6 @@ export const initialDoctors: Doctor[] = [
       "in_person",
       "video_teleconsult"
     ],
-    "hospitalName": "Ambe Homoeo Clinic",
-    "clinicAddress": "Ambe Homoeo Clinic, Sagar, Madhya Pradesh",
-    "phone": "07582-236200",
-    "avatarUrl": "https://images.unsplash.com/photo-1622902046580-2b47f47f5471?w=500&auto=format&fit=crop&q=80",
-    "availableDays": [
-      "Monday",
-      "Wednesday",
-      "Friday",
-      "Saturday"
-    ],
-    "availableSlots": [
-      "09:30 AM",
-      "10:30 AM",
-      "11:30 AM",
-      "03:00 PM",
-      "04:30 PM",
-      "06:00 PM"
-    ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Homeopathy with 14+ years of clinical expertise, practicing at Ambe Homoeo Clinic in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
-  },
-  {
-    "id": "SAG-D-0063",
-    "name": "Dr. Qazi Wasim Uddin",
-    "title": "Consultant Homoeopath",
-    "specialization": "Homeopathy",
-    "qualification": "BHMS, MD (Homeo)",
-    "experienceYears": 15,
-    "consultationFee": 350,
-    "ratingAverage": 4.93,
-    "ratingCount": 560,
-    "patientCount": "9.5k+",
-    "reviewsCount": "4.2k",
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "consultationTypes": [
-      "in_person",
-      "video_teleconsult"
-    ],
-    "hospitalName": "Alpha Care Homeo Clinic",
-    "hospitalId": "SAG-F-0056",
-    "clinicAddress": "Opposite Jheel Boat Club, Sagar, MP 470002",
-    "phone": "09755338675",
-    "avatarUrl": "https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=500&auto=format&fit=crop&q=80",
     "availableDays": [
       "Monday",
       "Tuesday",
@@ -1678,21 +2072,26 @@ export const initialDoctors: Doctor[] = [
       "04:30 PM",
       "06:00 PM"
     ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Homeopathy with 15+ years of clinical expertise, practicing at Alpha Care Homeo Clinic in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
+    "isVerified": true
   },
   {
     "id": "SAG-D-0064",
     "name": "Dr. Pramendra Tiwari",
-    "title": "Head Consultant Physiotherapist",
+    "title": "Head Consultant Physiotherapist & Sports Rehab Specialist",
     "specialization": "Physiotherapy & Sports Rehabilitation",
-    "qualification": "BPT, MPT (Orthopaedics & Sports Rehab)",
+    "qualification": "BPT, MPT (Orthopaedics & Sports Rehab), MIAP",
     "experienceYears": 14,
     "consultationFee": 350,
     "ratingAverage": 4.93,
     "ratingCount": 620,
-    "patientCount": "4.0k+",
-    "reviewsCount": "1.5k",
+    "patientCount": "7.4k+",
+    "reviewsCount": "3.7k",
+    "hospitalName": "Dr Pramendra Tiwari Physiotherapy Clinic",
+    "hospitalId": "SAG-F-0107",
+    "clinicAddress": "Sagar Apartment, Ajmani Complex, Makronia, Sagar",
+    "phone": "08817777265",
+    "about": "Expert in neuro-muscular rehabilitation, slip disc therapy, sciatica pain relief, post-joint replacement gait training, and sports injury recovery.",
+    "avatarUrl": "https://images.unsplash.com/photo-1594824813620-21f45610a26d?w=500&auto=format&fit=crop&q=80",
     "languages": [
       "Hindi",
       "English"
@@ -1701,11 +2100,6 @@ export const initialDoctors: Doctor[] = [
       "in_person",
       "video_teleconsult"
     ],
-    "hospitalName": "Dr Pramendra Tiwari Physiotherapy Clinic",
-    "hospitalId": "SAG-F-0107",
-    "clinicAddress": "Sagar Apartment, Ajmani Complex, Makronia, Sagar",
-    "phone": "08817777265",
-    "avatarUrl": "https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=500&auto=format&fit=crop&q=80",
     "availableDays": [
       "Monday",
       "Tuesday",
@@ -1722,8 +2116,91 @@ export const initialDoctors: Doctor[] = [
       "04:30 PM",
       "06:00 PM"
     ],
-    "isVerified": true,
-    "about": "Distinguished specialist in Physiotherapy & Sports Rehabilitation with 14+ years of clinical expertise, practicing at Dr Pramendra Tiwari Physiotherapy Clinic in Sagar, Madhya Pradesh. Dedicated to evidence-based healthcare, compassionate patient care, and OPD consultations."
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0060",
+    "name": "Dr. Vikas Patel",
+    "title": "Senior Consultant Homoeopath",
+    "specialization": "Homeopathy",
+    "qualification": "BHMS, MD (Homeopathy)",
+    "experienceYears": 14,
+    "consultationFee": 300,
+    "ratingAverage": 4.91,
+    "ratingCount": 480,
+    "patientCount": "6.2k+",
+    "reviewsCount": "2.9k",
+    "hospitalName": "Ambe Homoeo Clinic",
+    "hospitalId": "SAG-F-0055",
+    "clinicAddress": "Tilak Ganj, Sagar, MP 470002",
+    "phone": "07582-236200",
+    "about": "Classical homeopathic treatment for chronic skin allergies, sinusitis, migraine, childhood immunity building, and digestive ailments.",
+    "avatarUrl": "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Wednesday",
+      "Friday",
+      "Saturday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
+  },
+  {
+    "id": "SAG-D-0063",
+    "name": "Dr. Qazi Wasim Uddin",
+    "title": "Consultant Homoeopath",
+    "specialization": "Homeopathy",
+    "qualification": "BHMS, MD (Homeo)",
+    "experienceYears": 15,
+    "consultationFee": 350,
+    "ratingAverage": 4.93,
+    "ratingCount": 560,
+    "patientCount": "6.8k+",
+    "reviewsCount": "3.2k",
+    "hospitalName": "Alpha Care Homeo Clinic",
+    "hospitalId": "SAG-F-0056",
+    "clinicAddress": "Opposite Jheel Boat Club, Sagar, MP 470002",
+    "phone": "09755338675",
+    "about": "Holistic homeopathic consultations for lifestyle disorders, chronic asthma, joint pain, and constitutional well-being.",
+    "avatarUrl": "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=500&auto=format&fit=crop&q=80",
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "consultationTypes": [
+      "in_person",
+      "video_teleconsult"
+    ],
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "09:30 AM",
+      "10:30 AM",
+      "11:30 AM",
+      "03:00 PM",
+      "04:30 PM",
+      "06:00 PM"
+    ],
+    "isVerified": true
   }
 ];
 
@@ -1731,1083 +2208,324 @@ export const initialHospitals: Hospital[] = [
   {
     "id": "SAG-F-0001",
     "name": "Bansal Hospital Sagar",
-    "type": "Multispecialty",
-    "address": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
-    "city": "Sagar, Madhya Pradesh",
+    "type": "Multispecialty Super Specialty",
     "locality": "Makronia",
-    "distanceKm": 0.8,
+    "address": "Prabhakar Nagar, Makronia, Sagar, MP 470004",
     "phone": "07582-472000",
-    "emergencyHelpline": "07582-472000 / 108",
+    "distanceKm": 2.1,
     "has24x7Emergency": true,
-    "icuBedsAvailable": 12,
-    "totalBeds": 250,
-    "rating": 4.78,
+    "icuBedsAvailable": 28,
+    "totalBeds": 350,
+    "rating": 4.96,
+    "imageUrl": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=500&auto=format&fit=crop&q=80",
     "facilities": [
-      "24/7 Emergency Care",
-      "Multispecialty",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
+      "24/7 Level 1 Trauma Care",
+      "Cath Lab",
+      "Advanced Neuro ICU",
+      "Modular OTs",
+      "In-house Pharmacy"
     ],
-    "imageUrl": "/images/hospitals/bhagyodaya-tirth.jpg"
+    "city": "Sagar, Madhya Pradesh",
+    "emergencyHelpline": "07582-472000 / 108"
   },
   {
     "id": "SAG-F-0002",
     "name": "Bundelkhand Medical College & Hospital",
-    "type": "Government / Teaching",
-    "address": "Tilli Road, Sagar, MP 470002",
-    "city": "Sagar, Madhya Pradesh",
+    "type": "Government / Teaching Hospital",
     "locality": "Tilli",
-    "distanceKm": 1,
+    "address": "Tilli Road, Sagar, MP 470002",
     "phone": "07582-236370",
-    "emergencyHelpline": "07582-236370 / 108",
+    "distanceKm": 1.4,
     "has24x7Emergency": true,
-    "icuBedsAvailable": 30,
-    "totalBeds": 650,
-    "rating": 4.81,
+    "icuBedsAvailable": 42,
+    "totalBeds": 750,
+    "rating": 4.88,
+    "imageUrl": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&auto=format&fit=crop&q=80",
     "facilities": [
-      "24/7 Emergency Care",
-      "Government / Teaching",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
+      "Government Multispecialty",
+      "Critical Care ICU",
+      "Burn Unit",
+      "Blood Bank",
+      "Ayushman Bharat"
     ],
-    "imageUrl": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=500&auto=format&fit=crop&q=80"
+    "city": "Sagar, Madhya Pradesh",
+    "emergencyHelpline": "07582-236370 / 108"
   },
   {
     "id": "SAG-F-0003",
     "name": "Government District Hospital Sagar",
     "type": "Government / Multispecialty",
+    "locality": "Tilli",
     "address": "Tilli Road, Sagar, MP 470001",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Tilli",
-    "distanceKm": 1.2,
     "phone": "07582-236200",
-    "emergencyHelpline": "07582-236200 / 108",
+    "distanceKm": 1.6,
     "has24x7Emergency": true,
-    "icuBedsAvailable": 30,
-    "totalBeds": 650,
-    "rating": 4.84,
-    "facilities": [
-      "24/7 Emergency Care",
-      "Government / Multispecialty",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0004",
-    "name": "Khemchand Hospital",
-    "type": "Multispecialty",
-    "address": "Keshavganj Ward, Vardhman Colony, Bada Bazaar, Sagar, MP 470002",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Bada Bazaar",
-    "distanceKm": 1.5,
-    "phone": "07898922699",
-    "emergencyHelpline": "07898922699 / 108",
-    "has24x7Emergency": true,
-    "icuBedsAvailable": 12,
-    "totalBeds": 250,
-    "rating": 4.87,
-    "facilities": [
-      "24/7 Emergency Care",
-      "Multispecialty",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0005",
-    "name": "Shree Laxmi Narayan Hospital",
-    "type": "Private",
-    "address": "University Road, Sagar, MP 470001",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "University Road",
-    "distanceKm": 1.7,
-    "phone": "09893554608",
-    "emergencyHelpline": "09893554608 / 108",
-    "has24x7Emergency": true,
-    "icuBedsAvailable": 12,
-    "totalBeds": 120,
-    "rating": 4.9,
-    "facilities": [
-      "24/7 Emergency Care",
-      "Private",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1512678080530-7760d81faba6?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0006",
-    "name": "MEERA HOSPITAL",
-    "type": "Private",
-    "address": "Near Moti Nagar Police Station / Chameli Chowk, Sagar, MP 470002",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Moti Nagar",
-    "distanceKm": 1.9,
-    "phone": "09479356033",
-    "emergencyHelpline": "09479356033 / 108",
-    "has24x7Emergency": true,
-    "icuBedsAvailable": 12,
-    "totalBeds": 120,
-    "rating": 4.93,
-    "facilities": [
-      "24/7 Emergency Care",
-      "Private",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0007",
-    "name": "Kalyanika Hospital",
-    "type": "Private",
-    "address": "Near Nirmal Bandhan Marriage Hall, Medical College Road, Tilli, Sagar",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Tilli",
-    "distanceKm": 2.1,
-    "phone": "08770976421",
-    "emergencyHelpline": "08770976421 / 108",
-    "has24x7Emergency": true,
-    "icuBedsAvailable": 12,
-    "totalBeds": 120,
-    "rating": 4.96,
-    "facilities": [
-      "24/7 Emergency Care",
-      "Private",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "/images/hospitals/bhagyodaya-tirth.jpg"
-  },
-  {
-    "id": "SAG-F-0008",
-    "name": "Shri Chaitanya Hospital",
-    "type": "Private / General",
-    "address": "Tilli Road, Sri Ram Nagar, Gopal Ganj, Sagar, MP 470001",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Tilli / Gopal Ganj",
-    "distanceKm": 2.3,
-    "phone": "07582-236200",
-    "emergencyHelpline": "07582-236200 / 108",
-    "has24x7Emergency": true,
-    "icuBedsAvailable": 12,
-    "totalBeds": 120,
-    "rating": 4.79,
-    "facilities": [
-      "24/7 Emergency Care",
-      "Private / General",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0009",
-    "name": "Nidaan Hospital & Research Centre",
-    "type": "Multispecialty",
-    "address": "Hathi Park, Tilli Road, opposite District Hospital, Sagar, MP 470001",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Tilli",
-    "distanceKm": 2.6,
-    "phone": "09406557866",
-    "emergencyHelpline": "09406557866 / 108",
-    "has24x7Emergency": true,
-    "icuBedsAvailable": 12,
-    "totalBeds": 250,
+    "icuBedsAvailable": 20,
+    "totalBeds": 450,
     "rating": 4.82,
+    "imageUrl": "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=500&auto=format&fit=crop&q=80",
     "facilities": [
-      "24/7 Emergency Care",
-      "Multispecialty",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
+      "24/7 Emergency Casualty",
+      "General Medicine OPD",
+      "Maternity Ward",
+      "Free Generic Pharmacy",
+      "ABHA OPD"
     ],
-    "imageUrl": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0010",
-    "name": "Narayan Hospital Pvt. Ltd.",
-    "type": "Gynaecology / Surgery",
-    "address": "HIG-25, Padmakar Nagar, Makronia, Sagar, MP 470004",
     "city": "Sagar, Madhya Pradesh",
-    "locality": "Makronia",
-    "distanceKm": 2.8,
-    "phone": "09926002295",
-    "emergencyHelpline": "09926002295 / 108",
-    "has24x7Emergency": true,
-    "icuBedsAvailable": 12,
-    "totalBeds": 120,
-    "rating": 4.85,
-    "facilities": [
-      "24/7 Emergency Care",
-      "Gynaecology / Surgery",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0011",
-    "name": "Dr. Rai Hospital",
-    "type": "Multispecialty",
-    "address": "10th Battalion Road, State Bank Colony, Makronia, Sagar, MP 470004",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Makronia",
-    "distanceKm": 3,
-    "phone": "07582297297",
-    "emergencyHelpline": "07582297297 / 108",
-    "has24x7Emergency": true,
-    "icuBedsAvailable": 12,
-    "totalBeds": 250,
-    "rating": 4.88,
-    "facilities": [
-      "24/7 Emergency Care",
-      "Multispecialty",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1512678080530-7760d81faba6?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0012",
-    "name": "Neo Children Hospital",
-    "type": "Paediatrics",
-    "address": "Opposite Medical College, Ashok Vihar, Sagar, MP 470001",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Tilli",
-    "distanceKm": 3.2,
-    "phone": "09407096372",
-    "emergencyHelpline": "09407096372 / 108",
-    "has24x7Emergency": true,
-    "icuBedsAvailable": 12,
-    "totalBeds": 120,
-    "rating": 4.91,
-    "facilities": [
-      "24/7 Emergency Care",
-      "Paediatrics",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0013",
-    "name": "Maa Sharda Multispeciality Hospital",
-    "type": "Multispecialty",
-    "address": "Bada Bazaar, Sagar, MP 470002",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Bada Bazaar",
-    "distanceKm": 3.4,
-    "phone": "07582-244134",
-    "emergencyHelpline": "07582-244134 / 108",
-    "has24x7Emergency": true,
-    "icuBedsAvailable": 12,
-    "totalBeds": 250,
-    "rating": 4.94,
-    "facilities": [
-      "24/7 Emergency Care",
-      "Multispecialty",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "/images/hospitals/bhagyodaya-tirth.jpg"
-  },
-  {
-    "id": "SAG-F-0014",
-    "name": "Bhagyoday Tirth Chikitsalay",
-    "type": "Charitable / Multispecialty",
-    "address": "Shastri Nagar, Kareela, Khurai Road, Sagar, MP 470002",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Khurai Road",
-    "distanceKm": 3.7,
-    "phone": "07582266671",
-    "emergencyHelpline": "07582266671 / 108",
-    "has24x7Emergency": true,
-    "icuBedsAvailable": 12,
-    "totalBeds": 250,
-    "rating": 4.97,
-    "facilities": [
-      "24/7 Emergency Care",
-      "Charitable / Multispecialty",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "/images/hospitals/bhagyodaya-tirth.jpg"
-  },
-  {
-    "id": "SAG-F-0015",
-    "name": "Bhagyodaya Hospital",
-    "type": "General",
-    "address": "Acharya Vidya Sagar Marg, Khurai Road, Sagar, MP 470002",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Khurai Road",
-    "distanceKm": 3.9,
-    "phone": "07582266171",
-    "emergencyHelpline": "07582266171 / 108",
-    "has24x7Emergency": true,
-    "icuBedsAvailable": 12,
-    "totalBeds": 120,
-    "rating": 4.8,
-    "facilities": [
-      "24/7 Emergency Care",
-      "General",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "/images/hospitals/bhagyodaya-tirth.jpg"
-  },
-  {
-    "id": "SAG-F-0016",
-    "name": "Sagar Heart Care Hospital",
-    "type": "Cardiac / Multispecialty",
-    "address": "Sagar Cantt / Tilli Road, Sagar",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Sagar Cantt / Tilli Road",
-    "distanceKm": 4.1,
-    "phone": "07582-220515",
-    "emergencyHelpline": "07582-220515 / 108",
-    "has24x7Emergency": true,
-    "icuBedsAvailable": 12,
-    "totalBeds": 250,
-    "rating": 4.83,
-    "facilities": [
-      "24/7 Emergency Care",
-      "Cardiac / Multispecialty",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0017",
-    "name": "Sagar Hospital",
-    "type": "General",
-    "address": "Civil Lines Road, Makronia Chouraha, Padmakar Nagar, Sagar",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Makronia",
-    "distanceKm": 4.3,
-    "phone": "07582-231193",
-    "emergencyHelpline": "07582-231193 / 108",
-    "has24x7Emergency": true,
-    "icuBedsAvailable": 12,
-    "totalBeds": 120,
-    "rating": 4.86,
-    "facilities": [
-      "24/7 Emergency Care",
-      "General",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1512678080530-7760d81faba6?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0018",
-    "name": "Dr. D.P. Choubey Hospital",
-    "type": "General",
-    "address": "Sadar Bazar, Sagar, MP",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Sadar Bazaar",
-    "distanceKm": 4.5,
-    "phone": "09630869431",
-    "emergencyHelpline": "09630869431 / 108",
-    "has24x7Emergency": true,
-    "icuBedsAvailable": 12,
-    "totalBeds": 120,
-    "rating": 4.89,
-    "facilities": [
-      "24/7 Emergency Care",
-      "General",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0019",
-    "name": "Lokpriya Hospital & Research Center",
-    "type": "General",
-    "address": "Lokpriya Building, Sagar University, Sagar",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "University area",
-    "distanceKm": 4.8,
-    "phone": "07582-236200",
-    "emergencyHelpline": "07582-236200 / 108",
-    "has24x7Emergency": true,
-    "icuBedsAvailable": 12,
-    "totalBeds": 120,
-    "rating": 4.92,
-    "facilities": [
-      "24/7 Emergency Care",
-      "General",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "/images/hospitals/bhagyodaya-tirth.jpg"
-  },
-  {
-    "id": "SAG-F-0020",
-    "name": "Sagar Prasutikha Grah",
-    "type": "Maternity",
-    "address": "Namak Mandi, Sagar",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Namak Mandi",
-    "distanceKm": 5,
-    "phone": "07582243248",
-    "emergencyHelpline": "07582243248 / 108",
-    "has24x7Emergency": true,
-    "icuBedsAvailable": 12,
-    "totalBeds": 120,
-    "rating": 4.95,
-    "facilities": [
-      "24/7 Emergency Care",
-      "Maternity",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0021",
-    "name": "Sai Baba Hospital",
-    "type": "General",
-    "address": "Gujarati Bazar, Sagar, MP 470002",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Gujarati Bazar",
-    "distanceKm": 5.2,
-    "phone": "07582406030",
-    "emergencyHelpline": "07582406030 / 108",
-    "has24x7Emergency": true,
-    "icuBedsAvailable": 12,
-    "totalBeds": 120,
-    "rating": 4.78,
-    "facilities": [
-      "24/7 Emergency Care",
-      "General",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0022",
-    "name": "Ram Devi Smriti Hospital",
-    "type": "General",
-    "address": "A-113/114, Dwarka Garden, Tilli Road, Sagar, MP 470001",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Dwarka Garden",
-    "distanceKm": 5.4,
-    "phone": "09009991929",
-    "emergencyHelpline": "09009991929 / 108",
-    "has24x7Emergency": true,
-    "icuBedsAvailable": 12,
-    "totalBeds": 120,
-    "rating": 4.81,
-    "facilities": [
-      "24/7 Emergency Care",
-      "General",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0023",
-    "name": "Ganesh Nursing Home",
-    "type": "General",
-    "address": "Sadar Bazar, Sagar, MP 470002",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Sadar Bazaar",
-    "distanceKm": 5.6,
-    "phone": "09893419063",
-    "emergencyHelpline": "09893419063 / 108",
-    "has24x7Emergency": false,
-    "icuBedsAvailable": 4,
-    "totalBeds": 35,
-    "rating": 4.84,
-    "facilities": [
-      "OPD Consultation",
-      "General",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1512678080530-7760d81faba6?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0024",
-    "name": "Sewa Hospital",
-    "type": "General",
-    "address": "MIG-39, Padmakar Nagar, Makronia, Sagar",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Padmakar Nagar / Makronia",
-    "distanceKm": 5.9,
-    "phone": "07582231193",
-    "emergencyHelpline": "07582231193 / 108",
-    "has24x7Emergency": true,
-    "icuBedsAvailable": 12,
-    "totalBeds": 120,
-    "rating": 4.87,
-    "facilities": [
-      "24/7 Emergency Care",
-      "General",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0032",
-    "name": "Gupta Nursing Home",
-    "type": "General",
-    "address": "Yadav Colony, Poddar Colony, Sagar, MP 470001",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Poddar Colony",
-    "distanceKm": 6.1,
-    "phone": "07582229495",
-    "emergencyHelpline": "07582229495 / 108",
-    "has24x7Emergency": false,
-    "icuBedsAvailable": 4,
-    "totalBeds": 35,
-    "rating": 4.9,
-    "facilities": [
-      "OPD Consultation",
-      "General",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "/images/hospitals/bhagyodaya-tirth.jpg"
-  },
-  {
-    "id": "SAG-F-0033",
-    "name": "Shri Siddhi Vinayak Hospital",
-    "type": "Orthopaedic / General",
-    "address": "Poddar Colony, Tilli Road, Sagar, MP 470002",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Poddar Colony",
-    "distanceKm": 6.3,
-    "phone": "07582-236200",
-    "emergencyHelpline": "07582-236200 / 108",
-    "has24x7Emergency": true,
-    "icuBedsAvailable": 12,
-    "totalBeds": 120,
-    "rating": 4.93,
-    "facilities": [
-      "24/7 Emergency Care",
-      "Orthopaedic / General",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0034",
-    "name": "Sri Paras Fracture & General Hospital",
-    "type": "Orthopaedic / General",
-    "address": "Tilli Road, State Bank Colony, Poddar Colony, Sagar, MP 470001",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Poddar Colony",
-    "distanceKm": 6.5,
-    "phone": "07582-236200",
-    "emergencyHelpline": "07582-236200 / 108",
-    "has24x7Emergency": true,
-    "icuBedsAvailable": 12,
-    "totalBeds": 120,
-    "rating": 4.96,
-    "facilities": [
-      "24/7 Emergency Care",
-      "Orthopaedic / General",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0035",
-    "name": "Vardhman Multispeciality Clinic",
-    "type": "Multispecialty",
-    "address": "Balak Hillview, Sagar, MP 470001",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Tilli",
-    "distanceKm": 6.7,
-    "phone": "07582236627",
-    "emergencyHelpline": "07582236627 / 108",
-    "has24x7Emergency": true,
-    "icuBedsAvailable": 0,
-    "totalBeds": 15,
-    "rating": 4.79,
-    "facilities": [
-      "OPD Consultation",
-      "Multispecialty",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=500&auto=format&fit=crop&q=80"
+    "emergencyHelpline": "07582-236200 / 108"
   },
   {
     "id": "SAG-F-0037",
     "name": "Government Maternity Hospital",
-    "type": "Maternity",
-    "address": "Vaishali Nagar, Sagar, MP 470001",
-    "city": "Sagar, Madhya Pradesh",
+    "type": "Government Maternity & Child Hospital",
     "locality": "Vaishali Nagar",
-    "distanceKm": 7,
+    "address": "Vaishali Nagar, Sagar, MP 470001",
     "phone": "07582-236200",
-    "emergencyHelpline": "07582-236200 / 108",
+    "distanceKm": 2.8,
     "has24x7Emergency": true,
-    "icuBedsAvailable": 30,
-    "totalBeds": 650,
-    "rating": 4.82,
+    "icuBedsAvailable": 15,
+    "totalBeds": 180,
+    "rating": 4.89,
+    "imageUrl": "https://images.unsplash.com/photo-1512678080530-7760d81faba6?w=500&auto=format&fit=crop&q=80",
     "facilities": [
-      "24/7 Emergency Care",
-      "Maternity",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
+      "24/7 Labour & Delivery",
+      "NICU & Neonatal ICU",
+      "High-Risk Pregnancy Suite",
+      "Immunization Center",
+      "Women Wellness OPD"
     ],
-    "imageUrl": "https://images.unsplash.com/photo-1512678080530-7760d81faba6?w=500&auto=format&fit=crop&q=80"
+    "city": "Sagar, Madhya Pradesh",
+    "emergencyHelpline": "07582-236200 / 108"
   },
   {
-    "id": "SAG-F-0038",
-    "name": "Government District Ayurvedic Hospital",
-    "type": "Ayurveda",
-    "address": "Poddar Colony, Sagar, MP 470001",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Poddar Colony",
-    "distanceKm": 7.2,
-    "phone": "07582-236200",
-    "emergencyHelpline": "07582-236200 / 108",
+    "id": "SAG-F-0014",
+    "name": "Bhagyoday Tirth Chikitsalay",
+    "type": "Charitable / Multispecialty Hospital",
+    "locality": "Khurai Road",
+    "address": "Shastri Nagar, Kareela, Khurai Road, Sagar, MP 470002",
+    "phone": "07582266671",
+    "distanceKm": 3.4,
     "has24x7Emergency": true,
-    "icuBedsAvailable": 30,
-    "totalBeds": 650,
-    "rating": 4.85,
+    "icuBedsAvailable": 24,
+    "totalBeds": 600,
+    "rating": 4.97,
+    "imageUrl": "/images/hospitals/bhagyodaya-tirth.jpg",
     "facilities": [
-      "24/7 Emergency Care",
-      "Ayurveda",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
+      "Advanced Surgery Complex",
+      "Endodontics & Dental Wing",
+      "Dialysis Wing",
+      "In-house Diagnostic Labs",
+      "24/7 Ambulance"
     ],
-    "imageUrl": "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=500&auto=format&fit=crop&q=80"
+    "city": "Sagar, Madhya Pradesh",
+    "emergencyHelpline": "07582266671 / 108"
   },
   {
-    "id": "SAG-F-0040",
-    "name": "Maa Pitambara Hospital",
-    "type": "Private",
-    "address": "Guru Govind Singh Ward, Bhagwan Ganj, Sagar, MP 470002",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Bhagwan Ganj",
-    "distanceKm": 7.4,
-    "phone": "07582-236200",
-    "emergencyHelpline": "07582-236200 / 108",
+    "id": "SAG-F-0016",
+    "name": "Sagar Heart Care Hospital",
+    "type": "Cardiac & Multispecialty Hospital",
+    "locality": "Sagar Cantt / Tilli Road",
+    "address": "Sagar Cantt / Tilli Road, Sagar, MP 470001",
+    "phone": "07582-220515",
+    "distanceKm": 1.9,
     "has24x7Emergency": true,
-    "icuBedsAvailable": 12,
+    "icuBedsAvailable": 16,
     "totalBeds": 120,
-    "rating": 4.88,
+    "rating": 4.93,
+    "imageUrl": "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=500&auto=format&fit=crop&q=80",
     "facilities": [
-      "24/7 Emergency Care",
-      "Private",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
+      "24/7 Cardiac Emergency",
+      "Cath Lab & Angioplasty",
+      "Echo & TMT Suite",
+      "Cardiac ICU (CCU)",
+      "Pacemaker Center"
     ],
-    "imageUrl": "/images/hospitals/bhagyodaya-tirth.jpg"
+    "city": "Sagar, Madhya Pradesh",
+    "emergencyHelpline": "07582-220515 / 108"
   },
   {
-    "id": "SAG-F-0047",
-    "name": "Paras Multispeciality Hospital",
-    "type": "Multispecialty",
-    "address": "Sagar Market Road, Sagar",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Market Road",
-    "distanceKm": 7.6,
-    "phone": "07582-244134",
-    "emergencyHelpline": "07582-244134 / 108",
+    "id": "SAG-F-0033",
+    "name": "Shri Siddhi Vinayak Hospital",
+    "type": "Orthopaedic & Multispecialty Hospital",
+    "locality": "Poddar Colony",
+    "address": "Poddar Colony, Tilli Road, Sagar, MP 470002",
+    "phone": "07582-236200",
+    "distanceKm": 2.2,
     "has24x7Emergency": true,
     "icuBedsAvailable": 12,
-    "totalBeds": 250,
+    "totalBeds": 100,
     "rating": 4.91,
+    "imageUrl": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=500&auto=format&fit=crop&q=80",
     "facilities": [
-      "24/7 Emergency Care",
-      "Multispecialty",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
+      "Joint Replacement Suite",
+      "Arthroscopy & Sports Injury",
+      "Fracture Clinic",
+      "Physiotherapy Attached",
+      "24/7 Trauma"
     ],
-    "imageUrl": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=500&auto=format&fit=crop&q=80"
+    "city": "Sagar, Madhya Pradesh",
+    "emergencyHelpline": "07582-236200 / 108"
   },
   {
-    "id": "SAG-F-0056",
-    "name": "Alpha Care Homeo Clinic",
-    "type": "Homeopathy",
-    "address": "Opposite Jheel Boat Club, Sagar, MP 470002",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Jheel Boat Club",
-    "distanceKm": 7.8,
-    "phone": "09755338675",
-    "emergencyHelpline": "09755338675 / 108",
-    "has24x7Emergency": false,
-    "icuBedsAvailable": 0,
-    "totalBeds": 15,
-    "rating": 4.94,
+    "id": "SAG-F-0034",
+    "name": "Sri Paras Fracture & General Hospital",
+    "type": "Orthopaedic & Spine Hospital",
+    "locality": "Poddar Colony",
+    "address": "Tilli Road, State Bank Colony, Poddar Colony, Sagar, MP 470001",
+    "phone": "07582-236200",
+    "distanceKm": 2.3,
+    "has24x7Emergency": true,
+    "icuBedsAvailable": 10,
+    "totalBeds": 85,
+    "rating": 4.9,
+    "imageUrl": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&auto=format&fit=crop&q=80",
     "facilities": [
-      "OPD Consultation",
-      "Homeopathy",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
+      "Spine Surgery",
+      "Complex Trauma Fixation",
+      "Digital X-Ray & C-Arm",
+      "Joint Care OPD",
+      "Rehab Center"
     ],
-    "imageUrl": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&auto=format&fit=crop&q=80"
+    "city": "Sagar, Madhya Pradesh",
+    "emergencyHelpline": "07582-236200 / 108"
+  },
+  {
+    "id": "SAG-F-0012",
+    "name": "Neo Children Hospital",
+    "type": "Paediatric Specialty Hospital",
+    "locality": "Tilli",
+    "address": "Opposite Medical College, Ashok Vihar, Sagar, MP 470001",
+    "phone": "09407096372",
+    "distanceKm": 1.5,
+    "has24x7Emergency": true,
+    "icuBedsAvailable": 18,
+    "totalBeds": 90,
+    "rating": 4.94,
+    "imageUrl": "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=500&auto=format&fit=crop&q=80",
+    "facilities": [
+      "24/7 Paediatric ER",
+      "Level 3 NICU",
+      "Paediatric Neurology",
+      "Newborn Immunization",
+      "Child Nutrition Clinic"
+    ],
+    "city": "Sagar, Madhya Pradesh",
+    "emergencyHelpline": "09407096372 / 108"
   },
   {
     "id": "SAG-F-0062",
     "name": "Gandhi Eye Hospital",
-    "type": "Ophthalmology",
-    "address": "Behind HDFC Bank, Goughat Parkota, Sagar, MP 470002",
-    "city": "Sagar, Madhya Pradesh",
+    "type": "Eye Hospital & Laser Center",
     "locality": "Goughat Parkota",
-    "distanceKm": 8.1,
+    "address": "Behind HDFC Bank, Goughat Parkota, Sagar, MP 470002",
     "phone": "09302483960",
-    "emergencyHelpline": "09302483960 / 108",
-    "has24x7Emergency": true,
-    "icuBedsAvailable": 0,
-    "totalBeds": 15,
-    "rating": 4.97,
-    "facilities": [
-      "OPD Consultation",
-      "Ophthalmology",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0063",
-    "name": "Care for Eye Clinic",
-    "type": "Ophthalmology",
-    "address": "Near Sunrise Plaza, Ashok Vihar Colony, Dwarika Garden, Sagar, MP 470002",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Dwarika Garden",
-    "distanceKm": 8.3,
-    "phone": "07021811875",
-    "emergencyHelpline": "07021811875 / 108",
+    "distanceKm": 3.1,
     "has24x7Emergency": false,
-    "icuBedsAvailable": 0,
-    "totalBeds": 15,
-    "rating": 4.8,
-    "facilities": [
-      "OPD Consultation",
-      "Ophthalmology",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1512678080530-7760d81faba6?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0064",
-    "name": "Deepshree Health & Eye Clinic",
-    "type": "Ophthalmology / Medicine",
-    "address": "Near Chaitanya Hospital, Gopal Ganj, Sagar, MP 470001",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Gopal Ganj",
-    "distanceKm": 1,
-    "phone": "07987044304",
-    "emergencyHelpline": "07987044304 / 108",
-    "has24x7Emergency": false,
-    "icuBedsAvailable": 0,
-    "totalBeds": 15,
-    "rating": 4.83,
-    "facilities": [
-      "OPD Consultation",
-      "Ophthalmology / Medicine",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0067",
-    "name": "Bundelkhand Diagnostic Center BDC",
-    "type": "Imaging",
-    "address": "Bundelkhand Medical College, Tilli Road, Sagar, MP 470001",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "BMC / Tilli",
-    "distanceKm": 1.2,
-    "phone": "07582911100",
-    "emergencyHelpline": "07582911100 / 108",
-    "has24x7Emergency": false,
-    "icuBedsAvailable": 0,
-    "totalBeds": 15,
-    "rating": 4.86,
-    "facilities": [
-      "OPD Consultation",
-      "Imaging",
-      "Diagnostic Testing",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "/images/hospitals/bhagyodaya-tirth.jpg"
-  },
-  {
-    "id": "SAG-F-0068",
-    "name": "Lifegene Diagnostic",
-    "type": "Laboratory",
-    "address": "In front of Bundelkhand Medical College, Dwarika Garden, Sagar, MP 470002",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Dwarika Garden",
-    "distanceKm": 1.4,
-    "phone": "09589744288",
-    "emergencyHelpline": "09589744288 / 108",
-    "has24x7Emergency": false,
-    "icuBedsAvailable": 0,
-    "totalBeds": 15,
-    "rating": 4.89,
-    "facilities": [
-      "OPD Consultation",
-      "Laboratory",
-      "Diagnostic Testing",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0069",
-    "name": "Dr Jaanch Pathlabs",
-    "type": "Pathology",
-    "address": "12/3 near Rambag Temple, Chameli Chowk, Bada Bazaar, Sagar, MP 470002",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Bada Bazaar",
-    "distanceKm": 1.7,
-    "phone": "08871917788",
-    "emergencyHelpline": "08871917788 / 108",
-    "has24x7Emergency": false,
-    "icuBedsAvailable": 0,
-    "totalBeds": 15,
+    "icuBedsAvailable": 4,
+    "totalBeds": 50,
     "rating": 4.92,
+    "imageUrl": "https://images.unsplash.com/photo-1512678080530-7760d81faba6?w=500&auto=format&fit=crop&q=80",
     "facilities": [
-      "OPD Consultation",
-      "Pathology",
-      "Diagnostic Testing",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
+      "Cataract Phaco Surgery",
+      "Lasik Vision Correction",
+      "Glaucoma Clinic",
+      "Retina & Cornea Care",
+      "Optical Center"
     ],
-    "imageUrl": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&auto=format&fit=crop&q=80"
+    "city": "Sagar, Madhya Pradesh",
+    "emergencyHelpline": "09302483960 / 108"
   },
   {
-    "id": "SAG-F-0084",
-    "name": "Arihant Smile Care",
-    "type": "Dentistry",
-    "address": "Sugandha Bhavan Complex, Jawahar Ganj, Sagar, MP 470002",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Jawahar Ganj / Parkota",
-    "distanceKm": 1.9,
-    "phone": "08359980412",
-    "emergencyHelpline": "08359980412 / 108",
-    "has24x7Emergency": false,
-    "icuBedsAvailable": 0,
-    "totalBeds": 15,
-    "rating": 4.95,
-    "facilities": [
-      "OPD Consultation",
-      "Dentistry",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0085",
-    "name": "City Dental Hospital",
-    "type": "Dentistry",
-    "address": "Near Super Medical, Ankur Colony, Makronia, Sagar, MP 470004",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Makronia",
-    "distanceKm": 2.1,
-    "phone": "09755729617",
-    "emergencyHelpline": "09755729617 / 108",
+    "id": "SAG-F-0004",
+    "name": "Khemchand Hospital",
+    "type": "Private Multispecialty Hospital",
+    "locality": "Bada Bazaar",
+    "address": "Keshavganj Ward, Vardhman Colony, Bada Bazaar, Sagar, MP 470002",
+    "phone": "07898922699",
+    "distanceKm": 3.5,
     "has24x7Emergency": true,
-    "icuBedsAvailable": 0,
-    "totalBeds": 15,
-    "rating": 4.78,
-    "facilities": [
-      "OPD Consultation",
-      "Dentistry",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1512678080530-7760d81faba6?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0107",
-    "name": "Dr Pramendra Tiwari Physiotherapy Clinic",
-    "type": "Physiotherapy",
-    "address": "Sagar Apartment, Ajmani Complex, Makronia, Sagar",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Makronia",
-    "distanceKm": 2.3,
-    "phone": "08817777265",
-    "emergencyHelpline": "08817777265 / 108",
-    "has24x7Emergency": false,
-    "icuBedsAvailable": 0,
-    "totalBeds": 15,
-    "rating": 4.81,
-    "facilities": [
-      "OPD Consultation",
-      "Physiotherapy",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0127",
-    "name": "Yuva Skin Clinic",
-    "type": "Dermatology",
-    "address": "Dwarika Vihar Chowk near BMC, Tilli, Sagar, MP 470001",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Tilli",
-    "distanceKm": 2.5,
-    "phone": "07772820400",
-    "emergencyHelpline": "07772820400 / 108",
-    "has24x7Emergency": false,
-    "icuBedsAvailable": 0,
-    "totalBeds": 15,
-    "rating": 4.84,
-    "facilities": [
-      "OPD Consultation",
-      "Dermatology",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "/images/hospitals/bhagyodaya-tirth.jpg"
-  },
-  {
-    "id": "SAG-F-0140",
-    "name": "Dr Patel's Gastro Digestive Care",
-    "type": "Gastroenterology",
-    "address": "Beside Paras Fracture Hospital, Medical College Road, Tilli, Sagar",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Tilli",
-    "distanceKm": 2.8,
-    "phone": "07240969347",
-    "emergencyHelpline": "07240969347 / 108",
-    "has24x7Emergency": false,
-    "icuBedsAvailable": 0,
-    "totalBeds": 15,
+    "icuBedsAvailable": 10,
+    "totalBeds": 80,
     "rating": 4.87,
+    "imageUrl": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=500&auto=format&fit=crop&q=80",
     "facilities": [
-      "OPD Consultation",
-      "Gastroenterology",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
+      "General Medicine OPD",
+      "General Surgery",
+      "Obstetric Care",
+      "Pathology Lab",
+      "24/7 Pharmacy"
     ],
-    "imageUrl": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=500&auto=format&fit=crop&q=80"
+    "city": "Sagar, Madhya Pradesh",
+    "emergencyHelpline": "07898922699 / 108"
   },
   {
-    "id": "SAG-F-0141",
-    "name": "Dr RS Gour Heart Clinic",
-    "type": "Cardiology",
-    "address": "Kamla Market, Gujarati Bazar, Sagar",
-    "city": "Sagar, Madhya Pradesh",
-    "locality": "Gujarati Bazar",
-    "distanceKm": 3,
-    "phone": "07582220515",
-    "emergencyHelpline": "07582220515 / 108",
-    "has24x7Emergency": false,
-    "icuBedsAvailable": 0,
-    "totalBeds": 15,
-    "rating": 4.9,
+    "id": "SAG-F-0005",
+    "name": "Shree Laxmi Narayan Hospital",
+    "type": "Private Multispecialty Hospital",
+    "locality": "University Road",
+    "address": "University Road, Sagar, MP 470001",
+    "phone": "09893554608",
+    "distanceKm": 2.6,
+    "has24x7Emergency": true,
+    "icuBedsAvailable": 8,
+    "totalBeds": 70,
+    "rating": 4.85,
+    "imageUrl": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&auto=format&fit=crop&q=80",
     "facilities": [
-      "OPD Consultation",
-      "Cardiology",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
+      "Physician OPD",
+      "Gynaecology Care",
+      "Surgery",
+      "X-Ray & Lab",
+      "Ambulance"
     ],
-    "imageUrl": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&auto=format&fit=crop&q=80"
+    "city": "Sagar, Madhya Pradesh",
+    "emergencyHelpline": "09893554608 / 108"
   },
   {
-    "id": "SAG-F-0143",
-    "name": "Dr Satyendra Mishra Chest Physician Clinic",
-    "type": "Pulmonology",
-    "address": "Medical College Road, Tilli, Sagar",
+    "id": "SAG-F-0006",
+    "name": "MEERA HOSPITAL",
+    "type": "Private Multispecialty Hospital",
+    "locality": "Moti Nagar",
+    "address": "Near Moti Nagar Police Station / Chameli Chowk, Sagar, MP 470002",
+    "phone": "09479356033",
+    "distanceKm": 3.8,
+    "has24x7Emergency": true,
+    "icuBedsAvailable": 8,
+    "totalBeds": 65,
+    "rating": 4.86,
+    "imageUrl": "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=500&auto=format&fit=crop&q=80",
+    "facilities": [
+      "General Medicine",
+      "Emergency Casualty",
+      "Minor OT",
+      "Inpatient Wards",
+      "Diagnostics"
+    ],
     "city": "Sagar, Madhya Pradesh",
+    "emergencyHelpline": "09479356033 / 108"
+  },
+  {
+    "id": "SAG-F-0007",
+    "name": "Kalyanika Hospital",
+    "type": "Private General Hospital",
     "locality": "Tilli",
-    "distanceKm": 3.2,
-    "phone": "09755112432",
-    "emergencyHelpline": "09755112432 / 108",
-    "has24x7Emergency": false,
-    "icuBedsAvailable": 0,
-    "totalBeds": 15,
-    "rating": 4.93,
+    "address": "Near Nirmal Bandhan Marriage Hall, Medical College Road, Tilli, Sagar",
+    "phone": "08770976421",
+    "distanceKm": 1.7,
+    "has24x7Emergency": true,
+    "icuBedsAvailable": 6,
+    "totalBeds": 50,
+    "rating": 4.84,
+    "imageUrl": "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=500&auto=format&fit=crop&q=80",
     "facilities": [
-      "OPD Consultation",
-      "Pulmonology",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
+      "General Medicine",
+      "OPD & Day Care",
+      "Observation Ward",
+      "Pathology",
+      "Pharmacy"
     ],
-    "imageUrl": "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=500&auto=format&fit=crop&q=80"
-  },
-  {
-    "id": "SAG-F-0148",
-    "name": "Dr Anurag Jain Diabetes Center",
-    "type": "Diabetology",
-    "address": "Deepshree Health & Eye Clinic, Gopal Ganj, Sagar",
     "city": "Sagar, Madhya Pradesh",
-    "locality": "Gopal Ganj",
-    "distanceKm": 3.4,
-    "phone": "07987044304",
-    "emergencyHelpline": "07987044304 / 108",
-    "has24x7Emergency": false,
-    "icuBedsAvailable": 0,
-    "totalBeds": 15,
-    "rating": 4.96,
-    "facilities": [
-      "OPD Consultation",
-      "Diabetology",
-      "In-house Pharmacy",
-      "Instant Doctor Token Queue",
-      "Ayushman Bharat / ABDM"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1512678080530-7760d81faba6?w=500&auto=format&fit=crop&q=80"
+    "emergencyHelpline": "08770976421 / 108"
   }
 ];
 

@@ -77,24 +77,45 @@ export default function TopDoctorCarousel({
   const hospitalDoctors = React.useMemo(() => {
     if (!currentHospital) return [];
 
-    // Exact or substring match with hospital name or ID
+    const currHospName = (currentHospital.name || '').toLowerCase().trim();
+    const currHospId = currentHospital.id;
+
+    // 1. Direct match by hospital ID or hospital Name
     const directMatches = allDoctors.filter(d => {
-      const docHosp = (d.hospitalName || '').toLowerCase();
-      const currHosp = (currentHospital.name || '').toLowerCase();
-      return (
-        docHosp.includes(currHosp) ||
-        currHosp.includes(docHosp) ||
-        (currentHospital.id === 'hosp-bhagyodaya' && (d.id.startsWith('doc-bt') || docHosp.includes('bhagyodaya'))) ||
-        (currentHospital.id === 'hosp-1' && (docHosp.includes('apollo') || d.id === 'doc-1' || d.id === 'doc-5' || d.id === 'doc-6' || d.id === 'doc-8')) ||
-        (currentHospital.id === 'hosp-2' && (docHosp.includes('fortis') || d.id === 'doc-2' || d.id === 'doc-3' || d.id === 'doc-bt-1' || d.id === 'doc-bt-5')) ||
-        (currentHospital.id === 'hosp-3' && (docHosp.includes('max') || d.id === 'doc-4' || d.id === 'doc-7' || d.id === 'doc-bt-3' || d.id === 'doc-bt-4'))
-      );
+      if (d.hospitalId && d.hospitalId === currHospId) return true;
+      const docHosp = (d.hospitalName || '').toLowerCase().trim();
+      if (!docHosp || !currHospName) return false;
+      return docHosp.includes(currHospName) || currHospName.includes(docHosp);
     });
 
     if (directMatches.length > 0) return directMatches;
 
-    // Fallback: Pad with all doctors
-    return allDoctors;
+    // 2. Department/Specialty affinity match for this hospital type
+    const specAffinity = allDoctors.filter(d => {
+      const spec = (d.specialization || '').toLowerCase();
+      const hType = (currentHospital.type || '').toLowerCase();
+      if (hType.includes('maternity') || hType.includes('gynaec')) {
+        return spec.includes('gynaec') || spec.includes('obstet') || spec.includes('paediat');
+      }
+      if (hType.includes('cardiac') || hType.includes('heart')) {
+        return spec.includes('cardio') || spec.includes('medicine');
+      }
+      if (hType.includes('ortho') || hType.includes('fracture')) {
+        return spec.includes('ortho') || spec.includes('joint');
+      }
+      if (hType.includes('eye') || hType.includes('ophthal')) {
+        return spec.includes('ophthal') || spec.includes('eye');
+      }
+      if (hType.includes('paediat') || hType.includes('child')) {
+        return spec.includes('paediat') || spec.includes('child');
+      }
+      return false;
+    });
+
+    if (specAffinity.length > 0) return specAffinity;
+
+    // 3. Fallback: First 4 general consultants
+    return allDoctors.slice(0, 4);
   }, [allDoctors, currentHospital]);
 
   // Doctor carousel pagination calculations

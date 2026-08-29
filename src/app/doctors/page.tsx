@@ -376,17 +376,11 @@ function DoctorsContent() {
       if (selectedHospitalId !== 'all') {
         const activeHosp = hospitals.find(h => h.id === selectedHospitalId);
         if (activeHosp) {
-          const hospName = activeHosp.name.toLowerCase();
+          const hospName = activeHosp.name.toLowerCase().trim();
           list = list.filter(d => {
-            const docHosp = (d.hospitalName || '').toLowerCase();
-            return (
-              docHosp.includes(hospName) ||
-              hospName.includes(docHosp) ||
-              (activeHosp.id === 'hosp-bhagyodaya' && (d.id.startsWith('doc-bt') || docHosp.includes('bhagyodaya'))) ||
-              (activeHosp.id === 'hosp-1' && (docHosp.includes('apollo') || d.id === 'doc-1' || d.id === 'doc-5')) ||
-              (activeHosp.id === 'hosp-2' && (docHosp.includes('fortis') || d.id === 'doc-2' || d.id === 'doc-3')) ||
-              (activeHosp.id === 'hosp-3' && (docHosp.includes('max') || d.id === 'doc-4' || d.id === 'doc-7'))
-            );
+            if (d.hospitalId && d.hospitalId === activeHosp.id) return true;
+            const docHosp = (d.hospitalName || '').toLowerCase().trim();
+            return docHosp.includes(hospName) || hospName.includes(docHosp);
           });
         }
       }

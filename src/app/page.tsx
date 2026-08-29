@@ -79,10 +79,13 @@ import { TopPathologySection } from '../components/diagnostics/TopPathologySecti
 import { TopXRaysSection } from '../components/diagnostics/TopXRaysSection';
 import { ComparePricesSection } from '../components/diagnostics/ComparePricesSection';
 import {
-  PromoCarouselBanner,
   OPDExpressPromoBanner,
-  FullBodyCheckupPromoBanner,
-  DiagnosticFilmPromoBanner
+  HomePathologyPromoBanner,
+  DigitalImagingPromoBanner,
+  PriceComparisonPromoBanner,
+  ExpressPharmaPromoBanner,
+  PrescriptionUploadPromoBanner,
+  FamilyHealthPromoBanner
 } from '../components/promotions/PromoBanners';
 
 // Category Carousel Chips for Pharma
@@ -588,6 +591,9 @@ export default function HomeCockpit() {
             </div>
           </div>
 
+          {/* PROMOTIONAL BANNER: 1-CLICK PRESCRIPTION VAULT & PHARMACIST REFILLS */}
+          <PrescriptionUploadPromoBanner />
+
           {/* FAST 10-MINUTE DOORSTEP MEDICINES */}
           <div>
             <div className="flex items-center justify-between mb-3 px-1 gap-2">
@@ -699,6 +705,9 @@ export default function HomeCockpit() {
               })}
             </div>
           </div>
+
+          {/* PROMOTIONAL BANNER: 10-MINUTE EMERGENCY MEDICINE DELIVERY */}
+          <ExpressPharmaPromoBanner />
         </div>
 
         {/* Full-Size Product Detail Screen with Generic Substitutes & Offers */}
@@ -1070,23 +1079,26 @@ export default function HomeCockpit() {
             </div>
           </div>
 
-          {/* PROMOTIONAL CAROUSEL BANNER 1: PATHOLOGY HOME COLLECTION & DIGITAL REPORTS */}
-          <PromoCarouselBanner initialSlide={0} />
+          {/* PROMOTIONAL BANNER 1: LIVE DOCTOR OPD TOKENS & QUEUE TRACKING */}
+          <OPDExpressPromoBanner />
 
           {/* DIAGNOSTIC VIEW 1: TOP CT SCANS */}
           <TopCTScansSection />
 
-          {/* PROMOTIONAL CAROUSEL BANNER 2: OPD TOKENS & LIVE QUEUE TRACKING */}
-          <PromoCarouselBanner initialSlide={1} />
+          {/* PROMOTIONAL BANNER 2: 100% FREE DOORSTEP PATHOLOGY SAMPLE COLLECTION */}
+          <HomePathologyPromoBanner />
 
           {/* DIAGNOSTIC VIEW 2: TOP PATHOLOGIES & LAB TESTS */}
           <TopPathologySection />
 
-          {/* PROMOTIONAL CAROUSEL BANNER 3: 128-SLICE CT & DIGITAL X-RAY FAST-TRACK */}
-          <PromoCarouselBanner initialSlide={2} />
+          {/* PROMOTIONAL BANNER 3: 128-SLICE CT & DIGITAL RADIOGRAPHY FAST-TRACK */}
+          <DigitalImagingPromoBanner />
 
           {/* DIAGNOSTIC VIEW 3: TOP DIGITAL X-RAYS */}
           <TopXRaysSection />
+
+          {/* PROMOTIONAL BANNER 4: 100% DIAGNOSTIC PRICE TRANSPARENCY & COMPARISON */}
+          <PriceComparisonPromoBanner />
 
           {/* DIAGNOSTIC VIEW 4: COMPARE PRICES SECTION */}
           <ComparePricesSection />
@@ -1395,6 +1407,9 @@ export default function HomeCockpit() {
             })}
           </div>
         </div>
+
+        {/* PROMOTIONAL BANNER: FAMILY HEALTH & ABHA VAULT SPOTLIGHT */}
+        <FamilyHealthPromoBanner />
 
         {/* 4. ENCRYPTED ABHA HEALTH RECORDS VAULT */}
         <div className="glass-card p-4">

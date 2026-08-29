@@ -3,6 +3,31 @@
 @tailwind utilities;
 
 @layer base {
+  /* Universal scrollbar removal across entire project for ultra-clean glassmorphic UI */
+  *, *::before, *::after, html, body {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+
+  *::-webkit-scrollbar,
+  ::-webkit-scrollbar,
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none !important;
+    width: 0px !important;
+    height: 0px !important;
+    background: transparent !important;
+    -webkit-appearance: none !important;
+  }
+
+  *::-webkit-scrollbar-thumb,
+  ::-webkit-scrollbar-thumb,
+  *::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-track {
+    display: none !important;
+    background: transparent !important;
+  }
+
   :root {
     --background: 210 40% 98%;
     --foreground: 222.2 84% 4.9%;
@@ -497,5 +522,46 @@ body {
     radial-gradient(at 50% 50%, rgba(244, 63, 94, 0.04) 0px, transparent 50%),
     radial-gradient(at 80% 85%, rgba(99, 102, 241, 0.06) 0px, transparent 50%),
     radial-gradient(at 20% 80%, rgba(45, 212, 191, 0.05) 0px, transparent 50%);
+}
+
+/* =========================================================================
+ * ZERO-SCROLLBAR UTILITIES (100% INVISIBLE SCROLLING EVERYWHERE)
+ * ========================================================================= */
+@layer utilities {
+  .no-scrollbar,
+  .scrollbar-none,
+  .hide-scrollbar {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+
+  .no-scrollbar::-webkit-scrollbar,
+  .scrollbar-none::-webkit-scrollbar,
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+  }
+}
+
+/* Ensure smooth scrolling across touch devices without showing scrollbars */
+.overflow-x-auto,
+.overflow-y-auto,
+.overflow-auto,
+[class*="overflow-"] {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+.overflow-x-auto::-webkit-scrollbar,
+.overflow-y-auto::-webkit-scrollbar,
+.overflow-auto::-webkit-scrollbar,
+[class*="overflow-"]::-webkit-scrollbar {
+  display: none !important;
+  width: 0px !important;
+  height: 0px !important;
+  background: transparent !important;
 }
 

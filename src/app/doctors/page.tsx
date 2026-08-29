@@ -919,7 +919,7 @@ function DoctorsContent() {
       <div className="w-full max-w-[1720px] mx-auto px-2 sm:px-4 lg:px-8 xl:px-10 flex items-start">
         {/* Left Vertical Category Rail (Identical E-Commerce UX to Pharmacy Sector) */}
         <aside
-          className="w-[88px] sm:w-[110px] md:w-[125px] shrink-0 bg-white border-r border-slate-200/80 sticky top-[138px] max-h-[calc(100vh-138px)] overflow-y-auto overscroll-contain touch-pan-y py-2 scroll-smooth"
+          className="w-[88px] sm:w-[110px] md:w-[125px] shrink-0 bg-white border-r border-slate-200/80 sticky top-[138px] max-h-[calc(100vh-138px)] overflow-y-auto no-scrollbar scrollbar-none overscroll-contain touch-pan-y py-2 scroll-smooth"
           style={{ WebkitOverflowScrolling: 'touch', touchAction: 'pan-y' }}
         >
           <div className="flex flex-col space-y-1 pb-36">

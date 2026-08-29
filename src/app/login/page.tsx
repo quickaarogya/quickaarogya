@@ -71,8 +71,8 @@ function LoginForm() {
     <div className="w-full max-w-md space-y-6">
       {/* Brand Header */}
       <div className="text-center space-y-2">
-        <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-teal-600 to-sky-600 flex items-center justify-center text-white shadow-md mx-auto">
-          <Heart size={26} fill="currentColor" />
+        <div className="flex items-center justify-center mx-auto mb-2">
+          <img src="/logo.png" alt="Quick Aarogya Logo" className="h-16 w-auto object-contain drop-shadow-sm" />
         </div>
         <h1 className="font-display font-extrabold text-2xl tracking-tight text-slate-900 dark:text-slate-50">
           Welcome to Quick <span className="text-teal-600 dark:text-teal-400">Aarogya</span>

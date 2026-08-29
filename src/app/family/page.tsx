@@ -213,7 +213,7 @@ export default function FamilyPage() {
   });
 
   return (
-    <div className="page-wrapper animate-fade-in space-y-6">
+    <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-6 space-y-6">
       {/* Top Action Bar */}
       <div className="flex items-center justify-end pb-1">
         <Button
@@ -499,7 +499,7 @@ export default function FamilyPage() {
           )}
 
           {/* Dependents Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
             {familyMembers.map((member) => {
               const isActive = activeProfileId === member.id;
               const age = calculateAge(member.dateOfBirth);

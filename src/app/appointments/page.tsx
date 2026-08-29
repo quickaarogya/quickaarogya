@@ -230,41 +230,43 @@ export default function AppointmentsPage() {
     <div className="min-h-screen pb-28 text-slate-900 select-none">
       {/* Sticky Tab Switcher */}
       <div className="sticky top-0 z-30 bg-white/75 backdrop-blur-xl border-b border-white/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-        <div className="px-4 py-2 flex items-center gap-2 max-w-4xl mx-auto">
-          <button
-            onClick={() => setActiveTab('upcoming')}
-            className={`flex-1 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
-              activeTab === 'upcoming'
-                ? 'bg-white/90 text-[#026dd9] shadow-xs border border-white/80'
-                : 'text-slate-500 hover:text-slate-800'
-            }`}
-          >
-            Active Tokens ({upcomingAppointments.length})
-          </button>
-          <button
-            onClick={() => setActiveTab('past')}
-            className={`flex-1 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
-              activeTab === 'past'
-                ? 'bg-white/90 text-[#026dd9] shadow-xs border border-white/80'
-                : 'text-slate-500 hover:text-slate-800'
-            }`}
-          >
-            Past History ({pastAppointments.length})
-          </button>
+        <div className="px-4 py-2.5 flex items-center gap-2 w-full max-w-[1720px] mx-auto sm:px-6 lg:px-8 xl:px-10">
+          <div className="flex items-center gap-2 max-w-md mx-auto w-full">
+            <button
+              onClick={() => setActiveTab('upcoming')}
+              className={`flex-1 py-2 rounded-xl text-xs font-black transition-all cursor-pointer ${
+                activeTab === 'upcoming'
+                  ? 'bg-white/90 text-[#026dd9] shadow-xs border border-white/80'
+                  : 'text-slate-500 hover:text-slate-800'
+              }`}
+            >
+              Active Tokens ({upcomingAppointments.length})
+            </button>
+            <button
+              onClick={() => setActiveTab('past')}
+              className={`flex-1 py-2 rounded-xl text-xs font-black transition-all cursor-pointer ${
+                activeTab === 'past'
+                  ? 'bg-white/90 text-[#026dd9] shadow-xs border border-white/80'
+                  : 'text-slate-500 hover:text-slate-800'
+              }`}
+            >
+              Past History ({pastAppointments.length})
+            </button>
+          </div>
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 py-4 space-y-4">
+      <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-6 space-y-6">
         {actionSuccessMsg && (
-          <div className="p-3 rounded-2xl bg-emerald-50/90 backdrop-blur-md border border-emerald-200 text-xs font-bold text-emerald-800 flex items-center gap-2 shadow-2xs">
+          <div className="p-3.5 rounded-2xl bg-emerald-50/90 backdrop-blur-md border border-emerald-200 text-xs font-bold text-emerald-800 flex items-center gap-2 shadow-2xs">
             <CheckCircle2 size={16} className="text-emerald-600 shrink-0" />
             <span>{actionSuccessMsg}</span>
           </div>
         )}
 
-        {/* INLINE RESCHEDULE DRAWER/VIEW */}
+        {/* Reschedule Modal Card (if active) */}
         {rescheduleApt && (
-          <div className="glass-card p-4 border-2 border-[#026dd9]/80 space-y-3">
+          <div className="glass-card p-5 border-blue-200/80 bg-blue-50/60 space-y-4 max-w-2xl mx-auto">
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="font-black text-sm text-slate-900">Reschedule Consultation</h3>
@@ -277,7 +279,7 @@ export default function AppointmentsPage() {
 
             <div className="space-y-2">
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Choose Slot</span>
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
                 {availableSlots.map(slot => (
                   <button
                     key={slot.time}
@@ -309,7 +311,7 @@ export default function AppointmentsPage() {
         {/* UPCOMING APPOINTMENTS LIST */}
         {activeTab === 'upcoming' ? (
           upcomingAppointments.length === 0 ? (
-            <div className="glass-card p-8 text-center">
+            <div className="glass-card p-10 text-center max-w-md mx-auto">
               <Clock className="w-12 h-12 text-slate-300 mx-auto mb-2" />
               <h3 className="font-black text-sm text-slate-800">No Active Appointments</h3>
               <p className="text-xs text-slate-400 mt-1 mb-4">Book slots with top specialists without waiting in lines.</p>
@@ -318,7 +320,7 @@ export default function AppointmentsPage() {
               </Button>
             </div>
           ) : (
-            <div className="space-y-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
               {upcomingAppointments.map(apt => {
                 const isVideo = apt.type === 'video_teleconsult';
 
@@ -403,7 +405,7 @@ export default function AppointmentsPage() {
               <p className="text-xs text-slate-400 mt-1">Completed medical appointments will appear here.</p>
             </div>
           ) : (
-            <div className="space-y-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
               {pastAppointments.map(apt => (
                 <div key={apt.id} className="p-4 rounded-3xl bg-white border border-slate-200 shadow-2xs flex items-center justify-between">
                   <div>

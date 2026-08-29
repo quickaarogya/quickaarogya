@@ -175,7 +175,7 @@ export default function MedicalRecordsPage() {
   };
 
   return (
-    <div className="page-wrapper animate-fade-in space-y-6">
+    <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-6 space-y-6">
       {/* Top View Mode & Upload Toolbar */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pb-1">
         <div className="inline-flex p-1 bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-bold">
@@ -355,7 +355,7 @@ export default function MedicalRecordsPage() {
               onAction={() => setIsUploadModalOpen(true)}
             />
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {documents.map((doc) => (
                 <Card
                   key={doc.id}

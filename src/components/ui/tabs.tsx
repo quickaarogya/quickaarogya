@@ -6,7 +6,7 @@ interface TabsProps {
   activeTab: string;
   onTabChange: (id: string) => void;
   variant?: "underline" | "pills";
-  accentColor?: "teal" | "care";
+  accentColor?: "doctors" | "pharma" | "care" | "teal";
   className?: string;
 }
 
@@ -18,13 +18,33 @@ export function Tabs({
   accentColor = "teal",
   className,
 }: TabsProps) {
+  const isDoctors = accentColor === "doctors";
   const isCare = accentColor === "care";
+  const isPharma = accentColor === "pharma" || accentColor === "teal";
+
+  const getActiveTextClass = () => {
+    if (isDoctors) return "text-[#026dd9] dark:text-sky-400 font-black";
+    if (isCare) return "text-[#ff645e] dark:text-rose-400 font-black";
+    return "text-[#0F766E] dark:text-teal-400 font-black";
+  };
+
+  const getActiveBadgeClass = () => {
+    if (isDoctors) return "bg-blue-50 text-[#026dd9] dark:bg-blue-950 dark:text-sky-300 font-black border border-blue-200/60";
+    if (isCare) return "bg-rose-50 text-[#ff645e] dark:bg-rose-950 dark:text-rose-300 font-black border border-rose-200/60";
+    return "bg-teal-50 text-[#0F766E] dark:bg-teal-950 dark:text-teal-300 font-black border border-teal-200/60";
+  };
+
+  const getUnderlineClass = () => {
+    if (isDoctors) return "bg-[#026dd9] shadow-sm shadow-blue-500/40";
+    if (isCare) return "bg-[#ff645e] shadow-sm shadow-rose-500/40";
+    return "bg-[#0F766E] shadow-sm shadow-teal-500/40";
+  };
 
   if (variant === "pills") {
     return (
       <div
         className={cn(
-          "inline-flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-lg gap-1",
+          "inline-flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-xl gap-1",
           className
         )}
       >
@@ -35,11 +55,9 @@ export function Tabs({
               key={tab.id}
               onClick={() => onTabChange(tab.id)}
               className={cn(
-                "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold transition-all select-none",
+                "inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all select-none cursor-pointer",
                 isActive
-                  ? isCare
-                    ? "bg-white dark:bg-slate-900 text-[#ff645e] shadow-xs font-bold"
-                    : "bg-white dark:bg-slate-900 text-teal-700 dark:text-teal-300 shadow-xs font-bold"
+                  ? cn("bg-white dark:bg-slate-900 shadow-xs", getActiveTextClass())
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
               )}
             >
@@ -50,9 +68,7 @@ export function Tabs({
                   className={cn(
                     "text-[10px] px-1.5 py-0.2 rounded-full",
                     isActive
-                      ? isCare
-                        ? "bg-rose-50 text-[#ff645e] dark:bg-rose-950 dark:text-rose-300 font-bold"
-                        : "bg-teal-50 text-teal-700 dark:bg-teal-950 dark:text-teal-300 font-bold"
+                      ? getActiveBadgeClass()
                       : "bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-300"
                   )}
                 >
@@ -69,7 +85,7 @@ export function Tabs({
   return (
     <div
       className={cn(
-        "flex border-b border-slate-200 dark:border-slate-800 gap-6 overflow-x-auto",
+        "flex border-b border-slate-200 dark:border-slate-800 gap-6 overflow-x-auto scrollbar-none",
         className
       )}
     >
@@ -80,11 +96,9 @@ export function Tabs({
             key={tab.id}
             onClick={() => onTabChange(tab.id)}
             className={cn(
-              "relative pb-3 text-xs sm:text-sm font-semibold transition-colors flex items-center gap-2 whitespace-nowrap select-none",
+              "relative pb-3 text-xs sm:text-sm font-semibold transition-colors flex items-center gap-2 whitespace-nowrap select-none cursor-pointer",
               isActive
-                ? isCare
-                  ? "text-[#ff645e] font-bold"
-                  : "text-teal-700 dark:text-teal-400 font-bold"
+                ? getActiveTextClass()
                 : "text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200"
             )}
           >
@@ -93,11 +107,9 @@ export function Tabs({
             {tab.count !== undefined && (
               <span
                 className={cn(
-                  "text-[10px] px-1.5 py-0.5 rounded-full font-bold",
+                  "text-[10px] px-2 py-0.5 rounded-full font-bold",
                   isActive
-                    ? isCare
-                      ? "bg-rose-100 text-[#ff645e] dark:bg-rose-950 dark:text-rose-300"
-                      : "bg-teal-100 text-teal-800 dark:bg-teal-950 dark:text-teal-300"
+                    ? getActiveBadgeClass()
                     : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400"
                 )}
               >
@@ -107,8 +119,8 @@ export function Tabs({
             {isActive && (
               <span
                 className={cn(
-                  "absolute bottom-0 left-0 right-0 h-0.5 rounded-full",
-                  isCare ? "bg-[#ff645e]" : "bg-teal-600 dark:bg-teal-400"
+                  "absolute bottom-0 left-0 right-0 h-0.5 rounded-full transition-all",
+                  getUnderlineClass()
                 )}
               />
             )}

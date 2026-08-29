@@ -77,14 +77,25 @@ export default function MobileNav() {
 
               {/* Icon Container with Badge */}
               <div className="relative flex items-center justify-center mt-1">
-                <Icon
-                  size={21}
-                  className={cn(
-                    "transition-transform duration-150",
-                    isActive && "scale-110"
-                  )}
-                  strokeWidth={isActive ? 2.3 : 1.8}
-                />
+                {item.id === 'home' || item.href === '/' ? (
+                  <img
+                    src="/logo.png"
+                    alt={item.name}
+                    className={cn(
+                      "h-[22px] w-auto max-w-[34px] object-contain transition-transform duration-150",
+                      isActive ? "scale-110 drop-shadow-xs" : "opacity-85"
+                    )}
+                  />
+                ) : (
+                  <Icon
+                    size={21}
+                    className={cn(
+                      "transition-transform duration-150",
+                      isActive && "scale-110"
+                    )}
+                    strokeWidth={isActive ? 2.3 : 1.8}
+                  />
+                )}
 
                 {badge && (
                   <span

@@ -88,7 +88,7 @@ export default function HealthcareExpensesPage() {
   };
 
   return (
-    <div className="page-wrapper animate-fade-in">
+    <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-6 space-y-6">
       {/* Header */}
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '1rem', marginBottom: '1.75rem' }}>
         <div>

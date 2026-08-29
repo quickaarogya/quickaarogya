@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
-import Sidebar from '../components/layout/Sidebar';
 import MobileNav from '../components/layout/MobileNav';
 import MobileHeader from '../components/layout/MobileHeader';
 import DesktopHeader from '../components/layout/DesktopHeader';
@@ -12,6 +11,18 @@ import QueryProvider from '../lib/query-provider';
 export const metadata: Metadata = {
   title: 'Quick Aarogya | Unified Family Health & Care Management Platform',
   description: 'Production-grade healthcare platform for doctor discovery, medication tracking, prescription vaults, diagnostic bookings, family caregiver management, and emergency response.',
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon.png', type: 'image/png' },
+      { url: '/logo.png', type: 'image/png' }
+    ],
+    shortcut: ['/favicon.ico'],
+    apple: [
+      { url: '/apple-icon.png' },
+      { url: '/logo.png' }
+    ],
+  },
 };
 
 export const viewport: Viewport = {
@@ -41,21 +52,15 @@ export default function RootLayout({
           {/* Mobile Top Header (hidden on lg) */}
           <MobileHeader />
 
-          {/* Main Layout Container */}
-          <div className="flex min-h-screen relative z-10">
-            {/* Desktop Left Sidebar (hidden on mobile, persistent collapsible on lg) */}
-            <Sidebar />
+          {/* Desktop Full-Width E-Commerce Top Header (visible on lg) */}
+          <DesktopHeader />
 
-            {/* Main Content Area */}
-            <div className="flex-1 flex flex-col min-w-0">
-              {/* Desktop Header (hidden on mobile, active on lg) */}
-              <DesktopHeader />
-
-              {/* Scrollable Page Content with Safe Area Bottom Padding on Mobile */}
-              <main className="flex-1 w-full pb-[calc(7.5rem+env(safe-area-inset-bottom))] lg:pb-8">
-                {children}
-              </main>
-            </div>
+          {/* Main Layout Container (Full Width Consumer Storefront) */}
+          <div className="flex flex-col min-h-screen relative z-10">
+            {/* Scrollable Page Content with Safe Area Bottom Padding on Mobile */}
+            <main className="flex-1 w-full pb-[calc(7.5rem+env(safe-area-inset-bottom))] lg:pb-12">
+              {children}
+            </main>
           </div>
 
           {/* Global Dismissible Top Cart Alert Toast */}

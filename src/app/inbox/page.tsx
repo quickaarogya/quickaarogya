@@ -48,8 +48,14 @@ import { EmptyState } from '../../components/ui/empty-state';
 import { Dialog, DialogHeader, DialogTitle, DialogDescription } from '../../components/ui/dialog';
 import { Input } from '../../components/ui/input';
 import { Select } from '../../components/ui/select';
+import { useAppModeStore } from '@/stores/useAppModeStore';
 
 export default function HealthInboxPage() {
+  const { appMode } = useAppModeStore();
+  const isDoctors = appMode === 'doctors';
+  const isCare = appMode === 'care';
+  const isPharma = appMode === 'pharma';
+
   const [items, setItems] = useState<HealthInboxItem[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<InboxCategory | 'all'>('all');
   const [selectedPriority, setSelectedPriority] = useState<InboxPriority | 'all'>('all');
@@ -188,13 +194,25 @@ export default function HealthInboxPage() {
   };
 
   return (
-    <div className="page-wrapper animate-fade-in space-y-6 pb-12">
+    <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-6 space-y-6 pb-12">
       {/* Top Action Toolbar */}
       <div className="flex items-center justify-between gap-3 pb-1">
         {unreadCount > 0 ? (
-          <Badge variant="danger" className="font-bold text-xs">{unreadCount} Unread</Badge>
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-rose-50 text-rose-700 dark:bg-rose-950/80 dark:text-rose-300 border border-rose-200/80">
+            <span className="w-1.5 h-1.5 rounded-full bg-rose-600 animate-ping" />
+            {unreadCount} Unread
+          </span>
         ) : (
-          <Badge variant="teal" className="font-bold text-xs">All Caught Up</Badge>
+          <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black border ${
+            isDoctors
+              ? 'bg-blue-50 text-[#026dd9] border-blue-200 dark:bg-blue-950 dark:text-sky-300'
+              : isCare
+              ? 'bg-rose-50 text-[#ff645e] border-rose-200 dark:bg-rose-950 dark:text-rose-300'
+              : 'bg-teal-50 text-[#0F766E] border-teal-200 dark:bg-teal-950 dark:text-teal-300'
+          }`}>
+            <CheckCircle2 size={13} />
+            All Caught Up
+          </span>
         )}
 
         <div className="flex items-center gap-2">
@@ -220,12 +238,24 @@ export default function HealthInboxPage() {
         </div>
       </div>
 
-      {/* Summary KPI Strip */}
+      {/* Summary KPI Strip with Mode Theme Adapters */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
-        <div className="glass-card p-3 sm:p-3.5 flex flex-col justify-between hover:shadow-md transition-all border-teal-100/80 dark:border-teal-900/40">
+        <div className={`glass-card p-3 sm:p-3.5 flex flex-col justify-between hover:shadow-md transition-all ${
+          isDoctors
+            ? 'border-blue-100/80 dark:border-blue-900/40'
+            : isCare
+            ? 'border-rose-100/80 dark:border-rose-900/40'
+            : 'border-teal-100/80 dark:border-teal-900/40'
+        }`}>
           <div className="flex items-center justify-between">
             <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Unread Alerts</span>
-            <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-teal-50 text-teal-600 flex items-center justify-center shrink-0">
+            <div className={`w-6 h-6 sm:w-7 sm:h-7 rounded-lg flex items-center justify-center shrink-0 ${
+              isDoctors
+                ? 'bg-blue-50 text-[#026dd9] dark:bg-blue-950 dark:text-sky-400'
+                : isCare
+                ? 'bg-rose-50 text-[#ff645e] dark:bg-rose-950 dark:text-rose-400'
+                : 'bg-teal-50 text-[#0F766E] dark:bg-teal-950 dark:text-teal-400'
+            }`}>
               <Bell size={13} />
             </div>
           </div>
@@ -287,7 +317,7 @@ export default function HealthInboxPage() {
         </div>
       </div>
 
-      {/* Category Tabs */}
+      {/* Category Tabs with Dynamic Mode Accent Color */}
       <Tabs
         tabs={[
           { id: 'all', label: 'All Activities', count: allItems.length },
@@ -302,6 +332,7 @@ export default function HealthInboxPage() {
         activeTab={selectedCategory}
         onTabChange={(tab) => setSelectedCategory(tab as any)}
         variant="underline"
+        accentColor={isDoctors ? 'doctors' : isCare ? 'care' : 'pharma'}
       />
 
       {/* Filter Bar (Search, Priority, Read/Unread) */}
@@ -370,7 +401,13 @@ export default function HealthInboxPage() {
                 variant={isUnread ? (item.priority === 'urgent' ? 'alert' : 'highlight') : 'interactive'}
                 padding="default"
                 className={`flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 transition-all hover:shadow-md ${
-                  isUnread ? 'border-l-4 border-l-teal-600 dark:border-l-teal-400 bg-teal-50/20 dark:bg-teal-950/20' : ''
+                  isUnread
+                    ? isDoctors
+                      ? 'border-l-4 border-l-[#026dd9] dark:border-l-sky-400 bg-blue-50/25 dark:bg-blue-950/25'
+                      : isCare
+                      ? 'border-l-4 border-l-[#ff645e] dark:border-l-rose-400 bg-rose-50/25 dark:bg-rose-950/25'
+                      : 'border-l-4 border-l-[#0F766E] dark:border-l-teal-400 bg-teal-50/25 dark:bg-teal-950/25'
+                    : ''
                 }`}
               >
                 {/* Left Content */}
@@ -407,7 +444,9 @@ export default function HealthInboxPage() {
                     {/* Title */}
                     <h3 className="font-bold text-sm text-slate-900 dark:text-slate-100 flex items-center gap-1.5">
                       {isUnread && (
-                        <span className="w-2 h-2 rounded-full bg-teal-600 inline-block flex-shrink-0" />
+                        <span className={`w-2 h-2 rounded-full inline-block flex-shrink-0 ${
+                          isDoctors ? 'bg-[#026dd9]' : isCare ? 'bg-[#ff645e]' : 'bg-[#0F766E]'
+                        }`} />
                       )}
                       <span className="truncate">{item.title}</span>
                     </h3>
@@ -429,10 +468,16 @@ export default function HealthInboxPage() {
                       {item.deliveryChannels && item.deliveryChannels.length > 0 && (
                         <button
                           onClick={() => setSelectedDeliveryItem(item)}
-                          className="text-[11px] font-medium text-slate-500 hover:text-teal-700 dark:hover:text-teal-400 flex items-center gap-1 px-2 py-0.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                          className={`text-[11px] font-medium flex items-center gap-1 px-2 py-0.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer ${
+                            isDoctors
+                              ? 'text-slate-500 hover:text-[#026dd9]'
+                              : isCare
+                              ? 'text-slate-500 hover:text-[#ff645e]'
+                              : 'text-slate-500 hover:text-[#0F766E]'
+                          }`}
                           title="View multi-channel delivery audit logs"
                         >
-                          <Radio size={11} className="text-teal-600" />
+                          <Radio size={11} className={isDoctors ? 'text-[#026dd9]' : isCare ? 'text-[#ff645e]' : 'text-[#0F766E]'} />
                           <span>{item.deliveryChannels.length} Channels</span>
                         </button>
                       )}
@@ -440,21 +485,24 @@ export default function HealthInboxPage() {
                   </div>
                 </div>
 
-                {/* Right Action Buttons */}
+                {/* Right Action Buttons with Mode Accent Color */}
                 <div className="flex items-center gap-2 w-full sm:w-auto justify-end pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100 dark:border-slate-800">
                   {/* Action Link Button */}
                   {item.action && (
-                    <Button
-                      asChild
-                      variant="default"
-                      size="sm"
-                      className="font-bold text-xs shadow-xs"
+                    <Link
+                      href={item.action.url}
                       onClick={() => NotificationService.markAsRead(item.id)}
+                      className={`inline-flex items-center gap-1 px-3.5 py-1.5 rounded-xl font-black text-xs shadow-xs transition-all active:scale-95 cursor-pointer ${
+                        isDoctors
+                          ? 'bg-[#026dd9] hover:bg-[#0256ab] text-white shadow-blue-500/20'
+                          : isCare
+                          ? 'bg-[#ff645e] hover:bg-[#e04f4a] text-white shadow-rose-500/20'
+                          : 'bg-[#0F766E] hover:bg-[#0d635c] text-white shadow-teal-500/20'
+                      }`}
                     >
-                      <Link href={item.action.url}>
-                        {item.action.label} <ArrowUpRight size={13} className="ml-1" />
-                      </Link>
-                    </Button>
+                      <span>{item.action.label}</span>
+                      <ArrowUpRight size={13} />
+                    </Link>
                   )}
 
                   {/* Toggle Read/Unread */}
@@ -462,7 +510,7 @@ export default function HealthInboxPage() {
                     onClick={() => handleToggleRead(item.id, item.isRead)}
                     variant="ghost"
                     size="sm"
-                    className="h-8 w-8 p-0 text-slate-500 hover:text-slate-800 dark:hover:text-slate-200"
+                    className="h-8 w-8 p-0 text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 cursor-pointer"
                     title={item.isRead ? "Mark as unread" : "Mark as read"}
                   >
                     {item.isRead ? <EyeOff size={15} /> : <Eye size={15} />}
@@ -473,7 +521,7 @@ export default function HealthInboxPage() {
                     onClick={() => handleDeleteItem(item.id)}
                     variant="ghost"
                     size="sm"
-                    className="h-8 w-8 p-0 text-slate-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/50"
+                    className="h-8 w-8 p-0 text-slate-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/50 cursor-pointer"
                     title="Delete activity"
                   >
                     <Trash2 size={15} />
@@ -490,7 +538,7 @@ export default function HealthInboxPage() {
         <Dialog open={!!selectedDeliveryItem} onOpenChange={() => setSelectedDeliveryItem(null)}>
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <Radio size={18} className="text-teal-600" /> Multi-Channel Delivery Status
+              <Radio size={18} className={isDoctors ? 'text-[#026dd9]' : isCare ? 'text-[#ff645e]' : 'text-[#0F766E]'} /> Multi-Channel Delivery Status
             </DialogTitle>
             <DialogDescription>
               Audit trail of dispatched notifications for "{selectedDeliveryItem.title}"

@@ -135,126 +135,132 @@ export default function CartPage() {
 
   return (
     <div className="min-h-screen pb-28 text-slate-900 select-none">
-      <div className="max-w-3xl mx-auto px-4 py-4 space-y-4">
+      <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-6 space-y-6">
         {items.length === 0 ? (
-          <div className="glass-card p-10 text-center space-y-3 my-6">
-            <div className="w-16 h-16 rounded-3xl bg-teal-50 text-[#0F766E] flex items-center justify-center mx-auto shadow-inner border border-teal-100">
-              <ShoppingBag size={30} />
+          <div className="glass-card p-12 text-center space-y-4 my-6 max-w-xl mx-auto">
+            <div className="w-20 h-20 rounded-3xl bg-teal-50 text-[#0F766E] flex items-center justify-center mx-auto shadow-inner border border-teal-100">
+              <ShoppingBag size={36} />
             </div>
-            <h2 className="text-base font-black text-slate-800">Your Cart is Empty</h2>
-            <p className="text-xs text-slate-400 max-w-xs mx-auto leading-relaxed">
-              Medicines, first-aid essentials, and daily wellness items delivered in 10 minutes.
+            <h2 className="text-xl font-black text-slate-900">Your Cart is Empty</h2>
+            <p className="text-xs text-slate-500 max-w-xs mx-auto leading-relaxed">
+              Medicines, first-aid essentials, and daily wellness items delivered to your doorstep in 10 minutes.
             </p>
-            <Button asChild className="bg-[#0F766E] hover:bg-[#115E59] text-white text-xs font-black px-6 h-9 rounded-xl shadow-xs">
+            <Button asChild className="bg-[#0F766E] hover:bg-[#115E59] text-white text-xs font-black px-6 h-10 rounded-2xl shadow-md">
               <Link href="/pharmacies">
                 Browse 10-Min Quick Meds
               </Link>
             </Button>
           </div>
         ) : (
-          <>
-            {/* Delivery Banner */}
-            <div className="glass-card p-3.5 flex items-center justify-between border-teal-200/80 bg-teal-50/60">
-              <div className="flex items-center gap-2.5 min-w-0">
-                <div className="bg-[#0F766E] text-white p-2 rounded-xl shadow-xs shrink-0">
-                  <Zap className="w-4 h-4 fill-white" />
+          <div className="lg:grid lg:grid-cols-12 lg:gap-8 items-start space-y-6 lg:space-y-0">
+            {/* Left 8 Columns: Delivery Banner + Cart Items */}
+            <div className="lg:col-span-8 space-y-4">
+              {/* Delivery Banner */}
+              <div className="glass-card p-4 flex items-center justify-between border-teal-200/80 bg-teal-50/60">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="bg-[#0F766E] text-white p-2.5 rounded-2xl shadow-xs shrink-0">
+                    <Zap className="w-5 h-5 fill-white" />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="font-black text-sm text-[#0F766E]">Delivery in 10 minutes</h3>
+                    <p className="text-xs text-slate-600 font-medium truncate">{deliveryAddress}</p>
+                  </div>
                 </div>
-                <div className="min-w-0">
-                  <h3 className="font-black text-xs text-[#0F766E]">Delivery in 10 minutes</h3>
-                  <p className="text-[11px] text-slate-600 font-medium truncate max-w-[240px] sm:max-w-[360px]">{deliveryAddress}</p>
-                </div>
-              </div>
-              <Badge className="bg-[#0F766E] text-white text-[10px] font-black shrink-0">FASTEST</Badge>
-            </div>
-
-            {/* Cart Items List */}
-            <div className="glass-card p-4 divide-y divide-slate-100/80">
-              <div className="flex items-center justify-between pb-2 mb-1">
-                <h2 className="font-black text-xs text-slate-900 uppercase tracking-wider">Cart Items ({getTotalCount()})</h2>
-                <Link href="/pharmacies" className="text-xs font-bold text-[#0F766E] hover:underline">
-                  + Add More
-                </Link>
+                <Badge className="bg-[#0F766E] text-white text-xs font-black shrink-0 px-3 py-1">FASTEST 10-MIN</Badge>
               </div>
 
-              {items.map(item => (
-                <div key={item.medicine.id} className="py-3 flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div className="w-12 h-12 rounded-xl bg-white p-1 shrink-0 border border-slate-100 shadow-2xs flex items-center justify-center overflow-hidden">
-                      <img
-                        src={item.medicine.imageUrl || 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=100&auto=format&fit=crop&q=80'}
-                        alt={item.medicine.brandName}
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=100&auto=format&fit=crop&q=80';
+              {/* Cart Items List */}
+              <div className="glass-card p-5 divide-y divide-slate-100/80">
+                <div className="flex items-center justify-between pb-3 mb-2">
+                  <h2 className="font-black text-sm text-slate-900 uppercase tracking-wider">Cart Items ({getTotalCount()})</h2>
+                  <Link href="/pharmacies" className="text-xs font-black text-[#0F766E] hover:underline flex items-center gap-1">
+                    <span>+ Add More Items</span>
+                  </Link>
+                </div>
+
+                {items.map(item => (
+                  <div key={item.medicine.id} className="py-4 flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-3.5 min-w-0">
+                      <div className="w-16 h-16 rounded-2xl bg-white p-1 shrink-0 border border-slate-100 shadow-2xs flex items-center justify-center overflow-hidden">
+                        <img
+                          src={item.medicine.imageUrl || 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=100&auto=format&fit=crop&q=80'}
+                          alt={item.medicine.brandName}
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=100&auto=format&fit=crop&q=80';
+                          }}
+                          className="w-full h-full object-cover rounded-xl"
+                        />
+                      </div>
+                      <div className="min-w-0">
+                        <h4 className="font-extrabold text-sm text-slate-900 truncate">{item.medicine.brandName}</h4>
+                        <p className="text-xs text-slate-400 font-medium truncate">{item.medicine.strength || item.medicine.genericName}</p>
+                        <span className="font-black text-sm text-slate-900 mt-1 block">
+                          ₹{item.medicine.price * item.quantity}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Quantity Stepper */}
+                    <div className="flex items-center bg-[#0F766E] text-white rounded-2xl p-1 shadow-xs shrink-0">
+                      <button
+                        onClick={() => {
+                          if (item.quantity <= 1) removeItem(item.medicine.id);
+                          else updateQuantity(item.medicine.id, item.quantity - 1);
                         }}
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                    <div className="min-w-0">
-                      <h4 className="font-extrabold text-xs text-slate-900 truncate">{item.medicine.brandName}</h4>
-                      <p className="text-[11px] text-slate-400 font-medium truncate">{item.medicine.strength || item.medicine.genericName}</p>
-                      <span className="font-black text-xs text-slate-900 mt-0.5 block">
-                        ₹{item.medicine.price * item.quantity}
-                      </span>
+                        className="w-7 h-7 flex items-center justify-center hover:bg-white/20 rounded-xl font-bold cursor-pointer"
+                      >
+                        <Minus className="w-4 h-4 text-white" />
+                      </button>
+                      <span className="px-3 text-sm font-black">{item.quantity}</span>
+                      <button
+                        onClick={() => updateQuantity(item.medicine.id, item.quantity + 1)}
+                        className="w-7 h-7 flex items-center justify-center hover:bg-white/20 rounded-xl font-bold cursor-pointer"
+                      >
+                        <Plus className="w-4 h-4 text-white" />
+                      </button>
                     </div>
                   </div>
+                ))}
+              </div>
+            </div>
 
-                  {/* Quantity Stepper */}
-                  <div className="flex items-center bg-[#0F766E] text-white rounded-xl p-0.5 shadow-xs shrink-0">
-                    <button
-                      onClick={() => {
-                        if (item.quantity <= 1) removeItem(item.medicine.id);
-                        else updateQuantity(item.medicine.id, item.quantity - 1);
-                      }}
-                      className="w-6 h-6 flex items-center justify-center hover:bg-white/20 rounded-lg font-bold cursor-pointer"
-                    >
-                      <Minus className="w-3.5 h-3.5 text-white" />
-                    </button>
-                    <span className="px-2 text-xs font-black">{item.quantity}</span>
-                    <button
-                      onClick={() => updateQuantity(item.medicine.id, item.quantity + 1)}
-                      className="w-6 h-6 flex items-center justify-center hover:bg-white/20 rounded-lg font-bold cursor-pointer"
-                    >
-                      <Plus className="w-3.5 h-3.5 text-white" />
-                    </button>
-                  </div>
+            {/* Right 4 Columns: Bill Details & Place Order CTA */}
+            <div className="lg:col-span-4 space-y-4">
+              {/* Bill Details */}
+              <div className="glass-card p-5 space-y-3 text-xs">
+                <h3 className="font-black text-slate-900 uppercase text-xs tracking-wider mb-2">Order Summary</h3>
+                <div className="flex justify-between text-slate-600">
+                  <span>Items Total (MRP ₹{totalMRP})</span>
+                  <span className="font-semibold text-slate-800">₹{totalPrice}</span>
                 </div>
-              ))}
-            </div>
+                <div className="flex justify-between text-emerald-600 font-bold">
+                  <span>Total Discount Savings</span>
+                  <span>-₹{discountSavings}</span>
+                </div>
+                <div className="flex justify-between text-slate-600">
+                  <span>Delivery Partner Fee (⚡ 10 Mins)</span>
+                  <span className="text-[#0F766E] font-bold">{deliveryFee === 0 ? 'FREE' : `₹${deliveryFee}`}</span>
+                </div>
+                <div className="flex justify-between text-slate-600">
+                  <span>Handling & Packaging Fee</span>
+                  <span>₹{handlingFee}</span>
+                </div>
+                <div className="pt-3 border-t border-slate-200/80 flex justify-between font-black text-base text-slate-900">
+                  <span>Total Amount</span>
+                  <span className="text-lg text-[#0F766E]">₹{grandTotal}</span>
+                </div>
+              </div>
 
-            {/* Bill Details */}
-            <div className="glass-card p-4 space-y-2 text-xs">
-              <h3 className="font-black text-slate-900 uppercase text-[11px] tracking-wider mb-2">Bill Details</h3>
-              <div className="flex justify-between text-slate-600">
-                <span>Items Total (MRP ₹{totalMRP})</span>
-                <span className="font-semibold text-slate-800">₹{totalPrice}</span>
-              </div>
-              <div className="flex justify-between text-emerald-600 font-bold">
-                <span>Total Discount Savings</span>
-                <span>-₹{discountSavings}</span>
-              </div>
-              <div className="flex justify-between text-slate-600">
-                <span>Delivery Partner Fee (⚡ 10 Mins)</span>
-                <span className="text-[#0F766E] font-bold">{deliveryFee === 0 ? 'FREE' : `₹${deliveryFee}`}</span>
-              </div>
-              <div className="flex justify-between text-slate-600">
-                <span>Handling & Packaging Fee</span>
-                <span>₹{handlingFee}</span>
-              </div>
-              <div className="pt-2 border-t border-slate-200/80 flex justify-between font-black text-sm text-slate-900">
-                <span>To Pay</span>
-                <span className="text-base text-[#0F766E]">₹{grandTotal}</span>
-              </div>
+              {/* Bottom Checkout CTA Button */}
+              <Button
+                onClick={handlePlaceOrder}
+                className="w-full bg-[#0F766E] hover:bg-[#115E59] text-white text-sm font-black h-13 rounded-2xl flex items-center justify-between px-6 shadow-xl active:scale-[0.99] cursor-pointer"
+              >
+                <span>₹{grandTotal} • Place 10-Minute Order</span>
+                <ArrowRight className="w-5 h-5" />
+              </Button>
             </div>
-
-            {/* Bottom Checkout CTA Button */}
-            <Button
-              onClick={handlePlaceOrder}
-              className="w-full bg-[#0F766E] hover:bg-[#115E59] text-white text-sm font-black h-12 rounded-2xl flex items-center justify-between px-5 shadow-lg active:scale-[0.99] cursor-pointer"
-            >
-              <span>₹{grandTotal} • Place 10-Minute Order</span>
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </>
+          </div>
         )}
       </div>
     </div>

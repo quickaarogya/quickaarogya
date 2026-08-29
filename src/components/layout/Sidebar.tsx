@@ -55,9 +55,11 @@ export default function Sidebar() {
       {/* Brand Header */}
       <div className="h-16 px-4 flex items-center justify-between border-b border-slate-100 dark:border-slate-800">
         <Link href="/" className="flex items-center gap-2.5 overflow-hidden">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-teal-600 to-sky-600 flex items-center justify-center text-white shadow-sm flex-shrink-0">
-            <Heart size={20} fill="currentColor" />
-          </div>
+          <img
+            src="/logo.png"
+            alt="Quick Aarogya Logo"
+            className="h-9 w-auto max-w-[60px] object-contain flex-shrink-0"
+          />
 
           {!isCollapsed && (
             <div className="flex flex-col">

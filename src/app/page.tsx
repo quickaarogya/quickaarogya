@@ -124,7 +124,7 @@ const HOME_BROWSE_CATEGORIES = [
   {
     id: 'vitamins',
     name: 'Daily Vitamins',
-    image: 'https://images.unsplash.com/photo-1550572017-edd951aa8f72?w=400&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1584362917165-526a968579e8?w=400&auto=format&fit=crop&q=80',
     tag: '10 MINS'
   },
   {
@@ -306,8 +306,8 @@ export default function HomeCockpit() {
   if (appMode === 'pharma') {
     return (
       <div className="min-h-screen pb-28 text-slate-900 select-none">
-        {/* TOP SIGNATURE TEAL HEADER FOR PHARMA WITH FROSTED GLASS ACCENTS */}
-        <div className="relative overflow-hidden bg-gradient-to-b from-[#134E4A] via-[#0F766E] to-[#0D9488] text-white pt-3.5 pb-5 px-4 shadow-[0_10px_30px_rgba(15,118,110,0.18)] border-b border-teal-500/30">
+        {/* TOP SIGNATURE TEAL HEADER FOR PHARMA WITH FROSTED GLASS ACCENTS (MOBILE ONLY) */}
+        <div className="relative overflow-hidden bg-gradient-to-b from-[#134E4A] via-[#0F766E] to-[#0D9488] text-white pt-3.5 pb-5 px-4 shadow-[0_10px_30px_rgba(15,118,110,0.18)] border-b border-teal-500/30 lg:hidden">
           {/* Ambient lighting accents */}
           <div className="absolute -top-12 -left-12 w-48 h-48 bg-white/15 rounded-full blur-2xl pointer-events-none" />
           <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-teal-300/25 rounded-full blur-2xl pointer-events-none" />
@@ -405,7 +405,7 @@ export default function HomeCockpit() {
           </div>
         </div>
 
-        <div className="max-w-5xl mx-auto px-3 sm:px-4 py-4 space-y-5">
+        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-6 space-y-8">
           {/* TRUSTED BRAND PARTNERS STRIP (CLICKABLE BRANDS WITH LOGOS) */}
           <div className="space-y-1.5">
             <div className="flex items-center justify-between text-[10px] font-black text-slate-400 uppercase tracking-wider px-1">
@@ -459,6 +459,12 @@ export default function HomeCockpit() {
                       alt={cat.name}
                       className="w-full h-full object-cover"
                       loading="lazy"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        if (!target.src.includes('photo-1584308666744-24d5c474f2ae')) {
+                          target.src = 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&auto=format&fit=crop&q=80';
+                        }
+                      }}
                     />
                   </div>
                   <span className="text-[11px] sm:text-xs font-bold text-slate-800 leading-tight mt-1.5 group-hover:text-[#0F766E] transition-colors w-full">
@@ -566,15 +572,15 @@ export default function HomeCockpit() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {filteredMeds.slice(0, 4).map((med) => {
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-4">
+              {filteredMeds.slice(0, 12).map((med) => {
                 const qty = getCartItemQty(med.id);
                 const discount = med.discountPercent || 10;
 
                 return (
-                  <div
+                  <Link
                     key={med.id}
-                    onClick={() => setSelectedMedicineForDetail(med)}
+                    href={`/pharmacies/${med.id}`}
                     className="glass-card p-3 flex flex-col justify-between group relative cursor-pointer"
                   >
                     {discount > 0 && (
@@ -618,10 +624,14 @@ export default function HomeCockpit() {
                         )}
                       </div>
 
-                      <div>
+                      <div onClick={e => { e.preventDefault(); e.stopPropagation(); }}>
                         {qty === 0 ? (
                           <button
-                            onClick={e => handleAddToCart(med, e)}
+                            onClick={e => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              handleAddToCart(med, e);
+                            }}
                             className="px-3 py-1 rounded-lg border border-[#0F766E] bg-white/90 text-[#0F766E] text-xs font-black hover:bg-[#0F766E] hover:text-white transition-all shadow-xs active:scale-95 cursor-pointer"
                           >
                             ADD
@@ -629,15 +639,23 @@ export default function HomeCockpit() {
                         ) : (
                           <div className="flex items-center bg-[#0F766E] text-white rounded-lg p-0.5 shadow-xs">
                             <button
-                              onClick={e => handleDecrement(med.id, e)}
-                              className="w-5 h-5 flex items-center justify-center hover:bg-white/20 rounded font-bold"
+                              onClick={e => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                handleDecrement(med.id, e);
+                              }}
+                              className="w-5 h-5 flex items-center justify-center hover:bg-white/20 rounded font-bold cursor-pointer"
                             >
                               <Minus size={12} className="text-white" />
                             </button>
                             <span className="px-1.5 text-xs font-black">{qty}</span>
                             <button
-                              onClick={e => handleIncrement(med, e)}
-                              className="w-5 h-5 flex items-center justify-center hover:bg-white/20 rounded font-bold"
+                              onClick={e => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                handleIncrement(med, e);
+                              }}
+                              className="w-5 h-5 flex items-center justify-center hover:bg-white/20 rounded font-bold cursor-pointer"
                             >
                               <Plus size={12} className="text-white" />
                             </button>
@@ -645,7 +663,7 @@ export default function HomeCockpit() {
                         )}
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 );
               })}
             </div>
@@ -677,7 +695,7 @@ export default function HomeCockpit() {
     return (
       <div className="min-h-screen pb-28 text-slate-900 select-none">
         {/* TOP GREETING HEADER FOR DOCTORS (#026dd9 ROYAL BLUE THEME) */}
-        <div className="relative overflow-hidden bg-gradient-to-b from-[#01478f] via-[#025bb5] to-[#026dd9] text-white pt-3.5 pb-5 px-4 shadow-[0_10px_30px_rgba(2,109,217,0.18)] border-b border-blue-400/30">
+        <div className="relative overflow-hidden bg-gradient-to-b from-[#01478f] via-[#025bb5] to-[#026dd9] text-white pt-3.5 pb-5 px-4 shadow-[0_10px_30px_rgba(2,109,217,0.18)] border-b border-blue-400/30 lg:hidden">
           {/* Ambient lighting accents */}
           <div className="absolute -top-12 -left-12 w-48 h-48 bg-white/15 rounded-full blur-2xl pointer-events-none" />
           <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-sky-300/25 rounded-full blur-2xl pointer-events-none" />
@@ -775,80 +793,86 @@ export default function HomeCockpit() {
           </div>
         </div>
 
-        <div className="max-w-5xl mx-auto px-3 sm:px-4 py-4 space-y-5">
-          {/* TOP DOCTORS CAROUSEL */}
-          <TopDoctorCarousel doctors={filteredDoctors.length > 0 ? filteredDoctors : doctors} title="Popular Doctor" />
+        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-6 space-y-8">
+          {/* TOP HOSPITALS & MULTI-DOCTOR SHOWCASE CAROUSEL */}
+          <TopDoctorCarousel
+            doctors={filteredDoctors.length > 0 ? filteredDoctors : doctors}
+            hospitals={hospitals}
+            title="Top Hospitals & Specialist Doctors"
+            autoPlayInterval={18000}
+          />
 
-          {/* LIVE OPD QUEUE / UPCOMING APPOINTMENT BANNER */}
+          {/* LIVE OPD QUEUE / UPCOMING APPOINTMENT BANNER (COMPACT CONSTRAINED) */}
           {upcomingAppointment && (
-            <div className="p-4 rounded-3xl bg-blue-50/80 backdrop-blur-xl border border-blue-200/80 flex items-center justify-between gap-3 shadow-[0_8px_24px_rgba(2,109,217,0.08)]">
-              <div className="flex items-center gap-3">
-                <div className="w-11 h-11 rounded-2xl bg-[#026dd9] text-white flex items-center justify-center font-black text-sm shrink-0 shadow-[0_4px_12px_rgba(2,109,217,0.3)]">
+            <div className="max-w-xl p-3.5 sm:p-4 rounded-3xl bg-blue-50/90 dark:bg-blue-950/40 backdrop-blur-xl border border-blue-200/80 dark:border-blue-900/50 flex items-center justify-between gap-3 shadow-[0_4px_20px_rgba(2,109,217,0.06)]">
+              <div className="flex items-center gap-3 min-w-0">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-[#026dd9] text-white flex items-center justify-center font-black text-sm shrink-0 shadow-[0_4px_12px_rgba(2,109,217,0.3)]">
                   #{upcomingAppointment.tokenNumber || '12'}
                 </div>
-                <div>
+                <div className="min-w-0">
                   <span className="text-[10px] font-black text-[#026dd9] uppercase tracking-wider block">
                     Active Consultation Queue
                   </span>
-                  <h4 className="font-extrabold text-xs sm:text-sm text-slate-900">
+                  <h4 className="font-extrabold text-xs sm:text-sm text-slate-900 dark:text-slate-100 truncate">
                     {upcomingAppointment.doctorName} • {upcomingAppointment.doctorSpecialty || 'Specialist'}
                   </h4>
-                  <p className="text-[11px] text-slate-500 font-medium">
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium truncate">
                     {upcomingAppointment.dateTime} • {upcomingAppointment.hospitalName}
                   </p>
                 </div>
               </div>
 
-              <Button asChild size="sm" className="bg-[#026dd9] hover:bg-[#0256ab] text-white text-xs font-black rounded-xl shadow-xs">
+              <Button asChild size="sm" className="bg-[#026dd9] hover:bg-[#0256ab] text-white text-xs font-black rounded-xl shadow-xs shrink-0 px-4 h-9">
                 <Link href="/appointments">Live Token</Link>
               </Button>
             </div>
           )}
 
-          {/* 3-WAY CATEGORY HIERARCHY SELECTOR: [ ALL DOCTORS | BY HOSPITAL | BY CLINIC ] */}
-          <div>
-            <div className="flex items-center justify-between mb-3 px-1">
+          {/* 3-WAY CATEGORY HIERARCHY SELECTOR: [ ALL DOCTORS | BY HOSPITAL | BY CLINIC ] (COMPACT CONSTRAINED) */}
+          <div className="space-y-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-1">
               <div>
-                <h3 className="text-base font-black text-slate-900 leading-tight">
+                <h3 className="text-base font-black text-slate-900 dark:text-slate-50 leading-tight">
                   Choose By Category
                 </h3>
-                <p className="text-xs text-slate-500 font-medium">Select doctors directly, or explore by hospital and clinic</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">Select doctors directly, or explore by hospital and clinic</p>
               </div>
-            </div>
 
-            <div className="flex items-center gap-2 bg-white/70 backdrop-blur-xl border border-white/80 p-1.5 rounded-2xl shadow-2xs">
-              <button
-                onClick={() => setDoctorCategoryType('all')}
-                className={`flex-1 py-2 rounded-xl text-xs font-black transition-all cursor-pointer ${
-                  doctorCategoryType === 'all'
-                    ? 'bg-[#026dd9] text-white shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
-                }`}
-              >
-                🩺 Top Doctors
-              </button>
+              {/* Compact segmented control */}
+              <div className="inline-flex items-center gap-1 bg-slate-100/90 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/60 dark:border-slate-700/60 p-1 rounded-2xl max-w-md w-full sm:w-auto shadow-2xs">
+                <button
+                  onClick={() => setDoctorCategoryType('all')}
+                  className={`flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center justify-center gap-1.5 whitespace-nowrap ${
+                    doctorCategoryType === 'all'
+                      ? 'bg-[#026dd9] text-white shadow-xs'
+                      : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 hover:bg-white/60 dark:hover:bg-slate-700/60'
+                  }`}
+                >
+                  🩺 Top Doctors
+                </button>
 
-              <button
-                onClick={() => setDoctorCategoryType('hospital')}
-                className={`flex-1 py-2 rounded-xl text-xs font-black transition-all cursor-pointer ${
-                  doctorCategoryType === 'hospital'
-                    ? 'bg-[#026dd9] text-white shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
-                }`}
-              >
-                🏥 By Hospital
-              </button>
+                <button
+                  onClick={() => setDoctorCategoryType('hospital')}
+                  className={`flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center justify-center gap-1.5 whitespace-nowrap ${
+                    doctorCategoryType === 'hospital'
+                      ? 'bg-[#026dd9] text-white shadow-xs'
+                      : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 hover:bg-white/60 dark:hover:bg-slate-700/60'
+                  }`}
+                >
+                  🏥 By Hospital
+                </button>
 
-              <button
-                onClick={() => setDoctorCategoryType('clinic')}
-                className={`flex-1 py-2 rounded-xl text-xs font-black transition-all cursor-pointer ${
-                  doctorCategoryType === 'clinic'
-                    ? 'bg-[#026dd9] text-white shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
-                }`}
-              >
-                🏢 By Clinic
-              </button>
+                <button
+                  onClick={() => setDoctorCategoryType('clinic')}
+                  className={`flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center justify-center gap-1.5 whitespace-nowrap ${
+                    doctorCategoryType === 'clinic'
+                      ? 'bg-[#026dd9] text-white shadow-xs'
+                      : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 hover:bg-white/60 dark:hover:bg-slate-700/60'
+                  }`}
+                >
+                  🏢 By Clinic
+                </button>
+              </div>
             </div>
           </div>
 
@@ -937,7 +961,7 @@ export default function HomeCockpit() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
               {doctors.map(doc => (
                 <DoctorPortraitCard
                   key={doc.id}
@@ -967,8 +991,8 @@ export default function HomeCockpit() {
    * ========================================================================= */
   return (
     <div className="min-h-screen pb-28 text-slate-900 select-none">
-      {/* TOP HEADER FOR HEALTH CARE (INVERTED RICH CORAL/ROSE GRADIENT THEME) */}
-      <div className="relative overflow-hidden bg-gradient-to-b from-[#BE123C] via-[#F43F5E] to-[#FF5E62] text-white pt-3.5 pb-6 px-4 shadow-[0_10px_30px_rgba(244,63,94,0.2)] border-b border-white/20">
+      {/* TOP HEADER FOR HEALTH CARE (INVERTED RICH CORAL/ROSE GRADIENT THEME - MOBILE ONLY) */}
+      <div className="relative overflow-hidden bg-gradient-to-b from-[#BE123C] via-[#F43F5E] to-[#FF5E62] text-white pt-3.5 pb-6 px-4 shadow-[0_10px_30px_rgba(244,63,94,0.2)] border-b border-white/20 lg:hidden">
         {/* Ambient lighting glows for depth */}
         <div className="absolute -top-12 -left-12 w-52 h-52 bg-white/15 rounded-full blur-2xl pointer-events-none" />
         <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-amber-300/25 rounded-full blur-2xl pointer-events-none" />
@@ -1065,7 +1089,7 @@ export default function HomeCockpit() {
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-3 sm:px-4 py-4 space-y-4">
+      <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-6 space-y-8">
         {/* 1. CLINICAL IDENTITY & BIOLOGICAL VITAL STATS */}
         {/* 1. BIOLOGICAL HEALTH PROFILE */}
         <div className="glass-card p-4">
@@ -1307,6 +1331,13 @@ export default function HomeCockpit() {
           onClose={() => setIsLocationModalOpen(false)}
           currentAddress={deliveryAddress}
           onSelectAddress={(addr) => setDeliveryAddress(addr)}
+        />
+
+        {/* Product Detail Sheet Modal (Expansive Desktop E-Commerce Experience) */}
+        <ProductDetailSheet
+          medicine={selectedMedicineForDetail}
+          isOpen={!!selectedMedicineForDetail}
+          onClose={() => setSelectedMedicineForDetail(null)}
         />
       </div>
     </div>

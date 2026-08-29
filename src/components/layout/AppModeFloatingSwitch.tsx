@@ -26,13 +26,14 @@ export default function AppModeFloatingSwitch() {
       }
     } else if (
       pathname.startsWith('/pharmacies') ||
-      pathname.startsWith('/cart')
+      pathname.startsWith('/cart') ||
+      (pathname.startsWith('/medicines/') && pathname !== '/medicines')
     ) {
       if (appMode !== 'pharma') {
         setAppMode('pharma');
       }
     } else if (
-      pathname.startsWith('/medicines') ||
+      pathname === '/medicines' ||
       pathname.startsWith('/records') ||
       pathname.startsWith('/vitals') ||
       pathname.startsWith('/family') ||

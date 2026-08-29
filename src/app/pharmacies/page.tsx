@@ -406,7 +406,7 @@ function PharmacyShopContent() {
     <div className="min-h-screen bg-[#FFFDF9] text-[#0F172A] pb-28">
       {/* 1. CLEAN TOP STORE HEADER (1:1 with Blinkit Subcategory Screen) */}
       <header className="sticky top-0 z-40 bg-white border-b border-slate-200/90 shadow-2xs">
-        <div className="max-w-6xl mx-auto px-3 sm:px-4 py-2.5 flex items-center justify-between gap-3">
+        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 flex items-center justify-between gap-3">
           {/* Back Button & Category Title */}
           <div className="flex items-center gap-2.5 min-w-0">
             <button
@@ -475,7 +475,7 @@ function PharmacyShopContent() {
         )}
 
         {/* 2. FILTER & SORT CHIPS BAR */}
-        <div className="bg-white border-t border-slate-100 px-3 py-2 overflow-x-auto scrollbar-none flex items-center gap-2 max-w-6xl mx-auto">
+        <div className="bg-white border-t border-slate-100 px-4 sm:px-6 lg:px-8 xl:px-10 py-2 overflow-x-auto scrollbar-none flex items-center gap-2 w-full max-w-[1720px] mx-auto">
           {/* Filters Dropdown */}
           <button
             onClick={() => setActiveFilter(activeFilter === 'all' ? '10min' : 'all')}
@@ -578,10 +578,10 @@ function PharmacyShopContent() {
         </div>
       ) : (
         /* 3. AUTHENTIC 2-COLUMN STORE LAYOUT (1:1 with Blinkit Screen) */
-        <div className="max-w-6xl mx-auto flex items-start">
+        <div className="w-full max-w-[1720px] mx-auto px-2 sm:px-4 lg:px-8 xl:px-10 flex items-start">
           {/* Left Vertical Category Rail */}
           <aside
-            className="w-[82px] sm:w-[100px] shrink-0 bg-white border-r border-slate-200/80 sticky top-[96px] max-h-[calc(100vh-96px)] overflow-y-auto overscroll-contain touch-pan-y py-2 scroll-smooth"
+            className="w-[88px] sm:w-[110px] shrink-0 bg-white border-r border-slate-200/80 sticky top-[96px] max-h-[calc(100vh-96px)] overflow-y-auto overscroll-contain touch-pan-y py-2 scroll-smooth"
             style={{ WebkitOverflowScrolling: 'touch', touchAction: 'pan-y' }}
           >
             <div className="flex flex-col space-y-1 pb-36">
@@ -622,11 +622,11 @@ function PharmacyShopContent() {
           </aside>
 
           {/* Right Product Grid Area */}
-          <main className="flex-1 min-w-0 p-2.5 sm:p-4 space-y-3">
+          <main className="flex-1 min-w-0 p-2.5 sm:p-4 lg:p-6 space-y-4">
             {/* Category Promo / Seasonal Banner */}
-            <div className="p-4 rounded-2xl bg-gradient-to-r from-teal-50 via-emerald-50 to-teal-50 border border-teal-200/70 flex items-center justify-between gap-3 shadow-2xs">
+            <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-teal-50 via-emerald-50 to-teal-50 border border-teal-200/70 flex items-center justify-between gap-3 shadow-2xs">
               <div>
-                <h2 className="text-sm sm:text-base font-black text-slate-900 leading-tight">
+                <h2 className="text-sm sm:text-lg font-black text-slate-900 leading-tight">
                   {activeCategoryObj.bannerTitle}
                 </h2>
                 <p className="text-[11px] sm:text-xs text-slate-600 mt-0.5 font-medium leading-snug">
@@ -634,13 +634,13 @@ function PharmacyShopContent() {
                 </p>
               </div>
 
-              <div className="shrink-0 bg-white/80 backdrop-blur-md px-2.5 py-1 rounded-xl border border-teal-200/80 text-[10px] font-black text-[#0F766E] flex items-center gap-1 shadow-2xs">
-                <Clock size={12} />
+              <div className="shrink-0 bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-teal-200/80 text-xs font-black text-[#0F766E] flex items-center gap-1.5 shadow-2xs">
+                <Clock size={14} />
                 <span>10 MINS</span>
               </div>
             </div>
 
-            {/* 2-Column Product Grid (Matching Blinkit UI) */}
+            {/* Product Grid */}
             {filteredMedicines.length === 0 ? (
               <div className="bg-white rounded-2xl p-10 text-center border border-slate-200">
                 <AlertCircle className="w-10 h-10 text-slate-300 mx-auto mb-2" />
@@ -648,16 +648,16 @@ function PharmacyShopContent() {
                 <p className="text-xs text-slate-500 mt-1">Try switching categories or clearing your search.</p>
               </div>
             ) : (
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 sm:gap-4">
                 {filteredMedicines.map(med => {
                   const qty = getCartItemQty(med.id);
                   const discount = med.discountPercent || 15;
                   const isLiked = likedMeds[med.id];
 
                   return (
-                    <div
+                    <Link
                       key={med.id}
-                      onClick={() => setQuickViewMed(med)}
+                      href={`/pharmacies/${med.id}`}
                       className="bg-white rounded-2xl border border-slate-200/90 shadow-2xs hover:shadow-md transition-all p-2.5 sm:p-3 flex flex-col justify-between group cursor-pointer relative"
                     >
                       {/* Product Image Container */}
@@ -691,26 +691,38 @@ function PharmacyShopContent() {
                         />
 
                         {/* ADD / QTY STEPPER ON BOTTOM RIGHT OF IMAGE (1:1 with Reference) */}
-                        <div className="absolute bottom-1.5 right-1.5 z-10" onClick={e => e.stopPropagation()}>
+                        <div className="absolute bottom-1.5 right-1.5 z-10" onClick={e => { e.preventDefault(); e.stopPropagation(); }}>
                           {qty === 0 ? (
                             <button
-                              onClick={e => handleAddToCart(med, e)}
-                              className="px-3.5 py-1 bg-white text-[#0F766E] border-2 border-[#0F766E] rounded-lg text-xs font-black hover:bg-[#0F766E] hover:text-white transition-all shadow-md active:scale-95"
+                              onClick={e => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                handleAddToCart(med, e);
+                              }}
+                              className="px-3.5 py-1 bg-white text-[#0F766E] border-2 border-[#0F766E] rounded-lg text-xs font-black hover:bg-[#0F766E] hover:text-white transition-all shadow-md active:scale-95 cursor-pointer"
                             >
                               ADD
                             </button>
                           ) : (
                             <div className="flex items-center bg-[#0F766E] text-white rounded-lg p-0.5 shadow-md">
                               <button
-                                onClick={e => handleDecrement(med.id, e)}
-                                className="w-5 h-5 flex items-center justify-center hover:bg-white/20 rounded font-bold"
+                                onClick={e => {
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  handleDecrement(med.id, e);
+                                }}
+                                className="w-5 h-5 flex items-center justify-center hover:bg-white/20 rounded font-bold cursor-pointer"
                               >
                                 <Minus size={11} className="text-white" />
                               </button>
                               <span className="px-1.5 text-xs font-black">{qty}</span>
                               <button
-                                onClick={e => handleIncrement(med, e)}
-                                className="w-5 h-5 flex items-center justify-center hover:bg-white/20 rounded font-bold"
+                                onClick={e => {
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  handleIncrement(med, e);
+                                }}
+                                className="w-5 h-5 flex items-center justify-center hover:bg-white/20 rounded font-bold cursor-pointer"
                               >
                                 <Plus size={11} className="text-white" />
                               </button>
@@ -759,7 +771,7 @@ function PharmacyShopContent() {
                           </span>
                         )}
                       </div>
-                    </div>
+                    </Link>
                   );
                 })}
               </div>

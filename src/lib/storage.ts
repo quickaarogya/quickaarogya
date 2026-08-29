@@ -68,6 +68,7 @@ const STORAGE_KEYS = {
   SOS_ACTIVE: 'qa_sos_active',
   ESCROW_LEDGER: 'qa_escrow_ledger',
   WISHLIST_DOCTORS: 'qa_wishlist_doctors',
+  WISHLIST_HOSPITALS: 'qa_wishlist_hospitals',
   WISHLIST_MEDICINES: 'qa_wishlist_medicines'
 };
 
@@ -76,13 +77,22 @@ const memoryStorage: { [key: string]: string } = {};
 function getItem<T>(key: string, fallback: T): T {
   if (typeof window === 'undefined') {
     const mem = memoryStorage[key];
-    return mem ? JSON.parse(mem) : fallback;
+    if (!mem) return fallback;
+    try {
+      return JSON.parse(mem);
+    } catch {
+      return mem as unknown as T;
+    }
   }
   try {
     const item = localStorage.getItem(key);
-    return item ? JSON.parse(item) : fallback;
-  } catch (error) {
-    console.error(`Error reading ${key} from localStorage`, error);
+    if (!item) return fallback;
+    try {
+      return JSON.parse(item);
+    } catch {
+      return item as unknown as T;
+    }
+  } catch {
     return fallback;
   }
 }
@@ -350,6 +360,9 @@ export const AarogyaStorage = {
   getDoctors(): Doctor[] {
     return getItem<Doctor[]>(STORAGE_KEYS.DOCTORS, initialDoctors);
   },
+  setDoctors(doctors: Doctor[]): void {
+    setItem(STORAGE_KEYS.DOCTORS, doctors);
+  },
   addDoctor(doctor: Doctor): void {
     const docs = this.getDoctors();
     setItem(STORAGE_KEYS.DOCTORS, [doctor, ...docs]);
@@ -364,6 +377,9 @@ export const AarogyaStorage = {
   },
   getHospitals(): Hospital[] {
     return getItem<Hospital[]>(STORAGE_KEYS.HOSPITALS, initialHospitals);
+  },
+  setHospitals(hospitals: Hospital[]): void {
+    setItem(STORAGE_KEYS.HOSPITALS, hospitals);
   },
   getMedicines(): Medicine[] {
     return getItem<Medicine[]>(STORAGE_KEYS.MEDICINES, initialMedicines);
@@ -623,6 +639,15 @@ export const AarogyaStorage = {
     const list = this.getWishlistDoctors();
     const updated = list.includes(id) ? list.filter(item => item !== id) : [...list, id];
     setItem(STORAGE_KEYS.WISHLIST_DOCTORS, updated);
+    return updated;
+  },
+  getWishlistHospitals(): string[] {
+    return getItem<string[]>(STORAGE_KEYS.WISHLIST_HOSPITALS, ['hosp-bhagyodaya']);
+  },
+  toggleWishlistHospital(id: string): string[] {
+    const list = this.getWishlistHospitals();
+    const updated = list.includes(id) ? list.filter(item => item !== id) : [...list, id];
+    setItem(STORAGE_KEYS.WISHLIST_HOSPITALS, updated);
     return updated;
   },
   getWishlistMedicines(): string[] {

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Star, Heart, ArrowUpRight, ShieldCheck } from 'lucide-react';
+import { Star, Heart, ArrowUpRight, ShieldCheck, Phone } from 'lucide-react';
 import { Doctor } from '@/types';
 import { AarogyaStorage } from '@/lib/storage';
 
@@ -45,6 +45,7 @@ export function DoctorPortraitCard({ doctor, onSelect }: DoctorPortraitCardProps
   };
 
   const specialtyIcon = SPECIALTY_ICONS[doctor.specialization] || '🩺';
+  const doctorPhone = doctor.phone || '07582-472000';
 
   return (
     <div
@@ -101,7 +102,7 @@ export function DoctorPortraitCard({ doctor, onSelect }: DoctorPortraitCardProps
           </p>
         </div>
 
-        {/* Micro-Badges & Circular Arrow Up-Right Action Button */}
+        {/* Micro-Badges & Action Buttons */}
         <div className="mt-2.5 pt-2 border-t border-white/60 dark:border-white/10 flex items-center justify-between gap-1">
           {/* Micro Glass Icon Circles */}
           <div className="flex items-center gap-1">
@@ -125,14 +126,26 @@ export function DoctorPortraitCard({ doctor, onSelect }: DoctorPortraitCardProps
             </span>
           </div>
 
-          {/* Action CTA Button (↗) */}
-          <Link
-            href={`/doctors?book=${doctor.id}`}
-            onClick={(e) => e.stopPropagation()}
-            className="w-8 h-8 rounded-full bg-[#026dd9] hover:bg-[#0256ab] text-white flex items-center justify-center shadow-[0_4px_14px_rgba(2,109,217,0.4)] active:scale-95 transition-all shrink-0 cursor-pointer"
-          >
-            <ArrowUpRight size={15} className="stroke-[2.5]" />
-          </Link>
+          {/* Action CTA Buttons: Call Directly & Book Slot */}
+          <div className="flex items-center gap-1.5 shrink-0">
+            <a
+              href={`tel:${doctorPhone}`}
+              onClick={(e) => e.stopPropagation()}
+              className="w-8 h-8 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white flex items-center justify-center shadow-xs active:scale-95 transition-all cursor-pointer"
+              title={`Call clinic directly: ${doctorPhone}`}
+            >
+              <Phone size={13} className="fill-current" />
+            </a>
+
+            <Link
+              href={`/doctors?book=${doctor.id}`}
+              onClick={(e) => e.stopPropagation()}
+              className="w-8 h-8 rounded-full bg-[#026dd9] hover:bg-[#0256ab] text-white flex items-center justify-center shadow-[0_4px_14px_rgba(2,109,217,0.4)] active:scale-95 transition-all cursor-pointer"
+              title="Book Instant OPD Slot"
+            >
+              <ArrowUpRight size={15} className="stroke-[2.5]" />
+            </Link>
+          </div>
         </div>
       </div>
     </div>

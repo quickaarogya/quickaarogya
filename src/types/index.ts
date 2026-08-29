@@ -139,6 +139,7 @@ export interface Doctor {
   hospitalName: string;
   hospitalId?: string;
   clinicAddress: string;
+  phone?: string;
   avatarUrl: string;
   availableDays: string[];
   availableSlots: string[];
@@ -149,10 +150,12 @@ export interface Doctor {
 export interface Hospital {
   id: string;
   name: string;
-  type: 'Multispecialty' | 'Super Specialty' | 'General Hospital' | 'Emergency Care';
+  type: string;
   address: string;
   city: string;
+  locality?: string;
   distanceKm: number;
+  phone?: string;
   emergencyHelpline: string;
   has24x7Emergency: boolean;
   icuBedsAvailable: number;

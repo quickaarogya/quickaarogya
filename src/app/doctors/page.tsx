@@ -25,6 +25,7 @@ import {
   Check,
   AlertCircle,
   PhoneCall,
+  Phone,
   MessageSquare,
   Share2,
   Filter,
@@ -595,6 +596,17 @@ function DoctorsContent() {
                     </div>
                   </div>
                 </div>
+
+                {/* Direct Call Button on Doctor Profile */}
+                <div className="pt-3 border-t border-slate-100">
+                  <a
+                    href={`tel:${selectedDoctor.phone || '07582-472000'}`}
+                    className="w-full py-2.5 px-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow-xs active:scale-95 transition-all cursor-pointer"
+                  >
+                    <Phone size={15} className="fill-current" />
+                    <span>Call Directly: {selectedDoctor.phone || '07582-472000'}</span>
+                  </a>
+                </div>
               </div>
 
               {/* Patient Ratings, Amazon-style Breakdown & AI Review Summary */}
@@ -1156,20 +1168,31 @@ function DoctorsContent() {
                       </p>
                     </div>
 
-                    {/* Bottom Fee & Book Button */}
+                    {/* Bottom Fee & Action Buttons */}
                     <div className="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between gap-1.5">
                       <div>
                         <span className="text-xs font-black text-slate-900 block leading-none">₹{doc.consultationFee}</span>
                         <span className="text-[9px] text-slate-400 font-medium block mt-0.5">OPD Fee</span>
                       </div>
 
-                      <Button
-                        onClick={() => setSelectedDoctor(doc)}
-                        size="sm"
-                        className="bg-[#026dd9] hover:bg-[#0256ab] text-white text-[11px] font-black px-3 py-1.5 rounded-xl shadow-xs active:scale-95 cursor-pointer"
-                      >
-                        Book Now
-                      </Button>
+                      <div className="flex items-center gap-1.5 shrink-0">
+                        <a
+                          href={`tel:${doc.phone || '07582-472000'}`}
+                          onClick={e => e.stopPropagation()}
+                          className="w-8 h-8 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 flex items-center justify-center shadow-2xs active:scale-95 transition-all cursor-pointer"
+                          title={`Call directly: ${doc.phone || '07582-472000'}`}
+                        >
+                          <Phone size={13} className="fill-emerald-600 text-emerald-600" />
+                        </a>
+
+                        <Button
+                          onClick={() => setSelectedDoctor(doc)}
+                          size="sm"
+                          className="bg-[#026dd9] hover:bg-[#0256ab] text-white text-[11px] font-black px-3 py-1.5 rounded-xl shadow-xs active:scale-95 cursor-pointer"
+                        >
+                          Book Now
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 );

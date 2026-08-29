@@ -345,15 +345,27 @@ export default function TopDoctorCarousel({
                 </p>
               </div>
 
-              <div className="pt-2 border-t border-white/15 flex flex-wrap items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-100">
-                <span className="bg-white/15 px-2.5 py-0.5 rounded-lg border border-white/15 flex items-center gap-1">
-                  <Bed size={11} className="text-teal-300" />
-                  {currentHospital.icuBedsAvailable || 12} ICU Beds
-                </span>
-                <span className="bg-white/15 px-2.5 py-0.5 rounded-lg border border-white/15 flex items-center gap-1">
-                  <ShieldCheck size={11} className="text-emerald-300" />
-                  ABDM Verified
-                </span>
+              <div className="pt-2 border-t border-white/15 space-y-2">
+                <div className="flex flex-wrap items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-100">
+                  <span className="bg-white/15 px-2.5 py-0.5 rounded-lg border border-white/15 flex items-center gap-1">
+                    <Bed size={11} className="text-teal-300" />
+                    {currentHospital.icuBedsAvailable || 12} ICU Beds
+                  </span>
+                  <span className="bg-white/15 px-2.5 py-0.5 rounded-lg border border-white/15 flex items-center gap-1">
+                    <ShieldCheck size={11} className="text-emerald-300" />
+                    ABDM Verified
+                  </span>
+                </div>
+
+                {/* Direct Call Hospital Button */}
+                <a
+                  href={`tel:${currentHospital.phone || '07582-472000'}`}
+                  className="w-full py-2 px-3 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-200 border border-emerald-400/40 text-[11px] font-black flex items-center justify-center gap-1.5 backdrop-blur-md transition-all shadow-xs active:scale-95 cursor-pointer"
+                  title={`Call Hospital: ${currentHospital.phone || '07582-472000'}`}
+                >
+                  <PhoneCall size={13} className="text-emerald-300" />
+                  <span>Call Hospital ({currentHospital.phone || '07582-472000'})</span>
+                </a>
               </div>
             </div>
 
@@ -448,15 +460,24 @@ export default function TopDoctorCarousel({
                         </p>
                       </div>
 
-                      {/* Bottom Fee & Book Appointment Action */}
+                      {/* Bottom Fee & Action Buttons */}
                       <div className="mt-2 pt-2 border-t border-slate-200/70 flex items-center justify-between gap-1.5">
                         <span className="text-xs font-black text-slate-900">₹{doc.consultationFee}</span>
-                        <Link
-                          href={`/doctors?book=${doc.id}`}
-                          className="px-3 py-1.5 bg-[#026dd9] hover:bg-[#0256ab] text-white text-[11px] font-black rounded-xl shadow-xs hover:shadow-md transition-all active:scale-95 text-center cursor-pointer"
-                        >
-                          Book Now
-                        </Link>
+                        <div className="flex items-center gap-1 shrink-0">
+                          <a
+                            href={`tel:${doc.phone || '07582-472000'}`}
+                            className="w-7 h-7 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 flex items-center justify-center shadow-2xs active:scale-95 transition-all cursor-pointer"
+                            title={`Call directly: ${doc.phone || '07582-472000'}`}
+                          >
+                            <PhoneCall size={11} className="text-emerald-600" />
+                          </a>
+                          <Link
+                            href={`/doctors?book=${doc.id}`}
+                            className="px-2.5 py-1.5 bg-[#026dd9] hover:bg-[#0256ab] text-white text-[11px] font-black rounded-xl shadow-xs hover:shadow-md transition-all active:scale-95 text-center cursor-pointer"
+                          >
+                            Book Now
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   );
@@ -524,12 +545,21 @@ export default function TopDoctorCarousel({
                           </button>
                         </div>
 
-                        <Link
-                          href={`/doctors?book=${doc.id}`}
-                          className="px-4 py-1.5 bg-[#026dd9] text-white text-[11px] font-black rounded-xl shadow-xs active:scale-95"
-                        >
-                          Book Appointment
-                        </Link>
+                        <div className="flex items-center gap-1.5">
+                          <a
+                            href={`tel:${doc.phone || '07582-472000'}`}
+                            className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center justify-center shadow-2xs active:scale-95"
+                            title={`Call directly: ${doc.phone || '07582-472000'}`}
+                          >
+                            <PhoneCall size={13} className="text-emerald-600" />
+                          </a>
+                          <Link
+                            href={`/doctors?book=${doc.id}`}
+                            className="px-3 py-1.5 bg-[#026dd9] text-white text-[11px] font-black rounded-xl shadow-xs active:scale-95"
+                          >
+                            Book Slot
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   );

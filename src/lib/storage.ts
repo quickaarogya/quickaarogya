@@ -358,7 +358,12 @@ export const AarogyaStorage = {
 
   // Doctors & Hospitals
   getDoctors(): Doctor[] {
-    return getItem<Doctor[]>(STORAGE_KEYS.DOCTORS, initialDoctors);
+    const docs = getItem<Doctor[]>(STORAGE_KEYS.DOCTORS, initialDoctors);
+    if (!docs || docs.length === 0 || (docs[0]?.id && !docs[0].id.startsWith('SAG-D'))) {
+      this.setDoctors(initialDoctors);
+      return initialDoctors;
+    }
+    return docs;
   },
   setDoctors(doctors: Doctor[]): void {
     setItem(STORAGE_KEYS.DOCTORS, doctors);
@@ -376,7 +381,12 @@ export const AarogyaStorage = {
     setItem(STORAGE_KEYS.DOCTORS, docs);
   },
   getHospitals(): Hospital[] {
-    return getItem<Hospital[]>(STORAGE_KEYS.HOSPITALS, initialHospitals);
+    const hosps = getItem<Hospital[]>(STORAGE_KEYS.HOSPITALS, initialHospitals);
+    if (!hosps || hosps.length === 0 || (hosps[0]?.id && !hosps[0].id.startsWith('SAG-F'))) {
+      this.setHospitals(initialHospitals);
+      return initialHospitals;
+    }
+    return hosps;
   },
   setHospitals(hospitals: Hospital[]): void {
     setItem(STORAGE_KEYS.HOSPITALS, hospitals);

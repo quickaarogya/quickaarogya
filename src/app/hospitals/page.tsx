@@ -18,6 +18,7 @@ import {
   Stethoscope
 } from 'lucide-react';
 import { AarogyaStorage } from '../../lib/storage';
+import { initialHospitals } from '../../lib/mockData';
 import { AppointmentService } from '../../server/services/appointment.service';
 import { Hospital } from '../../types';
 import { PageHeader } from '../../components/ui/page-header';
@@ -28,15 +29,23 @@ import { EmptyState } from '../../components/ui/empty-state';
 import { Input } from '../../components/ui/input';
 
 export default function HospitalsPage() {
-  const [hospitals, setHospitals] = useState<Hospital[]>([]);
+  const [hospitals, setHospitals] = useState<Hospital[]>(initialHospitals);
   const [searchQuery, setSearchQuery] = useState('');
   const [onlyEmergency, setOnlyEmergency] = useState(false);
 
-  const loadData = async () => {
-    const list = await AppointmentService.getHospitals({
-      searchQuery,
-    });
-    setHospitals(list);
+  const loadData = () => {
+    const list = AarogyaStorage.getHospitals();
+    let res = list && list.length > 0 ? list : initialHospitals;
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase();
+      res = res.filter(h =>
+        h.name.toLowerCase().includes(q) ||
+        h.address.toLowerCase().includes(q) ||
+        h.city.toLowerCase().includes(q) ||
+        h.facilities.some(f => f.toLowerCase().includes(q))
+      );
+    }
+    setHospitals(res);
   };
 
   useEffect(() => {
@@ -194,8 +203,17 @@ export default function HospitalsPage() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <Button asChild variant="default" size="sm" className="text-xs font-bold">
-                    <Link href="/doctors">
+                  <a
+                    href={`tel:${hosp.phone || hosp.emergencyHelpline || '07582-236200'}`}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs shadow-xs active:scale-95 transition-all cursor-pointer"
+                    title={`Call Hospital: ${hosp.phone || hosp.emergencyHelpline}`}
+                  >
+                    <PhoneCall size={13} className="text-white" />
+                    <span>Call Helpline</span>
+                  </a>
+
+                  <Button asChild variant="default" size="sm" className="bg-[#026dd9] hover:bg-[#0256ab] text-xs font-bold rounded-xl">
+                    <Link href={`/doctors?hospital=${encodeURIComponent(hosp.name)}`}>
                       <Stethoscope size={13} className="mr-1" /> View Doctors
                     </Link>
                   </Button>

@@ -117,7 +117,7 @@ function WishlistContent() {
         const q = searchQuery.toLowerCase();
         return (
           s.medicineName.toLowerCase().includes(q) ||
-          s.genericName.toLowerCase().includes(q) ||
+          (s.genericName && s.genericName.toLowerCase().includes(q)) ||
           s.patientName.toLowerCase().includes(q) ||
           (s.prescribingDoctor && s.prescribingDoctor.toLowerCase().includes(q))
         );

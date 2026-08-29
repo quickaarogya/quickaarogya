@@ -36,6 +36,7 @@ import {
   ShieldAlert,
   X,
   PhoneCall,
+  Phone,
   Video,
   Droplet,
   Thermometer,
@@ -903,10 +904,17 @@ export default function HomeCockpit() {
                       <p className="text-[11px] text-slate-500 mt-0.5 truncate">{hosp.address}</p>
                     </div>
 
-                    <div className="mt-3 pt-2.5 border-t border-slate-100/80">
-                      <Button asChild className="w-full bg-[#026dd9] hover:bg-[#0256ab] text-white text-xs font-black rounded-xl h-8 shadow-xs">
+                    <div className="mt-3 pt-2.5 border-t border-slate-100/80 flex items-center gap-2">
+                      <a
+                        href={`tel:${hosp.phone || '07582-236200'}`}
+                        className="w-8 h-8 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 flex items-center justify-center shadow-2xs active:scale-95 transition-all shrink-0 cursor-pointer"
+                        title={`Call Hospital: ${hosp.phone || '07582-236200'}`}
+                      >
+                        <Phone size={13} className="fill-emerald-600 text-emerald-600" />
+                      </a>
+                      <Button asChild className="flex-1 bg-[#026dd9] hover:bg-[#0256ab] text-white text-xs font-black rounded-xl h-8 shadow-xs">
                         <Link href={`/doctors?hospital=${encodeURIComponent(hosp.name)}`}>
-                          Select Hospital Doctors
+                          Select Doctors
                         </Link>
                       </Button>
                     </div>
@@ -921,10 +929,10 @@ export default function HomeCockpit() {
             <div className="space-y-3">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {[
-                  { name: 'Aarogya Dental & Ortho Studio', address: 'Green Park Market', count: 'Dr. Ethan Brooks', icon: '🦷', docId: 'doc-6' },
-                  { name: 'Skin & Laser Clinical Center', address: 'Green Park Extension', count: 'Dr. Norman Latov', icon: '🧴', docId: 'doc-8' },
-                  { name: 'Mother & Child Care Clinic', address: 'Indiranagar', count: 'Dr. Meera Nambiar', icon: '👶', docId: 'doc-3' },
-                  { name: 'Joint Care & Ortho Clinic', address: 'Saket Joint Care Wing', count: 'Dr. Siddharth Verma', icon: '🦴', docId: 'doc-4' },
+                  { name: 'Yuva Skin Clinic', address: 'Dwarika Vihar Chowk near BMC, Tilli, Sagar', count: 'Dr. Pawan Gupta', icon: '🧴', docId: 'SAG-D-0029', phone: '07772820400' },
+                  { name: 'Arihant Smile Care', address: 'Sugandha Bhavan, Jawahar Ganj, Sagar', count: 'Dr. Kanchi Jain', icon: '🦷', docId: 'SAG-D-0031', phone: '08359980412' },
+                  { name: "Dr Patel's Gastro Digestive Care", address: 'Medical College Road, Tilli, Sagar', count: 'Dr. Rajesh Patel', icon: '🍃', docId: 'SAG-D-0032', phone: '07240969347' },
+                  { name: 'Deepshree Health & Eye Clinic', address: 'Near Chaitanya Hospital, Gopal Ganj, Sagar', count: 'Dr. Anurag Jain', icon: '👁️', docId: 'SAG-D-0037', phone: '07987044304' },
                 ].map((clinic, idx) => (
                   <div key={idx} className="glass-card p-4 flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
@@ -937,9 +945,18 @@ export default function HomeCockpit() {
                         <p className="text-[11px] text-slate-400">{clinic.address}</p>
                       </div>
                     </div>
-                    <Button asChild size="sm" className="bg-[#026dd9] hover:bg-[#0256ab] text-white text-xs font-black rounded-xl shrink-0 shadow-xs">
-                      <Link href={`/doctors?book=${clinic.docId}`}>Consult</Link>
-                    </Button>
+                    <div className="flex items-center gap-1.5 shrink-0">
+                      <a
+                        href={`tel:${clinic.phone}`}
+                        className="w-8 h-8 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 flex items-center justify-center shadow-2xs active:scale-95 transition-all cursor-pointer"
+                        title={`Call clinic: ${clinic.phone}`}
+                      >
+                        <Phone size={13} className="fill-emerald-600 text-emerald-600" />
+                      </a>
+                      <Button asChild size="sm" className="bg-[#026dd9] hover:bg-[#0256ab] text-white text-xs font-black rounded-xl shadow-xs">
+                        <Link href={`/doctors?book=${clinic.docId}`}>Book</Link>
+                      </Button>
+                    </div>
                   </div>
                 ))}
               </div>

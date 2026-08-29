@@ -44,9 +44,10 @@ import { Card } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
 import { Badge } from '../../components/ui/badge';
 import { DiagnosticItem } from '@/types';
-import { initialCTScans, initialPathologyTests, initialXRays } from '@/lib/diagnosticsData';
+import { initialCTScans, initialPathologyTests, initialXRays, initialHospitalAmenities } from '@/lib/diagnosticsData';
 import { DiagnosticCard } from '@/components/diagnostics/DiagnosticCard';
 import { ComparePricesSection } from '@/components/diagnostics/ComparePricesSection';
+import { AllAmenitiesView } from '@/components/diagnostics/AllAmenitiesView';
 
 // --- SUBCATEGORY DEFINITIONS ---
 const SPECIALTY_SUB_CATEGORIES = [
@@ -259,6 +260,8 @@ function DoctorsContent() {
   const [selectedSpecialty, setSelectedSpecialty] = useState<string>('all');
   const [selectedHospitalId, setSelectedHospitalId] = useState<string>('all');
   const [selectedClinicArea, setSelectedClinicArea] = useState<string>('all');
+  // In Category 'All', 2 Subcategories: 'doctors' | 'amenities'
+  const [allCategoryView, setAllCategoryView] = useState<'doctors' | 'amenities'>('doctors');
 
   // Secondary Quick Filters
   const [quickFilter, setQuickFilter] = useState<'all' | 'high_rated' | 'video' | 'in_person' | 'budget'>('all');
@@ -275,6 +278,22 @@ function DoctorsContent() {
   const [bookingSuccessApt, setBookingSuccessApt] = useState<any | null>(null);
   const [bookingError, setBookingError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    const mode = searchParams.get('mode');
+    const specialty = searchParams.get('specialty');
+    if (mode) {
+      if (['ct_scan', 'pathology', 'x_ray', 'compare_prices'].includes(mode)) {
+        setActiveMode('specialty');
+        setSelectedSpecialty(mode);
+      } else if (['specialty', 'hospital', 'clinic'].includes(mode)) {
+        setActiveMode(mode as any);
+      }
+    }
+    if (specialty) {
+      setSelectedSpecialty(specialty);
+    }
+  }, [searchParams]);
 
   const loadData = async () => {
     let docs = typeof window !== 'undefined' ? AarogyaStorage.getDoctors() : initialDoctors;
@@ -298,9 +317,10 @@ function DoctorsContent() {
     // Check if ?book=doc-id was passed in URL
     const bookId = searchParams.get('book');
     if (bookId) {
-      const allD = docs.length > 0 ? docs : initialDoctors;
-      const found = allD.find(d => d.id === bookId);
-      if (found) setSelectedDoctor(found);
+      const targetDoc = docs.find(d => d.id === bookId);
+      if (targetDoc) {
+        setSelectedDoctor(targetDoc);
+      }
     }
 
     const spec = searchParams.get('specialty');
@@ -441,8 +461,14 @@ function DoctorsContent() {
   const activeBannerDetails = useMemo(() => {
     if (activeMode === 'specialty') {
       const obj = SPECIALTY_SUB_CATEGORIES.find(s => s.id === selectedSpecialty) || SPECIALTY_SUB_CATEGORIES[0];
+      let title = obj.bannerTitle;
+      let subtitle = obj.bannerSubtitle;
       let badge = `${filteredDoctors.length} Specialists Available`;
-      if (selectedSpecialty === 'ct_scan') {
+      if (selectedSpecialty === 'all' && allCategoryView === 'amenities') {
+        title = 'All Hospital Amenities, Diagnostics & Scans';
+        subtitle = 'Explore 128-slice CT scans, NABL pathology, digital X-Rays, ICU & emergency facilities across Sagar.';
+        badge = `${initialCTScans.length + initialPathologyTests.length + initialXRays.length + initialHospitalAmenities.length} Amenities Available`;
+      } else if (selectedSpecialty === 'ct_scan') {
         badge = `${initialCTScans.length} High-Speed CT Scans`;
       } else if (selectedSpecialty === 'pathology') {
         badge = `${initialPathologyTests.length} NABL Certified Tests`;
@@ -452,8 +478,8 @@ function DoctorsContent() {
         badge = 'Instant Price Transparency';
       }
       return {
-        title: obj.bannerTitle,
-        subtitle: obj.bannerSubtitle,
+        title,
+        subtitle,
         badge
       };
     } else if (activeMode === 'hospital') {
@@ -478,7 +504,7 @@ function DoctorsContent() {
         badge: `${filteredDoctors.length} Clinics & Doctors Listed`
       };
     }
-  }, [activeMode, selectedSpecialty, selectedHospitalId, selectedClinicArea, filteredDoctors.length, hospitals]);
+  }, [activeMode, selectedSpecialty, selectedHospitalId, selectedClinicArea, filteredDoctors.length, hospitals, allCategoryView]);
 
   /* =========================================================================
    * 1. FULL-SCREEN DOCTOR PROFILE & BOOKING SCREEN
@@ -1191,8 +1217,39 @@ function DoctorsContent() {
             </div>
           </div>
 
+          {/* 2 SUBCATEGORIES FOR CATEGORY "ALL": [ 🩺 1. All Doctors | 🏥 2. All Amenities ] */}
+          {selectedSpecialty === 'all' && (
+            <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs w-full sm:w-fit">
+              <button
+                onClick={() => setAllCategoryView('doctors')}
+                className={`flex-1 sm:flex-initial px-4 sm:px-5 py-2 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-2 cursor-pointer ${
+                  allCategoryView === 'doctors'
+                    ? 'bg-[#026dd9] text-white shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                }`}
+              >
+                <Stethoscope size={14} />
+                <span>1. All Doctors ({filteredDoctors.length})</span>
+              </button>
+
+              <button
+                onClick={() => setAllCategoryView('amenities')}
+                className={`flex-1 sm:flex-initial px-4 sm:px-5 py-2 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-2 cursor-pointer ${
+                  allCategoryView === 'amenities'
+                    ? 'bg-[#026dd9] text-white shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                }`}
+              >
+                <Sparkles size={14} />
+                <span>2. All Amenities ({initialCTScans.length + initialPathologyTests.length + initialXRays.length + initialHospitalAmenities.length})</span>
+              </button>
+            </div>
+          )}
+
           {/* DIAGNOSTIC / COMPARE PRICES / DOCTORS GRID VIEW */}
-          {selectedSpecialty === 'compare_prices' ? (
+          {selectedSpecialty === 'all' && allCategoryView === 'amenities' ? (
+            <AllAmenitiesView searchQuery={searchQuery} onSelectSubCategory={(cat) => setSelectedSpecialty(cat)} />
+          ) : selectedSpecialty === 'compare_prices' ? (
             <ComparePricesSection />
           ) : selectedSpecialty === 'ct_scan' ? (
             <div className="grid grid-cols-1 min-[440px]:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">

@@ -770,3 +770,105 @@ export const initialPriceComparisonGroups: TestPriceComparisonGroup[] = [
     ],
   },
 ];
+
+export interface HospitalAmenityItem {
+  id: string;
+  name: string;
+  category: 'emergency' | 'icu' | 'imaging' | 'dialysis' | 'blood_bank' | 'surgical' | 'general';
+  centerName: string;
+  locality: string;
+  ratingAverage: number;
+  availability: string;
+  badge: string;
+  phone: string;
+  imageUrl: string;
+  description: string;
+  features: string[];
+}
+
+export const initialHospitalAmenities: HospitalAmenityItem[] = [
+  {
+    id: 'am-1',
+    name: '24x7 Emergency & Trauma Resuscitation Center',
+    category: 'emergency',
+    centerName: 'Bhagyodaya Tirth Hospital & Research Centre',
+    locality: 'Khurai Road, Sagar',
+    ratingAverage: 4.96,
+    availability: 'Open 24x7 • Zero Wait Emergency OPD',
+    badge: 'Level 1 Trauma Care',
+    phone: '07582-472000',
+    imageUrl: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&auto=format&fit=crop&q=80',
+    description: 'Dedicated ACLS ambulances, dedicated critical care triage, emergency defibrillation, and on-duty trauma surgeons.',
+    features: ['24/7 On-Call Surgeons', 'Dedicated Resuscitation Bay', 'Emergency OT Ready', 'GPS Tracked Ambulances']
+  },
+  {
+    id: 'am-2',
+    name: '32-Bed Multi-Specialty ICU / NICU / PICU',
+    category: 'icu',
+    centerName: 'Bansal Hospital Sagar',
+    locality: 'Civil Lines, Sagar',
+    ratingAverage: 4.94,
+    availability: '24x7 Intensivist On-Duty',
+    badge: 'Class 100 HEPA Cleanroom',
+    phone: '07582-401122',
+    imageUrl: 'https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=500&auto=format&fit=crop&q=80',
+    description: 'High-end Dräger ventilators, central multi-para hemodynamic monitors, isolation beds, and dedicated pediatric incubators.',
+    features: ['1:1 Nursing Ratio', 'Dräger High-End Ventilators', 'Isolation Negative Pressure', 'ABG Blood Gas Lab Inside']
+  },
+  {
+    id: 'am-3',
+    name: 'Fresenius High-Flux Hemodialysis Unit',
+    category: 'dialysis',
+    centerName: 'Sagar City Dialysis & Renal Institute',
+    locality: 'Deendayal Nagar, Sagar',
+    ratingAverage: 4.91,
+    availability: 'Slots: 6:00 AM – 10:00 PM Daily',
+    badge: 'Bicarbonate RO Dialysis',
+    phone: '07582-243388',
+    imageUrl: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=500&auto=format&fit=crop&q=80',
+    description: 'Ultra-pure water treatment plant, computerized dialyzer reprocessing, and on-site nephrologist supervision.',
+    features: ['Fresenius 4008S Machines', 'Reclining Electronic Beds', 'Heparin Infusion Pumps', 'Zero Cross-Infection Protocol']
+  },
+  {
+    id: 'am-4',
+    name: '24x7 Voluntary Blood Bank & Component Separation',
+    category: 'blood_bank',
+    centerName: 'BMC Government Medical College Blood Bank',
+    locality: 'Medical College, Sagar',
+    ratingAverage: 4.88,
+    availability: 'Open 24 Hours • ABHA Linked',
+    badge: 'PRBC, FFP & Platelet Cryo',
+    phone: '07582-234500',
+    imageUrl: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&auto=format&fit=crop&q=80',
+    description: 'FDA certified component separation for Packed Red Blood Cells (PRBC), Single Donor Platelets (SDP), and Fresh Frozen Plasma (FFP).',
+    features: ['ID-NAT Tested Safe Blood', 'Cryo-Centrifuge Separation', 'Walk-in Replacement Issue', 'Direct Donor App Check']
+  },
+  {
+    id: 'am-5',
+    name: 'Digital Cardiac Catheterization Lab (Cath Lab)',
+    category: 'surgical',
+    centerName: 'Bhagyodaya Tirth Cardiac Institute',
+    locality: 'Khurai Road, Sagar',
+    ratingAverage: 4.97,
+    availability: 'Primary Angioplasty 24x7',
+    badge: 'Siemens Artis Flat-Panel',
+    phone: '07582-472000',
+    imageUrl: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?w=500&auto=format&fit=crop&q=80',
+    description: 'Sub-millimeter radial angiography, drug-eluting stent implantation, fractional flow reserve (FFR), and permanent pacemaker implants.',
+    features: ['< 60 Min Door-to-Balloon Time', 'IVUS & OCT Intravascular Imaging', 'Permanent Pacemaker Implants', 'Intra-Aortic Balloon Pump (IABP)']
+  },
+  {
+    id: 'am-6',
+    name: '1.5-Tesla Silent MRI & 3D MR-Angiography',
+    category: 'imaging',
+    centerName: 'Sagar Advanced Imaging & Scan Hub',
+    locality: 'Civil Lines, Sagar',
+    ratingAverage: 4.93,
+    availability: '8:00 AM – 9:00 PM (Emergency 24x7)',
+    badge: 'Acoustic Noise Reduction',
+    phone: '07582-401122',
+    imageUrl: 'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=500&auto=format&fit=crop&q=80',
+    description: 'Whole body diffusion MRI, Brain Stroke DWI/DTI mapping, Knee and Spine 3D cartilage imaging with ultra-fast acquisition.',
+    features: ['Wide 70cm Bore (Claustrophobia Free)', 'Silent Scan Noise Dampening', 'Dedicated Pediatric MRI Protocol', 'Same-Day Radiologist Reports']
+  }
+];

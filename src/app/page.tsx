@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import Link from 'next/link';
 import {
   Activity,
@@ -180,7 +180,18 @@ export default function HomeCockpit() {
   const [medicines, setMedicines] = useState<Medicine[]>([]);
   const [doctors, setDoctors] = useState<Doctor[]>([]);
   const [notifications, setNotifications] = useState<any[]>([]);
-  const [doctorBatchIndex, setDoctorBatchIndex] = useState(0);
+
+  // Doctors Single Line Scroll Ref
+  const doctorsScrollRef = useRef<HTMLDivElement>(null);
+  const scrollDoctors = (direction: 'left' | 'right') => {
+    if (doctorsScrollRef.current) {
+      const scrollAmount = doctorsScrollRef.current.clientWidth * 0.8;
+      doctorsScrollRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth',
+      });
+    }
+  };
 
   // Search & Location
   const [searchQuery, setSearchQuery] = useState('');
@@ -969,7 +980,7 @@ export default function HomeCockpit() {
             </div>
           )}
 
-          {/* CATEGORY VIEW 3: TOP DOCTORS LISTING (PAGINATED: 3 LINES / 18 ITEMS MAX WITH BATCH CONTROLS) */}
+          {/* CATEGORY VIEW 3: TOP DOCTORS LISTING (SINGLE LINE HORIZONTAL CAROUSEL) */}
           <div className="space-y-3">
             <div className="flex items-center justify-between px-1 gap-2">
               <div className="min-w-0">
@@ -985,36 +996,24 @@ export default function HomeCockpit() {
                 <p className="text-xs text-slate-500 font-medium truncate mt-0.5">Verified specialists available for instant OPD consultation</p>
               </div>
 
-              {/* Batch Carousel Controls + See All Link */}
+              {/* Carousel Navigation Controls + See All Link */}
               <div className="flex items-center gap-2 shrink-0">
-                {(() => {
-                  const DOCTORS_PER_BATCH = 18;
-                  const totalBatches = Math.ceil(doctors.length / DOCTORS_PER_BATCH) || 1;
-                  if (totalBatches <= 1) return null;
-                  return (
-                    <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200 shadow-2xs">
-                      <button
-                        onClick={() => setDoctorBatchIndex((prev) => (prev - 1 + totalBatches) % totalBatches)}
-                        aria-label="Previous Doctors Batch"
-                        className="w-6 h-6 rounded-lg bg-white hover:bg-slate-50 text-slate-700 flex items-center justify-center text-xs font-bold transition-all shadow-2xs active:scale-95 cursor-pointer disabled:opacity-40"
-                        disabled={doctorBatchIndex === 0}
-                      >
-                        <ChevronLeft size={14} />
-                      </button>
-                      <span className="text-[10px] font-black text-slate-600 px-1">
-                        {doctorBatchIndex + 1}/{totalBatches}
-                      </span>
-                      <button
-                        onClick={() => setDoctorBatchIndex((prev) => (prev + 1) % totalBatches)}
-                        aria-label="Next Doctors Batch"
-                        className="w-6 h-6 rounded-lg bg-white hover:bg-slate-50 text-slate-700 flex items-center justify-center text-xs font-bold transition-all shadow-2xs active:scale-95 cursor-pointer disabled:opacity-40"
-                        disabled={doctorBatchIndex === totalBatches - 1}
-                      >
-                        <ChevronRight size={14} />
-                      </button>
-                    </div>
-                  );
-                })()}
+                <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200 shadow-2xs">
+                  <button
+                    onClick={() => scrollDoctors('left')}
+                    aria-label="Previous Doctors"
+                    className="w-6 h-6 rounded-lg bg-white hover:bg-slate-50 text-slate-700 flex items-center justify-center text-xs font-bold transition-all shadow-2xs active:scale-95 cursor-pointer"
+                  >
+                    <ChevronLeft size={14} />
+                  </button>
+                  <button
+                    onClick={() => scrollDoctors('right')}
+                    aria-label="Next Doctors"
+                    className="w-6 h-6 rounded-lg bg-white hover:bg-slate-50 text-slate-700 flex items-center justify-center text-xs font-bold transition-all shadow-2xs active:scale-95 cursor-pointer"
+                  >
+                    <ChevronRight size={14} />
+                  </button>
+                </div>
 
                 <Link href="/doctors" className="text-xs font-black text-[#026dd9] hover:underline flex items-center gap-0.5 whitespace-nowrap shrink-0">
                   <span>See all</span>
@@ -1023,15 +1022,20 @@ export default function HomeCockpit() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 min-[380px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 sm:gap-4 animate-smooth-fade">
-              {doctors.slice(doctorBatchIndex * 18, (doctorBatchIndex + 1) * 18).map(doc => (
-                <DoctorPortraitCard
-                  key={doc.id}
-                  doctor={doc}
-                  onSelect={(d) => {
-                    window.location.href = `/doctors?book=${d.id}`;
-                  }}
-                />
+            {/* SINGLE LINE CAROUSEL (Never wraps to second row) */}
+            <div
+              ref={doctorsScrollRef}
+              className="flex items-center gap-3 sm:gap-4 overflow-x-auto no-scrollbar scrollbar-none scroll-smooth pb-1"
+            >
+              {doctors.map(doc => (
+                <div key={doc.id} className="w-[210px] min-[380px]:w-[230px] sm:w-[250px] md:w-[260px] shrink-0">
+                  <DoctorPortraitCard
+                    doctor={doc}
+                    onSelect={(d) => {
+                      window.location.href = `/doctors?book=${d.id}`;
+                    }}
+                  />
+                </div>
               ))}
             </div>
           </div>

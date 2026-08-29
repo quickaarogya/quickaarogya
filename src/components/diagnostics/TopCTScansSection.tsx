@@ -1,22 +1,28 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import Link from 'next/link';
-import { ChevronRight, ChevronLeft, Scan, Sparkles } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Scan } from 'lucide-react';
 import { DiagnosticItem } from '@/types';
 import { initialCTScans } from '@/lib/diagnosticsData';
 import { DiagnosticCard } from './DiagnosticCard';
 
 interface TopCTScansSectionProps {
   items?: DiagnosticItem[];
-  itemsPerPage?: number;
 }
 
-export function TopCTScansSection({ items = initialCTScans, itemsPerPage = 18 }: TopCTScansSectionProps) {
-  const [currentPage, setCurrentPage] = useState(0);
+export function TopCTScansSection({ items = initialCTScans }: TopCTScansSectionProps) {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  const totalPages = Math.ceil(items.length / itemsPerPage) || 1;
-  const currentBatch = items.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = scrollContainerRef.current.clientWidth * 0.8;
+      scrollContainerRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth',
+      });
+    }
+  };
 
   return (
     <section className="space-y-3">
@@ -37,31 +43,24 @@ export function TopCTScansSection({ items = initialCTScans, itemsPerPage = 18 }:
           </p>
         </div>
 
-        {/* Carousel Pagination Controls + See All Link */}
+        {/* Carousel Navigation Arrows + See All Link */}
         <div className="flex items-center gap-2 shrink-0">
-          {totalPages > 1 && (
-            <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200 shadow-2xs">
-              <button
-                onClick={() => setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages)}
-                aria-label="Previous Page"
-                className="w-6 h-6 rounded-lg bg-white hover:bg-slate-50 text-slate-700 flex items-center justify-center text-xs font-bold transition-all shadow-2xs active:scale-95 cursor-pointer disabled:opacity-40"
-                disabled={currentPage === 0}
-              >
-                <ChevronLeft size={14} />
-              </button>
-              <span className="text-[10px] font-black text-slate-600 px-1">
-                {currentPage + 1}/{totalPages}
-              </span>
-              <button
-                onClick={() => setCurrentPage((prev) => (prev + 1) % totalPages)}
-                aria-label="Next Page"
-                className="w-6 h-6 rounded-lg bg-white hover:bg-slate-50 text-slate-700 flex items-center justify-center text-xs font-bold transition-all shadow-2xs active:scale-95 cursor-pointer disabled:opacity-40"
-                disabled={currentPage === totalPages - 1}
-              >
-                <ChevronRight size={14} />
-              </button>
-            </div>
-          )}
+          <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200 shadow-2xs">
+            <button
+              onClick={() => scroll('left')}
+              aria-label="Previous Scans"
+              className="w-6 h-6 rounded-lg bg-white hover:bg-slate-50 text-slate-700 flex items-center justify-center text-xs font-bold transition-all shadow-2xs active:scale-95 cursor-pointer"
+            >
+              <ChevronLeft size={14} />
+            </button>
+            <button
+              onClick={() => scroll('right')}
+              aria-label="Next Scans"
+              className="w-6 h-6 rounded-lg bg-white hover:bg-slate-50 text-slate-700 flex items-center justify-center text-xs font-bold transition-all shadow-2xs active:scale-95 cursor-pointer"
+            >
+              <ChevronRight size={14} />
+            </button>
+          </div>
 
           <Link
             href="/appointments?type=ct_scan"
@@ -73,10 +72,15 @@ export function TopCTScansSection({ items = initialCTScans, itemsPerPage = 18 }:
         </div>
       </div>
 
-      {/* Grid: 3 Lines Max (Up to 18 Items) */}
-      <div className="grid grid-cols-1 min-[380px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 sm:gap-4 animate-smooth-fade">
-        {currentBatch.map((item) => (
-          <DiagnosticCard key={item.id} item={item} themeColor="blue" />
+      {/* SINGLE LINE CAROUSEL (Never wraps to second row) */}
+      <div
+        ref={scrollContainerRef}
+        className="flex items-center gap-3 sm:gap-4 overflow-x-auto no-scrollbar scrollbar-none scroll-smooth pb-1"
+      >
+        {items.map((item) => (
+          <div key={item.id} className="w-[210px] min-[380px]:w-[230px] sm:w-[250px] md:w-[260px] shrink-0">
+            <DiagnosticCard item={item} themeColor="blue" />
+          </div>
         ))}
       </div>
     </section>

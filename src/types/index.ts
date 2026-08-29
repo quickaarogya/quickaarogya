@@ -646,3 +646,51 @@ export interface AdminPlatformEarningsSummary {
   recentLedgerEntries: EscrowLedgerEntry[];
 }
 
+// Diagnostics & Imaging Types (CT Scans, Pathologies, X-Rays, Price Comparisons)
+export interface DiagnosticItem {
+  id: string;
+  name: string;
+  type: 'ct_scan' | 'pathology' | 'x_ray' | 'mri' | 'ultrasound';
+  centerName: string;
+  centerAddress?: string;
+  locality?: string;
+  ratingAverage: number;
+  reviewsCount?: number;
+  preparation?: string; // e.g. "4 Hours Fasting" or "No Fasting"
+  reportTurnaround: string; // e.g. "Digital Film in 2 Hours" or "Same Day 6 PM"
+  mrp: number;
+  price: number;
+  discountPercentage?: number;
+  phone?: string;
+  badge?: string; // e.g. "128-Slice High Speed", "NABL Verified", "Digital HD Film"
+  homeCollectionAvailable?: boolean;
+  sampleType?: string;
+  bodyPart?: string;
+  imageUrl?: string;
+}
+
+export interface CenterPriceComparison {
+  centerId: string;
+  centerName: string;
+  centerType: string;
+  locality: string;
+  distanceKm: number;
+  rating: number;
+  accreditation: string; // e.g. "NABH & NABL Accredited"
+  mrp: number;
+  price: number;
+  savings: number;
+  turnaroundTime: string;
+  phone: string;
+  availableSlot: string;
+  isLowestPrice?: boolean;
+  isFastestReport?: boolean;
+}
+
+export interface TestPriceComparisonGroup {
+  testId: string;
+  testName: string;
+  category: 'ct_scan' | 'pathology' | 'x_ray';
+  description: string;
+  centers: CenterPriceComparison[];
+}

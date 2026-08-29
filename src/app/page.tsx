@@ -73,6 +73,10 @@ import ProductDetailSheet from '../components/pharmacy/ProductDetailSheet';
 import BrandLogo from '../components/common/BrandLogo';
 import TopDoctorCarousel from '../components/doctors/TopDoctorCarousel';
 import { DoctorPortraitCard } from '../components/doctor/DoctorPortraitCard';
+import { TopCTScansSection } from '../components/diagnostics/TopCTScansSection';
+import { TopPathologySection } from '../components/diagnostics/TopPathologySection';
+import { TopXRaysSection } from '../components/diagnostics/TopXRaysSection';
+import { ComparePricesSection } from '../components/diagnostics/ComparePricesSection';
 
 // Category Carousel Chips for Pharma
 const PHARMA_TOP_CATEGORIES = [
@@ -175,6 +179,7 @@ export default function HomeCockpit() {
   const [medicines, setMedicines] = useState<Medicine[]>([]);
   const [doctors, setDoctors] = useState<Doctor[]>([]);
   const [notifications, setNotifications] = useState<any[]>([]);
+  const [doctorBatchIndex, setDoctorBatchIndex] = useState(0);
 
   // Search & Location
   const [searchQuery, setSearchQuery] = useState('');
@@ -963,23 +968,62 @@ export default function HomeCockpit() {
             </div>
           )}
 
-          {/* CATEGORY VIEW 3: TOP DOCTORS LISTING */}
-          <div>
-            <div className="flex items-center justify-between mb-3 px-1 gap-2">
+          {/* CATEGORY VIEW 3: TOP DOCTORS LISTING (PAGINATED: 3 LINES / 18 ITEMS MAX WITH BATCH CONTROLS) */}
+          <div className="space-y-3">
+            <div className="flex items-center justify-between px-1 gap-2">
               <div className="min-w-0">
-                <h3 className="text-base font-black text-slate-900 leading-tight truncate">
-                  Top Doctor
-                </h3>
-                <p className="text-xs text-slate-500 font-medium truncate">Verified specialists available for instant OPD consultation</p>
+                <div className="flex items-center gap-2">
+                  <h3 className="text-base sm:text-lg font-black text-slate-900 leading-tight truncate">
+                    Top Doctor
+                  </h3>
+                  <span className="hidden sm:inline-flex items-center gap-1 text-[10px] font-black text-[#026dd9] bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200">
+                    <Stethoscope size={11} />
+                    <span>Verified OPD Specialists</span>
+                  </span>
+                </div>
+                <p className="text-xs text-slate-500 font-medium truncate mt-0.5">Verified specialists available for instant OPD consultation</p>
               </div>
-              <Link href="/doctors" className="text-xs font-black text-[#026dd9] hover:underline flex items-center gap-0.5 whitespace-nowrap shrink-0">
-                <span>See all</span>
-                <ChevronRight size={14} className="shrink-0" />
-              </Link>
+
+              {/* Batch Carousel Controls + See All Link */}
+              <div className="flex items-center gap-2 shrink-0">
+                {(() => {
+                  const DOCTORS_PER_BATCH = 18;
+                  const totalBatches = Math.ceil(doctors.length / DOCTORS_PER_BATCH) || 1;
+                  if (totalBatches <= 1) return null;
+                  return (
+                    <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200 shadow-2xs">
+                      <button
+                        onClick={() => setDoctorBatchIndex((prev) => (prev - 1 + totalBatches) % totalBatches)}
+                        aria-label="Previous Doctors Batch"
+                        className="w-6 h-6 rounded-lg bg-white hover:bg-slate-50 text-slate-700 flex items-center justify-center text-xs font-bold transition-all shadow-2xs active:scale-95 cursor-pointer disabled:opacity-40"
+                        disabled={doctorBatchIndex === 0}
+                      >
+                        <ChevronLeft size={14} />
+                      </button>
+                      <span className="text-[10px] font-black text-slate-600 px-1">
+                        {doctorBatchIndex + 1}/{totalBatches}
+                      </span>
+                      <button
+                        onClick={() => setDoctorBatchIndex((prev) => (prev + 1) % totalBatches)}
+                        aria-label="Next Doctors Batch"
+                        className="w-6 h-6 rounded-lg bg-white hover:bg-slate-50 text-slate-700 flex items-center justify-center text-xs font-bold transition-all shadow-2xs active:scale-95 cursor-pointer disabled:opacity-40"
+                        disabled={doctorBatchIndex === totalBatches - 1}
+                      >
+                        <ChevronRight size={14} />
+                      </button>
+                    </div>
+                  );
+                })()}
+
+                <Link href="/doctors" className="text-xs font-black text-[#026dd9] hover:underline flex items-center gap-0.5 whitespace-nowrap shrink-0">
+                  <span>See all</span>
+                  <ChevronRight size={14} className="shrink-0" />
+                </Link>
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 min-[380px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 sm:gap-4">
-              {doctors.map(doc => (
+            <div className="grid grid-cols-1 min-[380px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 sm:gap-4 animate-smooth-fade">
+              {doctors.slice(doctorBatchIndex * 18, (doctorBatchIndex + 1) * 18).map(doc => (
                 <DoctorPortraitCard
                   key={doc.id}
                   doctor={doc}
@@ -990,6 +1034,18 @@ export default function HomeCockpit() {
               ))}
             </div>
           </div>
+
+          {/* DIAGNOSTIC VIEW 1: TOP CT SCANS */}
+          <TopCTScansSection />
+
+          {/* DIAGNOSTIC VIEW 2: TOP PATHOLOGIES & LAB TESTS */}
+          <TopPathologySection />
+
+          {/* DIAGNOSTIC VIEW 3: TOP DIGITAL X-RAYS */}
+          <TopXRaysSection />
+
+          {/* DIAGNOSTIC VIEW 4: COMPARE PRICES SECTION */}
+          <ComparePricesSection />
         </div>
 
         {/* Interactive Location Selector Modal */}

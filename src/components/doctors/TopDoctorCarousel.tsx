@@ -282,12 +282,13 @@ export default function TopDoctorCarousel({
         {/* Background Image of the Current Hospital - Natural, Clear & Bright Daylight Architecture */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
+            key={`hosp-bg-${currentHospital.id}`}
             src={currentHospital.imageUrl || '/images/hospitals/bhagyodaya-tirth.jpg'}
             alt={currentHospital.name}
             onError={(e) => {
               (e.target as HTMLImageElement).src = '/images/hospitals/bhagyodaya-tirth.jpg';
             }}
-            className="w-full h-full object-cover object-center transition-all duration-700"
+            className="w-full h-full object-cover object-center transition-all duration-700 animate-cross-fade"
           />
           {/* Gentle Natural Scrim Gradient - Leaves Hospital Campus Clear & Prominent */}
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/25 to-black/20" />
@@ -297,7 +298,7 @@ export default function TopDoctorCarousel({
         {/* Content Layer (Z-10) */}
         <div className="relative z-10 p-3.5 sm:p-6 lg:p-7 flex flex-col justify-between flex-1 gap-3 sm:gap-6">
           {/* TOP ROW: Hospital Rating Pill on Left, Hospital Type Badge & Heart on Right */}
-          <div className="flex items-center justify-between gap-2">
+          <div key={`hosp-top-${currentHospital.id}`} className="flex items-center justify-between gap-2 animate-smooth-fade">
             <div className="flex items-center gap-2 flex-wrap">
               {/* Hospital Star Rating */}
               <div className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-black text-slate-900 bg-white/95 backdrop-blur-md px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full shadow-md border border-white/80">
@@ -333,16 +334,20 @@ export default function TopDoctorCarousel({
           {/* MIDDLE SECTION: Hospital Info on Left + Multiple Doctor Cards on Right */}
           <div className="lg:grid lg:grid-cols-12 lg:gap-6 items-center space-y-3 lg:space-y-0">
             {/* Left 4-5 Columns: Hospital Division / Pillar Card with Signature Theme Color */}
-            <div className="lg:col-span-4 space-y-2.5 bg-gradient-to-br from-[#011a3c]/95 via-[#023368]/95 to-[#014f9e]/95 backdrop-blur-2xl p-3.5 sm:p-4 rounded-3xl border border-blue-400/40 shadow-[0_16px_40px_rgba(1,26,60,0.45)] flex flex-col justify-between h-auto sm:min-h-[350px]">
+            <div
+              key={`hosp-pillar-${currentHospital.id}`}
+              className="lg:col-span-4 space-y-2.5 bg-gradient-to-br from-[#011a3c]/95 via-[#023368]/95 to-[#014f9e]/95 backdrop-blur-2xl p-3.5 sm:p-4 rounded-3xl border border-blue-400/40 shadow-[0_16px_40px_rgba(1,26,60,0.45)] flex flex-col justify-between h-auto sm:min-h-[350px] animate-slide-scale-fade"
+            >
               {/* Taller Hospital Campus Image Thumbnail */}
               <div className="relative w-full h-36 sm:h-44 rounded-2xl overflow-hidden border border-white/20 bg-slate-900 shadow-md">
                 <img
+                  key={`hosp-thumb-${currentHospital.id}`}
                   src={currentHospital.imageUrl || '/images/hospitals/bhagyodaya-tirth.jpg'}
                   alt={currentHospital.name}
                   onError={(e) => {
                     (e.target as HTMLImageElement).src = '/images/hospitals/bhagyodaya-tirth.jpg';
                   }}
-                  className="w-full h-full object-cover object-center"
+                  className="w-full h-full object-cover object-center animate-cross-fade"
                 />
                 <div className="absolute top-2 right-2 bg-black/80 backdrop-blur-md text-white text-[10px] font-black px-2.5 py-0.5 rounded-lg border border-white/20 flex items-center gap-1.5 shadow-sm">
                   <Building2 size={11} className="text-[#38BDF8]" />
@@ -434,7 +439,10 @@ export default function TopDoctorCarousel({
               )}
 
               {/* DESKTOP VIEW: Multi-Column Glassmorphic Cards Grid */}
-              <div className="hidden sm:grid sm:grid-cols-2 md:grid-cols-4 gap-3">
+              <div
+                key={`desktop-grid-${currentHospital.id}-page-${doctorPageIndex}`}
+                className="hidden sm:grid sm:grid-cols-2 md:grid-cols-4 gap-3 animate-smooth-fade"
+              >
                 {displayedDoctors.map((doc) => {
                   const isFav = !!favorites[doc.id];
                   return (
@@ -453,9 +461,10 @@ export default function TopDoctorCarousel({
                         {/* Favorite button */}
                         <button
                           onClick={(e) => toggleDoctorFavorite(doc.id, e)}
-                          className="absolute top-1.5 right-1.5 z-10 w-6 h-6 rounded-full bg-white/85 hover:bg-white text-slate-400 hover:text-rose-500 flex items-center justify-center transition-colors shadow-xs cursor-pointer border border-white/60"
+                          aria-label="Save Doctor"
+                          className="absolute top-1.5 right-1.5 z-10 w-7 h-7 rounded-full bg-white/85 backdrop-blur-md shadow-xs flex items-center justify-center text-slate-400 hover:text-rose-500 transition-colors border border-white/80 cursor-pointer"
                         >
-                          <Heart size={12} className={isFav ? 'fill-rose-500 text-rose-500' : ''} />
+                          <Heart size={13} className={isFav ? 'fill-rose-500 text-rose-500' : ''} />
                         </button>
 
                         <img
@@ -511,16 +520,20 @@ export default function TopDoctorCarousel({
                   const doc = hospitalDoctors[mobileDoctorIndex] || hospitalDoctors[0];
                   const isFav = !!favorites[doc.id];
                   return (
-                    <div className="rounded-3xl bg-white/85 backdrop-blur-2xl border border-white/70 p-3 text-slate-900 shadow-xl space-y-2.5">
+                    <div
+                      key={`mobile-doc-${currentHospital.id}-${doc.id}-${mobileDoctorIndex}`}
+                      className="rounded-3xl bg-white/85 backdrop-blur-2xl border border-white/70 p-3 text-slate-900 shadow-xl space-y-2.5 animate-slide-scale-fade"
+                    >
                       <div className="flex items-center gap-3">
                         <div className="relative w-24 h-28 rounded-2xl overflow-hidden bg-slate-100 shrink-0 border border-slate-200 shadow-xs">
                           <img
+                            key={`doc-img-${doc.id}`}
                             src={doc.avatarUrl}
                             alt={doc.name}
                             onError={(e) => {
                               (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&auto=format&fit=crop&q=80';
                             }}
-                            className="w-full h-full object-cover object-top"
+                            className="w-full h-full object-cover object-top animate-cross-fade"
                           />
                           <div className="absolute bottom-1 left-1 bg-slate-950/80 text-white text-[9px] font-black px-1.5 py-0.2 rounded flex items-center gap-0.5 border border-white/20">
                             <Star size={9} fill="#FBBF24" className="text-amber-400" />
@@ -551,7 +564,7 @@ export default function TopDoctorCarousel({
                         <div className="flex items-center gap-1">
                           <button
                             onClick={() => setMobileDoctorIndex(prev => (prev - 1 + hospitalDoctors.length) % hospitalDoctors.length)}
-                            className="px-2 py-1 bg-slate-100 text-slate-700 rounded-lg text-[10px] font-bold"
+                            className="px-2 py-1 bg-slate-100 text-slate-700 rounded-lg text-[10px] font-bold active:scale-95 transition-transform"
                           >
                             ‹ Prev
                           </button>
@@ -560,7 +573,7 @@ export default function TopDoctorCarousel({
                           </span>
                           <button
                             onClick={() => setMobileDoctorIndex(prev => (prev + 1) % hospitalDoctors.length)}
-                            className="px-2 py-1 bg-slate-100 text-slate-700 rounded-lg text-[10px] font-bold"
+                            className="px-2 py-1 bg-slate-100 text-slate-700 rounded-lg text-[10px] font-bold active:scale-95 transition-transform"
                           >
                             Next ›
                           </button>

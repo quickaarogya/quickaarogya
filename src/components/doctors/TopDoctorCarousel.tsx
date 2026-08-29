@@ -230,42 +230,42 @@ export default function TopDoctorCarousel({
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Header Row: Title on Left, Controls and "See all" on Right */}
-      <div className="flex items-center justify-between px-1">
-        <div className="flex items-center gap-2">
-          <h2 className="text-base font-black text-slate-900 tracking-tight">
+      <div className="flex items-center justify-between gap-2 px-1 flex-nowrap">
+        <div className="flex items-center gap-1.5 min-w-0 flex-1">
+          <h2 className="text-sm sm:text-base font-black text-slate-900 tracking-tight truncate">
             {title}
           </h2>
-          <span className="text-[10px] font-black text-[#026dd9] bg-blue-50 px-2 py-0.5 rounded-md border border-blue-100 uppercase tracking-wider hidden sm:inline-block">
+          <span className="text-[9px] sm:text-[10px] font-black text-[#026dd9] bg-blue-50 px-1.5 sm:px-2 py-0.5 rounded-md border border-blue-100 uppercase tracking-wider hidden md:inline-block shrink-0">
             Auto-Shuffling ({currentHospitalIndex + 1}/{totalHospitals})
           </span>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 shrink-0">
           {/* Arrow Navigation Controls */}
           {totalHospitals > 1 && (
-            <div className="flex items-center gap-1 bg-white p-1 rounded-2xl border border-slate-200 shadow-2xs">
+            <div className="flex items-center gap-0.5 sm:gap-1 bg-white p-0.5 sm:p-1 rounded-xl sm:rounded-2xl border border-slate-200 shadow-2xs shrink-0">
               <button
                 onClick={handlePrevHospital}
                 aria-label="Previous Hospital"
-                className="w-7 h-7 rounded-xl bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-[#026dd9] flex items-center justify-center transition-all shadow-2xs active:scale-95 disabled:opacity-40 cursor-pointer"
+                className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg sm:rounded-xl bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-[#026dd9] flex items-center justify-center transition-all shadow-2xs active:scale-95 disabled:opacity-40 cursor-pointer"
                 title="Previous Hospital"
               >
-                <ChevronLeft size={16} />
+                <ChevronLeft size={14} className="sm:w-4 sm:h-4" />
               </button>
               <button
                 onClick={handleNextHospital}
                 aria-label="Next Hospital"
-                className="w-7 h-7 rounded-xl bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-[#026dd9] flex items-center justify-center transition-all shadow-2xs active:scale-95 disabled:opacity-40 cursor-pointer"
+                className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg sm:rounded-xl bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-[#026dd9] flex items-center justify-center transition-all shadow-2xs active:scale-95 disabled:opacity-40 cursor-pointer"
                 title="Next Hospital"
               >
-                <ChevronRight size={16} />
+                <ChevronRight size={14} className="sm:w-4 sm:h-4" />
               </button>
             </div>
           )}
 
           <Link
             href="/doctors"
-            className="text-xs font-bold text-slate-500 hover:text-[#026dd9] transition-colors px-2 py-1"
+            className="text-xs font-black text-[#026dd9] hover:underline transition-colors px-1.5 sm:px-2 py-1 whitespace-nowrap shrink-0"
           >
             See all
           </Link>

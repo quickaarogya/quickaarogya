@@ -68,13 +68,13 @@ export default function AppModeFloatingSwitch() {
       aria-label="App Mode Switcher"
       className="fixed bottom-[calc(76px+env(safe-area-inset-bottom,0px))] left-1/2 -translate-x-1/2 z-50 lg:hidden pointer-events-auto select-none transition-all duration-200"
     >
-      <div className="flex items-center gap-1 p-1 bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-white/90 dark:border-slate-700/80 rounded-full shadow-[0_12px_36px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.9)] transition-all">
+      <div className="flex items-center gap-0.5 min-[360px]:gap-1 p-1 bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-white/90 dark:border-slate-700/80 rounded-full shadow-[0_12px_36px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.9)] transition-all max-w-[calc(100vw-16px)]">
         {/* 1. DOCTORS */}
         <button
           onClick={() => handleSwitchMode('doctors')}
           aria-pressed={isDoctorsActive}
           className={cn(
-            "relative flex items-center gap-1.5 px-3 py-1.5 rounded-full transition-all duration-200 cursor-pointer",
+            "relative flex items-center gap-1 min-[360px]:gap-1.5 px-2.5 min-[360px]:px-3 py-1.5 rounded-full transition-all duration-200 cursor-pointer whitespace-nowrap",
             isDoctorsActive
               ? "bg-[#026dd9] text-white font-black shadow-[0_4px_16px_rgba(2,109,217,0.35)]"
               : "text-slate-600 hover:text-slate-900 font-bold hover:bg-white/50"
@@ -89,8 +89,8 @@ export default function AppModeFloatingSwitch() {
             </span>
           )}
 
-          <Stethoscope size={15} className={cn("transition-transform", isDoctorsActive && "scale-110")} />
-          <span className="text-xs tracking-tight leading-none">
+          <Stethoscope size={14} className={cn("transition-transform min-[360px]:w-[15px] min-[360px]:h-[15px]", isDoctorsActive && "scale-110")} />
+          <span className="text-[11px] min-[360px]:text-xs tracking-tight leading-none">
             Doctors
           </span>
         </button>
@@ -100,7 +100,7 @@ export default function AppModeFloatingSwitch() {
           onClick={() => handleSwitchMode('pharma')}
           aria-pressed={isPharmaActive}
           className={cn(
-            "relative flex items-center gap-1.5 px-3 py-1.5 rounded-full transition-all duration-200 cursor-pointer",
+            "relative flex items-center gap-1 min-[360px]:gap-1.5 px-2.5 min-[360px]:px-3 py-1.5 rounded-full transition-all duration-200 cursor-pointer whitespace-nowrap",
             isPharmaActive
               ? "bg-[#0F766E] text-white font-black shadow-[0_4px_16px_rgba(15,118,110,0.35)]"
               : "text-slate-600 hover:text-slate-900 font-bold hover:bg-white/50"
@@ -115,8 +115,8 @@ export default function AppModeFloatingSwitch() {
             </span>
           )}
 
-          <ShoppingBag size={15} className={cn("transition-transform", isPharmaActive && "scale-110")} />
-          <span className="text-xs tracking-tight leading-none">
+          <ShoppingBag size={14} className={cn("transition-transform min-[360px]:w-[15px] min-[360px]:h-[15px]", isPharmaActive && "scale-110")} />
+          <span className="text-[11px] min-[360px]:text-xs tracking-tight leading-none">
             Pharma
           </span>
         </button>
@@ -126,7 +126,7 @@ export default function AppModeFloatingSwitch() {
           onClick={() => handleSwitchMode('care')}
           aria-pressed={isCareActive}
           className={cn(
-            "relative flex items-center gap-1.5 px-3 py-1.5 rounded-full transition-all duration-200 cursor-pointer",
+            "relative flex items-center gap-1 min-[360px]:gap-1.5 px-2.5 min-[360px]:px-3 py-1.5 rounded-full transition-all duration-200 cursor-pointer whitespace-nowrap",
             isCareActive
               ? "bg-[#ff645e] text-white font-black shadow-[0_4px_16px_rgba(255,100,94,0.35)]"
               : "text-slate-600 hover:text-slate-900 font-bold hover:bg-white/50"
@@ -141,8 +141,8 @@ export default function AppModeFloatingSwitch() {
             </span>
           )}
 
-          <Heart size={15} className={cn("transition-transform", isCareActive && "scale-110 fill-current text-white")} />
-          <span className="text-xs tracking-tight leading-none">
+          <Heart size={14} className={cn("transition-transform min-[360px]:w-[15px] min-[360px]:h-[15px]", isCareActive && "scale-110 fill-current text-white")} />
+          <span className="text-[11px] min-[360px]:text-xs tracking-tight leading-none">
             Care
           </span>
         </button>

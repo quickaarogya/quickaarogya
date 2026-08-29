@@ -102,24 +102,18 @@ export function DoctorPortraitCard({ doctor, onSelect }: DoctorPortraitCardProps
           </p>
         </div>
 
-        {/* Micro-Badges & Action Buttons */}
-        <div className="mt-2.5 pt-2 border-t border-white/60 dark:border-white/10 flex items-center justify-between gap-1">
-          {/* Micro Glass Icon Circles */}
-          <div className="flex items-center gap-1">
+        {/* Micro-Badges & Action Buttons (Compact Responsive Layout) */}
+        <div className="mt-2 pt-1.5 border-t border-white/60 dark:border-white/10 flex items-center justify-between gap-1">
+          {/* Micro Glass Badges */}
+          <div className="flex items-center gap-1 min-w-0">
             <span
-              className="w-6 h-6 rounded-full bg-white/70 dark:bg-slate-800/80 backdrop-blur-md text-[11px] flex items-center justify-center shadow-2xs border border-white/90 dark:border-slate-700/80"
-              title={doctor.specialization}
-            >
-              {specialtyIcon}
-            </span>
-            <span
-              className="w-6 h-6 rounded-full bg-blue-50/85 dark:bg-blue-950/80 backdrop-blur-md text-[9px] font-black text-[#026dd9] dark:text-blue-300 flex items-center justify-center shadow-2xs border border-blue-200/80 dark:border-blue-800/80"
+              className="px-1.5 py-0.5 rounded-full bg-blue-50/90 dark:bg-blue-950/80 backdrop-blur-md text-[9px] font-black text-[#026dd9] dark:text-blue-300 flex items-center justify-center shadow-2xs border border-blue-200/80 dark:border-blue-800/80 shrink-0"
               title={`${doctor.experienceYears} Years Experience`}
             >
-              {doctor.experienceYears}y
+              {doctor.experienceYears}y exp
             </span>
             <span
-              className="w-6 h-6 rounded-full bg-emerald-50/85 dark:bg-emerald-950/80 backdrop-blur-md text-[10px] text-emerald-600 dark:text-emerald-300 flex items-center justify-center shadow-2xs border border-emerald-200/80 dark:border-emerald-800/80"
+              className="w-5 h-5 rounded-full bg-emerald-50/90 dark:bg-emerald-950/80 backdrop-blur-md text-[10px] text-emerald-600 dark:text-emerald-300 hidden sm:flex items-center justify-center shadow-2xs border border-emerald-200/80 dark:border-emerald-800/80 shrink-0"
               title="Verified Specialist"
             >
               <ShieldCheck size={11} />
@@ -127,23 +121,23 @@ export function DoctorPortraitCard({ doctor, onSelect }: DoctorPortraitCardProps
           </div>
 
           {/* Action CTA Buttons: Call Directly & Book Slot */}
-          <div className="flex items-center gap-1.5 shrink-0">
+          <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
             <a
               href={`tel:${doctorPhone}`}
               onClick={(e) => e.stopPropagation()}
-              className="w-8 h-8 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white flex items-center justify-center shadow-xs active:scale-95 transition-all cursor-pointer"
+              className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white flex items-center justify-center shadow-xs active:scale-95 transition-all cursor-pointer shrink-0"
               title={`Call clinic directly: ${doctorPhone}`}
             >
-              <Phone size={13} className="fill-current" />
+              <Phone size={11} className="fill-current sm:w-3.5 sm:h-3.5" />
             </a>
 
             <Link
               href={`/doctors?book=${doctor.id}`}
               onClick={(e) => e.stopPropagation()}
-              className="w-8 h-8 rounded-full bg-[#026dd9] hover:bg-[#0256ab] text-white flex items-center justify-center shadow-[0_4px_14px_rgba(2,109,217,0.4)] active:scale-95 transition-all cursor-pointer"
-              title="Book Instant OPD Slot"
+              className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#026dd9] hover:bg-[#0256ab] text-white flex items-center justify-center shadow-xs active:scale-95 transition-all cursor-pointer shrink-0"
+              title="Book Appointment Token"
             >
-              <ArrowUpRight size={15} className="stroke-[2.5]" />
+              <ArrowUpRight size={13} className="sm:w-4 sm:h-4" />
             </Link>
           </div>
         </div>

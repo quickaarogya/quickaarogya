@@ -917,9 +917,9 @@ function DoctorsContent() {
 
       {/* 2. DUAL-COLUMN LAYOUT: DYNAMIC LEFT CATEGORY RAIL + RIGHT DOCTOR STOREFRONT */}
       <div className="w-full max-w-[1720px] mx-auto px-2 sm:px-4 lg:px-8 xl:px-10 flex items-start">
-        {/* Left Vertical Category Rail (Identical E-Commerce UX to Pharmacy Sector) */}
+        {/* Left Vertical Category Rail (Responsive Rail Width for Fold & Narrow Screens) */}
         <aside
-          className="w-[88px] sm:w-[110px] md:w-[125px] shrink-0 bg-white border-r border-slate-200/80 sticky top-[138px] max-h-[calc(100vh-138px)] overflow-y-auto no-scrollbar scrollbar-none overscroll-contain touch-pan-y py-2 scroll-smooth"
+          className="w-[74px] min-[380px]:w-[84px] sm:w-[105px] md:w-[125px] shrink-0 bg-white border-r border-slate-200/80 sticky top-[138px] max-h-[calc(100vh-138px)] overflow-y-auto no-scrollbar scrollbar-none overscroll-contain touch-pan-y py-2 scroll-smooth"
           style={{ WebkitOverflowScrolling: 'touch', touchAction: 'pan-y' }}
         >
           <div className="flex flex-col space-y-1 pb-36">
@@ -1109,17 +1109,17 @@ function DoctorsContent() {
               </Button>
             </div>
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
+            <div className="grid grid-cols-1 min-[440px]:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
               {filteredDoctors.map(doc => {
                 const isFav = !!favorites[doc.id];
 
                 return (
                   <div
                     key={doc.id}
-                    className="bg-white/85 hover:bg-white/95 backdrop-blur-2xl h-[345px] rounded-3xl border border-white/70 hover:border-white shadow-[0_10px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_18px_40px_rgba(2,109,217,0.2)] transition-all p-3 flex flex-col justify-between group relative"
+                    className="bg-white/85 hover:bg-white/95 backdrop-blur-2xl min-h-[320px] sm:h-[345px] rounded-3xl border border-white/70 hover:border-white shadow-[0_10px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_18px_40px_rgba(2,109,217,0.2)] transition-all p-3 flex flex-col justify-between group relative"
                   >
                     {/* Fixed Tall Uniform Image Placeholder Container */}
-                    <div className="relative w-full h-[195px] min-h-[195px] max-h-[195px] rounded-2xl bg-slate-100/90 mb-2 overflow-hidden border border-white/80 shrink-0 shadow-2xs">
+                    <div className="relative w-full h-[180px] sm:h-[195px] min-h-[175px] rounded-2xl bg-slate-100/90 mb-2 overflow-hidden border border-white/80 shrink-0 shadow-2xs">
                       {/* Rating Badge */}
                       <div className="absolute top-2 left-2 z-10 bg-black/75 backdrop-blur-md text-white text-[10px] font-black px-2 py-0.5 rounded-md flex items-center gap-1 shadow-xs">
                         <Star size={10} fill="#FBBF24" className="text-amber-400" />

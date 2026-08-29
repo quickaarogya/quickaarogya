@@ -581,7 +581,7 @@ function PharmacyShopContent() {
         <div className="w-full max-w-[1720px] mx-auto px-2 sm:px-4 lg:px-8 xl:px-10 flex items-start">
           {/* Left Vertical Category Rail */}
           <aside
-            className="w-[88px] sm:w-[110px] shrink-0 bg-white border-r border-slate-200/80 sticky top-[96px] max-h-[calc(100vh-96px)] overflow-y-auto overscroll-contain touch-pan-y py-2 scroll-smooth"
+            className="w-[74px] min-[380px]:w-[84px] sm:w-[105px] md:w-[125px] shrink-0 bg-white border-r border-slate-200/80 sticky top-[96px] max-h-[calc(100vh-96px)] overflow-y-auto no-scrollbar scrollbar-none overscroll-contain touch-pan-y py-2 scroll-smooth"
             style={{ WebkitOverflowScrolling: 'touch', touchAction: 'pan-y' }}
           >
             <div className="flex flex-col space-y-1 pb-36">
@@ -621,7 +621,7 @@ function PharmacyShopContent() {
             </div>
           </aside>
 
-          {/* Right Product Grid Area */}
+          {/* Right Main Product Showcase */}
           <main className="flex-1 min-w-0 p-2.5 sm:p-4 lg:p-6 space-y-4">
             {/* Category Promo / Seasonal Banner */}
             <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-teal-50 via-emerald-50 to-teal-50 border border-teal-200/70 flex items-center justify-between gap-3 shadow-2xs">
@@ -648,7 +648,7 @@ function PharmacyShopContent() {
                 <p className="text-xs text-slate-500 mt-1">Try switching categories or clearing your search.</p>
               </div>
             ) : (
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 sm:gap-4">
+              <div className="grid grid-cols-1 min-[420px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 sm:gap-4">
                 {filteredMedicines.map(med => {
                   const qty = getCartItemQty(med.id);
                   const discount = med.discountPercent || 15;

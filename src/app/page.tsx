@@ -315,18 +315,18 @@ export default function HomeCockpit() {
 
           <div className="max-w-5xl mx-auto relative z-10">
             {/* Top Row: User Greeting & Actions */}
-            <div className="flex items-center justify-between gap-1.5 sm:gap-2 mb-3">
-              <div className="flex items-center gap-2 min-w-0">
+            <div className="flex items-center justify-between gap-1 sm:gap-2">
+              <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
                 <img
                   src={profile?.avatarUrl || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80'}
                   alt="Profile Avatar"
-                  className="w-9 h-9 min-w-[36px] rounded-xl object-cover border border-white/40 shadow-xs shrink-0"
+                  className="w-8 h-8 sm:w-9 sm:h-9 min-w-[32px] rounded-xl object-cover border border-white/40 shadow-xs shrink-0"
                 />
                 <div className="min-w-0">
-                  <h1 className="text-xs sm:text-sm font-black text-white leading-tight whitespace-nowrap">
+                  <h1 className="text-xs sm:text-sm font-black text-white leading-tight whitespace-nowrap truncate">
                     Hi, {profile?.firstName || 'Arjun'}!
                   </h1>
-                  <p className="text-[10px] text-teal-100 font-medium truncate max-w-[105px] sm:max-w-none leading-tight">⚡ 10 mins delivery</p>
+                  <p className="text-[9px] sm:text-[10px] text-teal-100 font-medium truncate max-w-[85px] sm:max-w-none leading-tight">⚡ 10 mins delivery</p>
                 </div>
               </div>
 
@@ -334,20 +334,20 @@ export default function HomeCockpit() {
               <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
                 <button
                   onClick={() => setIsLocationModalOpen(true)}
-                  className="px-2 py-1 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/20 text-white text-[11px] font-bold flex items-center gap-1 transition-colors cursor-pointer shrink-0"
+                  className="px-1.5 sm:px-2 py-1 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/20 text-white text-[10px] sm:text-[11px] font-bold flex items-center gap-1 transition-colors cursor-pointer shrink-0"
                 >
-                  <MapPin size={12} className="text-[#2DD4BF] shrink-0" />
-                  <span className="max-w-[70px] sm:max-w-[110px] truncate">New Delhi</span>
+                  <MapPin size={11} className="text-[#2DD4BF] shrink-0 sm:w-3 sm:h-3" />
+                  <span className="max-w-[55px] sm:max-w-[110px] truncate">New Delhi</span>
                 </button>
 
                 {/* Wishlist Link for Pharma */}
                 <Link
                   href="/wishlist?tab=medicines"
                   aria-label="Medicine Wishlist"
-                  className="relative w-8 h-8 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/20 flex items-center justify-center text-white transition-all shadow-xs active:scale-95 cursor-pointer shrink-0"
+                  className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/20 flex items-center justify-center text-white transition-all shadow-xs active:scale-95 cursor-pointer shrink-0"
                   title="Saved Medicines Wishlist"
                 >
-                  <Heart size={15} className={wishlistMedicineIds.length > 0 ? "fill-white text-white" : "text-white"} />
+                  <Heart size={14} className={wishlistMedicineIds.length > 0 ? "fill-white text-white sm:w-4 sm:h-4" : "text-white sm:w-4 sm:h-4"} />
                   {wishlistMedicineIds.length > 0 && (
                     <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-[#E11D48] text-white text-[9px] font-black flex items-center justify-center shadow-xs">
                       {wishlistMedicineIds.length}
@@ -357,9 +357,9 @@ export default function HomeCockpit() {
 
                 <Link
                   href="/inbox"
-                  className="relative w-8 h-8 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/20 flex items-center justify-center text-white transition-colors shrink-0"
+                  className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/20 flex items-center justify-center text-white transition-colors shrink-0"
                 >
-                  <Bell size={15} />
+                  <Bell size={14} className="sm:w-4 sm:h-4" />
                   {unreadCount > 0 && (
                     <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-[#E11D48] text-white text-[9px] font-black flex items-center justify-center shadow-xs animate-pulse">
                       {unreadCount > 9 ? '9+' : unreadCount}
@@ -370,7 +370,7 @@ export default function HomeCockpit() {
             </div>
 
             {/* Medicine Search Bar */}
-            <div className="relative">
+            <div className="relative mt-3">
               <div className="relative flex items-center">
                 <Search className="absolute left-3.5 w-4 h-4 text-slate-400 pointer-events-none" />
                 <input
@@ -703,18 +703,18 @@ export default function HomeCockpit() {
 
           <div className="max-w-5xl mx-auto space-y-3.5 relative z-10">
             {/* Top Row: User Greeting & Actions */}
-            <div className="flex items-center justify-between gap-1.5 sm:gap-2">
-              <div className="flex items-center gap-2 min-w-0">
+            <div className="flex items-center justify-between gap-1 sm:gap-2">
+              <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
                 <img
                   src={profile?.avatarUrl || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80'}
                   alt="Profile Avatar"
-                  className="w-9 h-9 min-w-[36px] rounded-xl object-cover border border-white/40 shadow-xs shrink-0"
+                  className="w-8 h-8 sm:w-9 sm:h-9 min-w-[32px] rounded-xl object-cover border border-white/40 shadow-xs shrink-0"
                 />
                 <div className="min-w-0">
-                  <h1 className="text-xs sm:text-sm font-black text-white leading-tight whitespace-nowrap">
+                  <h1 className="text-xs sm:text-sm font-black text-white leading-tight whitespace-nowrap truncate">
                     Hi, {profile?.firstName || 'Arjun'}!
                   </h1>
-                  <p className="text-[10px] text-blue-100 font-medium truncate max-w-[110px] sm:max-w-none leading-tight">Good Morning • Top Doctors</p>
+                  <p className="text-[9px] sm:text-[10px] text-blue-100 font-medium truncate max-w-[85px] sm:max-w-none leading-tight">Good Morning • Top Doctors</p>
                 </div>
               </div>
 
@@ -722,20 +722,20 @@ export default function HomeCockpit() {
               <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
                 <button
                   onClick={() => setIsLocationModalOpen(true)}
-                  className="px-2 py-1 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/20 text-white text-[11px] font-bold flex items-center gap-1 transition-colors cursor-pointer shrink-0"
+                  className="px-1.5 sm:px-2 py-1 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/20 text-white text-[10px] sm:text-[11px] font-bold flex items-center gap-1 transition-colors cursor-pointer shrink-0"
                 >
-                  <MapPin size={12} className="text-[#93c5fd] shrink-0" />
-                  <span className="max-w-[70px] sm:max-w-[110px] truncate">New Delhi</span>
+                  <MapPin size={11} className="text-[#93c5fd] shrink-0 sm:w-3 sm:h-3" />
+                  <span className="max-w-[55px] sm:max-w-[110px] truncate">New Delhi</span>
                 </button>
 
                 {/* Wishlist Link for Doctors */}
                 <Link
                   href="/wishlist?tab=doctors"
                   aria-label="Doctor Wishlist"
-                  className="relative w-8 h-8 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/20 flex items-center justify-center text-white transition-all shadow-xs active:scale-95 cursor-pointer shrink-0"
+                  className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/20 flex items-center justify-center text-white transition-all shadow-xs active:scale-95 cursor-pointer shrink-0"
                   title="Saved Doctors Wishlist"
                 >
-                  <Heart size={15} className={wishlistDoctorIds.length > 0 ? "fill-white text-white" : "text-white"} />
+                  <Heart size={14} className={wishlistDoctorIds.length > 0 ? "fill-white text-white sm:w-4 sm:h-4" : "text-white sm:w-4 sm:h-4"} />
                   {wishlistDoctorIds.length > 0 && (
                     <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-[#E11D48] text-white text-[9px] font-black flex items-center justify-center shadow-xs">
                       {wishlistDoctorIds.length}
@@ -745,9 +745,9 @@ export default function HomeCockpit() {
 
                 <Link
                   href="/inbox"
-                  className="relative w-8 h-8 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/20 flex items-center justify-center text-white transition-colors shrink-0"
+                  className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/20 flex items-center justify-center text-white transition-colors shrink-0"
                 >
-                  <Bell size={15} />
+                  <Bell size={14} className="sm:w-4 sm:h-4" />
                   {unreadCount > 0 && (
                     <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-[#E11D48] text-white text-[9px] font-black flex items-center justify-center shadow-xs animate-pulse">
                       {unreadCount > 9 ? '9+' : unreadCount}
@@ -978,7 +978,7 @@ export default function HomeCockpit() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
+            <div className="grid grid-cols-1 min-[380px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 sm:gap-4">
               {doctors.map(doc => (
                 <DoctorPortraitCard
                   key={doc.id}
@@ -1023,15 +1023,15 @@ export default function HomeCockpit() {
                 </div>
 
                 <div className="min-w-0">
-                  <div className="flex items-center gap-1.5">
-                    <h2 className="font-black text-xs sm:text-sm text-white whitespace-nowrap leading-tight drop-shadow-xs">
+                  <div className="flex items-center gap-1">
+                    <h2 className="font-black text-xs sm:text-sm text-white whitespace-nowrap leading-tight drop-shadow-xs truncate">
                       {activePatientName}
                     </h2>
                     <span className="text-[9px] bg-white text-[#E11D48] font-black px-1.5 py-0.2 rounded-full shadow-xs uppercase tracking-wider shrink-0">
                       {activeMember ? activeMember.relationship : 'Self'}
                     </span>
                   </div>
-                  <div className="flex items-center gap-1 text-[10px] text-rose-100 font-semibold mt-0.5 truncate max-w-[115px] sm:max-w-none">
+                  <div className="flex items-center gap-1 text-[9px] sm:text-[10px] text-rose-100 font-semibold mt-0.5 truncate max-w-[85px] sm:max-w-none">
                     <ShieldCheck size={11} className="text-emerald-200 shrink-0" />
                     <span className="tracking-wide opacity-95 truncate">ABHA: {activeAbhaId}</span>
                   </div>
@@ -1042,20 +1042,20 @@ export default function HomeCockpit() {
               <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
                 <button
                   onClick={() => setIsLocationModalOpen(true)}
-                  className="px-2 py-1 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/20 text-white text-[11px] font-bold flex items-center gap-1 transition-colors cursor-pointer shrink-0"
+                  className="px-1.5 sm:px-2 py-1 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/20 text-white text-[10px] sm:text-[11px] font-bold flex items-center gap-1 transition-colors cursor-pointer shrink-0"
                 >
-                  <MapPin size={12} className="text-rose-200 shrink-0" />
-                  <span className="max-w-[70px] sm:max-w-[110px] truncate">New Delhi</span>
+                  <MapPin size={11} className="text-rose-200 shrink-0 sm:w-3 sm:h-3" />
+                  <span className="max-w-[55px] sm:max-w-[110px] truncate">New Delhi</span>
                 </button>
 
                 {/* Wishlist Link for Care */}
                 <Link
                   href="/wishlist?tab=doctors"
                   aria-label="Saved Wishlist"
-                  className="relative w-8 h-8 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/20 flex items-center justify-center text-white transition-all shadow-xs active:scale-95 cursor-pointer shrink-0"
+                  className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/20 flex items-center justify-center text-white transition-all shadow-xs active:scale-95 cursor-pointer shrink-0"
                   title="Saved Wishlist"
                 >
-                  <Heart size={15} className={wishlistDoctorIds.length + wishlistMedicineIds.length > 0 ? "fill-white text-white" : "text-white"} />
+                  <Heart size={14} className={wishlistDoctorIds.length + wishlistMedicineIds.length > 0 ? "fill-white text-white sm:w-4 sm:h-4" : "text-white sm:w-4 sm:h-4"} />
                   {wishlistDoctorIds.length + wishlistMedicineIds.length > 0 && (
                     <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-white text-[#E11D48] text-[9px] font-black flex items-center justify-center shadow-xs">
                       {wishlistDoctorIds.length + wishlistMedicineIds.length}
@@ -1065,9 +1065,9 @@ export default function HomeCockpit() {
 
                 <Link
                   href="/inbox"
-                  className="relative w-8 h-8 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/20 flex items-center justify-center text-white transition-colors shrink-0"
+                  className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/20 flex items-center justify-center text-white transition-colors shrink-0"
                 >
-                  <Bell size={15} />
+                  <Bell size={14} className="sm:w-4 sm:h-4" />
                   {unreadCount > 0 && (
                     <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-white text-[#E11D48] text-[9px] font-black flex items-center justify-center shadow-xs animate-pulse">
                       {unreadCount > 9 ? '9+' : unreadCount}

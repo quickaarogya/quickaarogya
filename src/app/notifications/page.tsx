@@ -147,68 +147,83 @@ export default function NotificationsPage() {
           description="You're all caught up on your medications, appointments, and diagnostic updates."
         />
       ) : (
-        <div className="space-y-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {items.map((n) => {
             const isUnread = !n.isRead;
 
             return (
-              <Card
+              <div
                 key={n.id}
-                variant={isUnread ? (n.priority === 'urgent' ? 'alert' : 'highlight') : 'default'}
-                padding="default"
-                className={`flex items-start gap-3.5 transition-all ${
-                  isUnread ? 'border-l-4 border-l-teal-600 dark:border-l-teal-400' : ''
+                className={`bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl rounded-3xl p-5 border transition-all duration-300 flex flex-col justify-between group relative shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_14px_34px_rgba(0,0,0,0.08)] ${
+                  isUnread
+                    ? 'border-teal-500/40 dark:border-teal-500/40 bg-gradient-to-b from-teal-50/40 to-white dark:from-teal-950/20 dark:to-slate-900'
+                    : 'border-slate-200/80 dark:border-slate-800'
                 }`}
               >
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 shadow-xs ${
-                  n.category === 'medicines'
-                    ? 'bg-amber-50 text-amber-600 dark:bg-amber-950/60 dark:text-amber-400'
-                    : n.category === 'appointments'
-                    ? 'bg-teal-50 text-teal-600 dark:bg-teal-950/60 dark:text-teal-400'
-                    : n.category === 'family'
-                    ? 'bg-rose-50 text-rose-600 dark:bg-rose-950/60 dark:text-rose-400'
-                    : 'bg-sky-50 text-sky-600 dark:bg-sky-950/60 dark:text-sky-400'
-                }`}>
-                  {getCategoryIcon(n.category)}
-                </div>
+                <div>
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <div className={`w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 shadow-2xs ${
+                        n.category === 'medicines'
+                          ? 'bg-amber-50 text-amber-600 dark:bg-amber-950/60 dark:text-amber-400'
+                          : n.category === 'appointments'
+                          ? 'bg-teal-50 text-teal-600 dark:bg-teal-950/60 dark:text-teal-400'
+                          : n.category === 'family'
+                          ? 'bg-rose-50 text-rose-600 dark:bg-rose-950/60 dark:text-rose-400'
+                          : 'bg-sky-50 text-sky-600 dark:bg-sky-950/60 dark:text-sky-400'
+                      }`}>
+                        {getCategoryIcon(n.category)}
+                      </div>
 
-                <div className="flex-1 min-w-0">
-                  <div className="flex justify-between items-start gap-2">
-                    <span className="font-bold text-sm text-slate-900 dark:text-slate-100 flex items-center gap-1.5">
-                      {isUnread && <span className="w-1.5 h-1.5 rounded-full bg-teal-600 inline-block" />}
-                      {n.title}
-                    </span>
-                    <span className="text-[11px] text-slate-400 font-medium whitespace-nowrap">
-                      {n.timestamp}
-                    </span>
-                  </div>
-
-                  <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">
-                    {n.message}
-                  </p>
-
-                  <div className="flex items-center gap-2 mt-3">
-                    {n.action && (
-                      <Button asChild variant="default" size="sm" className="h-7 text-xs font-bold" onClick={() => NotificationService.markAsRead(n.id)}>
-                        <Link href={n.action.url}>
-                          {n.action.label} <ArrowUpRight size={12} className="ml-1" />
-                        </Link>
-                      </Button>
-                    )}
+                      <div className="min-w-0">
+                        <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 block">
+                          {n.category}
+                        </span>
+                        <span className="text-[10px] text-slate-400 font-medium block mt-0.5">
+                          {n.timestamp}
+                        </span>
+                      </div>
+                    </div>
 
                     {isUnread && (
-                      <Button
-                        onClick={() => NotificationService.markAsRead(n.id)}
-                        variant="ghost"
-                        size="sm"
-                        className="h-7 text-xs text-slate-500 hover:text-slate-800"
-                      >
-                        Mark as Read
-                      </Button>
+                      <span className="px-2 py-0.5 rounded-md text-[10px] font-black bg-teal-50 text-teal-700 border border-teal-200/60">
+                        NEW
+                      </span>
                     )}
                   </div>
+
+                  <h3 className="font-black text-sm text-slate-900 dark:text-slate-100 leading-snug mt-3 flex items-center gap-1.5 group-hover:text-teal-600 transition-colors">
+                    {isUnread && <span className="w-2 h-2 rounded-full bg-teal-600 inline-block shrink-0" />}
+                    <span className="line-clamp-2">{n.title}</span>
+                  </h3>
+
+                  <p className="text-xs text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed line-clamp-3">
+                    {n.message}
+                  </p>
                 </div>
-              </Card>
+
+                <div className="flex items-center justify-between gap-2 mt-4 pt-3 border-t border-slate-100 dark:border-slate-800">
+                  {isUnread ? (
+                    <button
+                      onClick={() => NotificationService.markAsRead(n.id)}
+                      className="text-[11px] font-bold text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition-colors cursor-pointer"
+                    >
+                      Mark as read
+                    </button>
+                  ) : (
+                    <span className="text-[11px] text-slate-400 font-medium">Read</span>
+                  )}
+
+                  {n.action && (
+                    <Button asChild variant="default" size="sm" className="h-8 px-3.5 text-xs font-black rounded-xl bg-teal-700 hover:bg-teal-800 text-white shadow-xs ml-auto cursor-pointer" onClick={() => NotificationService.markAsRead(n.id)}>
+                      <Link href={n.action.url} className="flex items-center gap-1">
+                        <span>{n.action.label}</span>
+                        <ArrowUpRight size={13} />
+                      </Link>
+                    </Button>
+                  )}
+                </div>
+              </div>
             );
           })}
         </div>

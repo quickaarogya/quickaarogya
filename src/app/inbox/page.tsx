@@ -391,108 +391,126 @@ export default function HealthInboxPage() {
           }
         />
       ) : (
-        <div className="space-y-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {items.map((item) => {
             const isUnread = !item.isRead;
 
             return (
-              <Card
+              <div
                 key={item.id}
-                variant={isUnread ? (item.priority === 'urgent' ? 'alert' : 'highlight') : 'interactive'}
-                padding="default"
-                className={`flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 transition-all hover:shadow-md ${
+                className={`bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl rounded-3xl p-4 sm:p-5 border transition-all duration-300 flex flex-col justify-between group relative shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_14px_34px_rgba(0,0,0,0.08)] ${
                   isUnread
                     ? isDoctors
-                      ? 'border-l-4 border-l-[#026dd9] dark:border-l-sky-400 bg-blue-50/25 dark:bg-blue-950/25'
+                      ? 'border-[#026dd9]/40 dark:border-blue-500/40 bg-gradient-to-b from-blue-50/40 to-white dark:from-blue-950/20 dark:to-slate-900'
                       : isCare
-                      ? 'border-l-4 border-l-[#ff645e] dark:border-l-rose-400 bg-rose-50/25 dark:bg-rose-950/25'
-                      : 'border-l-4 border-l-[#0F766E] dark:border-l-teal-400 bg-teal-50/25 dark:bg-teal-950/25'
-                    : ''
+                      ? 'border-[#ff645e]/40 dark:border-rose-500/40 bg-gradient-to-b from-rose-50/40 to-white dark:from-rose-950/20 dark:to-slate-900'
+                      : 'border-[#0F766E]/40 dark:border-teal-500/40 bg-gradient-to-b from-teal-50/40 to-white dark:from-teal-950/20 dark:to-slate-900'
+                    : 'border-slate-200/80 dark:border-slate-800'
                 }`}
               >
-                {/* Left Content */}
-                <div className="flex items-start gap-3.5 flex-1 min-w-0">
-                  {/* Category & Status Icon */}
-                  <div
-                    className={`w-11 h-11 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-2xs ${getCategoryBadgeColor(
-                      item.category
-                    )}`}
-                  >
-                    {getCategoryIcon(item.category)}
+                {/* Top Box Bar: Category icon, Badges, Timestamp & Action Menu */}
+                <div>
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      {/* Icon Squircle Box */}
+                      <div
+                        className={`w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 shadow-2xs ${getCategoryBadgeColor(
+                          item.category
+                        )}`}
+                      >
+                        {getCategoryIcon(item.category)}
+                      </div>
+
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                            {item.category}
+                          </span>
+                          {getPriorityBadge(item.priority)}
+                        </div>
+                        <span className="text-[10px] text-slate-400 font-medium block mt-0.5">
+                          {item.timestamp}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Top Right Quick Controls: Read toggle + Delete */}
+                    <div className="flex items-center gap-0.5 shrink-0 bg-slate-50 dark:bg-slate-800/80 p-1 rounded-xl border border-slate-100 dark:border-slate-800">
+                      <button
+                        onClick={() => handleToggleRead(item.id, item.isRead)}
+                        className="h-7 w-7 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-white dark:hover:bg-slate-700 transition-all cursor-pointer"
+                        title={item.isRead ? "Mark as unread" : "Mark as read"}
+                      >
+                        {item.isRead ? <EyeOff size={13} /> : <Eye size={13} />}
+                      </button>
+                      <button
+                        onClick={() => handleDeleteItem(item.id)}
+                        className="h-7 w-7 rounded-lg flex items-center justify-center text-slate-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/50 transition-all cursor-pointer"
+                        title="Delete alert"
+                      >
+                        <Trash2 size={13} />
+                      </button>
+                    </div>
                   </div>
 
-                  <div className="flex-1 min-w-0">
-                    {/* Header line: Badges & Timestamp */}
-                    <div className="flex items-center gap-2 flex-wrap mb-1">
-                      <span className="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                        {item.category}
+                  {/* Title */}
+                  <h3 className="font-black text-sm text-slate-900 dark:text-slate-100 leading-snug mt-3 flex items-center gap-1.5 group-hover:text-[#026dd9] dark:group-hover:text-blue-400 transition-colors">
+                    {isUnread && (
+                      <span className={`w-2 h-2 rounded-full inline-block shrink-0 ${
+                        isDoctors ? 'bg-[#026dd9]' : isCare ? 'bg-[#ff645e]' : 'bg-[#0F766E]'
+                      }`} />
+                    )}
+                    <span className="line-clamp-2">{item.title}</span>
+                  </h3>
+
+                  {/* Message Body */}
+                  <p className="text-xs text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed line-clamp-3">
+                    {item.message}
+                  </p>
+
+                  {/* Meta Chips: Family member & Linked entity */}
+                  <div className="flex items-center gap-1.5 flex-wrap mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800/80">
+                    {item.familyMemberName && (
+                      <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2.5 py-0.5 rounded-lg bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 border border-sky-200/60">
+                        <Users size={10} /> {item.familyMemberName}
                       </span>
+                    )}
 
-                      {getPriorityBadge(item.priority)}
-
-                      {item.familyMemberName && (
-                        <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-md bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 border border-sky-200/60">
-                          <Users size={10} /> {item.familyMemberName}
-                        </span>
-                      )}
-
-                      <span className="text-[11px] text-slate-400 font-medium ml-auto sm:ml-0">
-                        • {item.timestamp}
+                    {item.relatedEntity && (
+                      <span className="text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2.5 py-0.5 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center gap-1 truncate max-w-[200px]">
+                        <span className="text-slate-400">Linked:</span> {item.relatedEntity.name || item.relatedEntity.id}
                       </span>
-                    </div>
-
-                    {/* Title */}
-                    <h3 className="font-bold text-sm text-slate-900 dark:text-slate-100 flex items-center gap-1.5">
-                      {isUnread && (
-                        <span className={`w-2 h-2 rounded-full inline-block flex-shrink-0 ${
-                          isDoctors ? 'bg-[#026dd9]' : isCare ? 'bg-[#ff645e]' : 'bg-[#0F766E]'
-                        }`} />
-                      )}
-                      <span className="truncate">{item.title}</span>
-                    </h3>
-
-                    {/* Message Body */}
-                    <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                      {item.message}
-                    </p>
-
-                    {/* Related Entity Chip & Multi-channel status indicator */}
-                    <div className="flex items-center gap-2 flex-wrap mt-2.5">
-                      {item.relatedEntity && (
-                        <span className="text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2.5 py-0.5 rounded-full border border-slate-200 dark:border-slate-700 flex items-center gap-1">
-                          <span className="text-slate-400">Linked:</span> {item.relatedEntity.name || item.relatedEntity.id}
-                        </span>
-                      )}
-
-                      {/* Delivery Status Chip */}
-                      {item.deliveryChannels && item.deliveryChannels.length > 0 && (
-                        <button
-                          onClick={() => setSelectedDeliveryItem(item)}
-                          className={`text-[11px] font-medium flex items-center gap-1 px-2 py-0.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer ${
-                            isDoctors
-                              ? 'text-slate-500 hover:text-[#026dd9]'
-                              : isCare
-                              ? 'text-slate-500 hover:text-[#ff645e]'
-                              : 'text-slate-500 hover:text-[#0F766E]'
-                          }`}
-                          title="View multi-channel delivery audit logs"
-                        >
-                          <Radio size={11} className={isDoctors ? 'text-[#026dd9]' : isCare ? 'text-[#ff645e]' : 'text-[#0F766E]'} />
-                          <span>{item.deliveryChannels.length} Channels</span>
-                        </button>
-                      )}
-                    </div>
+                    )}
                   </div>
                 </div>
 
-                {/* Right Action Buttons with Mode Accent Color */}
-                <div className="flex items-center gap-2 w-full sm:w-auto justify-end pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100 dark:border-slate-800">
-                  {/* Action Link Button */}
+                {/* Bottom Box Bar: Channel indicator & Primary Action Button */}
+                <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
+                  {item.deliveryChannels && item.deliveryChannels.length > 0 ? (
+                    <button
+                      onClick={() => setSelectedDeliveryItem(item)}
+                      className={`text-[10px] font-bold flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200/60 dark:border-slate-700 hover:bg-slate-100 transition-colors cursor-pointer ${
+                        isDoctors
+                          ? 'text-slate-600 hover:text-[#026dd9]'
+                          : isCare
+                          ? 'text-slate-600 hover:text-[#ff645e]'
+                          : 'text-slate-600 hover:text-[#0F766E]'
+                      }`}
+                      title="View multi-channel delivery logs"
+                    >
+                      <Radio size={11} className={isDoctors ? 'text-[#026dd9]' : isCare ? 'text-[#ff645e]' : 'text-[#0F766E]'} />
+                      <span>{item.deliveryChannels.length} Channels</span>
+                    </button>
+                  ) : (
+                    <div />
+                  )}
+
+                  {/* Primary Action Button */}
                   {item.action && (
                     <Link
                       href={item.action.url}
                       onClick={() => NotificationService.markAsRead(item.id)}
-                      className={`inline-flex items-center gap-1 px-3.5 py-1.5 rounded-xl font-black text-xs shadow-xs transition-all active:scale-95 cursor-pointer ${
+                      className={`inline-flex items-center gap-1 px-3.5 py-1.5 rounded-xl font-black text-xs shadow-xs transition-all active:scale-95 cursor-pointer ml-auto ${
                         isDoctors
                           ? 'bg-[#026dd9] hover:bg-[#0256ab] text-white shadow-blue-500/20'
                           : isCare
@@ -504,30 +522,8 @@ export default function HealthInboxPage() {
                       <ArrowUpRight size={13} />
                     </Link>
                   )}
-
-                  {/* Toggle Read/Unread */}
-                  <Button
-                    onClick={() => handleToggleRead(item.id, item.isRead)}
-                    variant="ghost"
-                    size="sm"
-                    className="h-8 w-8 p-0 text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 cursor-pointer"
-                    title={item.isRead ? "Mark as unread" : "Mark as read"}
-                  >
-                    {item.isRead ? <EyeOff size={15} /> : <Eye size={15} />}
-                  </Button>
-
-                  {/* Delete Button */}
-                  <Button
-                    onClick={() => handleDeleteItem(item.id)}
-                    variant="ghost"
-                    size="sm"
-                    className="h-8 w-8 p-0 text-slate-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/50 cursor-pointer"
-                    title="Delete activity"
-                  >
-                    <Trash2 size={15} />
-                  </Button>
                 </div>
-              </Card>
+              </div>
             );
           })}
         </div>

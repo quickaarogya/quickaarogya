@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Star, Heart, ArrowUpRight, ShieldCheck, Phone } from 'lucide-react';
+import { Star, Heart, ArrowUpRight, ShieldCheck, Phone, Building2, MapPin } from 'lucide-react';
 import { Doctor } from '@/types';
 import { AarogyaStorage } from '@/lib/storage';
 
@@ -50,7 +50,7 @@ export function DoctorPortraitCard({ doctor, onSelect }: DoctorPortraitCardProps
   return (
     <div
       onClick={() => onSelect?.(doctor)}
-      className="group relative h-[270px] sm:h-[295px] rounded-3xl overflow-hidden bg-slate-100 dark:bg-slate-800 border border-white/80 dark:border-slate-700/80 shadow-[0_6px_24px_rgba(0,0,0,0.06)] hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer"
+      className="group relative h-[310px] sm:h-[335px] md:h-[345px] rounded-3xl overflow-hidden bg-slate-100 dark:bg-slate-800 border border-white/80 dark:border-slate-700/80 shadow-[0_6px_24px_rgba(0,0,0,0.06)] hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer"
     >
       {/* Full Doctor Portrait Background */}
       <img
@@ -92,9 +92,9 @@ export function DoctorPortraitCard({ doctor, onSelect }: DoctorPortraitCardProps
       </div>
 
       {/* Floating Ultra-Frosted Glassmorphic Bottom Panel */}
-      <div className="relative z-20 mx-2 mb-2 p-3 rounded-2xl bg-gradient-to-b from-white/70 via-white/55 to-white/45 dark:from-slate-900/80 dark:via-slate-900/70 dark:to-slate-900/55 backdrop-blur-2xl border border-white/80 dark:border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.14)]">
+      <div className="relative z-20 mx-2 mb-2 p-3 rounded-2xl bg-gradient-to-b from-white/85 via-white/75 to-white/65 dark:from-slate-900/85 dark:via-slate-900/75 dark:to-slate-900/65 backdrop-blur-2xl border border-white/80 dark:border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.14)] space-y-1.5">
         <div>
-          <h4 className="font-black text-xs sm:text-sm text-slate-900 dark:text-slate-100 truncate group-hover:text-[#026dd9] transition-colors">
+          <h4 className="font-black text-xs sm:text-sm text-slate-900 dark:text-slate-100 truncate group-hover:text-[#026dd9] transition-colors leading-tight">
             {doctor.name}
           </h4>
           <p className="text-[10px] sm:text-[11px] text-slate-600 dark:text-slate-300 font-bold truncate mt-0.5">
@@ -102,8 +102,22 @@ export function DoctorPortraitCard({ doctor, onSelect }: DoctorPortraitCardProps
           </p>
         </div>
 
+        {/* Hospital or Locality Badge */}
+        <div className="flex items-center gap-1.5 text-[9.5px] sm:text-[10px] font-extrabold text-[#026dd9] dark:text-blue-300 bg-blue-50/90 dark:bg-blue-950/80 px-2 py-0.5 rounded-lg border border-blue-200/80 dark:border-blue-800/60 truncate shadow-2xs">
+          <Building2 size={11} className="shrink-0 text-[#026dd9] dark:text-blue-400" />
+          <span className="truncate">{doctor.hospitalName || 'Bhagyodaya Tirth Hospital'}</span>
+          {doctor.clinicAddress && (
+            <>
+              <span className="text-blue-300 dark:text-blue-600 shrink-0">•</span>
+              <span className="truncate text-slate-500 dark:text-slate-400 font-medium shrink-0 max-w-[70px]">
+                {doctor.clinicAddress.split(',')[0]}
+              </span>
+            </>
+          )}
+        </div>
+
         {/* Micro-Badges & Action Buttons (Compact Responsive Layout) */}
-        <div className="mt-2 pt-1.5 border-t border-white/60 dark:border-white/10 flex items-center justify-between gap-1">
+        <div className="pt-1.5 border-t border-white/60 dark:border-white/10 flex items-center justify-between gap-1">
           {/* Micro Glass Badges */}
           <div className="flex items-center gap-1 min-w-0">
             <span

@@ -78,6 +78,11 @@ import { TopCTScansSection } from '../components/diagnostics/TopCTScansSection';
 import { TopPathologySection } from '../components/diagnostics/TopPathologySection';
 import { TopXRaysSection } from '../components/diagnostics/TopXRaysSection';
 import { ComparePricesSection } from '../components/diagnostics/ComparePricesSection';
+import {
+  OPDExpressPromoBanner,
+  FullBodyCheckupPromoBanner,
+  DiagnosticFilmPromoBanner
+} from '../components/promotions/PromoBanners';
 
 // Category Carousel Chips for Pharma
 const PHARMA_TOP_CATEGORIES = [
@@ -1040,11 +1045,20 @@ export default function HomeCockpit() {
             </div>
           </div>
 
+          {/* PROMOTIONAL BANNER 1: OPD EXPRESS & LIVE QUEUE TRACKING */}
+          <OPDExpressPromoBanner />
+
           {/* DIAGNOSTIC VIEW 1: TOP CT SCANS */}
           <TopCTScansSection />
 
+          {/* PROMOTIONAL BANNER 2: 84-PARAMETER FULL BODY MASTER HEALTH CHECKUP */}
+          <FullBodyCheckupPromoBanner />
+
           {/* DIAGNOSTIC VIEW 2: TOP PATHOLOGIES & LAB TESTS */}
           <TopPathologySection />
+
+          {/* PROMOTIONAL BANNER 3: DIGITAL X-RAY & SCAN FAST-TRACK WITH 20-MIN REPORTS */}
+          <DiagnosticFilmPromoBanner />
 
           {/* DIAGNOSTIC VIEW 3: TOP DIGITAL X-RAYS */}
           <TopXRaysSection />

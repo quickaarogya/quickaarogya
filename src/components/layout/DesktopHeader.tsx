@@ -503,31 +503,35 @@ export default function DesktopHeader() {
             {/* 1. PHARMA MODE SUB-NAV */}
             {isPharma && (
               <div className="flex items-center gap-2.5 text-xs font-extrabold whitespace-nowrap">
-                <span className={cn("text-[11px] font-black uppercase tracking-wider flex items-center gap-1 mr-2.5 px-2.5 py-1 rounded-lg border", themeConfig.subnavTag)}>
-                  <Zap size={13} className="fill-current" /> Instant 10-Min Store
-                </span>
-                <Link href="/pharmacies" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavActive)}>
-                  All Medicines
+                <Link
+                  href="/pharmacies"
+                  className="px-4 py-1.5 rounded-xl font-black text-xs transition-all shadow-md flex items-center gap-1.5 active:scale-95 bg-white text-[#0F766E] border border-white hover:bg-teal-50 shrink-0"
+                >
+                  <ShoppingBag size={14} className="fill-current" />
+                  <span>Pharmacy Shop</span>
                 </Link>
-                <Link href="/pharmacies?category=pain_fever" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
+                <span className={cn("text-[11px] font-black uppercase tracking-wider flex items-center gap-1 mr-1 px-2.5 py-1 rounded-lg border", themeConfig.subnavTag)}>
+                  <Zap size={13} className="fill-current" /> 10-Min Delivery
+                </span>
+                <Link href="/pharmacies?category=pain_fever" className={cn("px-3 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
                   💊 Pain & Fever
                 </Link>
-                <Link href="/pharmacies?category=cold_cough" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
+                <Link href="/pharmacies?category=cold_cough" className={cn("px-3 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
                   🤧 Cold & Cough
                 </Link>
-                <Link href="/pharmacies?category=first_aid" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
+                <Link href="/pharmacies?category=first_aid" className={cn("px-3 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
                   🩹 First Aid Kits
                 </Link>
-                <Link href="/pharmacies?category=vitamins" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
+                <Link href="/pharmacies?category=vitamins" className={cn("px-3 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
                   ✨ Daily Vitamins
                 </Link>
-                <Link href="/pharmacies?category=skincare" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
+                <Link href="/pharmacies?category=skincare" className={cn("px-3 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
                   🧴 Skin Care
                 </Link>
-                <Link href="/pharmacies?category=digestion" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
+                <Link href="/pharmacies?category=digestion" className={cn("px-3 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
                   🍃 Stomach Care
                 </Link>
-                <Link href="/pharmacies?category=chronic" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
+                <Link href="/pharmacies?category=chronic" className={cn("px-3 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
                   📋 Rx Chronic
                 </Link>
               </div>
@@ -535,30 +539,31 @@ export default function DesktopHeader() {
 
             {/* 2. DOCTOR MODE SUB-NAV */}
             {isDoctors && (
-              <div className="flex items-center gap-2.5 text-xs font-extrabold whitespace-nowrap">
-                <span className={cn("text-[11px] font-black uppercase tracking-wider flex items-center gap-1 mr-2.5 px-2.5 py-1 rounded-lg border", themeConfig.subnavTag)}>
-                  <Stethoscope size={13} /> Verified OPD Clinics
-                </span>
-                <Link href="/doctors" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavActive)}>
-                  All Specialists
+              <div className="flex items-center gap-2 text-xs font-extrabold whitespace-nowrap">
+                <Link
+                  href="/doctors"
+                  className="px-4 py-1.5 rounded-xl font-black text-xs transition-all shadow-md flex items-center gap-1.5 active:scale-95 bg-white text-[#026dd9] border border-white hover:bg-blue-50 shrink-0"
+                >
+                  <Stethoscope size={14} />
+                  <span>Doctors Directory</span>
                 </Link>
-                <Link href="/doctors?specialty=Cardiologist" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
-                  ❤️ Cardiology
+                <Link href="/doctors?mode=ct_scan" className={cn("px-3 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
+                  🔬 CT Scans
                 </Link>
-                <Link href="/doctors?specialty=Pediatrician" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
-                  👶 Pediatrics
+                <Link href="/doctors?mode=pathology" className={cn("px-3 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
+                  🧪 Pathology Labs
                 </Link>
-                <Link href="/doctors?specialty=Dermatologist" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
-                  ✨ Dermatology
+                <Link href="/doctors?mode=x_ray" className={cn("px-3 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
+                  ⚡ Digital X-Rays
                 </Link>
-                <Link href="/doctors?specialty=Orthopedic" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
-                  🦴 Orthopedics
+                <Link href="/doctors?mode=compare_prices" className={cn("px-3 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
+                  ⚖️ Compare Prices
                 </Link>
-                <Link href="/hospitals" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
+                <Link href="/hospitals" className={cn("px-3 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
                   🏥 Top Hospitals & ER
                 </Link>
-                <Link href="/appointments" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
-                  📅 Live OPD Queue Tokens
+                <Link href="/appointments" className={cn("px-3 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
+                  📅 Live OPD Queue
                 </Link>
               </div>
             )}

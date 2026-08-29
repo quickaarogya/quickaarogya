@@ -43,6 +43,10 @@ import DoctorReviewSection from '@/components/doctors/DoctorReviewSection';
 import { Card } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
 import { Badge } from '../../components/ui/badge';
+import { DiagnosticItem } from '@/types';
+import { initialCTScans, initialPathologyTests, initialXRays } from '@/lib/diagnosticsData';
+import { DiagnosticCard } from '@/components/diagnostics/DiagnosticCard';
+import { ComparePricesSection } from '@/components/diagnostics/ComparePricesSection';
 
 // --- SUBCATEGORY DEFINITIONS ---
 const SPECIALTY_SUB_CATEGORIES = [
@@ -54,6 +58,42 @@ const SPECIALTY_SUB_CATEGORIES = [
     image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=300&auto=format&fit=crop&q=80',
     bannerTitle: 'All Top Verified Medical Specialists',
     bannerSubtitle: 'Browse senior consultants, surgeons, and specialists across all disciplines.'
+  },
+  {
+    id: 'ct_scan',
+    name: 'CT Scans (128-Slice)',
+    shortName: 'CT Scans',
+    icon: '🔬',
+    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?w=300&auto=format&fit=crop&q=80',
+    bannerTitle: '128-Slice High Speed CT Scans',
+    bannerSubtitle: 'Brain CT, Chest HRCT, Abdomen, Sinus and Angiography scans across verified Sagar hospitals.'
+  },
+  {
+    id: 'pathology',
+    name: 'Pathology & Lab Tests',
+    shortName: 'Pathology',
+    icon: '🧪',
+    image: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=300&auto=format&fit=crop&q=80',
+    bannerTitle: 'NABL Certified Pathology & Lab Tests',
+    bannerSubtitle: 'Complete Hemograms, Lipid profiles, Thyroid, HbA1c with 15-min free home blood collection.'
+  },
+  {
+    id: 'x_ray',
+    name: 'Digital X-Rays (DR Film)',
+    shortName: 'X-Rays',
+    icon: '⚡',
+    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?w=300&auto=format&fit=crop&q=80',
+    bannerTitle: 'Direct Digital Radiography (DR) X-Rays',
+    bannerSubtitle: 'Chest PA, Spine, Knee, Joint X-Rays with 20-min digital WhatsApp film delivery.'
+  },
+  {
+    id: 'compare_prices',
+    name: 'Compare Diagnostic Prices',
+    shortName: 'Compare Rates',
+    icon: '⚖️',
+    image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=300&auto=format&fit=crop&q=80',
+    bannerTitle: 'Compare Scan & Diagnostic Prices in Sagar',
+    bannerSubtitle: 'Real-time price transparency across hospitals & NABL accredited labs. Save up to 60%.'
   },
   {
     id: 'cardiology',
@@ -351,42 +391,40 @@ function DoctorsContent() {
     }
   };
 
-  // Filtered Doctors Calculation based on Active Mode & Selected Subcategory
   const filteredDoctors = useMemo(() => {
-    let list = doctors;
+    let list = [...doctors];
 
-    // 1. Text Search query
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
       list = list.filter(d =>
         d.name.toLowerCase().includes(q) ||
         d.specialization.toLowerCase().includes(q) ||
         d.hospitalName.toLowerCase().includes(q) ||
-        d.clinicAddress.toLowerCase().includes(q) ||
-        (d.qualification && d.qualification.toLowerCase().includes(q))
+        d.qualification.toLowerCase().includes(q)
       );
     }
 
-    // 2. Mode-Based Subcategory Filter
     if (activeMode === 'specialty') {
-      if (selectedSpecialty !== 'all') {
-        list = list.filter(d => d.specialization.toLowerCase().includes(selectedSpecialty.toLowerCase()));
+      if (selectedSpecialty !== 'all' && !['ct_scan', 'pathology', 'x_ray', 'compare_prices'].includes(selectedSpecialty)) {
+        const specObj = SPECIALTY_SUB_CATEGORIES.find(s => s.id === selectedSpecialty);
+        if (specObj) {
+          const needle = specObj.shortName.toLowerCase();
+          list = list.filter(d =>
+            d.specialization.toLowerCase().includes(needle) ||
+            d.specialization.toLowerCase().includes(selectedSpecialty.toLowerCase())
+          );
+        }
       }
     } else if (activeMode === 'hospital') {
       if (selectedHospitalId !== 'all') {
-        const activeHosp = hospitals.find(h => h.id === selectedHospitalId);
-        if (activeHosp) {
-          const hospName = activeHosp.name.toLowerCase().trim();
-          list = list.filter(d => {
-            if (d.hospitalId && d.hospitalId === activeHosp.id) return true;
-            const docHosp = (d.hospitalName || '').toLowerCase().trim();
-            return docHosp.includes(hospName) || hospName.includes(docHosp);
-          });
+        const hospObj = hospitals.find(h => h.id === selectedHospitalId);
+        if (hospObj) {
+          list = list.filter(d => d.hospitalName.toLowerCase().includes(hospObj.name.toLowerCase()));
         }
       }
     } else if (activeMode === 'clinic') {
       if (selectedClinicArea !== 'all') {
-        const activeAreaObj = CLINIC_AREA_CATEGORIES.find(c => c.id === selectedClinicArea);
+        const activeAreaObj = CLINIC_AREA_CATEGORIES.find(a => a.id === selectedClinicArea);
         if (activeAreaObj && activeAreaObj.areaTag) {
           const tag = activeAreaObj.areaTag.toLowerCase();
           list = list.filter(d =>
@@ -397,28 +435,26 @@ function DoctorsContent() {
       }
     }
 
-    // 3. Quick Filter Pills
-    if (quickFilter === 'high_rated') {
-      list = list.filter(d => (d.ratingAverage || 0) >= 4.9);
-    } else if (quickFilter === 'video') {
-      list = list.filter(d => d.consultationTypes?.includes('video_teleconsult'));
-    } else if (quickFilter === 'in_person') {
-      list = list.filter(d => d.consultationTypes?.includes('in_person'));
-    } else if (quickFilter === 'budget') {
-      list = list.filter(d => d.consultationFee <= 600);
-    }
-
     return list;
-  }, [doctors, hospitals, searchQuery, activeMode, selectedSpecialty, selectedHospitalId, selectedClinicArea, quickFilter]);
+  }, [doctors, hospitals, searchQuery, activeMode, selectedSpecialty, selectedHospitalId, selectedClinicArea]);
 
-  // Active Category Banner Details
   const activeBannerDetails = useMemo(() => {
     if (activeMode === 'specialty') {
       const obj = SPECIALTY_SUB_CATEGORIES.find(s => s.id === selectedSpecialty) || SPECIALTY_SUB_CATEGORIES[0];
+      let badge = `${filteredDoctors.length} Specialists Available`;
+      if (selectedSpecialty === 'ct_scan') {
+        badge = `${initialCTScans.length} High-Speed CT Scans`;
+      } else if (selectedSpecialty === 'pathology') {
+        badge = `${initialPathologyTests.length} NABL Certified Tests`;
+      } else if (selectedSpecialty === 'x_ray') {
+        badge = `${initialXRays.length} Digital DR X-Rays`;
+      } else if (selectedSpecialty === 'compare_prices') {
+        badge = 'Instant Price Transparency';
+      }
       return {
         title: obj.bannerTitle,
         subtitle: obj.bannerSubtitle,
-        badge: `${filteredDoctors.length} Specialists Available`
+        badge
       };
     } else if (activeMode === 'hospital') {
       if (selectedHospitalId === 'all') {
@@ -804,7 +840,7 @@ function DoctorsContent() {
             </Button>
           </div>
 
-          {/* 3-WAY PRIMARY MODE TABS: [ 🩺 BY SPECIALTY | 🏥 BY HOSPITAL | 📍 BY CLINIC / AREA ] */}
+          {/* PRIMARY MODE TABS: [ 🩺 BY SPECIALTY | 🏥 BY HOSPITAL | 📍 BY CLINIC | 🔬 CT SCANS | 🧪 PATHOLOGY | ⚡ X-RAYS | ⚖️ COMPARE PRICES ] */}
           <div className="flex items-center justify-between gap-2 pt-1 border-t border-slate-100">
             <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none pb-0.5">
               <button
@@ -813,7 +849,7 @@ function DoctorsContent() {
                   setSelectedSpecialty('all');
                 }}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-black transition-all flex items-center gap-1.5 shrink-0 cursor-pointer ${
-                  activeMode === 'specialty'
+                  activeMode === 'specialty' && !['ct_scan', 'pathology', 'x_ray', 'compare_prices'].includes(selectedSpecialty)
                     ? 'bg-[#026dd9] text-white shadow-xs'
                     : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                 }`}
@@ -851,11 +887,79 @@ function DoctorsContent() {
                 <span>📍</span>
                 <span>By Clinic & Area</span>
               </button>
+
+              <button
+                onClick={() => {
+                  setActiveMode('specialty');
+                  setSelectedSpecialty('ct_scan');
+                }}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-black transition-all flex items-center gap-1.5 shrink-0 cursor-pointer ${
+                  selectedSpecialty === 'ct_scan'
+                    ? 'bg-[#026dd9] text-white shadow-xs'
+                    : 'bg-blue-50 text-[#026dd9] hover:bg-blue-100 border border-blue-200/60'
+                }`}
+              >
+                <span>🔬</span>
+                <span>CT Scans</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setActiveMode('specialty');
+                  setSelectedSpecialty('pathology');
+                }}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-black transition-all flex items-center gap-1.5 shrink-0 cursor-pointer ${
+                  selectedSpecialty === 'pathology'
+                    ? 'bg-[#0F766E] text-white shadow-xs'
+                    : 'bg-teal-50 text-[#0F766E] hover:bg-teal-100 border border-teal-200/60'
+                }`}
+              >
+                <span>🧪</span>
+                <span>Pathology Labs</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setActiveMode('specialty');
+                  setSelectedSpecialty('x_ray');
+                }}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-black transition-all flex items-center gap-1.5 shrink-0 cursor-pointer ${
+                  selectedSpecialty === 'x_ray'
+                    ? 'bg-indigo-600 text-white shadow-xs'
+                    : 'bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border border-indigo-200/60'
+                }`}
+              >
+                <span>⚡</span>
+                <span>Digital X-Rays</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setActiveMode('specialty');
+                  setSelectedSpecialty('compare_prices');
+                }}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-black transition-all flex items-center gap-1.5 shrink-0 cursor-pointer ${
+                  selectedSpecialty === 'compare_prices'
+                    ? 'bg-amber-500 text-slate-950 shadow-xs font-black'
+                    : 'bg-amber-50 text-amber-900 hover:bg-amber-100 border border-amber-200/60'
+                }`}
+              >
+                <span>⚖️</span>
+                <span>Compare Prices</span>
+              </button>
             </div>
 
             {/* Result count */}
             <span className="text-[11px] font-bold text-slate-400 hidden md:inline shrink-0">
-              Showing {filteredDoctors.length} doctors
+              {selectedSpecialty === 'ct_scan'
+                ? `Showing ${initialCTScans.length} CT Scans`
+                : selectedSpecialty === 'pathology'
+                ? `Showing ${initialPathologyTests.length} Lab Tests`
+                : selectedSpecialty === 'x_ray'
+                ? `Showing ${initialXRays.length} Digital X-Rays`
+                : selectedSpecialty === 'compare_prices'
+                ? 'Price Transparency Tool'
+                : `Showing ${filteredDoctors.length} doctors`}
             </span>
           </div>
 
@@ -917,13 +1021,13 @@ function DoctorsContent() {
 
       {/* 2. DUAL-COLUMN LAYOUT: DYNAMIC LEFT CATEGORY RAIL + RIGHT DOCTOR STOREFRONT */}
       <div className="w-full max-w-[1720px] mx-auto px-2 sm:px-4 lg:px-8 xl:px-10 flex items-start">
-        {/* Left Vertical Category Rail (Responsive Rail Width for Fold & Narrow Screens) */}
+        {/* Left Vertical Category Rail */}
         <aside
           className="w-[74px] min-[380px]:w-[84px] sm:w-[105px] md:w-[125px] shrink-0 bg-white border-r border-slate-200/80 sticky top-[138px] max-h-[calc(100vh-138px)] overflow-y-auto no-scrollbar scrollbar-none overscroll-contain touch-pan-y py-2 scroll-smooth"
           style={{ WebkitOverflowScrolling: 'touch', touchAction: 'pan-y' }}
         >
           <div className="flex flex-col space-y-1 pb-36">
-            {/* SUB-MENU 1: SPECIALTIES */}
+            {/* SUB-MENU 1: SPECIALTIES & DIAGNOSTIC SERVICES */}
             {activeMode === 'specialty' &&
               SPECIALTY_SUB_CATEGORIES.map(spec => {
                 const isSelected = selectedSpecialty === spec.id;
@@ -1062,14 +1166,14 @@ function DoctorsContent() {
           </div>
         </aside>
 
-        {/* Right Main Content Area: Banner + Doctor Cards Grid */}
+        {/* Right Main Content Area: Banner + Diagnostic / Doctor Cards Grid */}
         <main className="flex-1 min-w-0 p-2.5 sm:p-4 lg:p-6 space-y-4">
           {/* Header Banner for Selected Category / Hospital / Clinic */}
           <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-blue-50 via-indigo-50/60 to-blue-50 border border-blue-200/80 flex items-center justify-between gap-3 shadow-2xs">
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <span className="px-2.5 py-0.5 bg-[#026dd9] text-white text-[10px] font-black rounded-md uppercase tracking-wider">
-                  {activeMode === 'specialty' ? 'Specialty Filter' : activeMode === 'hospital' ? 'Hospital Filter' : 'Area Filter'}
+                  {activeMode === 'specialty' ? 'Specialty / Diagnostic Filter' : activeMode === 'hospital' ? 'Hospital Filter' : 'Area Filter'}
                 </span>
                 <span className="text-[11px] font-black text-[#026dd9]">{activeBannerDetails.badge}</span>
               </div>
@@ -1087,8 +1191,34 @@ function DoctorsContent() {
             </div>
           </div>
 
-          {/* DOCTOR CARDS GRID */}
-          {filteredDoctors.length === 0 ? (
+          {/* DIAGNOSTIC / COMPARE PRICES / DOCTORS GRID VIEW */}
+          {selectedSpecialty === 'compare_prices' ? (
+            <ComparePricesSection />
+          ) : selectedSpecialty === 'ct_scan' ? (
+            <div className="grid grid-cols-1 min-[440px]:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
+              {initialCTScans
+                .filter(item => !searchQuery || item.name.toLowerCase().includes(searchQuery.toLowerCase()) || item.centerName.toLowerCase().includes(searchQuery.toLowerCase()))
+                .map(item => (
+                  <DiagnosticCard key={item.id} item={item} themeColor="blue" />
+                ))}
+            </div>
+          ) : selectedSpecialty === 'pathology' ? (
+            <div className="grid grid-cols-1 min-[440px]:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
+              {initialPathologyTests
+                .filter(item => !searchQuery || item.name.toLowerCase().includes(searchQuery.toLowerCase()) || item.centerName.toLowerCase().includes(searchQuery.toLowerCase()))
+                .map(item => (
+                  <DiagnosticCard key={item.id} item={item} themeColor="teal" />
+                ))}
+            </div>
+          ) : selectedSpecialty === 'x_ray' ? (
+            <div className="grid grid-cols-1 min-[440px]:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
+              {initialXRays
+                .filter(item => !searchQuery || item.name.toLowerCase().includes(searchQuery.toLowerCase()) || item.centerName.toLowerCase().includes(searchQuery.toLowerCase()))
+                .map(item => (
+                  <DiagnosticCard key={item.id} item={item} themeColor="indigo" />
+                ))}
+            </div>
+          ) : filteredDoctors.length === 0 ? (
             <div className="bg-white rounded-2xl p-10 text-center border border-slate-200 shadow-2xs space-y-2">
               <AlertCircle className="w-10 h-10 text-slate-300 mx-auto mb-2" />
               <h3 className="text-sm font-bold text-slate-800">No Doctors Found</h3>
@@ -1173,10 +1303,10 @@ function DoctorsContent() {
                         <a
                           href={`tel:${doc.phone || '07582-472000'}`}
                           onClick={e => e.stopPropagation()}
-                          className="w-8 h-8 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 flex items-center justify-center shadow-2xs active:scale-95 transition-all cursor-pointer"
+                          className="w-8 h-8 rounded-full bg-[#059669] hover:bg-[#047857] text-white flex items-center justify-center shadow-md active:scale-90 transition-all cursor-pointer border border-emerald-400/40"
                           title={`Call directly: ${doc.phone || '07582-472000'}`}
                         >
-                          <Phone size={13} className="fill-emerald-600 text-emerald-600" />
+                          <Phone size={13} className="fill-white text-white" />
                         </a>
 
                         <Button

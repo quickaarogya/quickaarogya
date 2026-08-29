@@ -414,6 +414,13 @@ export default function HomeCockpit() {
 
             {/* Quick Category Chips */}
             <div className="flex items-center gap-2 overflow-x-auto scrollbar-none pt-3">
+              <Link
+                href="/pharmacies"
+                className="px-3.5 py-1.5 rounded-full text-xs font-black whitespace-nowrap transition-all flex items-center gap-1.5 shrink-0 bg-white text-[#0F766E] shadow-md border border-white hover:bg-teal-50 active:scale-95"
+              >
+                <ShoppingBag size={13} className="fill-current" />
+                <span>Pharmacy Shop</span>
+              </Link>
               {PHARMA_TOP_CATEGORIES.map(cat => (
                 <Link
                   key={cat.id}
@@ -802,6 +809,13 @@ export default function HomeCockpit() {
 
             {/* HORIZONTAL SPECIALTY CAROUSEL CHIPS */}
             <div className="flex items-center gap-2 overflow-x-auto scrollbar-none pt-1">
+              <Link
+                href="/doctors"
+                className="px-3.5 py-1.5 rounded-xl bg-white text-[#026dd9] shadow-md border border-white hover:bg-blue-50 text-xs font-black whitespace-nowrap flex items-center gap-1.5 transition-all shrink-0 active:scale-95"
+              >
+                <Stethoscope size={13} />
+                <span>Doctor & Diagnostic Directory</span>
+              </Link>
               {DOCTOR_SPECIALTIES.map(spec => (
                 <Link
                   key={spec.id}
@@ -861,40 +875,50 @@ export default function HomeCockpit() {
                 <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">Select doctors directly, or explore by hospital and clinic</p>
               </div>
 
-              {/* Compact segmented control */}
-              <div className="inline-flex items-center gap-1 bg-slate-100/90 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/60 dark:border-slate-700/60 p-1 rounded-2xl max-w-md w-full sm:w-auto shadow-2xs">
-                <button
-                  onClick={() => setDoctorCategoryType('all')}
-                  className={`flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center justify-center gap-1.5 whitespace-nowrap ${
-                    doctorCategoryType === 'all'
-                      ? 'bg-[#026dd9] text-white shadow-xs'
-                      : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 hover:bg-white/60 dark:hover:bg-slate-700/60'
-                  }`}
-                >
-                  🩺 Top Doctors
-                </button>
+              {/* Compact segmented control + Direct Directory Link */}
+              <div className="flex items-center gap-2 flex-wrap">
+                <div className="inline-flex items-center gap-1 bg-slate-100/90 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/60 dark:border-slate-700/60 p-1 rounded-2xl max-w-md w-full sm:w-auto shadow-2xs">
+                  <button
+                    onClick={() => setDoctorCategoryType('all')}
+                    className={`flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center justify-center gap-1.5 whitespace-nowrap ${
+                      doctorCategoryType === 'all'
+                        ? 'bg-[#026dd9] text-white shadow-xs'
+                        : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 hover:bg-white/60 dark:hover:bg-slate-700/60'
+                    }`}
+                  >
+                    🩺 Top Doctors
+                  </button>
 
-                <button
-                  onClick={() => setDoctorCategoryType('hospital')}
-                  className={`flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center justify-center gap-1.5 whitespace-nowrap ${
-                    doctorCategoryType === 'hospital'
-                      ? 'bg-[#026dd9] text-white shadow-xs'
-                      : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 hover:bg-white/60 dark:hover:bg-slate-700/60'
-                  }`}
-                >
-                  🏥 By Hospital
-                </button>
+                  <button
+                    onClick={() => setDoctorCategoryType('hospital')}
+                    className={`flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center justify-center gap-1.5 whitespace-nowrap ${
+                      doctorCategoryType === 'hospital'
+                        ? 'bg-[#026dd9] text-white shadow-xs'
+                        : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 hover:bg-white/60 dark:hover:bg-slate-700/60'
+                    }`}
+                  >
+                    🏥 By Hospital
+                  </button>
 
-                <button
-                  onClick={() => setDoctorCategoryType('clinic')}
-                  className={`flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center justify-center gap-1.5 whitespace-nowrap ${
-                    doctorCategoryType === 'clinic'
-                      ? 'bg-[#026dd9] text-white shadow-xs'
-                      : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 hover:bg-white/60 dark:hover:bg-slate-700/60'
-                  }`}
+                  <button
+                    onClick={() => setDoctorCategoryType('clinic')}
+                    className={`flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center justify-center gap-1.5 whitespace-nowrap ${
+                      doctorCategoryType === 'clinic'
+                        ? 'bg-[#026dd9] text-white shadow-xs'
+                        : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 hover:bg-white/60 dark:hover:bg-slate-700/60'
+                    }`}
+                  >
+                    🏢 By Clinic
+                  </button>
+                </div>
+
+                <Link
+                  href="/doctors"
+                  className="px-4 py-2 rounded-2xl text-xs font-black bg-[#026dd9] text-white hover:bg-[#0256ab] shadow-sm flex items-center gap-1.5 transition-all active:scale-95 shrink-0"
                 >
-                  🏢 By Clinic
-                </button>
+                  <Stethoscope size={13} />
+                  <span>Full Directory →</span>
+                </Link>
               </div>
             </div>
           </div>

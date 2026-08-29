@@ -145,9 +145,73 @@ export default function DesktopHeader() {
   const isPharma = appMode === 'pharma';
   const isCare = appMode === 'care';
 
+  const themeConfig = isDoctors
+    ? {
+        headerBg: 'bg-gradient-to-r from-[#01356b] via-[#0256ab] to-[#026dd9] text-white border-b border-blue-400/30 shadow-[0_10px_30px_rgba(2,109,217,0.25)]',
+        row2Bg: 'bg-gradient-to-r from-[#012247]/95 via-[#013b78]/95 to-[#024f9e]/95 backdrop-blur-xl border-t border-white/15 text-white',
+        logoAccent: 'text-[#60a5fa]',
+        subtitle: 'text-blue-200/90',
+        capsuleBg: 'bg-white/15 hover:bg-white/25 border-white/20 text-white',
+        deliverToLabel: 'text-blue-200',
+        deliverToBadge: 'bg-blue-400/30 text-white border-blue-300/40',
+        dockBg: 'bg-black/25 border-white/20',
+        dockActive: 'bg-white text-[#026dd9] font-black shadow-md border border-white',
+        dockInactive: 'text-white/80 hover:text-white hover:bg-white/15',
+        actionBtn: 'bg-white/15 hover:bg-white/25 border-white/20 text-white',
+        cartBtn: 'bg-white text-[#026dd9] hover:bg-blue-50 shadow-md',
+        profileBtn: 'bg-white/15 hover:bg-white/25 border-white/20 text-white',
+        subnavTag: 'bg-white/20 text-white border-white/25',
+        subnavActive: 'bg-white text-[#026dd9] font-black border-white shadow-md',
+        subnavInactive: 'bg-white/15 hover:bg-white/25 text-white border-white/20 backdrop-blur-md',
+        guarantee: 'text-blue-100',
+        guaranteeIcon: 'text-sky-300',
+      }
+    : isCare
+    ? {
+        headerBg: 'bg-gradient-to-r from-[#9F1239] via-[#E11D48] to-[#FF5E62] text-white border-b border-rose-300/30 shadow-[0_10px_30px_rgba(225,29,72,0.25)]',
+        row2Bg: 'bg-gradient-to-r from-[#881337]/95 via-[#BE123C]/95 to-[#E11D48]/95 backdrop-blur-xl border-t border-white/15 text-white',
+        logoAccent: 'text-white drop-shadow-xs',
+        subtitle: 'text-rose-100/90',
+        capsuleBg: 'bg-white/15 hover:bg-white/25 border-white/20 text-white',
+        deliverToLabel: 'text-rose-200',
+        deliverToBadge: 'bg-white/30 text-white border-white/40',
+        dockBg: 'bg-black/25 border-white/20',
+        dockActive: 'bg-white text-[#E11D48] font-black shadow-md border border-white',
+        dockInactive: 'text-white/80 hover:text-white hover:bg-white/15',
+        actionBtn: 'bg-white/15 hover:bg-white/25 border-white/20 text-white',
+        cartBtn: 'bg-white text-[#E11D48] hover:bg-rose-50 shadow-md',
+        profileBtn: 'bg-white/15 hover:bg-white/25 border-white/20 text-white',
+        subnavTag: 'bg-white/20 text-white border-white/25',
+        subnavActive: 'bg-white text-[#E11D48] font-black border-white shadow-md',
+        subnavInactive: 'bg-white/15 hover:bg-white/25 text-white border-white/20 backdrop-blur-md',
+        guarantee: 'text-rose-100',
+        guaranteeIcon: 'text-amber-200',
+      }
+    : {
+        // Pharma
+        headerBg: 'bg-gradient-to-r from-[#04332e] via-[#09574f] to-[#0F766E] text-white border-b border-teal-400/30 shadow-[0_10px_30px_rgba(15,118,110,0.25)]',
+        row2Bg: 'bg-gradient-to-r from-[#032420]/95 via-[#06423b]/95 to-[#09574f]/95 backdrop-blur-xl border-t border-white/15 text-white',
+        logoAccent: 'text-[#2DD4BF]',
+        subtitle: 'text-teal-200/90',
+        capsuleBg: 'bg-white/15 hover:bg-white/25 border-white/20 text-white',
+        deliverToLabel: 'text-teal-200',
+        deliverToBadge: 'bg-teal-400/30 text-white border-teal-300/40',
+        dockBg: 'bg-black/25 border-white/20',
+        dockActive: 'bg-white text-[#0F766E] font-black shadow-md border border-white',
+        dockInactive: 'text-white/80 hover:text-white hover:bg-white/15',
+        actionBtn: 'bg-white/15 hover:bg-white/25 border-white/20 text-white',
+        cartBtn: 'bg-white text-[#0F766E] hover:bg-teal-50 shadow-md',
+        profileBtn: 'bg-white/15 hover:bg-white/25 border-white/20 text-white',
+        subnavTag: 'bg-white/20 text-white border-white/25',
+        subnavActive: 'bg-white text-[#0F766E] font-black border-white shadow-md',
+        subnavInactive: 'bg-white/15 hover:bg-white/25 text-white border-white/20 backdrop-blur-md',
+        guarantee: 'text-teal-100',
+        guaranteeIcon: 'text-emerald-300',
+      };
+
   return (
     <>
-      <header className="hidden lg:block sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border-b border-slate-200/80 dark:border-slate-800 shadow-[0_4px_24px_rgba(0,0,0,0.04)] select-none">
+      <header className={cn("hidden lg:block sticky top-0 z-50 backdrop-blur-2xl transition-colors duration-300 select-none", themeConfig.headerBg)}>
         {/* ROW 1: PRIMARY E-COMMERCE TOP BAR (SPACIOUS & LUXURIOUS HEIGHT & PADDING) */}
         <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 h-20 min-h-[80px] flex items-center justify-between gap-5">
           {/* 1. BRAND LOGO + LOCATION SELECTOR */}
@@ -156,18 +220,13 @@ export default function DesktopHeader() {
               <img
                 src="/logo.png"
                 alt="Quick Aarogya Logo"
-                className="h-[36px] w-auto max-w-[62px] object-contain shrink-0 transition-transform duration-200 group-hover:scale-105 drop-shadow-xs"
+                className="h-[38px] w-auto max-w-[62px] object-contain shrink-0 transition-transform duration-200 group-hover:scale-105 drop-shadow-sm brightness-105"
               />
               <div className="flex flex-col">
-                <span className="font-display font-black text-2xl tracking-tight text-slate-900 dark:text-slate-50 leading-none">
-                  Quick <span suppressHydrationWarning className={cn(
-                    "transition-colors",
-                    isDoctors && "text-[#026dd9]",
-                    isPharma && "text-[#0F766E]",
-                    isCare && "text-[#ff645e]"
-                  )}>Aarogya</span>
+                <span className="font-display font-black text-2xl tracking-tight text-white leading-none drop-shadow-xs">
+                  Quick <span suppressHydrationWarning className={cn("transition-colors", themeConfig.logoAccent)}>Aarogya</span>
                 </span>
-                <span suppressHydrationWarning className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-1">
+                <span suppressHydrationWarning className={cn("text-[10px] font-bold uppercase tracking-wider mt-1", themeConfig.subtitle)}>
                   {isDoctors ? 'Doctors & Hospital OPD' : isCare ? 'Family Care & Vitals Hub' : '10-Min Pharmacy Store'}
                 </span>
               </div>
@@ -176,39 +235,34 @@ export default function DesktopHeader() {
             {/* Location & Instant Delivery Selector (Generously Padded Address Capsule) */}
             <button
               onClick={() => setIsLocationModalOpen(true)}
-              className="flex items-center gap-3 px-4 py-2 rounded-2xl bg-slate-100/90 hover:bg-slate-200/80 border border-slate-200/90 text-left transition-all cursor-pointer group shadow-2xs hover:shadow-xs"
+              className={cn("flex items-center gap-3 px-4 py-2 rounded-2xl border text-left transition-all cursor-pointer group shadow-xs backdrop-blur-md", themeConfig.capsuleBg)}
             >
-              <MapPin size={18} className={cn(
-                "shrink-0 transition-colors",
-                isDoctors && "text-[#026dd9]",
-                isPharma && "text-[#0F766E]",
-                isCare && "text-[#ff645e]"
-              )} />
+              <MapPin size={18} className="shrink-0 text-white" />
               <div className="flex flex-col">
                 <div className="flex items-center gap-1.5 leading-none">
-                  <span className="text-[10px] font-black uppercase tracking-wider text-slate-500">Deliver To</span>
-                  <span className="text-[10px] font-black text-teal-700 bg-teal-50 px-1.5 py-0.5 rounded border border-teal-200/60 leading-none">
+                  <span className={cn("text-[10px] font-black uppercase tracking-wider", themeConfig.deliverToLabel)}>Deliver To</span>
+                  <span className={cn("text-[10px] font-black px-1.5 py-0.5 rounded border leading-none backdrop-blur-xs", themeConfig.deliverToBadge)}>
                     ⚡ 10 Mins
                   </span>
                 </div>
-                <span className="text-xs font-black text-slate-800 truncate max-w-[140px] leading-tight mt-1">
+                <span className="text-xs font-black text-white truncate max-w-[140px] leading-tight mt-1">
                   Green Park, New Delhi
                 </span>
               </div>
-              <ChevronDown size={14} className="text-slate-400 group-hover:text-slate-700 transition-colors ml-0.5" />
+              <ChevronDown size={14} className="text-white/70 group-hover:text-white transition-colors ml-0.5" />
             </button>
           </div>
 
           {/* 2. MODE SWITCHER CAPSULE DOCK */}
-          <div className="flex items-center gap-1.5 p-1.5 bg-slate-100/90 dark:bg-slate-800/90 rounded-full border border-slate-200/80 dark:border-slate-700/80 shadow-2xs shrink-0">
+          <div className={cn("flex items-center gap-1.5 p-1.5 rounded-full border shadow-inner backdrop-blur-xl shrink-0", themeConfig.dockBg)}>
             {/* DOCTORS */}
             <button
               onClick={() => handleSwitchMode('doctors')}
               className={cn(
                 "relative flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-black transition-all cursor-pointer",
                 isDoctors
-                  ? "bg-[#026dd9] text-white shadow-md shadow-blue-500/25"
-                  : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
+                  ? themeConfig.dockActive
+                  : themeConfig.dockInactive
               )}
             >
               <Stethoscope size={14} className={isDoctors ? "scale-110" : ""} />
@@ -216,7 +270,7 @@ export default function DesktopHeader() {
               {activeApptsCount > 0 && (
                 <span className={cn(
                   "min-w-[16px] h-4 px-1 rounded-full text-[9px] font-black flex items-center justify-center",
-                  isDoctors ? "bg-white text-[#026dd9]" : "bg-[#026dd9] text-white"
+                  isDoctors ? "bg-[#026dd9] text-white" : "bg-white text-[#026dd9]"
                 )}>
                   {activeApptsCount}
                 </span>
@@ -229,8 +283,8 @@ export default function DesktopHeader() {
               className={cn(
                 "relative flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-black transition-all cursor-pointer",
                 isPharma
-                  ? "bg-[#0F766E] text-white shadow-md shadow-teal-500/25"
-                  : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
+                  ? themeConfig.dockActive
+                  : themeConfig.dockInactive
               )}
             >
               <ShoppingBag size={14} className={isPharma ? "scale-110" : ""} />
@@ -246,16 +300,16 @@ export default function DesktopHeader() {
               className={cn(
                 "relative flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-black transition-all cursor-pointer",
                 isCare
-                  ? "bg-[#ff645e] text-white shadow-md shadow-rose-500/25"
-                  : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
+                  ? themeConfig.dockActive
+                  : themeConfig.dockInactive
               )}
             >
-              <Heart size={14} className={isCare ? "scale-110 fill-white" : ""} />
+              <Heart size={14} className={isCare ? "scale-110 fill-current" : ""} />
               <span>Care Hub</span>
               {lowMedsCount > 0 && (
                 <span className={cn(
                   "min-w-[16px] h-4 px-1 rounded-full text-[9px] font-black flex items-center justify-center",
-                  isCare ? "bg-white text-[#ff645e]" : "bg-[#ff645e] text-white"
+                  isCare ? "bg-[#E11D48] text-white" : "bg-white text-[#E11D48]"
                 )}>
                   {lowMedsCount}
                 </span>
@@ -278,7 +332,7 @@ export default function DesktopHeader() {
                     ? 'Search "paracetamol", "vicks", "dolo 650", "inhalers"...'
                     : 'Search vitals, records, family members, prescriptions...'
                 }
-                className="w-full pl-11 pr-11 py-3 bg-slate-100/90 dark:bg-slate-800/90 focus:bg-white border border-slate-200/90 dark:border-slate-700/90 focus:border-teal-500 rounded-2xl text-xs font-medium text-slate-900 dark:text-slate-100 placeholder:text-slate-400 transition-all outline-none shadow-2xs focus:shadow-md"
+                className="w-full pl-11 pr-11 py-3 bg-white text-slate-900 placeholder:text-slate-400 focus:bg-white rounded-2xl text-xs font-medium border-0 outline-none shadow-md focus:ring-2 focus:ring-white/80 transition-all"
               />
               {searchQuery ? (
                 <button type="button" onClick={() => setSearchQuery('')} className="absolute right-4 text-slate-400 hover:text-slate-600">
@@ -296,10 +350,10 @@ export default function DesktopHeader() {
             <Link
               href="/wishlist"
               aria-label="Wishlist"
-              className="relative p-3 rounded-2xl bg-slate-100/80 hover:bg-slate-200/80 border border-slate-200/90 text-slate-700 transition-all shadow-2xs active:scale-95 flex items-center gap-1.5"
+              className={cn("relative p-3 rounded-2xl border transition-all shadow-xs active:scale-95 flex items-center gap-1.5 backdrop-blur-md", themeConfig.actionBtn)}
               title="Saved Wishlist"
             >
-              <Heart size={17} className={totalWishlistCount > 0 ? "fill-rose-500 text-rose-500" : "text-slate-600"} />
+              <Heart size={17} className={totalWishlistCount > 0 ? "fill-rose-400 text-rose-400" : "text-white"} />
               <span className="text-xs font-extrabold hidden xl:inline">Wishlist</span>
               {totalWishlistCount > 0 && (
                 <span className="min-w-[18px] h-[18px] px-1 rounded-full bg-[#E11D48] text-white text-[10px] font-black flex items-center justify-center shadow-xs">
@@ -312,10 +366,10 @@ export default function DesktopHeader() {
             <Link
               href="/inbox"
               aria-label="Notifications"
-              className="relative p-3 rounded-2xl bg-slate-100/80 hover:bg-slate-200/80 border border-slate-200/90 text-slate-700 transition-all shadow-2xs active:scale-95 flex items-center justify-center"
+              className={cn("relative p-3 rounded-2xl border transition-all shadow-xs active:scale-95 flex items-center justify-center backdrop-blur-md", themeConfig.actionBtn)}
               title="Health Inbox & Alerts"
             >
-              <Bell size={17} />
+              <Bell size={17} className="text-white" />
               {unreadCount > 0 && (
                 <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-[#E11D48] text-white text-[10px] font-black flex items-center justify-center shadow-xs animate-pulse">
                   {unreadCount > 9 ? '9+' : unreadCount}
@@ -327,16 +381,14 @@ export default function DesktopHeader() {
             <Link
               href="/cart"
               className={cn(
-                "flex items-center gap-2.5 px-4.5 py-2.5 rounded-2xl font-black text-xs transition-all shadow-sm active:scale-95 cursor-pointer",
-                cartCount > 0
-                  ? "bg-[#0F766E] text-white hover:bg-[#115E59] shadow-teal-600/20"
-                  : "bg-slate-100/90 text-slate-700 hover:bg-slate-200 border border-slate-200/90"
+                "flex items-center gap-2.5 px-4.5 py-2.5 rounded-2xl font-black text-xs transition-all shadow-sm active:scale-95 cursor-pointer backdrop-blur-md",
+                themeConfig.cartBtn
               )}
             >
               <ShoppingCart size={17} />
               <span>Cart</span>
               {cartCount > 0 && (
-                <span className="px-1.5 py-0.5 rounded-md bg-white/20 text-white text-[11px] font-extrabold">
+                <span className="px-1.5 py-0.5 rounded-md bg-black/10 text-current text-[11px] font-extrabold">
                   ₹{cartTotal} ({cartCount})
                 </span>
               )}
@@ -346,22 +398,22 @@ export default function DesktopHeader() {
             <div className="relative" ref={menuRef}>
               <button
                 onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
-                className="flex items-center gap-2.5 p-2 pr-3.5 rounded-2xl bg-slate-100/90 hover:bg-slate-200/80 border border-slate-200/90 transition-all cursor-pointer group"
+                className={cn("flex items-center gap-2.5 p-2 pr-3.5 rounded-2xl border transition-all cursor-pointer group shadow-xs backdrop-blur-md", themeConfig.profileBtn)}
               >
                 <img
                   src={profile?.avatarUrl || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80'}
                   alt="Profile"
-                  className="w-7 h-7 rounded-xl object-cover border border-white shadow-2xs shrink-0"
+                  className="w-7 h-7 rounded-xl object-cover border border-white/80 shadow-2xs shrink-0"
                 />
-                <span className="text-xs font-extrabold text-slate-800 truncate max-w-[90px]">
+                <span className="text-xs font-extrabold text-white truncate max-w-[90px]">
                   Hi, {profile?.firstName || 'Arjun'}
                 </span>
-                <ChevronDown size={13} className="text-slate-400 group-hover:text-slate-700 transition-colors" />
+                <ChevronDown size={13} className="text-white/70 group-hover:text-white transition-colors" />
               </button>
 
               {/* Profile Dropdown Menu */}
               {isProfileMenuOpen && (
-                <div className="absolute right-0 top-12 w-64 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-[0_10px_35px_rgba(0,0,0,0.12)] p-2 z-50 space-y-1 animate-in fade-in slide-in-from-top-2 duration-150">
+                <div className="absolute right-0 top-12 w-64 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-[0_10px_35px_rgba(0,0,0,0.2)] p-2 z-50 space-y-1 animate-in fade-in slide-in-from-top-2 duration-150 text-slate-900">
                   <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700 mb-1">
                     <div className="font-extrabold text-xs text-slate-900 dark:text-slate-100">
                       {profile?.firstName} {profile?.lastName}
@@ -442,36 +494,36 @@ export default function DesktopHeader() {
         </div>
 
         {/* ROW 2: MODE-AWARE E-COMMERCE CATEGORY & QUICK NAVIGATION STRIP */}
-        <div className="border-t border-slate-100 dark:border-slate-800/80 bg-slate-50/80 dark:bg-slate-900/60 backdrop-blur-md">
+        <div className={cn("border-t transition-colors duration-300", themeConfig.row2Bg)}>
           <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-3 flex items-center justify-between gap-4 overflow-x-auto no-scrollbar scrollbar-none">
             {/* 1. PHARMA MODE SUB-NAV */}
             {isPharma && (
               <div className="flex items-center gap-2.5 text-xs font-extrabold whitespace-nowrap">
-                <span className="text-[11px] font-black text-[#0F766E] uppercase tracking-wider flex items-center gap-1 mr-2.5 bg-teal-50/80 px-2.5 py-1 rounded-lg border border-teal-200/60">
-                  <Zap size={13} className="fill-[#0F766E]" /> Instant 10-Min Store
+                <span className={cn("text-[11px] font-black uppercase tracking-wider flex items-center gap-1 mr-2.5 px-2.5 py-1 rounded-lg border", themeConfig.subnavTag)}>
+                  <Zap size={13} className="fill-current" /> Instant 10-Min Store
                 </span>
-                <Link href="/pharmacies" className="px-3.5 py-1.5 rounded-xl bg-teal-50 text-[#0F766E] hover:bg-teal-100 border border-teal-200/80 transition-colors shadow-2xs">
+                <Link href="/pharmacies" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavActive)}>
                   All Medicines
                 </Link>
-                <Link href="/pharmacies?category=pain_fever" className="px-3.5 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200/70 transition-colors shadow-2xs">
+                <Link href="/pharmacies?category=pain_fever" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
                   💊 Pain & Fever
                 </Link>
-                <Link href="/pharmacies?category=cold_cough" className="px-3.5 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200/70 transition-colors shadow-2xs">
+                <Link href="/pharmacies?category=cold_cough" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
                   🤧 Cold & Cough
                 </Link>
-                <Link href="/pharmacies?category=first_aid" className="px-3.5 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200/70 transition-colors shadow-2xs">
+                <Link href="/pharmacies?category=first_aid" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
                   🩹 First Aid Kits
                 </Link>
-                <Link href="/pharmacies?category=vitamins" className="px-3.5 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200/70 transition-colors shadow-2xs">
+                <Link href="/pharmacies?category=vitamins" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
                   ✨ Daily Vitamins
                 </Link>
-                <Link href="/pharmacies?category=skincare" className="px-3.5 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200/70 transition-colors shadow-2xs">
+                <Link href="/pharmacies?category=skincare" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
                   🧴 Skin Care
                 </Link>
-                <Link href="/pharmacies?category=digestion" className="px-3.5 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200/70 transition-colors shadow-2xs">
+                <Link href="/pharmacies?category=digestion" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
                   🍃 Stomach Care
                 </Link>
-                <Link href="/pharmacies?category=chronic" className="px-3.5 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200/70 transition-colors shadow-2xs">
+                <Link href="/pharmacies?category=chronic" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
                   📋 Rx Chronic
                 </Link>
               </div>
@@ -480,28 +532,28 @@ export default function DesktopHeader() {
             {/* 2. DOCTOR MODE SUB-NAV */}
             {isDoctors && (
               <div className="flex items-center gap-2.5 text-xs font-extrabold whitespace-nowrap">
-                <span className="text-[11px] font-black text-[#026dd9] uppercase tracking-wider flex items-center gap-1 mr-2.5 bg-blue-50/80 px-2.5 py-1 rounded-lg border border-blue-200/60">
+                <span className={cn("text-[11px] font-black uppercase tracking-wider flex items-center gap-1 mr-2.5 px-2.5 py-1 rounded-lg border", themeConfig.subnavTag)}>
                   <Stethoscope size={13} /> Verified OPD Clinics
                 </span>
-                <Link href="/doctors" className="px-3.5 py-1.5 rounded-xl bg-blue-50 text-[#026dd9] hover:bg-blue-100 border border-blue-200/80 transition-colors shadow-2xs">
+                <Link href="/doctors" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavActive)}>
                   All Specialists
                 </Link>
-                <Link href="/doctors?specialty=Cardiologist" className="px-3.5 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200/70 transition-colors shadow-2xs">
+                <Link href="/doctors?specialty=Cardiologist" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
                   ❤️ Cardiology
                 </Link>
-                <Link href="/doctors?specialty=Pediatrician" className="px-3.5 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200/70 transition-colors shadow-2xs">
+                <Link href="/doctors?specialty=Pediatrician" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
                   👶 Pediatrics
                 </Link>
-                <Link href="/doctors?specialty=Dermatologist" className="px-3.5 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200/70 transition-colors shadow-2xs">
+                <Link href="/doctors?specialty=Dermatologist" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
                   ✨ Dermatology
                 </Link>
-                <Link href="/doctors?specialty=Orthopedic" className="px-3.5 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200/70 transition-colors shadow-2xs">
+                <Link href="/doctors?specialty=Orthopedic" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
                   🦴 Orthopedics
                 </Link>
-                <Link href="/hospitals" className="px-3.5 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200/70 transition-colors shadow-2xs">
+                <Link href="/hospitals" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
                   🏥 Top Hospitals & ER
                 </Link>
-                <Link href="/appointments" className="px-3.5 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200/70 transition-colors shadow-2xs">
+                <Link href="/appointments" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
                   📅 Live OPD Queue Tokens
                 </Link>
               </div>
@@ -510,30 +562,30 @@ export default function DesktopHeader() {
             {/* 3. CARE MODE SUB-NAV */}
             {isCare && (
               <div className="flex items-center gap-2.5 text-xs font-extrabold whitespace-nowrap">
-                <span className="text-[11px] font-black text-[#ff645e] uppercase tracking-wider flex items-center gap-1 mr-2.5 bg-rose-50/80 px-2.5 py-1 rounded-lg border border-rose-200/60">
-                  <Heart size={13} className="fill-[#ff645e]" /> Family Health Circle
+                <span className={cn("text-[11px] font-black uppercase tracking-wider flex items-center gap-1 mr-2.5 px-2.5 py-1 rounded-lg border", themeConfig.subnavTag)}>
+                  <Heart size={13} className="fill-current" /> Family Health Circle
                 </span>
-                <Link href="/family" className="px-3.5 py-1.5 rounded-xl bg-rose-50 text-[#ff645e] hover:bg-rose-100 border border-rose-200/80 transition-colors shadow-2xs">
+                <Link href="/family" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavActive)}>
                   👨‍👩‍👧‍👦 Family Members
                 </Link>
-                <Link href="/medicines" className="px-3.5 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200/70 transition-colors shadow-2xs">
+                <Link href="/medicines" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
                   💊 Daily Medication Regimen
                 </Link>
-                <Link href="/records" className="px-3.5 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200/70 transition-colors shadow-2xs">
+                <Link href="/records" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
                   📁 ABHA Document Vault
                 </Link>
-                <Link href="/emergency" className="px-3.5 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200/70 transition-colors shadow-2xs">
+                <Link href="/emergency" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
                   🆘 Emergency ICE QR
                 </Link>
-                <Link href="/expenses" className="px-3.5 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200/70 transition-colors shadow-2xs">
+                <Link href="/expenses" className={cn("px-3.5 py-1.5 rounded-xl border transition-colors shadow-2xs", themeConfig.subnavInactive)}>
                   💰 80D Tax Ledger
                 </Link>
               </div>
             )}
 
             {/* Right Tagline */}
-            <div className="hidden 2xl:flex items-center gap-1.5 text-[11px] font-bold text-slate-500">
-              <ShieldCheck size={14} className="text-teal-600" />
+            <div className={cn("hidden 2xl:flex items-center gap-1.5 text-[11px] font-bold", themeConfig.guarantee)}>
+              <ShieldCheck size={14} className={themeConfig.guaranteeIcon} />
               <span>100% Genuine Direct Supply • ABDM Integrated</span>
             </div>
           </div>
